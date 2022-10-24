@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<!-- kyh -->
 <!DOCTYPE html>
 <html class="no-js" lang="ko">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Women &ndash; Belle Multipurpose Bootstrap 4 Template</title>
+<title>COFFEE &ndash; Belle Multipurpose Bootstrap 4 Template</title>
 <meta name="description" content="description">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -125,7 +125,7 @@
                                         <!-- start product image -->
                                         <a href="#">
                                             <!-- image -->
-                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image1.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image1.jpg" alt="image" title="product">
+                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/" src="/project-template-prac/resources/assets/images/product-images/product-image1.jpg" alt="image" title="product">
                                             <!-- End image -->
                                             <!-- Hover image -->
                                             <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image1-1.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image1-1.jpg" alt="image" title="product">
@@ -138,7 +138,7 @@
     
                                         <!-- Start product button -->
                                         <form class="variants add" action="#" onclick="window.location.href='cart.html'"method="post">
-                                            <button class="btn btn-addto-cart" type="button">Select Options</button>
+                                            <button class="btn btn-addto-cart" type="button">ADD TO CART</button>
                                         </form>
                                         <div class="button-set">
                                             <a href="javascript:void(0)" title="Quick View" class="quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
@@ -182,7 +182,7 @@
                                         </div>
                                         <!-- Variant -->
                                         <ul class="swatches">
-                                            <li class="swatch medium rounded"><img src="/project-template-prac/resources/assets/images/product-images/variant1.jpg" alt="image" /></li>
+                                            <li class="swatch medium rounded"><img src="/project-template-prac/resources/assets/images/product-images/" alt="image" /></li>
                                             <li class="swatch medium rounded"><img src="/project-template-prac/resources/assets/images/product-images/variant2.jpg" alt="image" /></li>
                                             <li class="swatch medium rounded"><img src="/project-template-prac/resources/assets/images/product-images/variant3.jpg" alt="image" /></li>
                                             <li class="swatch medium rounded"><img src="/project-template-prac/resources/assets/images/product-images/variant4.jpg" alt="image" /></li>
@@ -209,7 +209,7 @@
 
                                         <!-- Start product button -->
                                         <form class="variants add" action="#" onclick="window.location.href='cart.html'"method="post">
-                                            <button class="btn btn-addto-cart" type="button">Select Options</button>
+                                            <button class="btn btn-addto-cart" type="button">ADD TO CART</button>
                                         </form>
                                         <div class="button-set">
                                             <a href="javascript:void(0)" title="Quick View" class="quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
