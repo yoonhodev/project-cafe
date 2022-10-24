@@ -6,12 +6,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Green Coffee</title>
+<title>Home</title>
 <meta name="description" content="description">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- Common-css -->
-<jsp:include page="/WEB-INF/views/modules/common-css.jsp"></jsp:include>
+	<!-- Common-css -->
+	<jsp:include page="/WEB-INF/views/modules/common-css.jsp"></jsp:include>
 </head>
 <body class="template-index belle home9-parallax">
 	<div id="pre-loader">
@@ -20,9 +19,9 @@
 	</div>
 	<div class="pageWrapper">
 
-		<!-- Top Header --> <!-- Header --> <!-- Mobile Menu -->
+		<!-- Header --> <!-- Gyu -->
 		<jsp:include page="/WEB-INF/views/modules/header.jsp"></jsp:include>
-		<!-- ./Top Header --> <!-- ./Header --> <!-- ./Mobile Menu -->
+		<!-- ./Header -->
 
 		<!-- Body Content -->
 		<div id="page-content">
