@@ -87,8 +87,8 @@
 									</div>
 									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
 										<div class="form-group">
-											<label for="BirthDay">생년월일</label>
-											<input type="date" name="birth" placeholder="" id="BirthDay">
+											<label for="Birth">생년월일</label>
+											<input type="date" name="birth" placeholder="" id="Birth">
 										</div>
 									</div>
 								</div>

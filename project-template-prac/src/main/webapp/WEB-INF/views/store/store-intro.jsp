@@ -41,11 +41,13 @@
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
                 	
                     <div class="blog--list-view blog--grid-load-more">
+                    	
                     	<div class="article"> 
                             <!-- Article Image --> 
                             
                              <a class="article_featured-image" href="#"><img class="blur-up lazyload" data-src="resources/assets/images/cafe-out-image-folder/cafe_out_image.jpg" src="resources/assets/images/cafe-out-image-folder/cafe_out_image.jpg" alt="It's all about how you wear"></a>                          
-                            <h2 class="h3">${ storeDto.storeName } 지점명</h2>
+                            
+                            <h2 class="h3">${ stores.storeName } 지점명</h2>
                             <ul class="publish-detail">                      
                                 <li><i class="anm anm-user-al" aria-hidden="true"></i> 지점 연락처 </li>
                                 <li><i class="icon anm anm-clock-r"></i> 영업시간 </li>
@@ -60,6 +62,7 @@
                                  </div>
                            <!--  <p><a href="#" class="btn btn-secondary btn--small">Read more <i class="fa fa-caret-right" aria-hidden="true"></i></a></p> -->
                         </div>
+                        
                         <div class="article"> 
                             <!-- Article Image --> 
                              <a class="article_featured-image" href="#"><img class="blur-up lazyload" data-src="resources/assets/images/blog/blog-post-2.jpg" src="resources/assets/images/blog/blog-post-2.jpg" alt="27 Days of Spring Fashion Recap"></a> 
@@ -97,7 +100,7 @@
                             <p><a href="#" class="btn btn-secondary btn--small">Read more <i class="fa fa-caret-right" aria-hidden="true"></i></a></p>
                         </div>
 
-                        <div class="loadmore-post">	
+                        <div class="loadmore-post" >	
                             <a href="add-store" type="hidden" class="btn">Load More</a>
                         </div>
                     </div>
