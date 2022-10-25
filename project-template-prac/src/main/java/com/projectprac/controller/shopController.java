@@ -7,11 +7,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class shopController {
 
-	@GetMapping(path = { "shop.action"})
+	@GetMapping(path = { "shop.action" })
 	public String shop() {
 		
 		return "shop/shop3";
 	}
 	
+	@GetMapping(path = { "cart" })
+	public String cart() {
+		return "shop/cart";
+	}
 	
 }
