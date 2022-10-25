@@ -163,7 +163,7 @@
                                     <div class="product-details text-center">
                                         <!-- product name -->
                                         <div class="product-name">
-                                            <a href="#">Edna Dress</a>
+                                            <a href="#">Cold Brew</a>
                                         </div>
                                         <!-- End product name -->
                                         <!-- product price -->
@@ -172,24 +172,7 @@
                                             <span class="price">$600.00</span>
                                         </div>
                                         <!-- End product price -->
-                                        
-                                        <div class="product-review">
-                                            <i class="font-13 fa fa-star"></i>
-                                            <i class="font-13 fa fa-star"></i>
-                                            <i class="font-13 fa fa-star"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                        </div>
-                                        <!-- Variant -->
-                                        <ul class="swatches">
-                                            <li class="swatch medium rounded"><img src="/project-template-prac/resources/assets/images/product-images/coldbrew.jpg" alt="image" /></li>
-                                            <li class="swatch medium rounded"><img src="/project-template-prac/resources/assets/images/product-images/variant2.jpg" alt="image" /></li>
-                                            <li class="swatch medium rounded"><img src="/project-template-prac/resources/assets/images/product-images/variant3.jpg" alt="image" /></li>
-                                            <li class="swatch medium rounded"><img src="/project-template-prac/resources/assets/images/product-images/variant4.jpg" alt="image" /></li>
-                                            <li class="swatch medium rounded"><img src="/project-template-prac/resources/assets/images/product-images/variant5.jpg" alt="image" /></li>
-                                            <li class="swatch medium rounded"><img src="/project-template-prac/resources/assets/images/product-images/variant6.jpg" alt="image" /></li>
-                                        </ul>
-                                        <!-- End Variant -->
+       
                                     </div>
                                     <!-- End product details -->
                                 </div>
@@ -199,10 +182,10 @@
                                         <!-- start product image -->
                                         <a href="#">
                                             <!-- image -->
-                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image2.jpg" alt="image" title="product">
+                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/va_coldbrew.jpg" src="/project-template-prac/resources/assets/images/product-images/va_coldbrew.jpg" alt="image" title="product">
                                             <!-- End image -->
                                             <!-- Hover image -->
-                                            <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image2-1.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image2-1.jpg" alt="image" title="product">
+                                            <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/va_coldbrew.jpg" src="/project-template-prac/resources/assets/images/product-images/va_coldbrew.jpg" alt="image" title="product">
                                             <!-- End hover image -->
                                         </a>
                                         <!-- end product image -->
@@ -234,29 +217,14 @@
                                     <div class="product-details text-center">
                                         <!-- product name -->
                                         <div class="product-name">
-                                            <a href="#">Elastic Waist Dress</a>
+                                            <a href="#">Vanilla Cold Brew</a>
                                         </div>
                                         <!-- End product name -->
                                         <!-- product price -->
                                         <div class="product-price">
                                             <span class="price">$748.00</span>
                                         </div>
-                                        <!-- End product price -->
-                                        <div class="product-review">
-                                            <i class="font-13 fa fa-star"></i>
-                                            <i class="font-13 fa fa-star"></i>
-                                            <i class="font-13 fa fa-star"></i>
-                                            <i class="font-13 fa fa-star"></i>
-                                            <i class="font-13 fa fa-star"></i>
-                                        </div>
-                                        <!-- Variant -->
-                                        <ul class="swatches">
-                                            <li class="swatch medium rounded"><img src="/project-template-prac/resources/assets/images/product-images/variant2-1.jpg" alt="image" /></li>
-                                            <li class="swatch medium rounded"><img src="/project-template-prac/resources/assets/images/product-images/variant2-2.jpg" alt="image" /></li>
-                                            <li class="swatch medium rounded"><img src="/project-template-prac/resources/assets/images/product-images/variant2-3.jpg" alt="image" /></li>
-                                            <li class="swatch medium rounded"><img src="/project-template-prac/resources/assets/images/product-images/variant2-4.jpg" alt="image" /></li>
-                                        </ul>
-                                        <!-- End Variant -->
+                              
                                     </div>
                                     <!-- End product details -->
                                 </div>

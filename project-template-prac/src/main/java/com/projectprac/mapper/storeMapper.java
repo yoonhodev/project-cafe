@@ -11,7 +11,7 @@ import com.projectprac.dto.storeDto;
 public interface storeMapper {
 
 	@Select( "select store_id, store_name, store_phone, store_addr, store_introduce, store_sechdule, store_open  " + 
-			"form store " )
+			"from store " )
 	List<storeDto> selectStore(int storeId);
 	
 }
