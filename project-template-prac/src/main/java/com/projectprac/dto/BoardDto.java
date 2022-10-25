@@ -5,7 +5,7 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class boardDto {
+public class BoardDto {
 
 	private int boardId;
 	private int workerId;

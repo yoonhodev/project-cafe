@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.projectprac.dto.boardDto;
+import com.projectprac.dto.BoardDto;
 
 @Controller
 public class BoardController {
@@ -24,7 +24,7 @@ public class BoardController {
 	}
 	
 	@PostMapping(path = { "writeForm" })
-	public String writeForm(boardDto dto) {
+	public String writeForm(BoardDto dto) {
 		
 		System.out.println(dto.getBoardId());
 		System.out.println(dto.getWorkerId());

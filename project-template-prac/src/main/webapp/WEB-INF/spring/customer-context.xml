@@ -8,8 +8,8 @@
 		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
 
 	<!-- 6-2) 의존성 주입 -->
-	<bean id="accountService" class="com.projectprac.service.AccountServicempl">
+<!-- 	<bean id="accountService" class="com.projectprac.service.AccountServicempl">
 		<property name="customerMapper" ref="customerMapper" />
-	</bean>
+	</bean> -->
 
 </beans>
