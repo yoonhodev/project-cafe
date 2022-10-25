@@ -2,6 +2,9 @@ package com.projectprac.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.projectprac.dto.cartDto;
 
 
 @Controller
@@ -18,4 +21,11 @@ public class shopController {
 		return "shop/cart";
 	}
 	
+	@PostMapping(path = { "cart" })
+	public String cartForm(cartDto dto) {
+		
+		System.out.println(dto.getProduct());
+		
+		return "cart";
+	}
 }

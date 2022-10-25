@@ -1,5 +1,12 @@
 package com.projectprac.dto;
 
-public class cartDto {
+import lombok.Data;
 
+@Data
+public class cartDto {
+	
+	private String product;
+	private int price;
+	private int quantity;
+	
 }
