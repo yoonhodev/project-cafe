@@ -149,7 +149,7 @@
     
 		<!-- Footer -->
 		<jsp:include page="/WEB-INF/views/modules/footer.jsp"></jsp:include>
-		<!-- ./Footer -->ooter-->
+		<!-- ./Footer -->
     <!--Scoll Top-->
     <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
     <!--End Scoll Top-->
@@ -159,5 +159,5 @@
 </div>
 </body>
 
-<!-- belle/blog-fullwidth.html   11 Nov 2019 12:46:09 GMT -->
+
 </html>
