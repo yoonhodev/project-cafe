@@ -10,7 +10,7 @@
 <meta name="description" content="description">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- stylessheet -->
+<!-- stylesheet -->
 <jsp:include page="/WEB-INF/views/modules/common-css.jsp"></jsp:include>
 
 </head>
@@ -125,10 +125,10 @@
                                         <!-- start product image -->
                                         <a href="#">
                                             <!-- image -->
-                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/" src="/project-template-prac/resources/assets/images/product-images/product-image1.jpg" alt="image" title="product">
+                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/coldbrew.jpg" src="/project-template-prac/resources/assets/images/product-images/coldbrew.jpg" alt="image" title="product">
                                             <!-- End image -->
                                             <!-- Hover image -->
-                                            <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image1-1.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image1-1.jpg" alt="image" title="product">
+                                            <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/coldbrew.jpg" src="/project-template-prac/resources/assets/images/product-images/coldbrew.jpg" alt="image" title="product">
                                             <!-- End hover image -->
                                             <!-- product label -->
                                             <div class="product-labels rectangular"><span class="lbl on-sale">-16%</span> <span class="lbl pr-label1">new</span></div>
@@ -182,7 +182,7 @@
                                         </div>
                                         <!-- Variant -->
                                         <ul class="swatches">
-                                            <li class="swatch medium rounded"><img src="/project-template-prac/resources/assets/images/product-images/" alt="image" /></li>
+                                            <li class="swatch medium rounded"><img src="/project-template-prac/resources/assets/images/product-images/coldbrew.jpg" alt="image" /></li>
                                             <li class="swatch medium rounded"><img src="/project-template-prac/resources/assets/images/product-images/variant2.jpg" alt="image" /></li>
                                             <li class="swatch medium rounded"><img src="/project-template-prac/resources/assets/images/product-images/variant3.jpg" alt="image" /></li>
                                             <li class="swatch medium rounded"><img src="/project-template-prac/resources/assets/images/product-images/variant4.jpg" alt="image" /></li>
@@ -199,7 +199,7 @@
                                         <!-- start product image -->
                                         <a href="#">
                                             <!-- image -->
-                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image2.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image2.jpg" alt="image" title="product">
+                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image2.jpg" alt="image" title="product">
                                             <!-- End image -->
                                             <!-- Hover image -->
                                             <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image2-1.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image2-1.jpg" alt="image" title="product">
@@ -1410,7 +1410,7 @@
     
     <!--Footer-->
     <jsp:include page="/WEB-INF/views/modules/footer.jsp"></jsp:include>
-   <!--End Footer-->
+    <!--End Footer-->
     
     <!--Scoll Top-->
     <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
