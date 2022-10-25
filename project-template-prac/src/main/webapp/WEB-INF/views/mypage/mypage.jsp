@@ -19,11 +19,14 @@
 	</div>
 	<div class="pageWrapper">
 
-		<!-- Header --> <!-- Gyu -->
+		<!-- Header -->
 		<jsp:include page="/WEB-INF/views/modules/header.jsp"></jsp:include>
 		<!-- ./Header -->
 
 		<!-- Body Content -->
+		
+		
+		
 		
 		
 		
