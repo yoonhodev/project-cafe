@@ -145,45 +145,14 @@
 											alt=""></a></li>
 								</ul>
 							</div></li>
-						<li class="lvl1 parent dropdown"><a href="#"
-							style="font-size: 15pt"><b>Pages</b> <i
+						<li class="lvl1 parent dropdown"><a href="noticeBoard"
+							style="font-size: 15pt"><b>BOARD</b> <i
 								class="anm anm-angle-down-l"></i></a>
 							<ul class="dropdown">
-								<li><a href="cart-variant1.html" class="site-nav">Cart
-										Page <i class="anm anm-angle-right-l"></i>
+								<li><a href="noticeBoard" class="site-nav">NOTICE
 								</a>
-									<ul class="dropdown">
-										<li><a href="cart-variant1.html" class="site-nav">Cart
-												Variant1</a></li>
-										<li><a href="cart-variant2.html" class="site-nav">Cart
-												Variant2</a></li>
-									</ul></li>
-								<li><a href="compare-variant1.html" class="site-nav">Compare
-										Product <i class="anm anm-angle-right-l"></i>
+								<li><a href="eventBoard" class="site-nav">EVENT
 								</a>
-									<ul class="dropdown">
-										<li><a href="compare-variant1.html" class="site-nav">Compare
-												Variant1</a></li>
-										<li><a href="compare-variant2.html" class="site-nav">Compare
-												Variant2</a></li>
-									</ul></li>
-								<li><a href="checkout.html" class="site-nav">Checkout</a></li>
-								<li><a href="about-us.html" class="site-nav">About Us <span
-										class="lbl nm_label1">New</span>
-								</a></li>
-								<li><a href="contact-us.html" class="site-nav">Contact
-										Us</a></li>
-								<li><a href="faqs.html" class="site-nav">FAQs</a></li>
-								<li><a href="lookbook1.html" class="site-nav">Lookbook<i
-										class="anm anm-angle-right-l"></i></a>
-									<ul>
-										<li><a href="lookbook1.html" class="site-nav">Style 1</a></li>
-										<li><a href="lookbook2.html" class="site-nav">Style 2</a></li>
-									</ul></li>
-								<li><a href="404.html" class="site-nav">404</a></li>
-								<li><a href="coming-soon.html" class="site-nav">Coming
-										soon <span class="lbl nm_label1">New</span>
-								</a></li>
 							</ul></li>
 						<li class="lvl1 parent dropdown"><a href="#"
 							style="font-size: 15pt"><b>Blog</b> <i
