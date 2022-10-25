@@ -1,12 +1,19 @@
 package com.projectprac.dto;
 
+import java.util.Date;
+
 import lombok.Data;
 
 @Data
 public class boardDto {
 
-	private int boardNo;
+	private int boardId;
+	private int workerId;
+	private String workerName;
 	private String title;
-	private String writer;
+	private String content;
+	private Date regdate;
+	private boolean deleted;
+	
 	
 }
