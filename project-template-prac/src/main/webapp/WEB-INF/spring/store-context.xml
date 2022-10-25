@@ -13,7 +13,7 @@
 
 
 	<bean id="storeService"
-		class="com.projectprac.service.storeServicempl">
+		class="com.projectprac.service.StoreServiceImpl">
 		<property name="storeMapper" ref="storeMapper" />
 	</bean>
 

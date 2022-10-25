@@ -10,44 +10,29 @@
 		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
-		
-	
+
 	<!-- Root Context: defines shared resources visible to all other web components -->
-
-		<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+	<!-- 2) dataSource ( Connection Pool ) 설정 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/teamwork" />
-		<property name="username" value="testuser" />
+		<property name="url" value="jdbc:mysql://localhost:3306/modeling_test" />
+		<property name="username" value="root" />
 		<property name="password" value="mysql" />
-		<property name="maxTotal" value="100"/>
-		<property name="maxIdle" value="10"/>
-		<property name="maxWaitMillis" value="-1" />	
-		</bean>
-
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-	  <property name="dataSource" ref="dataSource"/>
-	  <property name="configLocation" value="classpath:mybatis-config.xml"/>
+		<property name="maxTotal" value="100" />
+		<property name="maxIdle" value="10" />
+		<property name="maxWaitMillis" value="-1" />
 	</bean>
-	
-	
-	<mybatis:scan base-package="com.projectprac.mapper" />	
-	
+
+	<!-- 3) MyBatis Bean 등록 - SqlSessionFactory -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:mybatis-config.xml" />
+	</bean>
+
+	<!-- 5-2) Mapper interface 만들기 (beans에 두줄 추가) -->
+	<mybatis:scan base-package="com.projectprac.mapper" />
+
 	<import resource="store-context.xml" />
+	<import resource="customer-context.xml" />
+	
 </beans>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

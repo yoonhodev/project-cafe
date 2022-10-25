@@ -25,7 +25,7 @@
 			<div class="page section-header text-center">
 				<div class="page-title">
 					<div class="wrapper">
-						<h1 class="page-width">Login</h1>
+						<h1 class="page-width">로그인</h1>
 					</div>
 				</div>
 			</div>
@@ -40,14 +40,14 @@
 								<div class="row">
 									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
 										<div class="form-group">
-											<label for="CustomerId">ID</label>
+											<label for="CustomerId">아이디</label>
 											<input type="text" name="customerId" placeholder=""
 												   id="CustomerId" autofocus>
 										</div>
 									</div>
 									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
 										<div class="form-group">
-											<label for="Password">Password</label>
+											<label for="Password">비밀번호</label>
 											<input type="password" name="passwd" placeholder=""
 												   id="Password">
 										</div>
@@ -55,7 +55,7 @@
 								</div>
 								<div class="row">
 									<div class="text-center col-12 col-sm-12 col-md-12 col-lg-12">
-										<input type="submit" class="btn mb-3" value="Sign In">
+										<input type="submit" class="btn mb-3" value="로그인">
 										<p class="mb-4">
 											<a href="#" id="RecoverPassword">Forgot your password?</a>
 											&nbsp; | &nbsp;

@@ -8,8 +8,6 @@ public class HomeController {
 	
 	@RequestMapping(path = { "/" , "home" }) // FrontController에 연결 설정
 	public String home() {
-		System.out.println("요청을 수신했습니다.");
-		
 		return "home"; //WEB-INF/views/ + home + .jsp
 	}
 
