@@ -10,7 +10,7 @@
 <meta name="description" content="description">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- stylessheet -->
+<!-- stylesheet -->
 <jsp:include page="/WEB-INF/views/modules/common-css.jsp"></jsp:include>
 
 </head>
@@ -1410,7 +1410,7 @@
     
     <!--Footer-->
     <jsp:include page="/WEB-INF/views/modules/footer.jsp"></jsp:include>
-   <!--End Footer-->
+    <!--End Footer-->
     
     <!--Scoll Top-->
     <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>

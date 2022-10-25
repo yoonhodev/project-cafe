@@ -197,7 +197,7 @@
 								<li><a href="blog-grid-view.html" class="site-nav">Gridview</a></li>
 								<li><a href="blog-article.html" class="site-nav">Article</a></li>
 							</ul></li>
-						<li class="lvl1"><a href="#" style="font-size: 15pt"><b>Buy
+						<li class="lvl1"><a href="cart" style="font-size: 15pt"><b>Buy
 									Now!</b> <i class="anm anm-angle-down-l"></i></a></li>
 					</ul>
 				</nav>
@@ -217,7 +217,7 @@
 			<!--Mobile Logo-->
 			<div class="col-4 col-sm-3 col-md-3 col-lg-2">
 				<div class="site-cart">
-					<a href="#;" class="site-header__cart" title="Cart"> <i
+					<a href="cart" class="site-header__cart" title="Cart"> <i
 						class="icon anm anm-bag-l"></i> <span id="CartCount"
 						class="site-header__cart-count" data-cart-render="item_count">2</span>
 					</a>
@@ -289,7 +289,6 @@
 							</div>
 						</div>
 					</div>
-					<!--EndMinicart Popup-->
 				</div>
 
 			</div>
@@ -543,7 +542,7 @@
 				<li><a href="blog-grid-view.html" class="site-nav">Gridview</a></li>
 				<li><a href="blog-article.html" class="site-nav">Article</a></li>
 			</ul></li>
-		<li class="lvl1"><a href="#"><b>Buy Now!</b></a></li>
+		<li class="lvl1"><a href="cart"><b>Buy Now!</b></a></li>
 	</ul>
 </div>
 <!-- ./Mobile Menu -->
