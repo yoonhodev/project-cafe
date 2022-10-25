@@ -9,8 +9,8 @@
 <title>Home</title>
 <meta name="description" content="description">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- Common-css -->
-	<jsp:include page="/WEB-INF/views/modules/common-css.jsp"></jsp:include>
+<!-- Common-css -->
+<jsp:include page="/WEB-INF/views/modules/common-css.jsp"></jsp:include>
 </head>
 <body class="template-index belle home9-parallax">
 	<div id="pre-loader">
@@ -18,14 +18,13 @@
 			alt="Loading..." />
 	</div>
 	<div class="pageWrapper">
-
-		<!-- Header --> <!-- Gyu -->
+		<!-- Header -->
 		<jsp:include page="/WEB-INF/views/modules/header.jsp"></jsp:include>
 		<!-- ./Header -->
 
 		<!-- Body Content -->
 		<div id="page-content">
-			<!--Home slider-->
+			<!-- Home slider -->
 			<div class="slideshow slideshow-wrapper">
 				<div class="home-slideshow">
 					<div class="slide">
@@ -34,15 +33,14 @@
 								data-src="/project-template-prac/resources/assets/images/imageforproject/KakaoTalk_20221020_165234064.jpg"
 								src="/project-template-prac/resources/assets/images/imageforproject/KakaoTalk_20221020_165234064.jpg"
 								alt="Gift For her" title="Gift For her" />
-							<div
-								class="slideshow__text-wrap slideshow__overlay classic bottom">
+							<div class="slideshow__text-wrap slideshow__overlay classic bottom">
 								<div class="slideshow__text-content left">
 									<div class="container">
 										<div class="wrap-caption left">
 											<h2 class="h1 mega-title slideshow__title">Gift For her</h2>
-											<span class="mega-subtitle slideshow__subtitle">The
-												latest collection from italian brands</span> <span class="btn">Shop
-												now</span>
+											<span class="mega-subtitle slideshow__subtitle">
+												The latest collection from italian brands</span>
+											<span class="btn">Shop now</span>
 										</div>
 									</div>
 								</div>
@@ -51,7 +49,7 @@
 					</div>
 				</div>
 			</div>
-			<!--End Home slider-->
+			<!-- ./Home slider -->
 
 			<!--Hero Parallax Section1-->
 			<div class="section">
@@ -61,10 +59,10 @@
 						alt="" />
 					<div class="hero__inner">
 						<div class="container">
-							<div class="wrap-text  right text-medium font-bold">
+							<div class="wrap-text right text-medium font-bold">
 								<h2 class="h2 mega-title">Kids Collection</h2>
-								<div class="rte-setting mega-subtitle">Plenty of options
-									for your kids. Be the first to buy</div>
+								<div class="rte-setting mega-subtitle">
+									Plenty of options for your kids. Be the first to buy</div>
 								<a href="#" class="btn">Shop Kids</a>
 							</div>
 						</div>
@@ -124,7 +122,7 @@
 		<!-- ./Body Content -->
 
 		<!-- Footer -->
-		<jsp:include page="/WEB-INF/views/modules/footer.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/views/modules/home-footer.jsp"></jsp:include>
 		<!-- ./Footer -->
 
 		<!-- Scoll Top -->
@@ -136,10 +134,3 @@
 	</div>
 </body>
 </html>
-
-
-
-
-
-
-
