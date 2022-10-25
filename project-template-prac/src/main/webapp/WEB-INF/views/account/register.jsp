@@ -25,7 +25,7 @@
 			<div class="page section-header text-center">
 				<div class="page-title">
 					<div class="wrapper">
-						<h1 class="page-width">Create Account</h1>
+						<h1 class="page-width">회원가입</h1>
 					</div>
 				</div>
 			</div>
@@ -36,7 +36,7 @@
 				<div class="row">
 					<div class="col-12 col-sm-12 col-md-6 col-lg-6 main-col offset-md-3">
 						<div class="mb-4">
-							<form method="post" action="#" id="registerform">
+							<form method="post" action="register" id="registerform">
 								<div class="row">
 									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
 										<div class="form-group">
@@ -75,25 +75,27 @@
 									</div>
 									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
 										<div class="form-group">
-											<label for="BirthDay">생년월일</label>
-											<input type="date" name="birth"
-												   placeholder="" id="BirthDay">
+											<label>성별</label><br>
+											<div>&nbsp;
+												&nbsp;&nbsp;남&nbsp;&nbsp;
+												<input type="radio" name="sex" placeholder="" id="Sex">
+												&nbsp;&nbsp;&nbsp;&nbsp;
+												&nbsp;&nbsp;여&nbsp;&nbsp;
+												<input type="radio" name="sex" placeholder="" id="Sex">
+											</div> 
 										</div>
 									</div>
 									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
 										<div class="form-group">
-											<label>성별</label>&nbsp;
-											<div>&nbsp;&nbsp;&nbsp;
-												남&nbsp;&nbsp;<input type="radio" name="sex" placeholder="" id="Sex">
-												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												여&nbsp;&nbsp;<input type="radio" name="sex" placeholder="" id="Sex">
-											</div> 
+											<label for="BirthDay">생년월일</label>
+											<input type="date" name="birth" placeholder="" id="BirthDay">
 										</div>
 									</div>
 								</div>
+								<br> <br>
 								<div class="row">
 									<div class="text-center col-12 col-sm-12 col-md-12 col-lg-12">
-										<input type="submit" class="btn mb-3" value="Create">
+										<input type="submit" class="btn mb-3" value="회원가입 완료">
 									</div>
 								</div>
 							</form>
@@ -101,6 +103,7 @@
 					</div>
 				</div>
 			</div>
+			<!-- ./Create Account -->
 			
 		</div>
 		<!--End Body Content-->
@@ -117,6 +120,4 @@
 		<jsp:include page="/WEB-INF/views/modules/common-js.jsp"></jsp:include>
 	</div>
 </body>
-
-<!-- belle/register.html   11 Nov 2019 12:22:27 GMT -->
 </html>
