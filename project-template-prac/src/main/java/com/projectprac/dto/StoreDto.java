@@ -3,7 +3,7 @@ package com.projectprac.dto;
 import lombok.Data;
 
 @Data
-public class storeDto {
+public class StoreDto {
 
 	private int storeId;
 	private String storeName;

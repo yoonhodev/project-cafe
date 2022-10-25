@@ -6,7 +6,8 @@
 <configuration>
 	
 	<typeAliases>
-		<typeAlias type="com.projectprac.dto.storeDto" alias="storeDto"/>
+
+		<typeAlias type="com.projectprac.dto.StoreDto" alias="StoreDto"/>
 		
 	</typeAliases>
 	
@@ -14,3 +15,4 @@
   </mappers>
   
 </configuration>
+<!-- 4) MyBatis 설정 파일 만들기 -->
