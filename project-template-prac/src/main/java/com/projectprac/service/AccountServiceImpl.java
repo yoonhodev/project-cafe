@@ -1,0 +1,25 @@
+package com.projectprac.service;
+
+import com.projectprac.common.Util;
+import com.projectprac.dto.CustomerDto;
+import com.projectprac.mapper.CustomerMapper;
+
+import lombok.Setter;
+
+public class AccountServiceImpl implements AccountService {
+
+	// 6-1) 의존성 주입
+	@Setter
+	private CustomerMapper customerMapper;
+
+	// 1. 회원 가입 : 회원 데이터를 받아서 필요한 처리 ( 데이터베이스 저장은 Dao에 전달 )
+	@Override
+	public void registerCustomer(CustomerDto customer) {
+
+		String passwd = Util.getHashedString(customer.getPasswd(), "SHA-256");
+		customer.setPasswd(passwd); // 암호화된 패스워드를 멤버에 저장
+		customerMapper.insertCustomer(customer);
+
+	}
+
+}
