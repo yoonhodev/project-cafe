@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<!--Top Header-->
+<!-- Top Header -->
 <div class="top-header">
 	<div class="container-fluid">
 		<div class="row">
@@ -16,20 +16,20 @@
 				<span class="user-menu d-block d-lg-none"><i
 					class="anm anm-user-al" aria-hidden="true"></i></span>
 				<ul class="customer-links list-inline">
-					<li><a href="login.action">Login</a></li>
-					<li><a href="register.action">Create Account</a></li>
-					<li><a href="wishlist.html">Wishlist</a></li>
+					<li><a href="login">Login</a></li>
+					<li><a href="register">Create Account</a></li>
+					<li><a href="wishlist">Wishlist</a></li>
 				</ul>
 			</div>
 		</div>
 	</div>
 </div>
-<!-- ./Top Header-->
+<!-- ./Top Header -->
 
 <div class="header-wrap classicHeader animated d-flex">
 	<div class="container-fluid">
 		<div class="row align-items-center">
-			<!--Desktop Logo-->
+			<!-- Desktop Logo -->
 			<div class="logo col-md-2 col-lg-2 d-none d-lg-block">
 				<a href="home"> <img
 					src="/project-template-prac/resources/assets/images/logo.svg"
@@ -37,7 +37,7 @@
 					title="Belle Multipurpose Html Template" />
 				</a>
 			</div>
-			<!--End Desktop Logo-->
+			<!-- ./Desktop Logo -->
 			<div class="col-2 col-sm-3 col-md-3 col-lg-8">
 				<div class="d-block d-lg-none">
 					<button type="button"
@@ -185,8 +185,8 @@
 										soon <span class="lbl nm_label1">New</span>
 								</a></li>
 							</ul></li>
-						<li class="lvl1 parent dropdown"><a href="#"
-							style="font-size: 15pt"><b>Blog</b> <i
+						<li class="lvl1 parent dropdown"><a href="store"
+							style="font-size: 15pt"><b>지점소개</b> <i
 								class="anm anm-angle-down-l"></i></a>
 							<ul class="dropdown">
 								<li><a href="blog-left-sidebar.html" class="site-nav">Left
@@ -298,7 +298,7 @@
 </div>
 <!-- ./Header -->
 
-<!--Mobile Menu-->
+<!-- Mobile Menu -->
 <div class="mobile-nav-wrapper" role="navigation">
 	<div class="closemobileMenu">
 		<i class="icon anm anm-times-l pull-right"></i> Close Menu
@@ -546,4 +546,4 @@
 		<li class="lvl1"><a href="#"><b>Buy Now!</b></a></li>
 	</ul>
 </div>
-<!--End Mobile Menu-->
+<!-- ./Mobile Menu -->
