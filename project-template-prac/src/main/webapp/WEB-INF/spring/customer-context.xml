@@ -11,5 +11,5 @@
 	<bean id="accountService" class="com.projectprac.service.AccountServicempl">
 		<property name="customerMapper" ref="customerMapper" />
 	</bean>
-
+ 
 </beans>

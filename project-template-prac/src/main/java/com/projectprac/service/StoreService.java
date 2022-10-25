@@ -2,10 +2,16 @@ package com.projectprac.service;
 
 import java.util.List;
 
-import com.projectprac.dto.storeDto;
+import com.projectprac.dto.StoreDto;
+import com.projectprac.mapper.StoreMapper;
 
-public interface storeService {
+public interface StoreService {
 
-	List<storeDto> selectStoreInfo(int storeId);
+	List<StoreDto> selectStoreInfo(int storeId);
+
+	/* List<StoreDto> findStoreByStoreId(int storeId); */
+
+	/* List<StoreDto> findStore(StoreDto storeDto); */
+
 	
 }
