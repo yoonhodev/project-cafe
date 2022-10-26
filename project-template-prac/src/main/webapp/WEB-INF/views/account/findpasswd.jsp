@@ -2,13 +2,12 @@
 	pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!DOCTYPE html>
 <html class="no-js" lang="ko">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Login</title>
+<title>Green-Coffee</title>
 <meta name="description" content="description">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Common-css -->
@@ -27,18 +26,18 @@
 			<div class="page section-header text-center">
 				<div class="page-title">
 					<div class="wrapper">
-						<h1 class="page-width">로그인</h1>
+						<h1 class="page-width">비밀번호 찾기</h1>
 					</div>
 				</div>
 			</div>
 			<!-- ./Page Title -->
 
-			<!-- Login -->
+			<!-- Find Password -->
 			<div class="container">
 				<div class="row">
 					<div class="col-12 col-sm-12 col-md-6 col-lg-6 main-col offset-md-3">
 						<div class="mb-4">
-							<form method="post" action="login" id="loginform">
+							<form method="post" action="findpasswd" id="findpasswdform">
 								<div class="row">
 									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
 										<div class="form-group">
@@ -49,20 +48,15 @@
 									</div>
 									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
 										<div class="form-group">
-											<label for="Password">비밀번호</label>
-											<input type="password" name="passwd" placeholder=""
-												   id="Password">
+											<label for="Phone">전화번호</label>
+											<input type="text" name="phone" placeholder=""
+												   id="Phone">
 										</div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="text-center col-12 col-sm-12 col-md-12 col-lg-12">
-										<input type="submit" class="btn mb-3" value="로그인">
-										<p class="mb-4">
-											<a href="findpasswd" id="RecoverPassword">Forgot your password?</a>
-											&nbsp; | &nbsp;
-											<a href="register" id="CreateAccount">Create account</a>
-										</p>
+										<input type="submit" class="btn mb-3" value="아이디 확인">
 									</div>
 								</div>
 							</form>
@@ -70,7 +64,7 @@
 					</div>
 				</div>
 			</div>
-			<!-- ./Login -->
+			<!-- ./Find Password -->
 
 		</div>
 		<!-- ./Body Content -->
@@ -89,8 +83,11 @@
 	<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 	<script type="text/javascript">
 		$(function() {
-			<c:if test="${ not empty loginfail }">
-				alert('로그인 실패 : 아이디와 패스워드를 확인하세요');
+			<c:if test="${ not empty userfindfail }">
+				alert('계정이 없거나 전화번호가 틀렸습니다.');
+			</c:if>
+			<c:if test="${ not empty resetpasswdfail }">
+				alert('비밀번호 입력이 틀렸습니다.');
 			</c:if>
 		});
 	</script>

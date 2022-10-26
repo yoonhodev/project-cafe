@@ -35,5 +35,6 @@
 	<import resource="store-context.xml" />
 	<import resource="customer-context.xml" />
 	<import resource="board-context.xml" />
+	<import resource="order-context.xml" />
 	
 </beans>
