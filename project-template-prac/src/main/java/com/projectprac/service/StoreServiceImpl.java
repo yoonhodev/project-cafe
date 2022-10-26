@@ -13,6 +13,8 @@ public class StoreServiceImpl implements StoreService{
 	@Setter
 	private StoreMapper storeMapper;
 
+	
+
 	@Override
 	public List<StoreDto> selectStoreInfo(StoreDto storeDto) {
 		

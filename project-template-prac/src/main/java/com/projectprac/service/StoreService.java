@@ -6,6 +6,8 @@ import com.projectprac.dto.StoreDto;
 
 public interface StoreService {
 
+ 
+
 	List<StoreDto> selectStoreInfo(StoreDto store);
 
 	/* List<StoreDto> findStoreByStoreId(int storeId); */
