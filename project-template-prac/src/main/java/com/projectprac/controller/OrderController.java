@@ -1,5 +1,7 @@
 package com.projectprac.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -20,17 +22,26 @@ public class OrderController {
 	@Qualifier("orderService")
 	private OrderService orderService;
 	
+	List<ProductDto> products;
+	
 	@GetMapping(path = { "order" })
 	public String order() {
+		
+		for (ProductDto product : products) {
+			// product = orderService.showOrder(product);
+			System.out.println(product);
+		}
 		
 		return "shop/order";
 	}
 	
 	@PostMapping(path = { "update-order" })
 	public String updateOrder(ProductDto product) {
-		System.out.println(product.getProdId());
+		
+		products.add(product);
 		
 		return "shop/shop";
+		
 	}
 	
 //	@PostMapping(path = { "order" })
