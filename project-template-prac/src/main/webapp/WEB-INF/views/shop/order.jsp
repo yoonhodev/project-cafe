@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
     <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -352,10 +354,13 @@
                                     <th class="action">&nbsp;</th>
                                 </tr>
                             </thead>
-                    		<tbody>
+                            <c:forEach var="order" items="${ orders }">
+                            
+                            </c:forEach>
+                    		<%-- <tbody>
                                 <tr class="cart__row border-bottom line1 cart-flex border-top">
                                     <td class="cart__image-wrapper cart-flex-item">
-                                        <a href="#"><img class="cart__image" src="assets/images/product-images/product-image30.jpg" alt="Elastic Waist Dress - Navy / Small"></a>
+                                        <a href="#"><img class="cart__image" src="assets/images/product-images/product-image30.jpg" alt=></a>
                                     </td>
                                     <td class="cart__meta small--text-left cart-flex-item">
                                         <div class="list-view-item__title">
@@ -438,7 +443,7 @@
                                     </td>
                                     <td class="text-center small--hide"><a href="#" class="btn btn--secondary cart__remove" title="Remove tem"><i class="icon icon anm anm-times-l"></i></a></td>
                                 </tr>
-                            </tbody>
+                            </tbody> --%>
                     		<tfoot>
                                 <tr>
                                     <td colspan="3" class="text-left"><a href="shop" class="btn btn-secondary btn--small cart-continue">Continue shopping</a></td>

@@ -41,7 +41,7 @@ public class AccountController {
 		accountService.registerCustomer(customer);
 
 		// 3. View에서 사용할 수 있도록 데이터 전달 / 4. View 또는 다른 Controller로 이동
-		return "redirect:login";
+		return "account/login";
 
 	}
 	
@@ -62,13 +62,11 @@ public class AccountController {
 			model.addAttribute("loginfail", customerId);
 			return "account/login";
 		}
+		
 		System.out.println(customer);
-//		String temp = customer.getCustomerId();
-//		session.getAttribute
-//		System.out.println(temp);
 		// 3. View에서 사용하도록 데이터 전달
 		// 4. View 또는 다른 Controller로 이동
-		return "redirect:home";
+		return "home";
 
 	}
 	
@@ -76,6 +74,57 @@ public class AccountController {
 	public String logout(HttpSession session) {
 		session.removeAttribute("loginuser");
 		return "redirect:home";
+	}
+	
+	@GetMapping(path = { "findpasswd" })
+	public String findPasswd() {
+		return "account/findpasswd";
+	}
+	
+	@PostMapping(path = { "findpasswd" })
+	public String findpasswd(String customerId, String phone, HttpSession session, Model model) {
+		// 1. 요청 데이터 읽기 ( 전달인자 사용으로 대체 )
+		// 2. 요청 처리
+		CustomerDto customer = accountService.findCustomerByIdAndPhone(customerId, phone);
+
+		if (customer != null) {
+			session.setAttribute("founduser", customer);
+		} else {
+			model.addAttribute("userfindfail", customerId);
+			return "account/findpasswd";
+		}
+
+		// 3. View에서 사용하도록 데이터 전달
+		// 4. View 또는 다른 Controller로 이동
+		return "redirect:resetpasswd";
+
+	}
+	
+	@GetMapping(path = { "resetpasswd" })
+	public String resetPasswd() {
+		return "account/resetpasswd";
+	}
+	
+	@PostMapping(path = { "resetpasswd" })
+	public String resetpasswd(String passwd, String passwdCheck, HttpSession session, Model model) {
+		// 1. 요청 데이터 읽기 ( 전달인자 사용으로 대체 )
+		// 2. 요청 처리
+		System.out.printf("%s\n", passwd);
+		System.out.printf("%s\n", passwdCheck);
+		
+		if (!passwd.equals(passwdCheck)) {
+			System.out.println(3);
+			model.addAttribute("resetpasswdfail", passwd);
+			return "account/findpasswd";
+		}
+		System.out.println(46);
+		CustomerDto customer = (CustomerDto) session.getAttribute("founduser");
+		accountService.updatePassword(customer.getCustomerId(), passwd);
+
+		// 3. View에서 사용하도록 데이터 전달
+		// 4. View 또는 다른 Controller로 이동
+		return "redirect:login";
+
 	}
 
 }

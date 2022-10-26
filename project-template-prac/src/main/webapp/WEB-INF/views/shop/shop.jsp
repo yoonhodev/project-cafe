@@ -137,8 +137,8 @@
                                         <!-- end product image -->
     
                                         <!-- Start product button -->
-                                        <form class="variants add" action="#" onclick="window.location.href='cart.html'"method="post">
-                                            <button class="btn btn-addto-cart" type="button">ADD TO CART</button>
+                                        <form class="variants add" action="update-order" onclick="update-order" method="post">
+                                            <button class="btn btn-addto-cart update-order" type="button">ADD TO CART</button>
                                         </form>
                                         <div class="button-set">
                                             <a href="javascript:void(0)" title="Quick View" class="quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
