@@ -13,211 +13,61 @@
 <title>Short Description &ndash; Belle Multipurpose Bootstrap 4 Template</title>
 <meta name="description" content="description">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Favicon -->
-<link rel="shortcut icon" href="resources/assets/images/favicon.png" />
-<!-- Plugins CSS -->
-<link rel="stylesheet" href="resources/assets/css/plugins.css">
-<!-- Bootstap CSS -->
-<link rel="stylesheet" href="resources/assets/css/bootstrap.min.css">
-<!-- Main Style CSS -->
-<link rel="stylesheet" href="resources/assets/css/style.css">
-<link rel="stylesheet" href="resources/assets/css/responsive.css">
+<jsp:include page="/WEB-INF/views/modules/common-css.jsp"></jsp:include>
+<style>
+ 
+        /* pagination position styling */
+        .pagination_section {
+            position: relative;
+        }
+ 
+        /* pagination styling */
+        .pagination_section a {
+            color: black;
+            padding: 10px 18px;
+            text-decoration: none;
+        }
+ 
+        /* pagination hover effect on non-active */
+        .pagination_section a:hover:not(.active) {
+            background-color: #031F3B;
+            color: white;
+        }
+ 
+        /* pagination hover effect on active*/
+ 
+        a:nth-child(5) {
+            background-color: green;
+            color: white;
+        }
+ 
+        a:nth-child(1) {
+            font-weight: bold;
+        }
+ 
+        a:nth-child(7) {
+            font-weight: bold;
+        }
+ 
+        .content-pagenation {
+            margin: 50px;
+            padding: 15px;
+            width: 700px;
+            height: 200px;
+            border: 2px solid black;
+        }
+    </style>
+
 </head>
 <body class="template-product belle">
 	<div class="pageWrapper">
-        <!--Search Form Drawer-->
-        <div class="search">
-            <div class="search__form">
-                <form class="search-bar__form" action="#">
-                    <button class="go-btn search__button" type="submit"><i class="icon anm anm-search-l"></i></button>
-                    <input class="search__input" type="search" name="q" value="" placeholder="Search entire store..." aria-label="Search" autocomplete="off">
-                </form>
-                <button type="button" class="search-trigger close-btn"><i class="icon anm anm-times-l"></i></button>
-            </div>
-        </div>
-        <!--End Search Form Drawer-->
-       
-         <!--Top Header-->  	     <!--Header-->
-    <jsp:include page="/WEB-INF/views/modules/header.jsp"></jsp:include>
-      	<!--End Header-->		<!--End Top Header-->
-        <!--Page Title-->
+    	<jsp:include page="/WEB-INF/views/modules/header.jsp"></jsp:include>
         <br><br><br>
     	<div class="page section-header text-center mb-0">
 			<div class="page-title">
         		<div class="wrapper"><h1 class="page-width">Notice Board</h1></div>
       		</div>
 		</div>
-        <!--End Page Title-->
-      
-        <div class="mobile-nav-wrapper" role="navigation">
-		<div class="closemobileMenu"><i class="icon anm anm-times-l pull-right"></i> Close Menu</div>
-        <ul id="MobileNav" class="mobile-nav">
-        	<li class="lvl1 parent megamenu"><a href="index.html">Home <i class="anm anm-plus-l"></i></a>
-          <ul>
-            <li><a href="#" class="site-nav">Home Group 1<i class="anm anm-plus-l"></i></a>
-              <ul>
-                <li><a href="index.html" class="site-nav">Home 1 - Classic</a></li>
-                <li><a href="home2-default.html" class="site-nav">Home 2 - Default</a></li>
-                <li><a href="home15-funiture.html" class="site-nav">Home 15 - Furniture </a></li>
-                <li><a href="home3-boxed.html" class="site-nav">Home 3 - Boxed</a></li>
-                <li><a href="home4-fullwidth.html" class="site-nav">Home 4 - Fullwidth</a></li>
-                <li><a href="home5-cosmetic.html" class="site-nav">Home 5 - Cosmetic</a></li>
-                <li><a href="home6-modern.html" class="site-nav">Home 6 - Modern</a></li>
-                <li><a href="home7-shoes.html" class="site-nav last">Home 7 - Shoes</a></li>
-              </ul>
-            </li>
-            <li><a href="#" class="site-nav">Home Group 2<i class="anm anm-plus-l"></i></a>
-              <ul>
-                <li><a href="home8-jewellery.html" class="site-nav">Home 8 - Jewellery</a></li>
-                <li><a href="home9-parallax.html" class="site-nav">Home 9 - Parallax</a></li>
-                <li><a href="home10-minimal.html" class="site-nav">Home 10 - Minimal</a></li>
-                <li><a href="home11-grid.html" class="site-nav">Home 11 - Grid</a></li>
-                <li><a href="home12-category.html" class="site-nav">Home 12 - Category</a></li>
-                <li><a href="home13-auto-parts.html" class="site-nav">Home 13 - Auto Parts</a></li>
-                <li><a href="home14-bags.html" class="site-nav last">Home 14 - Bags</a></li>
-              </ul>
-            </li>
-            <li><a href="#" class="site-nav">New Sections<i class="anm anm-plus-l"></i></a>
-              <ul>
-                <li><a href="home11-grid.html" class="site-nav">Image Gallery</a></li>
-                <li><a href="home5-cosmetic.html" class="site-nav">Featured Product</a></li>
-                <li><a href="home7-shoes.html" class="site-nav">Columns with Items</a></li>
-                <li><a href="home6-modern.html" class="site-nav">Text columns with images</a></li>
-                <li><a href="home2-default.html" class="site-nav">Products Carousel</a></li>
-                <li><a href="home9-parallax.html" class="site-nav last">Parallax Banner</a></li>
-              </ul>
-            </li>
-            <li><a href="#" class="site-nav">New Features<i class="anm anm-plus-l"></i></a>
-              <ul>
-                <li><a href="home13-auto-parts.html" class="site-nav">Top Information Bar </a></li>
-                <li><a href="#" class="site-nav">Age Varification </a></li>
-                <li><a href="#" class="site-nav">Footer Blocks</a></li>
-                <li><a href="#" class="site-nav">2 New Megamenu style</a></li>
-                <li><a href="#" class="site-nav">Show Total Savings </a></li>
-                <li><a href="#" class="site-nav">New Custom Icons</a></li>
-                <li><a href="#" class="site-nav last">Auto Currency</a></li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        	<li class="lvl1 parent megamenu"><a href="#">Shop <i class="anm anm-plus-l"></i></a>
-          <ul>
-            <li><a href="#" class="site-nav">Shop Pages<i class="anm anm-plus-l"></i></a>
-              <ul>
-                <li><a href="shop-left-sidebar.html" class="site-nav">Left Sidebar</a></li>
-                <li><a href="shop-right-sidebar.html" class="site-nav">Right Sidebar</a></li>
-                <li><a href="shop-fullwidth.html" class="site-nav">Fullwidth</a></li>
-                <li><a href="shop-grid-3.html" class="site-nav">3 items per row</a></li>
-                <li><a href="shop-grid-4.html" class="site-nav">4 items per row</a></li>
-                <li><a href="shop-grid-5.html" class="site-nav">5 items per row</a></li>
-                <li><a href="shop-grid-6.html" class="site-nav">6 items per row</a></li>
-                <li><a href="shop-grid-7.html" class="site-nav">7 items per row</a></li>
-                <li><a href="shop-listview.html" class="site-nav last">Product Listview</a></li>
-              </ul>
-            </li>
-            <li><a href="#" class="site-nav">Shop Features<i class="anm anm-plus-l"></i></a>
-              <ul>
-                <li><a href="shop-left-sidebar.html" class="site-nav">Product Countdown </a></li>
-                <li><a href="shop-right-sidebar.html" class="site-nav">Infinite Scrolling</a></li>
-
-                <li><a href="shop-grid-3.html" class="site-nav">Pagination - Classic</a></li>
-                <li><a href="shop-grid-6.html" class="site-nav">Pagination - Load More</a></li>
-                <li><a href="product-labels.html" class="site-nav">Dynamic Product Labels</a></li>
-                <li><a href="product-swatches-style.html" class="site-nav">Product Swatches </a></li>
-                <li><a href="product-hover-info.html" class="site-nav">Product Hover Info</a></li>
-                <li><a href="shop-grid-3.html" class="site-nav">Product Reviews</a></li>
-                <li><a href="shop-left-sidebar.html" class="site-nav last">Discount Label </a></li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        	<li class="lvl1 parent megamenu"><a href="product-layout-1.html">Product <i class="anm anm-plus-l"></i></a>
-          <ul>
-            <li><a href="product-layout-1.html" class="site-nav">Product Page<i class="anm anm-plus-l"></i></a>
-              <ul>
-                <li><a href="product-layout-1.html" class="site-nav">Product Layout 1</a></li>
-                <li><a href="product-layout-2.html" class="site-nav">Product Layout 2</a></li>
-                <li><a href="product-layout-3.html" class="site-nav">Product Layout 3</a></li>
-                <li><a href="product-with-left-thumbs.html" class="site-nav">Product With Left Thumbs</a></li>
-                <li><a href="product-with-right-thumbs.html" class="site-nav">Product With Right Thumbs</a></li>
-                <li><a href="product-with-bottom-thumbs.html" class="site-nav last">Product With Bottom Thumbs</a></li>
-              </ul>
-            </li>
-            <li><a href="short-description.html" class="site-nav">Product Features<i class="anm anm-plus-l"></i></a>
-              <ul>
-                <li><a href="short-description.html" class="site-nav">Short Description</a></li>
-                <li><a href="product-countdown.html" class="site-nav">Product Countdown</a></li>
-                <li><a href="product-video.html" class="site-nav">Product Video</a></li>
-                <li><a href="product-quantity-message.html" class="site-nav">Product Quantity Message</a></li>
-                <li><a href="product-visitor-sold-count.html" class="site-nav">Product Visitor/Sold Count </a></li>
-                <li><a href="product-zoom-lightbox.html" class="site-nav last">Product Zoom/Lightbox </a></li>
-              </ul>
-            </li>
-            <li><a href="#" class="site-nav">Product Features<i class="anm anm-plus-l"></i></a>
-              <ul>
-                <li><a href="product-with-variant-image.html" class="site-nav">Product with Variant Image</a></li>
-                <li><a href="product-with-color-swatch.html" class="site-nav">Product with Color Swatch</a></li>
-                <li><a href="product-with-image-swatch.html" class="site-nav">Product with Image Swatch</a></li>
-                <li><a href="product-with-dropdown.html" class="site-nav">Product with Dropdown</a></li>
-                <li><a href="product-with-rounded-square.html" class="site-nav">Product with Rounded Square</a></li>
-                <li><a href="swatches-style.html" class="site-nav last">Product Swatches All Style</a></li>
-              </ul>
-            </li>
-            <li><a href="#" class="site-nav">Product Features<i class="anm anm-plus-l"></i></a>
-              <ul>
-                <li><a href="product-accordion.html" class="site-nav">Product Accordion</a></li>
-                <li><a href="product-pre-orders.html" class="site-nav">Product Pre-orders </a></li>
-                <li><a href="product-labels-detail.html" class="site-nav">Product Labels</a></li>
-                <li><a href="product-discount.html" class="site-nav">Product Discount In %</a></li>
-                <li><a href="product-shipping-message.html" class="site-nav">Product Shipping Message</a></li>
-                <li><a href="product-shipping-message.html" class="site-nav last">Size Guide </a></li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        	<li class="lvl1 parent megamenu"><a href="about-us.html">Pages <i class="anm anm-plus-l"></i></a>
-          <ul>
-          	<li><a href="cart-variant1.html" class="site-nav">Cart Page <i class="anm anm-plus-l"></i></a>
-                <ul class="dropdown">
-                    <li><a href="cart-variant1.html" class="site-nav">Cart Variant1</a></li>
-                    <li><a href="cart-variant2.html" class="site-nav">Cart Variant2</a></li>
-                 </ul>
-            </li>
-            <li><a href="compare-variant1.html" class="site-nav">Compare Product <i class="anm anm-plus-l"></i></a>
-                <ul class="dropdown">
-                    <li><a href="compare-variant1.html" class="site-nav">Compare Variant1</a></li>
-                    <li><a href="compare-variant2.html" class="site-nav">Compare Variant2</a></li>
-                 </ul>
-            </li>
-			<li><a href="checkout.html" class="site-nav">Checkout</a></li>
-            <li><a href="about-us.html" class="site-nav">About Us<span class="lbl nm_label1">New</span></a></li>
-            <li><a href="contact-us.html" class="site-nav">Contact Us</a></li>
-            <li><a href="faqs.html" class="site-nav">FAQs</a></li>
-            <li><a href="lookbook1.html" class="site-nav">Lookbook<i class="anm anm-plus-l"></i></a>
-              <ul>
-                <li><a href="lookbook1.html" class="site-nav">Style 1</a></li>
-                <li><a href="lookbook2.html" class="site-nav last">Style 2</a></li>
-              </ul>
-            </li>
-            <li><a href="404.html" class="site-nav">404</a></li>
-            <li><a href="coming-soon.html" class="site-nav">Coming soon<span class="lbl nm_label1">New</span></a></li>
-          </ul>
-        </li>
-        	<li class="lvl1 parent megamenu"><a href="blog-left-sidebar.html">Blog <i class="anm anm-plus-l"></i></a>
-          <ul>
-            <li><a href="blog-left-sidebar.html" class="site-nav">Left Sidebar</a></li>
-            <li><a href="blog-right-sidebar.html" class="site-nav">Right Sidebar</a></li>
-            <li><a href="blog-fullwidth.html" class="site-nav">Fullwidth</a></li>
-            <li><a href="blog-grid-view.html" class="site-nav">Gridview</a></li>
-            <li><a href="blog-article.html" class="site-nav">Article</a></li>
-          </ul>
-        </li>
-        	<li class="lvl1"><a href="#"><b>Buy Now!</b></a>
-        </li>
-      </ul>
-	</div>
-        <!--End Mobile Menu-->
-        
         <!--Body Content-->
         <div id="page-content">
             <!--MainContent-->
@@ -228,43 +78,44 @@
                    <!--      <a href="index.html" title="Back to the home page">Home</a><span aria-hidden="true">›</span><span>Short Description</span> -->
                     </div>
                 </div>
-                <!--End Breadcrumb-->
+   
                 
                 <div id="ProductSection-product-template" class="product-template__container prstyle1 container">
-                    <!--product-single-->
-                   
-                    <!--End-product-single-->
-                    <!--Product Fearure-->
-                    
-                    <!--End Product Fearure-->
+               
                     <!--Product Tabs-->
                     <div class="tabs-listing">
                         <ul class="product-tabs">
                             <li rel="tab-notice-board"><a class="tablink">Notice Board</a></li>
                             <li rel="tab-event-board"><a class="tablink">Event Board</a></li>
                         </ul>
+               
                         <div class="tab-container">
                             <div id="tab-notice-board" class="tab-content">
-                                <div class="product-description rte">
+                                
                                     <div id="shopify-product-reviews">
                                     <div class="spr-container">
                                         <div class="spr-header clearfix">
                                             <div class="spr-summary">
 <!--                                                 <span class="product-review"><a class="reviewLink"><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i> </a><span class="spr-summary-actions-togglereviews">Based on 6 reviews456</span></span>
- -->                                                <span class="spr-summary-actions">
-                                                    <a href="#" class="spr-summary-actions-newreview btn">글 쓰기</a>
+ -->                                                <!-- <span class="spr-summary-actions"> -->
+                                                    <a href="#" id="toggle-form-btn" class="spr-summary-actions-newreview btn">글 쓰기</a>
                                                 </span>
                                             </div>
                                         </div>
+                                        
+                                        <div id="toggle">
                                         <div class="spr-content">
-                                            <div class="spr-form clearfix">
+                                        <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+                                            <div class="spr-form clearfix" id="toggle-form" style="display:none">
+                                            	<script>
+													$( "#toggle-form-btn" ).click(function() {
+													  $( "#toggle-form" ).toggle( "slow" );
+													});
+													</script>
                                                 <form method="post" action="writeBoard" id="new-review-form" class="new-review-form" >
-                                                    <h3 class="spr-form-title">Write a review</h3>
+                                                    <h3 class="spr-form-title">Write notice</h3>
                                                     <fieldset class="spr-form-contact">
-                                                        <div class="spr-form-contact-name">
-                                                          <label class="spr-form-label" for="review_author_10508262282">작성자</label>
-                                                          <input class="spr-form-input spr-form-input-text " id="review_author_10508262282" type="text" name="workerName" value="" placeholder="Enter your name">
-                                                        </div>
+                                                  
                                                     </fieldset>
                                                     <fieldset class="spr-form-review">
                                                   
@@ -283,16 +134,15 @@
                                                     </fieldset>
                                                     <fieldset class="spr-form-actions">
                                                         <input type="submit" class="spr-button spr-button-primary button button-primary btn btn-primary" value="Submit">
-                                                    </fieldset>
-                                                     <fieldset class="spr-form-actions">
                                                         <input type="button" class="spr-button spr-button-primary button button-primary btn btn-primary" value="Cancel">
                                                     </fieldset>
+                                                   
                                                 </form>
                                             </div>
+                                           	</div>
                                             <div class="spr-reviews">
                                                 <div class="spr-review">
                                                     <div class="spr-review-header">
-                                                        <span class="product-review spr-starratings spr-review-header-starratings"><span class="reviewLink"><i class="fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i></span></span>
                                                         <h3 class="spr-review-header-title">Lorem ipsum dolor sit amet</h3>
                                                         <span class="spr-review-header-byline"><strong>dsacc</strong> on <strong>Apr 09, 2022</strong></span>
                                                     </div>
@@ -302,7 +152,6 @@
                                                 </div>
                                                 <div class="spr-review">
                                                   <div class="spr-review-header">
-                                                    <span class="product-review spr-starratings spr-review-header-starratings"><span class="reviewLink"><i class="fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i></span></span>
                                                     <h3 class="spr-review-header-title">Lorem Ipsum is simply dummy text of the printing</h3>
                                                     <span class="spr-review-header-byline"><strong>larrydude</strong> on <strong>Dec 30, 2018</strong></span>
                                                   </div>
@@ -314,7 +163,6 @@
                                                 </div>
                                                 <div class="spr-review">
                                                   <div class="spr-review-header">
-                                                    <span class="product-review spr-starratings spr-review-header-starratings"><span class="reviewLink"><i class="fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i></span></span>
                                                     <h3 class="spr-review-header-title">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</h3>
                                                     <span class="spr-review-header-byline"><strong>quoctri1905</strong> on <strong>Dec 30, 2018</strong></span>
                                                   </div>
@@ -323,13 +171,25 @@
                                                     <p class="spr-review-content-body">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.<br>
                                                     <br>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                                                   </div>
+                                                
                                                 </div>
+                                              
                                             </div>
-                                        </div>
-                                        </div>
+                                           <!-- Pagenation -->
+                                               <div class="pagination_section" style="text-align:center;" >
+										            <a href="#"><< Previous</a>
+										            <a href="#" title="Algorithm">1</a>
+										            <a href="#" title="DataStructure">2</a>
+										            <a href="#" title="Languages">3</a>
+										            <a href="#" title="Interview" class="active">4</a>
+										            <a href="#" title="practice">5</a>
+										            <a href="#">Next >></a>
+										        </div>
+										    <!-- End of Pagenation -->
                                     </div>
-                                    
+                                   
                                 </div>
+                                
                             </div>
                             
                             <div id="tab-event-board" class="tab-content">
@@ -385,7 +245,7 @@
                                             <div class="spr-reviews">
                                                 <div class="spr-review">
                                                     <div class="spr-review-header">
-                                                        <span class="product-review spr-starratings spr-review-header-starratings"><span class="reviewLink"><i class="fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i></span></span>
+                                                        
                                                         <h3 class="spr-review-header-title">Lorem ipsum dolor sit amet</h3>
                                                         <span class="spr-review-header-byline"><strong>dsacc</strong> on <strong>Apr 09, 2019</strong></span>
                                                     </div>
@@ -420,116 +280,10 @@
                                             </div>
                                         </div>
                                         </div>
-                                    </div>
+                                  
                                 </div>
-                            
-                            <div id="tab3" class="tab-content">
-                                <h3>WOMEN'S BODY SIZING CHART</h3>
-                                <table>
-                                  <tbody>
-                                    <tr>
-                                      <th>Size</th>
-                                      <th>XS</th>
-                                      <th>S</th>
-                                      <th>M</th>
-                                      <th>L</th>
-                                      <th>XL</th>
-                                    </tr>
-                                    <tr>
-                                      <td>Chest</td>
-                                      <td>31" - 33"</td>
-                                      <td>33" - 35"</td>
-                                      <td>35" - 37"</td>
-                                      <td>37" - 39"</td>
-                                      <td>39" - 42"</td>
-                                    </tr>
-                                    <tr>
-                                      <td>Waist</td>
-                                      <td>24" - 26"</td>
-                                      <td>26" - 28"</td>
-                                      <td>28" - 30"</td>
-                                      <td>30" - 32"</td>
-                                      <td>32" - 35"</td>
-                                    </tr>
-                                    <tr>
-                                      <td>Hip</td>
-                                      <td>34" - 36"</td>
-                                      <td>36" - 38"</td>
-                                      <td>38" - 40"</td>
-                                      <td>40" - 42"</td>
-                                      <td>42" - 44"</td>
-                                    </tr>
-                                    <tr>
-                                      <td>Regular inseam</td>
-                                      <td>30"</td>
-                                      <td>30½"</td>
-                                      <td>31"</td>
-                                      <td>31½"</td>
-                                      <td>32"</td>
-                                    </tr>
-                                    <tr>
-                                      <td>Long (Tall) Inseam</td>
-                                      <td>31½"</td>
-                                      <td>32"</td>
-                                      <td>32½"</td>
-                                      <td>33"</td>
-                                      <td>33½"</td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                                <h3>MEN'S BODY SIZING CHART</h3>
-                                <table>
-                                  <tbody>
-                                    <tr>
-                                      <th>Size</th>
-                                      <th>XS</th>
-                                      <th>S</th>
-                                      <th>M</th>
-                                      <th>L</th>
-                                      <th>XL</th>
-                                      <th>XXL</th>
-                                    </tr>
-                                    <tr>
-                                      <td>Chest</td>
-                                      <td>33" - 36"</td>
-                                      <td>36" - 39"</td>
-                                      <td>39" - 41"</td>
-                                      <td>41" - 43"</td>
-                                      <td>43" - 46"</td>
-                                      <td>46" - 49"</td>
-                                    </tr>
-                                    <tr>
-                                      <td>Waist</td>
-                                      <td>27" - 30"</td>
-                                      <td>30" - 33"</td>
-                                      <td>33" - 35"</td>
-                                      <td>36" - 38"</td>
-                                      <td>38" - 42"</td>
-                                      <td>42" - 45"</td>
-                                    </tr>
-                                    <tr>
-                                      <td>Hip</td>
-                                      <td>33" - 36"</td>
-                                      <td>36" - 39"</td>
-                                      <td>39" - 41"</td>
-                                      <td>41" - 43"</td>
-                                      <td>43" - 46"</td>
-                                      <td>46" - 49"</td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                                <div class="text-center">
-                                    <img src="resources/assets/images/size.jpg" alt="" />
-                                </div>
-                          </div>
-                            
-                            <div id="tab4" class="tab-content">
-                                <h4>Returns Policy</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eros justo, accumsan non dui sit amet. Phasellus semper volutpat mi sed imperdiet. Ut odio lectus, vulputate non ex non, mattis sollicitudin purus. Mauris consequat justo a enim interdum, in consequat dolor accumsan. Nulla iaculis diam purus, ut vehicula leo efficitur at.</p>
-                                <p>Interdum et malesuada fames ac ante ipsum primis in faucibus. In blandit nunc enim, sit amet pharetra erat aliquet ac.</p>
-                                <h4>Shipping</h4>
-                                <p>Pellentesque ultrices ut sem sit amet lacinia. Sed nisi dui, ultrices ut turpis pulvinar. Sed fringilla ex eget lorem consectetur, consectetur blandit lacus varius. Duis vel scelerisque elit, et vestibulum metus.  Integer sit amet tincidunt tortor. Ut lacinia ullamcorper massa, a fermentum arcu vehicula ut. Ut efficitur faucibus dui Nullam tristique dolor eget turpis consequat varius. Quisque a interdum augue. Nam ut nibh mauris.</p>
-                            </div>
+                            	
+                            <div>
                         </div>
                     </div>
                     <!--End Product Tabs-->
@@ -549,112 +303,7 @@
     	<!--End Body Content-->
     
     <!--Footer-->
-    <footer id="footer">
-        <div class="newsletter-section">
-            <div class="container">
-                <div class="row">
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-7 w-100 d-flex justify-content-start align-items-center">
-                            <div class="display-table">
-                                <div class="display-table-cell footer-newsletter">
-                                    <div class="section-header text-center">
-                                        <label class="h2"><span>sign up for </span>newsletter</label>
-                                    </div>
-                                    <form action="#" method="post">
-                                        <div class="input-group">
-                                            <input type="email" class="input-group__field newsletter__input" name="EMAIL" value="" placeholder="Email address" required="">
-                                            <span class="input-group__btn">
-                                                <button type="submit" class="btn newsletter__submit" name="commit" id="Subscribe"><span class="newsletter__submit-text--large">Subscribe</span></button>
-                                            </span>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-5 d-flex justify-content-end align-items-center">
-                            <div class="footer-social">
-                                <ul class="list--inline site-footer__social-icons social-icons">
-                                    <li><a class="social-icons__link" href="#" target="_blank" title="Belle Multipurpose Bootstrap 4 Template on Facebook"><i class="icon icon-facebook"></i></a></li>
-                                    <li><a class="social-icons__link" href="#" target="_blank" title="Belle Multipurpose Bootstrap 4 Template on Twitter"><i class="icon icon-twitter"></i> <span class="icon__fallback-text">Twitter</span></a></li>
-                                    <li><a class="social-icons__link" href="#" target="_blank" title="Belle Multipurpose Bootstrap 4 Template on Pinterest"><i class="icon icon-pinterest"></i> <span class="icon__fallback-text">Pinterest</span></a></li>
-                                    <li><a class="social-icons__link" href="#" target="_blank" title="Belle Multipurpose Bootstrap 4 Template on Instagram"><i class="icon icon-instagram"></i> <span class="icon__fallback-text">Instagram</span></a></li>
-                                    <li><a class="social-icons__link" href="#" target="_blank" title="Belle Multipurpose Bootstrap 4 Template on Tumblr"><i class="icon icon-tumblr-alt"></i> <span class="icon__fallback-text">Tumblr</span></a></li>
-                                    <li><a class="social-icons__link" href="#" target="_blank" title="Belle Multipurpose Bootstrap 4 Template on YouTube"><i class="icon icon-youtube"></i> <span class="icon__fallback-text">YouTube</span></a></li>
-                                    <li><a class="social-icons__link" href="#" target="_blank" title="Belle Multipurpose Bootstrap 4 Template on Vimeo"><i class="icon icon-vimeo-alt"></i> <span class="icon__fallback-text">Vimeo</span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-            </div>    
-        </div>
-        <div class="site-footer">
-        	<div class="container">
-     			<!--Footer Links-->
-            	<div class="footer-top">
-                	<div class="row">
-                    	<div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
-                        	<h4 class="h4">Quick Shop</h4>
-                            <ul>
-                            	<li><a href="#">Women</a></li>
-                                <li><a href="#">Men</a></li>
-                                <li><a href="#">Kids</a></li>
-                                <li><a href="#">Sportswear</a></li>
-                                <li><a href="#">Sale</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
-                        	<h4 class="h4">Informations</h4>
-                            <ul>
-                            	<li><a href="#">About us</a></li>
-                                <li><a href="#">Careers</a></li>
-                                <li><a href="#">Privacy policy</a></li>
-                                <li><a href="#">Terms &amp; condition</a></li>
-                                <li><a href="#">My Account</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
-                        	<h4 class="h4">Customer Services</h4>
-                            <ul>
-                            	<li><a href="#">Request Personal Data</a></li>
-                                <li><a href="#">FAQ's</a></li>
-                                <li><a href="#">Contact Us</a></li>
-                                <li><a href="#">Orders and Returns</a></li>
-                                <li><a href="#">Support Center</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-3 contact-box">
-                        	<h4 class="h4">Contact Us</h4>
-                            <ul class="addressFooter">
-                            	<li><i class="icon anm anm-map-marker-al"></i><p>55 Gallaxy Enque,<br>2568 steet, 23568 NY</p></li>
-                                <li class="phone"><i class="icon anm anm-phone-s"></i><p>(440) 000 000 0000</p></li>
-                                <li class="email"><i class="icon anm anm-envelope-l"></i><p>sales@yousite.com</p></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!--End Footer Links-->
-                <hr>
-                <div class="footer-bottom">
-                	<div class="row">
-                    	<!--Footer Copyright-->
-	                	<div class="col-12 col-sm-12 col-md-6 col-lg-6 order-1 order-md-0 order-lg-0 order-sm-1 copyright text-sm-center text-md-left text-lg-left"><span></span> <a href="templateshub.net">Templates Hub</a></div>
-                        <!--End Footer Copyright-->
-                        <!--Footer Payment Icon-->
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 order-0 order-md-1 order-lg-1 order-sm-0 payment-icons text-right text-md-center">
-                        	<ul class="payment-icons list--inline">
-                        		<li><i class="icon fa fa-cc-visa" aria-hidden="true"></i></li>
-                                <li><i class="icon fa fa-cc-mastercard" aria-hidden="true"></i></li>
-                                <li><i class="icon fa fa-cc-discover" aria-hidden="true"></i></li>
-                                <li><i class="icon fa fa-cc-paypal" aria-hidden="true"></i></li>
-                                <li><i class="icon fa fa-cc-amex" aria-hidden="true"></i></li>
-                                <li><i class="icon fa fa-credit-card" aria-hidden="true"></i></li>
-                            </ul>
-                        </div>
-                        <!--End Footer Payment Icon-->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+   <jsp:include page="/WEB-INF/views/modules/home-footer.jsp"></jsp:include>
     <!--End Footer-->
     <!--Scoll Top-->
     <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
@@ -677,6 +326,8 @@
      <!-- Photoswipe Gallery -->
      <script src="resources/assets/js/vendor/photoswipe.min.js"></script>
      <script src="resources/assets/js/vendor/photoswipe-ui-default.min.js"></script>
+   
+
      <script>
         $(function(){
             var $pswp = $('.pswp')[0],
