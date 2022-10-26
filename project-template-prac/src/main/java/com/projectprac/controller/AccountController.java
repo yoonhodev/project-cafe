@@ -29,10 +29,9 @@ public class AccountController {
 	@PostMapping(path = { "register" })
 	public String register(@Valid CustomerDto customer, BindingResult br) { // @Valid에 의해 검출된 오류 정보가 저장된 객체
 		
-		System.out.println(br);
 		if (br.hasErrors()) {
 			System.out.println("유효성 검사 오류 발생");
-			return "account/register";
+			return "redirect:register";
 		}
 		
 		// 1. 요청 데이터 읽기 -> DTO에 저장 : 전달인자 사용으로 대체
@@ -41,8 +40,7 @@ public class AccountController {
 		// 2. 요청 처리
 		accountService.registerCustomer(customer);
 
-		// 3. View에서 사용할 수 있도록 데이터 전달
-		// 4. View 또는 다른 Controller로 이동
+		// 3. View에서 사용할 수 있도록 데이터 전달 / 4. View 또는 다른 Controller로 이동
 		return "redirect:login";
 
 	}
@@ -56,15 +54,15 @@ public class AccountController {
 	public String login(String customerId, String passwd, HttpSession session, Model model) {
 		// 1. 요청 데이터 읽기 ( 전달인자 사용으로 대체 )
 		// 2. 요청 처리
-		// MemberDto member = accountService.findMemberByIdAndPasswd(memberId, passwd);
-		
-//		if (member != null) {
-//			session.setAttribute("loginuser", member);
-//		} else {
-//			model.addAttribute("loginfail", memberId);
-//			return "account/login"; // /WEB-INF/views/ + account/login + .jsp
-//		}
-		
+		CustomerDto customer = accountService.findCustomerByIdAndPasswd(customerId, passwd); 
+
+		if (customer != null) {
+			session.setAttribute("loginuser", customer);
+		} else {
+			model.addAttribute("loginfail", customerId);
+			return "account/login";
+		}
+
 		// 3. View에서 사용하도록 데이터 전달
 		// 4. View 또는 다른 Controller로 이동
 		return "redirect:home";
@@ -74,7 +72,7 @@ public class AccountController {
 	@GetMapping(path = { "logout" })
 	public String logout(HttpSession session) {
 		session.removeAttribute("loginuser");
-		return "home";
+		return "redirect:home";
 	}
 
 }
