@@ -21,5 +21,15 @@ public class AccountServiceImpl implements AccountService {
 		customerMapper.insertCustomer(customer);
 
 	}
+	
+	// 2. 로그인 : 아이디, 패스워드를 받아서 데이터베이스 조회 후 결과 반환
+	@Override
+	public CustomerDto findCustomerByIdAndPasswd(String customerId, String passwd) {
+		
+		passwd = Util.getHashedString(passwd, "SHA-256");
+		CustomerDto customer = customerMapper.selectCustomerByIdAndPasswd(customerId, passwd); 
+		return customer;
+		
+	}
 
 }
