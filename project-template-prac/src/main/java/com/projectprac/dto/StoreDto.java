@@ -9,6 +9,8 @@ public class StoreDto {
 	private String storeName;
 	private String storePhone;
 	private String storeAddr;
+	private String storeIntroduce;
 	private String storeSchedule;
 	private boolean storeOpen;
+	private String storeImage;
 }

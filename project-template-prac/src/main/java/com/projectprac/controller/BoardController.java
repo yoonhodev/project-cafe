@@ -1,16 +1,21 @@
 package com.projectprac.controller;
 
-import java.util.Date;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.projectprac.dto.BoardDto;
+import com.projectprac.service.BoardService;
 
 @Controller
 public class BoardController {
 
+	@Autowired
+	@Qualifier("boardService")
+	private BoardService boardService;
+	
 	@GetMapping(path = { "noticeBoard" })
 	public String noticeBoard() {
 		
@@ -23,16 +28,20 @@ public class BoardController {
 		return "board/noticeBoard";
 	}
 	
-	@PostMapping(path = { "writeForm" })
-	public String writeForm(BoardDto dto) {
+	@PostMapping(path = { "writeBoard" })
+	public String writeBoard(BoardDto board) {
 		
-		System.out.println(dto.getBoardId());
-		System.out.println(dto.getWorkerId());
-		System.out.println(dto.getWorkerName());
-		System.out.println(dto.getTitle());
-		System.out.println(dto.getContent());
-		System.out.println(dto.getRegdate());
-	//	System.out.println(dto.getDeleted());
+		
+		
+		System.out.println(board.getBoardId());
+		System.out.println(board.getWorkerId());
+	//	System.out.println(dto.getWorkerName());
+		System.out.println(board.getTitle());
+		System.out.println(board.getContent());
+		System.out.println(board.getRegdate());
+	//	System.out.println(board.getDeleted());
+		
+		boardService.writeBoard(board);
 		
 		
 

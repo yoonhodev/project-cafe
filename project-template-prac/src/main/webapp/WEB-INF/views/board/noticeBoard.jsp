@@ -258,7 +258,7 @@
                                         </div>
                                         <div class="spr-content">
                                             <div class="spr-form clearfix">
-                                                <form method="post" action="writeForm" id="new-review-form" class="new-review-form" >
+                                                <form method="post" action="writeBoard" id="new-review-form" class="new-review-form" >
                                                     <h3 class="spr-form-title">Write a review</h3>
                                                     <fieldset class="spr-form-contact">
                                                         <div class="spr-form-contact-name">

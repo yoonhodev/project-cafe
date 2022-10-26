@@ -8,6 +8,7 @@
 	<typeAliases>
 
 		<typeAlias type="com.projectprac.dto.StoreDto" alias="StoreDto"/>
+		<typeAlias type="com.projectprac.dto.BoardDto" alias="BoardDto"/>
 		
 	</typeAliases>
 	
