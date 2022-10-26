@@ -511,7 +511,7 @@
 				<li><a href="blog-grid-view.html" class="site-nav">Gridview</a></li>
 				<li><a href="blog-article.html" class="site-nav">Article</a></li>
 			</ul></li>
-		<li class="lvl1"><a href="cart"><b>Buy Now!</b></a></li>
+		<li class="lvl1"><a href="order"><b>Buy Now!</b></a></li>
 	</ul>
 </div>
 <!-- ./Mobile Menu -->

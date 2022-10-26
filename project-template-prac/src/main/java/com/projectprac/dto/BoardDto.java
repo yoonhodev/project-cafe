@@ -9,7 +9,6 @@ public class BoardDto {
 
 	private int boardId;
 	private int workerId;
-	private String workerName;
 	private String title;
 	private String content;
 	private Date regdate;
