@@ -49,7 +49,7 @@
 
                             <!-- Article Image --> 
                             
-                            <a class="article_featured-image" ><img class="blur-up lazyload article_featured-image" data-src="${ stores.image }" src="${ stores.image }" alt="It's all about how you wear"></a>                          
+                            <a class="article_featured-image" ><img class="blur-up lazyload article_featured-image" data-src="${ stores.storeImage }" src="${ stores.storeImage }" alt="It's all about how you wear"></a>                          
                             
                             <h2 class="h3"  >${ stores.storeName }</h2>
                             <ul class="publish-detail">                      
