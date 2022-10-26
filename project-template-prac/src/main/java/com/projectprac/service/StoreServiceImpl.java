@@ -14,9 +14,9 @@ public class StoreServiceImpl implements StoreService{
 	private StoreMapper storeMapper;
 
 	@Override
-	public List<StoreDto> selectStoreInfo(int storeId) {
+	public List<StoreDto> selectStoreInfo(StoreDto storeDto) {
 		
-		List<StoreDto> stores = storeMapper.selectStoreByStoreId(storeId);
+		List<StoreDto> stores = storeMapper.selectStoreByStoreId(storeDto);
 		
 		return stores;
 	}

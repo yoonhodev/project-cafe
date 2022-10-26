@@ -14,7 +14,7 @@ public interface StoreMapper {
 	@Select("select store_id, store_name, store_phone, store_addr, store_introduce, store_schdule, store_open " +
 			 "form store " +
 			"order by store_id " )
-	List<StoreDto> selectStoreByStoreId(int storeId);
+	List<StoreDto> selectStoreByStoreId(StoreDto storeDto);
 
 	
 	/*

@@ -7,7 +7,7 @@ import com.projectprac.mapper.StoreMapper;
 
 public interface StoreService {
 
-	List<StoreDto> selectStoreInfo(int storeId);
+	List<StoreDto> selectStoreInfo(StoreDto store);
 
 	/* List<StoreDto> findStoreByStoreId(int storeId); */
 
