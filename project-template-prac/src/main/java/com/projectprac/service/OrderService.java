@@ -9,7 +9,8 @@ public interface OrderService {
 
 		void updateOrder(OrderDto order);
 
-
 		List<OrderDto> findOrderByOrderDetailId(int orderDetailId);
+		
+		
 		
 	}
