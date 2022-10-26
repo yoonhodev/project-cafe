@@ -252,12 +252,20 @@
                                             <div class="spr-summary">
 <!--                                                 <span class="product-review"><a class="reviewLink"><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i> </a><span class="spr-summary-actions-togglereviews">Based on 6 reviews456</span></span>
  -->                                                <span class="spr-summary-actions">
-                                                    <a href="#" class="spr-summary-actions-newreview btn">글 쓰기</a>
+                                                    <a href="#" class="spr-summary-actions-newreview btn" id="can-hide-box-btn">글 쓰기</a>
                                                 </span>
                                             </div>
+                                            
+                                            
+                                                  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+                                        <script type="text/javascript">
+                                        $( "#can-hide-box-btn" ).on('click',function() {
+                                        	  $( "#can-hide-this-box" ).toggle();
+                                        	});
+                                        </script>
                                         </div>
                                         <div class="spr-content">
-                                            <div class="spr-form clearfix">
+                                            <div class="spr-form clearfix" id="can-hide-this-box" style="display: none;">
                                                 <form method="post" action="writeBoard" id="new-review-form" class="new-review-form" >
                                                     <h3 class="spr-form-title">Write a review</h3>
                                                     <fieldset class="spr-form-contact">
@@ -338,13 +346,17 @@
                                         <div class="spr-header clearfix">
                                             <div class="spr-summary">
                                                 <span class="product-review"><a class="reviewLink"><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i> </a><span class="spr-summary-actions-togglereviews">Based on 6 reviews456</span></span>
-                                                <span class="spr-summary-actions">
+                                                <span class="spr-summary-actions" >
                                                     <a href="#" class="spr-summary-actions-newreview btn">Write a review</a>
                                                 </span>
                                             </div>
                                         </div>
+                                  
+                                        
+                                        </script>
+                                        
                                         <div class="spr-content">
-                                            <div class="spr-form clearfix">
+                                            <div class="spr-form clearfix" >
                                                 <form method="post" action="#" id="new-review-form" class="new-review-form">
                                                     <h3 class="spr-form-title">Write a review</h3>
                                                     <fieldset class="spr-form-contact">
