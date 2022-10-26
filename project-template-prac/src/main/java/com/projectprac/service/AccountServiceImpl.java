@@ -27,9 +27,22 @@ public class AccountServiceImpl implements AccountService {
 	public CustomerDto findCustomerByIdAndPasswd(String customerId, String passwd) {
 		
 		passwd = Util.getHashedString(passwd, "SHA-256");
-		CustomerDto customer = customerMapper.selectCustomerByIdAndPasswd(customerId, passwd); 
+		CustomerDto customer = customerMapper.selectCustomerByIdAndPasswd(customerId, passwd);
 		return customer;
 		
+	}
+
+	// 3. 비밀번호 찾기 : 아이디 조회 후 비밀번호 재설정
+	@Override
+	public CustomerDto findCustomerByIdAndPhone(String customerId, String phone) {
+		CustomerDto customer = customerMapper.selectCustomerByIdAndPhone(customerId, phone);
+		return customer;
+	}
+
+	@Override
+	public void updatePassword(String customerId, String passwd) {
+		passwd = Util.getHashedString(passwd, "SHA-256");
+		customerMapper.updatePassword(customerId, passwd);
 	}
 
 }
