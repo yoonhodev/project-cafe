@@ -1,25 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!-- Top Header -->
 <div class="top-header">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-10 col-sm-8 col-md-5 col-lg-4"></div>
-			<div
-				class="col-sm-4 col-md-4 col-lg-4 d-none d-lg-none d-md-block d-lg-block">
+			<div class="col-sm-4 col-md-4 col-lg-4 d-none d-lg-none d-md-block d-lg-block">
 				<div class="text-center">
 					<p class="top-header_middle-text">Green Coffee</p>
 				</div>
 			</div>
 			<div class="col-2 col-sm-4 col-md-3 col-lg-4 text-right">
-				<span class="user-menu d-block d-lg-none"><i
-					class="anm anm-user-al" aria-hidden="true"></i></span>
+				<span class="user-menu d-block d-lg-none">
+				<i class="anm anm-user-al" aria-hidden="true"></i></span>
+				<c:choose>
+				<c:when test="${ empty loginuser }">
 				<ul class="customer-links list-inline">
 					<li><a href="login">Login</a></li>
 					<li><a href="register">Create Account</a></li>
-					<li><a href="wishlist">Wishlist</a></li>
 				</ul>
+				</c:when>
+				<c:otherwise>
+				<ul class="customer-links list-inline">
+					<li><a href="#">${ loginuser.customerId }님</a></li>
+					<li><a href="#">마이페이지</a></li>
+					<li><a href="logout">로그아웃</a></li>
+				</ul>
+				</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 	</div>

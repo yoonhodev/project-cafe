@@ -62,7 +62,10 @@ public class AccountController {
 			model.addAttribute("loginfail", customerId);
 			return "account/login";
 		}
-
+		System.out.println(customer);
+//		String temp = customer.getCustomerId();
+//		session.getAttribute
+//		System.out.println(temp);
 		// 3. View에서 사용하도록 데이터 전달
 		// 4. View 또는 다른 Controller로 이동
 		return "redirect:home";
