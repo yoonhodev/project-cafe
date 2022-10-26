@@ -26,18 +26,18 @@ public class StoreController {
 		return "store/store-intro";
 	}
 	
-	@GetMapping(path = {"store"})
-	public String store(StoreDto storeDto) {
-		StoreDto store = new StoreDto();
-		
-		System.out.println(store.getStoreAddr());
-		
-		List<StoreDto> stores = storeService.selectStoreInfo(storeDto);
-		
-	
-		
-		return "store/store-intro";
-	}
+//	@GetMapping(path = {"store"})
+//	public String store(StoreDto storeDto) {
+//		StoreDto store = new StoreDto();
+//		
+//		System.out.println(store.getStoreAddr());
+//		
+//		List<StoreDto> stores = storeService.selectStoreInfo(storeDto);
+//		
+//	
+//		
+//		return "store/store-intro";
+//	}
 	
 }
 
