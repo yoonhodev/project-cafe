@@ -8,7 +8,6 @@ import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 
 import com.projectprac.dto.OrderDto;
-import com.projectprac.dto.ProductDto;
 
 @Mapper
 public interface OrderMapper {
