@@ -14,7 +14,7 @@ public interface OrderMapper {
 	        "VALUES (#{ orderid }, #{ storeid }, #{ customerid }, #{ orderpay }, #{ ordertype }, #{ orderstat }, # { orderdate })")
 	@Options(useGeneratedKeys = true, keyColumn = "orderid", keyProperty = "orderid")
 	
-	void insertOrder(ProductDto product);
+	void insertOrder(OrderDto order);
 
 
 }
