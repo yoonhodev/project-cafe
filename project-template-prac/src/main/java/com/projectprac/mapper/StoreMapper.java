@@ -12,7 +12,7 @@ import com.projectprac.dto.StoreDto;
 public interface StoreMapper {
 
 	
-	@Select("select store_id storeid, store_name storename, store_phone storephone, store_addr storeaddr, store_introduce storeintroduce, store_schedule storeschedule, store_open storeopen, image from store " )
+	@Select("select store_id storeid, store_name storename, store_phone storephone, store_addr storeaddr, store_introduce storeintroduce, store_schedule storeschedule, store_open storeopen, store_image storeimage from store " )
 //	@Options(useGeneratedKeys = true, keyColumn = "store_id", keyProperty = "storeId")
 	List<StoreDto> selectStoreByStoreId(StoreDto storeDto);
 

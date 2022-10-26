@@ -12,5 +12,5 @@ public class StoreDto {
 	private String storeIntroduce;
 	private String storeSchedule;
 	private boolean storeOpen;
-	private String image;
+	private String storeImage;
 }
