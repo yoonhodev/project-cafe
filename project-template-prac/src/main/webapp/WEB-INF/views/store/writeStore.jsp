@@ -61,15 +61,15 @@
                                                     <fieldset class="spr-form-contact">
                                                         <div class="spr-form-contact-name">
                                                           <label class="spr-form-label" for="review_author_10508262282">지점명</label>
-                                                          <input class="spr-form-input spr-form-input-text " id="review_author_10508262282" type="text" name="review[author]" value="" placeholder="지점명을 입력해주세요">
+                                                          <input class="spr-form-input spr-form-input-text " id="review_author_10508262282" type="text" name="storeName" value="" placeholder="지점명을 입력해주세요">
                                                         </div>
                                                         <div class="spr-form-contact-email">
                                                           <label class="spr-form-label" for="review_email_10508262282">지점 연락처</label>
-                                                          <input class="spr-form-input spr-form-input-email " id="review_email_10508262282" type="text" name="review[email]" value="" placeholder="지점 연락처를 입력해주세요">
+                                                          <input class="spr-form-input spr-form-input-email " id="review_email_10508262282" type="text" name="storePhone" value="" placeholder="지점 연락처를 입력해주세요">
                                                         </div>
                                                         <div class="spr-form-contact-name">
                                                           <label class="spr-form-label" for="review_author_10508262282">지점 주소</label>
-                                                          <input class="spr-form-input spr-form-input-text " id="review_author_10508262282" type="text" name="review[author]" value="" placeholder="지점 주소를 입력해주세요">
+                                                          <input class="spr-form-input spr-form-input-text " id="review_author_10508262282" type="text" name="storeAddr" value="" placeholder="지점 주소를 입력해주세요">
                                                         </div>
                                                     </fieldset>
                                                     <fieldset class="spr-form-review">
@@ -82,13 +82,13 @@
                                                 
                                                       <div class="spr-form-review-title">
                                                         <label class="spr-form-label" for="review_title_10508262282">영업시간</label>
-                                                        <input class="spr-form-input spr-form-input-text " id="review_title_10508262282" type="text" name="review[title]" value="" placeholder="지점 영업시간을 입력해주세요 ">
+                                                        <input class="spr-form-input spr-form-input-text " id="review_title_10508262282" type="text" name="storeSchedule" value="" placeholder="지점 영업시간을 입력해주세요 ">
                                                       </div>
                                                 
                                                       <div class="spr-form-review-body">
                                                         <label class="spr-form-label" for="review_body_10508262282">지점 소개글 <span class="spr-form-review-body-charactersremaining"></span></label>
                                                         <div class="spr-form-input">
-                                                          <textarea class="spr-form-input spr-form-input-textarea " id="review_body_10508262282" data-product-id="10508262282" name="review[body]" rows="10" placeholder="지점 소개글을 적어주세요"></textarea>
+                                                          <textarea class="spr-form-input spr-form-input-textarea " id="review_body_10508262282" data-product-id="10508262282" name="storeIntroduce" rows="10" placeholder="지점 소개글을 적어주세요"></textarea>
                                                         </div>
                                                       </div>
                                                     </fieldset>

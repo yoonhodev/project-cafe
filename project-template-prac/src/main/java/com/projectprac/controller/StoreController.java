@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.projectprac.dto.StoreDto;
@@ -41,10 +42,23 @@ public class StoreController {
 	
 	@GetMapping(path = {"/writeStore"})
 
-	public String writestore() {
+	public String showWritesStore() {
 	
 	return "store/writeStore";
 	}
+	
+	@PostMapping(path = {"/writeStore"})
+	public String writeStore(StoreDto storeDto) {
+		
+		storeService.insertStoreIntro(storeDto);
+		
+		
+		
+		return "store/writeStore";
+		
+	}
+	
+	
 	
 }
 
