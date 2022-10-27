@@ -10,6 +10,8 @@ public interface BoardService {
 	void writeBoard(BoardDto board);
 	
 	List<BoardDto> showBoardList(BoardDto boardDto);
+	
+	BoardDto showBoardDetail(int boardId);
 
 }
 

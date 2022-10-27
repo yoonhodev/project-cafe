@@ -55,31 +55,32 @@
 								</thead>
 
 								<tbody>
-								<c:forEach var="product" items="${ products }" begin="1" varStatus="status">
-								<c:set var="quantity" value="quantity"></c:set>
-                                <tr class="cart__row border-bottom line1 cart-flex border-top">
-                                    <td class="cart__image-wrapper cart-flex-item">
-                                        <a href="#">${ status.index }</a>
+								<c:forEach var="product" items="${ products }" varStatus="status">
+								<c:set var="quantity" value="1" />
+								<tr class="cart__row border-bottom line1 cart-flex border-top">
+                                    <td class="cart__image-wrapper cart-flex-item text-center">
+                                        <a href="#">${ status.count }</a>
                                     </td>
-                                    <td class="cart__meta small--text-left cart-flex-item">
+                                    <td class="cart__meta small--text-left cart-flex-item text-center">
                                         <div class="list-view-item__title">
                                             <a href="#">${ product.prodName }</a>
                                         </div>
                                     </td>
                                     <td class="cart__price-wrapper cart-flex-item">
                                         <span class="money">${ product.prodPrice }</span>
+                                        <c:set var="prodPrice" value="${ product.prodPrice }" />
                                     </td>
                                     <td class="cart__update-wrapper cart-flex-item text-right">
                                         <div class="cart__qty text-center">
                                             <div class="qtyField">
-                                                <a class="qtyBtn minus" href="javascript:void(0);"><i class="icon icon-minus"></i></a>
+                                                <a class="qtyBtn minus" href="javascript:void(0);" data-productId="${ status.index }"><i class="icon icon-minus"></i></a>
                                                 <input class="cart__qty-input qty" type="text" name="updates[]" id="qty" value="1" pattern="[0-9]*">
-                                                <a class="qtyBtn plus" href="javascript:void(0);"><i class="icon icon-plus"></i></a>
+                                                <a class="qtyBtn plus"  href="javascript:void(0);" data-productId="${ status.index }"><i class="icon icon-plus"></i></a>
                                             </div>
                                         </div>
                                     </td>
                                     <td class="text-right small--hide cart-price">
-                                        <div><span class="money">${ total }</span></div>
+                                        <div><input id="price-${ status.index }" type="text" value="${ prodPrice }"> </div>
                                     </td>
                                     <td class="text-center small--hide"><a href="#" class="btn btn--secondary cart__remove" title="Remove tem"><i class="icon icon anm anm-times-l"></i></a></td>
                                 </tr>
@@ -92,7 +93,7 @@
 												shopping</a></td>
 										<td colspan="3" class="text-right">
 											<button type="submit" name="clear"
-												class="btn btn-secondary btn--small  small--hide">Clear
+												class="btn btn-secondary btn--small small--hide">Clear
 												Cart</button>
 											<button type="submit" name="update"
 												class="btn btn-secondary btn--small cart-continue ml-2">Update
@@ -202,6 +203,29 @@
 		<!-- Common-js -->
 		<jsp:include page="/WEB-INF/views/modules/common-js.jsp"></jsp:include>
 	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript">
+ 		$(function() {
+			$(".qtyBtn").on("click", function() {
+				var qtyField = $(this).parent(".qtyField"),
+					oldValue = $(qtyField).find(".qty").val(),
+					newVal = 1,
+					price = ${ prodPrice };
+					
+				var prodId = $(this).attr("data-productId")
+					
+				if ($(this).is(".plus")) {
+					newVal = parseInt(oldValue) + 1;
+				} else if (oldValue > 1) {
+					newVal = parseInt(oldValue) - 1;
+				}
+				
+				price = newVal * price;
+				$(qtyField).find(".qty").val(newVal);
+				$("#price-" + prodId).val( price );
+			});
+		});
+	</script>
 </body>
 
 <!-- belle/cart-variant1.html   11 Nov 2019 12:44:32 GMT -->

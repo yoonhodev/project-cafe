@@ -6,22 +6,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MypageController {
 	
-	@GetMapping(path = { "userName" })
-	public String userName() {
-		
-		return "mypage/userName";
+	@GetMapping(path = { "mypage" }) // FrontController에 연결 설정
+	public String mypage() {
+		return "mypage/mypage"; // WEB-INF/views/ + account/register + .jsp
 	}
 	
-	@GetMapping(path = { "stampNumber" })
-	public String stampNumber() {
-		
-		return "mypage/stampNumber";
+	/*
+	@GetMapping(path = { "coupon" })
+	public String coupon() {
+		return "mypage/coupon";
 	}
+	*/
 	
-	@GetMapping(path = { "couponNumber" })
-	public String couponNumber() {
-		
-		return "mypage/couponNumber";
+	@GetMapping(path = { "editAccount" })
+	public String editAccount() {
+		return "mypage/editAccount";
 	}
 	
 	@GetMapping(path = { "orderHistory" })
