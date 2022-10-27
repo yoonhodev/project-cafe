@@ -44,27 +44,28 @@
                 	
                     <div class="blog--list-view blog--grid-load-more">
                     	
+                    	
                     	<div class="article"> 
-                  			<c:forEach var="stores" items="${ stores }">
+                  			<c:forEach var="store" items="${ stores }">
 
                             <!-- Article Image --> 
                             
-                            <a class="article_featured-image" ><img class="blur-up lazyload article_featured-image" data-src="${ stores.storeImage }" src="${ stores.storeImage }" alt="It's all about how you wear"></a>                          
+                            <a class="article_featured-image" ><img class="blur-up lazyload article_featured-image" src="/project-template-prac/resources/assets/images/cafe-out-image-folder/${ store.storeUniqueimage }" alt="이미지 업로드 실패"></a>                          
                             
-                            <h2 class="h3"  >${ stores.storeName }</h2>
+                            <h2 class="h3"  >${ store.storeName }</h2>
                             <ul class="publish-detail">                      
-                                <li><i class="anm anm-user-al" aria-hidden="true"></i>${stores.storePhone}</li>
-                                <li><i class="icon anm anm-clock-r"></i>${ stores.storeSchedule }</li>
+                                <li><i class="anm anm-user-al" aria-hidden="true"></i>${store.storePhone}</li>
+                                <li><i class="icon anm anm-clock-r"></i>${ store.storeSchedule }</li>
                                 <li>
                                 <c:choose>
-                                <c:when test="${ stores.storeOpen }">
+                                <c:when test="${ store.storeOpen }">
                                		 <ul class="inline-list">   
                                         <li><i class="icon anm anm-comments-l"></i> <a href="#" style="color: green;">OPEN</a></li>
                                     </ul>
                                 </c:when>
                                 <c:otherwise>
                                 <ul class="inline-list">   
-                                        <li><i class="icon anm anm-comments-l"></i> <a href="#" style="color: red;">CLOSE</a></li>
+                                        <li><i class="icon anm anm-comments-l"></i> <a href="/${ store.storeId}/open" style="color: red;">CLOSE</a></li>
                                     </ul>
                                 </c:otherwise>
                                 
@@ -75,11 +76,12 @@
                                 </li>
                             </ul>
                             <div class="rte"> 
-                                <p>${ stores.storeIntroduce }</p>
+                                <p>${ store.storeIntroduce }</p>
                                  </div>
                            <!--  <p><a href="#" class="btn btn-secondary btn--small">Read more <i class="fa fa-caret-right" aria-hidden="true"></i></a></p> -->
-                        </div>
                         </c:forEach> 
+                        </div>
+                       
 <!--                         <div class="article">  -->
 <!--                             Article Image  -->
 <!--                              <a class="article_featured-image" href="#"><img class="blur-up lazyload" data-src="resources/assets/images/blog/blog-post-2.jpg" src="resources/assets/images/blog/blog-post-2.jpg" alt="27 Days of Spring Fashion Recap"></a>  -->
@@ -117,9 +119,9 @@
 <!--                             <p><a href="#" class="btn btn-secondary btn--small">Read more <i class="fa fa-caret-right" aria-hidden="true"></i></a></p> -->
 <!--                         </div> -->
 
-                        <div class="loadmore-post" >	
-                            <a href="add-store" type="hidden" class="btn">Load More</a>
-                        </div>
+<!--                          <div class="loadmore-post" >	  -->
+<!--                              <a href="add-store" type="hidden" class="btn">Load More</a>  -->
+<!--                          </div> -->
                     </div>
                 </div>
                 <!--End Main Content-->

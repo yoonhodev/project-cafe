@@ -19,8 +19,11 @@ public interface BoardMapper {
 
 	
 	
-	@Select("select board_id boardid, worker_id workerid, title, content, regdate, deleted from board ")
+	@Select("select board_id boardid, worker_id workerid, title, content, regdate, deleted from board order by boardid DESC ")
 	List<BoardDto> showBoardList(BoardDto boardDto);
+	
+	@Select("select board_id boardid, worker_id workerid, title, content, regdate, deleted from board where board_id = #{ boardId }")
+	BoardDto showBoardDetail(int boardId);
 	
 	
 }

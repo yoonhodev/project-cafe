@@ -44,7 +44,7 @@ public class BoardController {
 	}
 	
 	@GetMapping(path = { "noticeBoard" })
-	public String showBoardList( Model model, BoardDto boardDto ) {
+	public String showBoardList( Model model, BoardDto boardDto) {
 		// 1. 요청 데이터 읽기 ( 전달인자로 대체 )
 		// 2. 데이터 처리 ( 데이터 조회 )		
 
@@ -59,10 +59,15 @@ public class BoardController {
 	}
 	
 	@GetMapping(path = { "/noticeBoardDetail" })
-	public String showBoardDetail(@RequestParam(defaultValue = "-1") int boardNo, 
-								  @RequestParam(defaultValue = "-1") int pageNo,
+	public String showBoardDetail(int boardId,
 								  HttpSession session, 
-								  Model model) {		
+								  Model model) {	
+		
+		
+		
+		BoardDto boardDetail = boardService.showBoardDetail(boardId);
+		
+		model.addAttribute("boardDetail", boardDetail);
 		
 		return "board/noticeBoardDetail";
 	}
