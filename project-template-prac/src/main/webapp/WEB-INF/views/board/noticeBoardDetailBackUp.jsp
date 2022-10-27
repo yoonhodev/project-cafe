@@ -93,28 +93,26 @@
                         <div class="tab-container">
                             <div id="tab-notice-board" class="tab-content">
                                 
-                                    <div id="shopify-product-reviews">
-                                    <div class="spr-container">
-                                        <div class="spr-header clearfix">
-                                            <div class="spr-summary">
+                                    <div id="shopify-product-reviews">1
+                                    <div class="spr-container">2
+                                        <div class="spr-header clearfix">3
+                                            <div class="spr-summary">4
 <!--                                                 <span class="product-review"><a class="reviewLink"><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i> </a><span class="spr-summary-actions-togglereviews">Based on 6 reviews456</span></span>
-
- -->                                                <span class="spr-summary-actions">
-                                                    
-                                                <!-- <span class="spr-summary-actions"> -->
+5
+ -->                                                <span class="spr-summary-actions">6
+                                                   
+                                                   <!-- <span class="spr-summary-actions"> -->
                                                     <a href="#" id="toggle-form-btn" class="spr-summary-actions-newreview btn">글 쓰기</a>
-
-                                                </span>
-                                            </div>
-                                           
-                                            </div>
-                                       
-                                        <div id="toggle">
-                                        <div class="spr-content">
-
-                                         
-
-                                        <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+                                                   
+                                                     </span>
+		                                            </div>
+		                                           
+		                                            </div>
+		                                       
+		                                        <div id="toggle">
+		                                        <div class="spr-content">
+		                                        
+		                                        <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
                                             <div class="spr-form clearfix" id="toggle-form" style="display:none">
                                             	<script>
 													$( "#toggle-form-btn" ).click(function() {
@@ -150,15 +148,47 @@
                                                 </form>
                                             </div>
                                            	</div>
+		                                        
+                                                    <div class="article"> 
+							                            <!-- Article Image --> 
+							                             <a class="article_featured-image" href="#"><img class="blur-up lazyload" data-src="resources/assets/images/blog/blog-post-1.jpg" src="resources/assets/images/blog/blog-post-1.jpg" alt="It's all about how you wear"></a> 
+							                            <h2 class="h3"><a href="blog-left-sidebar.html">${ boardDetail.title }</a></h2>
+							                            <ul class="publish-detail">                      
+							                                <li><i class="anm anm-user-al" aria-hidden="true"></i>  444</li>
+							                                <li><i class="icon anm anm-clock-r"></i> <time datetime="2017-05-02"></time></li>
+							                                <li>
+							                                    <ul class="inline-list">   
+							                                        <li><i class="icon anm anm-comments-l"></i> <a href="#"> 댓글달기 </a></li>
+							                                    </ul>
+							                                </li>
+							                            </ul>
+							                            <div class="rte"> 
+							                                <p> 5555</p>
+							                                 </div>
+							                        </div>
+                                                    
+                                                    
+                                                <!-- <span class="spr-summary-actions"> -->
+                                                    <a href="#" id="toggle-form-btn" class="spr-summary-actions-newreview btn">글 쓰기</a>
+
+                                                </span>
+                                            </div>
+                                           
+                                            </div>
+                                       
+                                        
+                                   
                                            	
                                             <div class="spr-reviews">
                                             <!-- 게시글 1개 시작 -->
+                                            
+                                            
                                         	<c:forEach var="boards" items="${ boards }">
-                                                <a href="noticeBoardDetail?boardId=${ boards.boardId }">
+                                        		<a href="noticeBoardDetail?boardId=${ boards.boardId }">
                                                 <div class="spr-review">
                                                     <div class="spr-review-header">
                                                         <h3 class="spr-review-header-title">공지번호 : ${ boards.boardId } &nbsp| &nbsp&nbsp&nbsp 제목 : ${ boards.title } </h3>
-                                                        <span class="spr-review-header-byline"><strong>작성자 : ${ boards.workerId } &nbsp| &nbsp&nbsp&nbsp</strong><strong>작성일 : <fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd HH:mm"/> &nbsp </strong></span>
+                                                        <span class="spr-review-header-byline"><strong>작성자 : ${ boards.workerId }  dsacc &nbsp| &nbsp&nbsp&nbsp</strong><strong>작성일 : <fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd HH:mm:ss"/> &nbsp </strong></span>
                                                     </div>
                                                 </div>
                                                 </a>
@@ -178,8 +208,8 @@
 										            <a href="#">Next >></a>
 										        </div>
 										    <!-- End of Pagenation -->
-                                    </div>
-                                   
+                                  
+                                   </div>
                                 </div>
                                 
                             </div>
@@ -309,19 +339,19 @@
     
         
      <!-- Including Jquery -->
-     <script src="resources/assets/js/vendor/jquery-3.3.1.min.js"></script>
-     <script src="resources/assets/js/vendor/jquery.cookie.js"></script>
-     <script src="resources/assets/js/vendor/modernizr-3.6.0.min.js"></script>
-     <script src="resources/assets/js/vendor/wow.min.js"></script>
+     <script src="resources/resources/assets/js/vendor/jquery-3.3.1.min.js"></script>
+     <script src="resources/resources/assets/js/vendor/jquery.cookie.js"></script>
+     <script src="resources/resources/assets/js/vendor/modernizr-3.6.0.min.js"></script>
+     <script src="resources/resources/assets/js/vendor/wow.min.js"></script>
      <!-- Including Javascript -->
-     <script src="resources/assets/js/bootstrap.min.js"></script>
-     <script src="resources/assets/js/plugins.js"></script>
-     <script src="resources/assets/js/popper.min.js"></script>
-     <script src="resources/assets/js/lazysizes.js"></script>
-     <script src="resources/assets/js/main.js"></script>
+     <script src="resources/resources/assets/js/bootstrap.min.js"></script>
+     <script src="resources/resources/assets/js/plugins.js"></script>
+     <script src="resources/resources/assets/js/popper.min.js"></script>
+     <script src="resources/resources/assets/js/lazysizes.js"></script>
+     <script src="resources/resources/assets/js/main.js"></script>
      <!-- Photoswipe Gallery -->
-     <script src="resources/assets/js/vendor/photoswipe.min.js"></script>
-     <script src="resources/assets/js/vendor/photoswipe-ui-default.min.js"></script>
+     <script src="resources/resources/assets/js/vendor/photoswipe.min.js"></script>
+     <script src="resources/resources/assets/js/vendor/photoswipe-ui-default.min.js"></script>
    
 
      <script>

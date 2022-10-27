@@ -34,6 +34,18 @@ public class BoardServiceImpl implements BoardService {
 		
 		return boards;
 	}
+	
+	public BoardDto showBoardDetail(int boardId) {
+		
+		BoardDto boardDetail = boardMapper.showBoardDetail(boardId);
+		
+		return boardDetail;
+	}
+	
+	
+	
+	
+	
 
 
 		}
