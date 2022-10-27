@@ -25,6 +25,15 @@ public class StoreServiceImpl implements StoreService{
 
 
 
+	@Override
+	public void insertStoreIntro(StoreDto storeDto) {
+		
+		storeMapper.insertStoreIntro(storeDto);
+		
+	}
+
+
+
 
 
 	/*
