@@ -111,7 +111,7 @@
                                         <div id="toggle">
                                         <div class="spr-content">
 
-                                            <div class="spr-form clearfix" id="can-hide-this-box" style="display: none;">
+                                         
 
                                         <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
                                             <div class="spr-form clearfix" id="toggle-form" style="display:none">
