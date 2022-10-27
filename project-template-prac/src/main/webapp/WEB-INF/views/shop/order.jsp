@@ -68,6 +68,7 @@
                                     </td>
                                     <td class="cart__price-wrapper cart-flex-item">
                                         <span class="money">${ product.prodPrice }</span>
+                                        <c:set var="prodPrice" value="${ product.prodPrice }" />
                                     </td>
                                     <td class="cart__update-wrapper cart-flex-item text-right">
                                         <div class="cart__qty text-center">
@@ -79,7 +80,7 @@
                                         </div>
                                     </td>
                                     <td class="text-right small--hide cart-price">
-                                        <div><span class="money">${ quantity }</span></div>
+                                        <div><span id="price">${ prodPrice }</span></div>
                                     </td>
                                     <td class="text-center small--hide"><a href="#" class="btn btn--secondary cart__remove" title="Remove tem"><i class="icon icon anm anm-times-l"></i></a></td>
                                 </tr>
@@ -204,78 +205,24 @@
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript">
-// 		function qnt_incre(){
-// 			$(".qtyBtn").on("click", function() {
-// 				var qtyField = $(this).parent(".qtyField"),
-// 					oldValue = $(qtyField).find(".qty").val(),
-// 					newVal = 1,
-// 					price = ${ product.prodPrice },
+ 		$(function() {
+			$(".qtyBtn").on("click", function() {
+				var qtyField = $(this).parent(".qtyField"),
+					oldValue = $(qtyField).find(".qty").val(),
+					newVal = 1,
+					price = ${ prodPrice };
 					
-					
-// 				if ($(this).is(".plus")) {
-// 					newVal = parseInt(oldValue) + 1;
-// 					price = newVal * price;
-// 					alert("hi");
-// 					alert(price);
-					
-// 				} else if (oldValue > 1) {
-// 					newVal = parseInt(oldValue) - 1;
-// 				}
-// 				$(qtyField).find(".qty").val(newVal);
-// 				$(quantity).val(price);
-// 			});
-// 		}
-// 		qnt_incre();
-/* 
-Number.prototype.format = function(){
-  if(this==0) return 0;
-
-  var reg = /(^[+-]?\d+)(\d{3})/;
-  var n = (this + '');
-
-  while (reg.test(n)) n = n.replace(reg, '$1' + ',' + '$2');
-
-  return n;
-}; */
- 
-/* 
-String.prototype.format = function(){
-  var num = parseFloat(this);
-  if( isNaN(num) ) return "0";
-
-  return num.format();
-};
-    
-var basic_amount = ${ product.prodPrice }
-
-function change_qty2(t){
-  //var min_qty = '수량버튼'*1;
-  var min_qty = 1;
-  var this_qty = $("#ct_qty").val()*1;
-  var max_qty = '200'; // 현재 재고
-  if(t=="m"){
-    this_qty -= 1;
-    if(this_qty<min_qty){
-      //alert("최소구매수량 이상만 구매할 수 있습니다.");
-      alert("수량은 1개 이상 입력해 주십시오.");
-      return;
-      }
-    }
-    else if(t=="p"){
-      this_qty += 1;
-      if(this_qty>max_qty){
-        alert("죄송합니다. 재고가 부족합니다.");
-        return;
-        }
-    }
-
-  var show_total_amount = basic_amount * this_qty;
-  //$("#ct_qty_txt").text(this_qty); 
-  $("#ct_qty").val(this_qty);
-  $("#it_pay").val(show_total_amount);
-  $("#total_amount").html(show_total_amount.format());
-}
-출처: https://carina16.tistory.com/143 [on sunday:티스토리] */
+				if ($(this).is(".plus")) {
+					newVal = parseInt(oldValue);
+				} else if (oldValue > 1) {
+					newVal = parseInt(oldValue);
+				}
+				
+				price = newVal * price;
+				$(qtyField).find(".qty").val(newVal);
+				 $("#price").text( price );
+			});
+		});
 	</script>
 </body>
 
