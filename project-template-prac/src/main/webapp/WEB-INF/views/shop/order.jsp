@@ -55,17 +55,19 @@
 								</thead>
 
 								<tbody>
+								<c:forEach var="product" items="${ products }" begin="1" varStatus="status">
+								<c:set var="quantity" value="quantity"></c:set>
                                 <tr class="cart__row border-bottom line1 cart-flex border-top">
                                     <td class="cart__image-wrapper cart-flex-item">
-                                        <a href="#">1번</a>
+                                        <a href="#">${ status.index }</a>
                                     </td>
                                     <td class="cart__meta small--text-left cart-flex-item">
                                         <div class="list-view-item__title">
-                                            <a href="#">상품명</a>
+                                            <a href="#">${ product.prodName }</a>
                                         </div>
                                     </td>
                                     <td class="cart__price-wrapper cart-flex-item">
-                                        <span class="money">천원</span>
+                                        <span class="money">${ product.prodPrice }</span>
                                     </td>
                                     <td class="cart__update-wrapper cart-flex-item text-right">
                                         <div class="cart__qty text-center">
@@ -77,10 +79,11 @@
                                         </div>
                                     </td>
                                     <td class="text-right small--hide cart-price">
-                                        <div><span class="money">총합</span></div>
+                                        <div><span class="money">${ total }</span></div>
                                     </td>
                                     <td class="text-center small--hide"><a href="#" class="btn btn--secondary cart__remove" title="Remove tem"><i class="icon icon anm anm-times-l"></i></a></td>
                                 </tr>
+                                </c:forEach>
                            		</tbody>
 								<tfoot>
 									<tr>
@@ -174,7 +177,7 @@
 										class="btn btn--small-wide checkout"
 										value="Proceed To Checkout" disabled="disabled">
 									<div class="paymnet-img">
-										<img src="assets/images/payment-img.jpg" alt="Payment">
+										<img src="#" alt="Payment">
 									</div>
 									<p>
 										<a href="#;">Checkout with Multiple Addresses</a>
