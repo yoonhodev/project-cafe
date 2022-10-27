@@ -56,8 +56,8 @@
 
 								<tbody>
 								<c:forEach var="product" items="${ products }" begin="1" varStatus="status">
-								<c:set var="quantity" value="quantity"></c:set>
-                                <tr class="cart__row border-bottom line1 cart-flex border-top">
+								<c:set var="quantity" value="1" />
+								<tr class="cart__row border-bottom line1 cart-flex border-top">
                                     <td class="cart__image-wrapper cart-flex-item">
                                         <a href="#">${ status.index }</a>
                                     </td>
@@ -74,12 +74,12 @@
                                             <div class="qtyField">
                                                 <a class="qtyBtn minus" href="javascript:void(0);"><i class="icon icon-minus"></i></a>
                                                 <input class="cart__qty-input qty" type="text" name="updates[]" id="qty" value="1" pattern="[0-9]*">
-                                                <a class="qtyBtn plus" href="javascript:void(0);"><i class="icon icon-plus"></i></a>
+                                                <a class="qtyBtn plus"  href="javascript:void(0);"><i class="icon icon-plus"></i></a>
                                             </div>
                                         </div>
                                     </td>
                                     <td class="text-right small--hide cart-price">
-                                        <div><span class="money">${ total }</span></div>
+                                        <div><span class="money">${ quantity }</span></div>
                                     </td>
                                     <td class="text-center small--hide"><a href="#" class="btn btn--secondary cart__remove" title="Remove tem"><i class="icon icon anm anm-times-l"></i></a></td>
                                 </tr>
@@ -202,6 +202,31 @@
 		<!-- Common-js -->
 		<jsp:include page="/WEB-INF/views/modules/common-js.jsp"></jsp:include>
 	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript">
+// 		function qnt_incre(){
+// 			$(".qtyBtn").on("click", function() {
+// 				var qtyField = $(this).parent(".qtyField"),
+// 					oldValue = $(qtyField).find(".qty").val(),
+// 					newVal = 1,
+// 					price = ${ product.prodPrice },
+					
+					
+// 				if ($(this).is(".plus")) {
+// 					newVal = parseInt(oldValue) + 1;
+// 					price = newVal * price;
+// 					alert("hi");
+// 					alert(price);
+					
+// 				} else if (oldValue > 1) {
+// 					newVal = parseInt(oldValue) - 1;
+// 				}
+// 				$(qtyField).find(".qty").val(newVal);
+// 				$(quantity).val(price);
+// 			});
+// 		}
+// 		qnt_incre();
+	</script>
 </body>
 
 <!-- belle/cart-variant1.html   11 Nov 2019 12:44:32 GMT -->

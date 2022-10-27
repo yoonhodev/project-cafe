@@ -35,12 +35,10 @@ public class OrderController {
 		for (ProductDto product : productIds) {
 			product = orderService.showOrder(product.getProdId());
 			products.add(product);
-			System.out.println(product);
 		}
 		
 		// View에서 읽을 수 있도록 데이터 저장
 		model.addAttribute("products", products);
-		System.out.println(model);
 		return "shop/order";
 	}
 	
