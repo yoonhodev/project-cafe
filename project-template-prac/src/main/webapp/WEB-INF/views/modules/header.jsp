@@ -169,16 +169,16 @@
 							style="font-size: 15pt"><b>지점소개</b> <i
 								class="anm anm-angle-down-l"></i></a>
 							<ul class="dropdown">
-								<li><a href="blog-left-sidebar.html" class="site-nav">Left
-										Sidebar</a></li>
-								<li><a href="blog-right-sidebar.html" class="site-nav">Right
-										Sidebar</a></li>
-								<li><a href="blog-fullwidth.html" class="site-nav">Fullwidth</a></li>
-								<li><a href="blog-grid-view.html" class="site-nav">Gridview</a></li>
-								<li><a href="blog-article.html" class="site-nav">Article</a></li>
+							<c:if test="${ loginuser.userType }">
+								<li><a href="writeStore" class="site-nav">지점 소개 추가</a></li>
+								</c:if>	
+								
 							</ul></li>
 						<li class="lvl1"><a href="order" style="font-size: 15pt"><b>Buy
 									Now!</b> <i class="anm anm-angle-down-l"></i></a></li>
+						<c:if test="${ loginuser.userType }">			
+						<li class="lvl1"><a href="admin" style="font-size: 15pt">ADMIN PAGE <i class="anm anm-angle-down-l"></i></a></li>	
+						</c:if>					
 					</ul>
 				</nav>
 				<!--End Desktop Menu-->

@@ -38,5 +38,13 @@ public class StoreController {
 		return "store/store-intro";
 	}
 	
+	
+	@GetMapping(path = {"/writeStore"})
+
+	public String writestore() {
+	
+	return "store/writeStore";
+	}
+	
 }
 
