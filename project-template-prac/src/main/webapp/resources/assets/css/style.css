@@ -1578,7 +1578,7 @@ body.home15-funiture-template { font-size:14px; }
 .newsletter-left .social li { display:inline-block; margin:0 5px; list-style:none }
 .newsletter-left .social a { border-radius:50%; color:#141515; display:inline-block; font-size:18px; height:30px; line-height:20px; padding:5px; text-align:center; width:30px }
 .newsletter-left #Subscribe { width:100%; height:auto; padding:12px 20px }
-.newsletter-left #Subscribe:hover {  background:!important }
+/* .newsletter-left #Subscribe:hover {  background:!important } */
 
 /*======================================================================
   33. Footer
