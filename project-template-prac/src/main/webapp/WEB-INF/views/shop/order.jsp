@@ -80,7 +80,7 @@
                                         </div>
                                     </td>
                                     <td class="text-right small--hide cart-price">
-                                        <div><span id="price-${ status.index }">${ prodPrice }</span></div>
+                                        <div><span id="price-${ status.index }">${ product.prodPrice }</span></div>
                                     </td>
                                     <td class="text-center small--hide"><a href="#" class="btn btn--secondary cart__remove" title="Remove tem"><i class="icon icon anm anm-times-l"></i></a></td>
                                 </tr>
