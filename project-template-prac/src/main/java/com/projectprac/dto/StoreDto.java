@@ -13,4 +13,6 @@ public class StoreDto {
 	private String storeSchedule;
 	private boolean storeOpen;
 	private String storeImage;
+	private String storeUniqueimage;
+	
 }

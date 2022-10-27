@@ -56,7 +56,7 @@
                                         </div>
                                         <div class="spr-content">
                                             <div class="spr-form clearfix">
-                                                <form method="post" action="#" id="new-review-form" class="new-review-form">
+                                                <form method="post" action="#" id="new-review-form" class="new-review-form" enctype="multipart/form-data">
                                                     <h3 class="spr-form-title">지점 소개 추가</h3>
                                                     <fieldset class="spr-form-contact">
                                                         <div class="spr-form-contact-name">
@@ -81,9 +81,14 @@
 <!--                                                       </div> -->
                                                 
                                                       <div class="spr-form-review-title">
-                                                        <label class="spr-form-label" for="review_title_10508262282">영업시간</label>
-                                                        <input class="spr-form-input spr-form-input-text " id="review_title_10508262282" type="text" name="storeSchedule" value="" placeholder="지점 영업시간을 입력해주세요 ">
+                                                        <label class="spr-form-label" for="review_title_10508262282">지점 외관(사진)</label>
+                                                        <input class="spr-form-input spr-form-input-text " id="review_title_10508262282" type="file" name="attach" accept="image/png, image/gif, image/jpeg, image/jpg" value="" >
                                                       </div>
+                                                
+                                           			 <div class="spr-form-contact-name">
+                                                          <label class="spr-form-label" for="review_author_10508262282">지점 영업시간</label>
+                                                          <input class="spr-form-input spr-form-input-text " id="review_author_10508262282" type="text" name="storeSchedule" value="" placeholder="지점 영업시간을 입력해주세요">
+                                                     </div>
                                                 
                                                       <div class="spr-form-review-body">
                                                         <label class="spr-form-label" for="review_body_10508262282">지점 소개글 <span class="spr-form-review-body-charactersremaining"></span></label>
