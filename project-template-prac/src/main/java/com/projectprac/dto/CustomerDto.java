@@ -29,7 +29,7 @@ public class CustomerDto {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date birth;
 	private int stamp;
-	
+	private boolean userType;
 //	private String userType;
 //	private Date regDate;
 //	private boolean active;
