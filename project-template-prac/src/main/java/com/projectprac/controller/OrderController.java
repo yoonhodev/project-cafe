@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.projectprac.dto.OrderDetailDto;
 import com.projectprac.dto.OrderDto;
@@ -23,16 +24,23 @@ public class OrderController {
 	@Qualifier("orderService")
 	private OrderService orderService;
 	
-	List<ProductDto> products = new ArrayList<>();
+	List<ProductDto> productIds = new ArrayList<>();
 	
 	@GetMapping(path = { "order" })
-	public String order() {
+	
+	public String order(Model model) {
+		
+		List<ProductDto> products = new ArrayList<>();
 
-		for (ProductDto product : products) {
+		for (ProductDto product : productIds) {
 			product = orderService.showOrder(product.getProdId());
+			products.add(product);
 			System.out.println(product);
 		}
-
+		
+		// View에서 읽을 수 있도록 데이터 저장
+		model.addAttribute("products", products);
+		System.out.println(model);
 		return "shop/order";
 	}
 	
@@ -40,7 +48,7 @@ public class OrderController {
 	public String updateOrder(ProductDto product) {
 		
 		
-		products.add(product);
+		productIds.add(product);
 		
 		return "shop/shop";
 		
