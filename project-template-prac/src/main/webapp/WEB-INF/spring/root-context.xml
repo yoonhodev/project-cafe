@@ -15,8 +15,8 @@
 	<!-- 2) dataSource ( Connection Pool ) 설정 -->
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/modeling_test" />
-		<property name="username" value="root" />
+		<property name="url" value="jdbc:mysql://43.201.107.251:3306/modeling_cafe" />
+		<property name="username" value="cafe" />
 		<property name="password" value="mysql" />
 		<property name="maxTotal" value="100" />
 		<property name="maxIdle" value="10" />
