@@ -17,7 +17,7 @@ public interface CustomerMapper {
 			"VALUES (#{ customerId }, #{ passwd }, #{ phone }, #{ email }, #{ address }, #{ sex }) ")
 	void insertCustomer(CustomerDto customer);
 
-	@Select("SELECT customer_id customerId, passwd, phone, address, sex, email, birth, stamp " +
+	@Select("SELECT customer_id customerId, passwd, phone, address, sex, email, birth, stamp, usertype " +
 			"FROM customer " +
 			"WHERE customer_id = #{ customerId } AND passwd = #{ passwd } ")
 	CustomerDto selectCustomerByIdAndPasswd(@Param("customerId") String customerId, @Param("passwd") String passwd);
