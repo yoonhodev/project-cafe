@@ -14,11 +14,8 @@
 	<!-- Common-css -->
 	<jsp:include page="/WEB-INF/views/modules/common-css.jsp"></jsp:include>
 </head>
-<body class="template-index belle home9-parallax">
-	<div id="pre-loader">
-		<img src="/project-template-prac/resources/assets/images/loader.gif"
-			alt="Loading..." />
-	</div>
+<body class="page-template belle">
+	
 	<div class="pageWrapper">
 
 		<!-- Header -->
@@ -27,7 +24,7 @@
 
 		<!-- Body Content -->
 		
-		<div class="mypage-wrapper">
+		<div class="mypage-wrapper" style="margin: 0 auto;">
 		
 		<!-- 로그인 여부 확인하고 로그인 안되어 있으면 로그인 페이지로 사출 -->
 		<c:if test="${ not empty loginuser and loginuser.memberId eq account/login }"></c:if>
@@ -35,6 +32,7 @@
 		
 			<div id="page-content">
 	    	<!--Page Title-->
+	    	<br> <br> <br> <br>
 	    	<div class="page section-header text-center mb-0">
 				<div class="page-title">
 	        		<div class="wrapper"><h1 class="page-width">마이 페이지</h1></div>
@@ -48,27 +46,34 @@
         	</div>
 		
 		
-			<div class="mypage_logobox">
-				<img src="logo.png" width="500px" height="500px">
+			<div class="mypage_logobox" style="margin: auto;">
+				<img src="logo.png" width="300px" height="300px">
 			</div>
+			
+			
+			<br><br>
+			
 
-			<div class="mypage_username">
+			<div class="mypage_username" style="margin: auto;">
 				
-				<span>${ userName }</span>님!
+				<span>${ customerId }</span>님!
 			
 			</div>
+		
+		
+			<br><br>
 			
 			
-			<div class="mypage_stampcouponbox">
+			<div class="mypage_stampcouponbox" style="margin: auto;">
 			
-				<table style="border:1px">
+				<table style="border:1px; width:300px;">
 					<tr>
 						<td>
-							스탬프<span>n</span>개
+							스탬프 <span>${ stamp }</span>개
 						</td>
 						<td>
 							<a href="#">
-							쿠폰<span>n</span>개
+							쿠폰 <span>n</span>개
 							</a>
 						</td>
 					</tr>
@@ -77,7 +82,7 @@
 			</div>
 			
 			
-			<div class="mypage_editandfavorite">
+			<div class="mypage_editaccount" style="margin: auto;">
 			
 				<table>
 					<tr>
@@ -92,7 +97,7 @@
 			</div>
 			
 			
-			<div class="mypage_orderlist">
+			<div class="mypage_orderlist" style="margin: auto;">
 			
 				<table>
 					<tr>
