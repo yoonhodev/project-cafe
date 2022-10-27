@@ -871,21 +871,28 @@
 	/*----------------------------------
 	  26. Quantity Plus Minus
 	------------------------------------*/
-	function qnt_incre(){
-		$(".qtyBtn").on("click", function() {
-		  var qtyField = $(this).parent(".qtyField"),
-			 oldValue = $(qtyField).find(".qty").val(),
-			  newVal = 1;
-	
-		  if ($(this).is(".plus")) {
-			newVal = parseInt(oldValue) + 1;
-		  } else if (oldValue > 1) {
-			newVal = parseInt(oldValue) - 1;
-		  }
-		  $(qtyField).find(".qty").val(newVal);
-		});
-	}
-	qnt_incre();
+//	function qnt_incre(){
+//		$(".qtyBtn").on("click", function() {
+//			alert("hi");
+//		  var qtyField = $(this).parent(".qtyField"),
+//		  	  oldValue = $(qtyField).find(".qty").val(),
+//		  	  newVal = 1,
+//		  	  price = 0,
+//		  	  quantity = '${quantity}';
+//	
+//		  if ($(this).is(".plus")) {
+//			newVal = parseInt(oldValue) + 1;
+//			alert("price+newVal");
+//		  } else if (oldValue > 1) {
+//			newVal = parseInt(oldValue) - 1;
+//		  }
+//		  price = newVal * price;
+//		  
+//		  $(qtyField).find(".qty").val(newVal);
+//		  $(quantity).val(price);
+//		});
+//	}
+//	qnt_incre();
 	
 	/*----------------------------------
 	  27. Visitor Fake Message

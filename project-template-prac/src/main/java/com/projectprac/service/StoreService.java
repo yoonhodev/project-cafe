@@ -10,6 +10,8 @@ public interface StoreService {
 
 	List<StoreDto> selectStoreInfo(StoreDto store);
 
+	void insertStoreIntro(StoreDto storeDto);
+
 	/* List<StoreDto> findStoreByStoreId(int storeId); */
 
 	/* List<StoreDto> findStore(StoreDto storeDto); */
