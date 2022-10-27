@@ -154,14 +154,12 @@
                                             <div class="spr-reviews">
                                             <!-- 게시글 1개 시작 -->
                                         	<c:forEach var="boards" items="${ boards }">
-                                                <a href="noticeBoardDetail">
                                                 <div class="spr-review">
                                                     <div class="spr-review-header">
                                                         <h3 class="spr-review-header-title">공지번호 : ${ boards.boardId } &nbsp| &nbsp&nbsp&nbsp 제목 : ${ boards.title } </h3>
-                                                        <span class="spr-review-header-byline"><strong>작성자 : ${ boards.workerId } &nbsp| &nbsp&nbsp&nbsp</strong><strong>작성일 : <fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd HH:mm"/> &nbsp </strong></span>
+                                                        <span class="spr-review-header-byline"><strong>작성자 : ${ boards.workerId }  dsacc &nbsp| &nbsp&nbsp&nbsp</strong><strong>작성일 : <fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd HH:mm:ss"/> &nbsp </strong></span>
                                                     </div>
                                                 </div>
-                                                </a>
 											</c:forEach>
                                              <!-- 게시글 1개 끝 -->
                                               

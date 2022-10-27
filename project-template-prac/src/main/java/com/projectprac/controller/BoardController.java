@@ -2,6 +2,8 @@ package com.projectprac.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -42,7 +44,7 @@ public class BoardController {
 	}
 	
 	@GetMapping(path = { "noticeBoard" })
-	public String showBoardList(@RequestParam(defaultValue = "1") int pageNo, Model model, BoardDto boardDto ) {
+	public String showBoardList( Model model, BoardDto boardDto ) {
 		// 1. 요청 데이터 읽기 ( 전달인자로 대체 )
 		// 2. 데이터 처리 ( 데이터 조회 )		
 
@@ -56,5 +58,13 @@ public class BoardController {
 		return "board/noticeBoard"; 	// /WEB-INF/views/ + board/list + .jsp
 	}
 	
+	@GetMapping(path = { "/noticeBoardDetail" })
+	public String showBoardDetail(@RequestParam(defaultValue = "-1") int boardNo, 
+								  @RequestParam(defaultValue = "-1") int pageNo,
+								  HttpSession session, 
+								  Model model) {		
+		
+		return "board/noticeBoardDetail";
+	}
 	
 }
