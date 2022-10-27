@@ -45,7 +45,7 @@
 							<li><a href="#">FAQ's</a></li>
 							<li><a href="#">Contact Us</a></li>
 							<li><a href="#">Orders and Returns</a></li>
-							<li><a href="#">Support Center</a></li>
+							<li><a href="coupon">Coupon</a></li>
 						</ul>
 					</div>
 				</div>
