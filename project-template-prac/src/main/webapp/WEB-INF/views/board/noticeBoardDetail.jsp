@@ -103,10 +103,12 @@
                             <div class="rte"> 
                                 <p>${ boardDetail.content }</p>
                             </div>
-                            <p><a href="#" class="btn btn-secondary btn--small">Read more <i class="fa fa-caret-right" aria-hidden="true"></i></a></p>
-                        </div>
+                            
+                      	    </div>
                         <div class="loadmore-post">	
-                            <a href="#;" class="btn loadMorepost">Load More</a>
+                            <a href="#;" class="btn ">수정</a>
+                            <a href="#;" class="btn ">삭제</a>
+                            <a href="#;" class="btn ">목록보기</a>
                         </div>
                     </div>
                 </div>
