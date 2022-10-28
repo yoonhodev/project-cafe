@@ -93,8 +93,7 @@ public class StoreController {
 	}
 	
 	@GetMapping(path = {"{storeId}/open"})
-	public String changeToOpen(@PathVariable("storeId")int storeId,
-							   Model model) {
+	public String changeToOpen(@PathVariable("storeId")int storeId ) {
 		
 		storeService.changeToOpen(storeId);
 		
