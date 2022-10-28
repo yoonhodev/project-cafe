@@ -42,13 +42,33 @@ public class BoardServiceImpl implements BoardService {
 		return boardDetail;
 	}
 	
-	
-	
-	
-	
+	@Override
+	public List<BoardDto> findBoardByPage(int pageNo, int pageSize) {
+		
+		int from = (pageNo - 1) * pageSize;
+		int count = pageSize;
+		
+		List<BoardDto> boards = boardMapper.selectBoardByPage(from, count);
+		return boards;
+		
+	}
 
+	@Override
+	public int findBoardCount() {
+		
+		int boardCount = boardMapper.selectBoardCount();
+		return boardCount;
+	
+	}
+	
+	public void deleteBoard(int boardId) {
+		
+		boardMapper.deleteBoard(boardId);
+		
+	}
 
-		}
+		
+}
 	
 
 	

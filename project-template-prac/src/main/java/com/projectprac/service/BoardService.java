@@ -13,6 +13,14 @@ public interface BoardService {
 	
 	BoardDto showBoardDetail(int boardId);
 
+	
+	int findBoardCount();
+
+	List<BoardDto> findBoardByPage(int pageNo, int pageSize);
+
+	void deleteBoard(int boardId);
+	
+	
 }
 
 
