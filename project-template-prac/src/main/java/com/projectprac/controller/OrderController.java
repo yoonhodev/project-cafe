@@ -27,20 +27,16 @@ public class OrderController {
 	List<ProductDto> productIds = new ArrayList<>();
 	
 	@GetMapping(path = { "order" })
-	
 	public String order(Model model) {
 		
 		List<ProductDto> products = new ArrayList<>();
-		System.out.println(2);
 		for (ProductDto product : productIds) {
 			product = orderService.showOrder(product.getProdId());
 			products.add(product);
-			System.out.println(3);
 		}
 		
 		// View에서 읽을 수 있도록 데이터 저장
 		model.addAttribute("products", products);
-		System.out.println("--------------------------");
 		return "shop/order";
 	}
 	
@@ -48,7 +44,6 @@ public class OrderController {
 	public String updateOrder(ProductDto product) {
 		
 		productIds.add(product);
-		System.out.println(1);
 		return "shop/shop";
 		
 	}

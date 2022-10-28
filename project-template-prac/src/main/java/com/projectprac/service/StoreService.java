@@ -12,6 +12,8 @@ public interface StoreService {
 
 	void insertStoreIntro(StoreDto storeDto);
 
+	void changeToOpen(int storeId);
+
 	/* List<StoreDto> findStoreByStoreId(int storeId); */
 
 	/* List<StoreDto> findStore(StoreDto storeDto); */

@@ -80,7 +80,7 @@
                                         </div>
                                     </td>
                                     <td class="text-right small--hide cart-price">
-                                        <div><input id="price-${ status.index }" type="text" value="${ prodPrice }"> </div>
+                                        <div><span id="price-${ status.index }">${ product.prodPrice }</span></div>
                                     </td>
                                     <td class="text-center small--hide"><a href="#" class="btn btn--secondary cart__remove" title="Remove tem"><i class="icon icon anm anm-times-l"></i></a></td>
                                 </tr>
@@ -222,7 +222,7 @@
 				
 				price = newVal * price;
 				$(qtyField).find(".qty").val(newVal);
-				$("#price-" + prodId).val( price );
+				$("#price-" + prodId).text( price );
 			});
 		});
 	</script>
