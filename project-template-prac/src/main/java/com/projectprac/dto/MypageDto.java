@@ -5,6 +5,7 @@ import java.sql.Date;
 public class MypageDto {
 	
 	private String customerId;
+	private String passwd;
 	private int stamp;
 	private int order_id;
 	private int store_id;

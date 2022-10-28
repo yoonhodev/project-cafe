@@ -26,7 +26,7 @@
 				<c:otherwise>
 				<ul class="customer-links list-inline">
 					<li><a href="#">${ loginuser.customerId }님</a></li>
-					<li><a href="#">마이페이지</a></li>
+					<li><a href="mypage">마이페이지</a></li>
 					<li><a href="logout">로그아웃</a></li>
 				</ul>
 				</c:otherwise>
