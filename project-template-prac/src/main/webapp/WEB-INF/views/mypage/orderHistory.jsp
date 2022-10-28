@@ -46,38 +46,58 @@
 						<tr>
 							<th class="text-center">주문번호</th>
 							<th class="text-center">주문내용</th>
-							<th class="text-center">쿠폰내용</th>
+							<th class="text-center">주문금액</th>
 							<th class="text-center">주문일자</th>
-							<th class="text-center"></th>
 						</tr>
 					</thead>
 						<tbody>
-                              <tr class="cart__row border-bottom line1 cart-flex border-top"
-                              	align="center">
-                                  <td>
-                                      <span>01</span>
+                              <tr  class="cart__row border-bottom line1 cart-flex border-top" align="center">
+                                  <td height="200px">
+                                      <span>2022102700001</span>
                                   </td>
                                   <td>
-                                      <div class="list-view-item__title">
-                                          <span>생일 기념 쿠폰</span>
-                                      </div>
+                                      <span>Americano (Ice) * 1</span><br>
+                                      <span>Caffe Latte (Ice) * 1</span>
                                   </td>
                                   <td>
-                                      <span>2,000원 할인</span>
+                                      <span>￦6,500</span>
                                   </td>
                                   <td>
                                       <span>2022.10.27</span>
                                   </td>
-                                  <td>
-                                      <span>2022.12.31</span>
+                              	</tr>
+                              	
+                              	<tr  class="cart__row border-bottom line1 cart-flex border-top" align="center">
+                                  <td height="200px">
+                                      <span>2022102600002</span>
                                   </td>
-                                  <td class="text-center small--hide">
-                                  	<a href="#" class="btn btn--secondary cart__remove"
-                                  	   title="Remove tem">
-                                  		<i class="icon icon anm anm-times-l"></i>
-                                  	</a>
+                                  <td>
+                                      <span>Caffe Mocha (Hot) * 1</span>
+                                  </td>
+                                  <td>
+                                      <span>￦4,500</span>
+                                  </td>
+                                  <td>
+                                      <span>2022.10.26</span>
                                   </td>
                               	</tr>
+                              	
+                              	<tr  class="cart__row border-bottom line1 cart-flex border-top" align="center">
+                                  <td height="200px">
+                                      <span>2022102600001</span>
+                                  </td>
+                                  <td>
+                                      <span>Americano (Ice) * 1</span>
+                                  </td>
+                                  <td>
+                                      <span>￦2,000</span>
+                                  </td>
+                                  <td>
+                                      <span>2022.10.26</span>
+                                  </td>
+                              	</tr>
+                              	
+                              	
                       		</tbody>
 					<tfoot></tfoot>
 				</table>
