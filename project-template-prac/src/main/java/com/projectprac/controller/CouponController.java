@@ -1,21 +1,62 @@
 package com.projectprac.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.projectprac.dto.CouponDto;
+import com.projectprac.dto.CouponMakeDto;
+import com.projectprac.dto.CustomerDto;
+import com.projectprac.service.CouponService;
 
 @Controller // @Component + Web configuration
 public class CouponController {
 
-//	@Autowired
-//	@Qualifier("accountService")
-//	private AccountService accountService;
-	
+	@Autowired
+	@Qualifier("couponService")
+	private CouponService couponService;
+
 	@GetMapping(path = { "coupon" })
-	public String showCouponForm() {
+	public String showCouponForm(HttpSession session, Model model) {
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        
+		CustomerDto customer = (CustomerDto) session.getAttribute("loginuser");
+		CouponDto coupon;
+		List<CouponMakeDto> couponMakes = new ArrayList<>();
+		List<CouponMakeDto> couponMakeDtos = couponService.showCouponList(customer.getCustomerId());
+		for (CouponMakeDto couponMakeDto : couponMakeDtos) {
+			coupon = couponService.findCouponByCouponId(couponMakeDto.getCouponId());
+			couponMakeDto.setCouponDto(coupon);
+			couponMakes.add(couponMakeDto);
+		}
+		model.addAttribute("couponMakes", couponMakes);
+		return "mypage/coupon";
+		
+	}
+
+	@PostMapping(path = { "coupon" })
+	public String createNewCoupon(HttpSession session, CouponDto coupon) {
+		// 1. 요청 데이터 읽기 -> DTO에 저장 : 전달인자 사용으로 대체
+		// 2. 요청 처리
+		CustomerDto customer = (CustomerDto) session.getAttribute("loginuser");
+		couponService.createNewCoupon(customer.getCustomerId(), coupon.getCouponId());
+
+		// 3. View에서 사용할 수 있도록 데이터 전달
+		// 4. View 또는 다른 Controller로 이동
 		return "mypage/coupon";
 	}
-	
+
 //	@GetMapping(path = { "register" }) // FrontController에 연결 설정
 //	public String showRegisterForm() {
 //		return "account/register"; // WEB-INF/views/ + account/register + .jsp
