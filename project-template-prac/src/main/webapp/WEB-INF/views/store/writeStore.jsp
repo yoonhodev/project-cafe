@@ -98,7 +98,7 @@
                                                       </div>
                                                     </fieldset>
                                                     <fieldset class="spr-form-actions">
-                                                        <input type="submit" class="spr-button spr-button-primary button button-primary btn btn-primary" value="소개 추가">
+                                                        <input type="submit" class="spr-button spr-button-primary button button-primary btn btn-primary" id="upload_store_intro" value="소개 추가" />
                                                     </fieldset>
                                                 </form>
                                             </div>
@@ -131,6 +131,8 @@
     
 	<!-- Common-js -->
 		<jsp:include page="/WEB-INF/views/modules/common-js.jsp"></jsp:include>
+    
+    	
     
     </div>
 
