@@ -1,8 +1,6 @@
 package com.projectprac.controller;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -29,8 +27,6 @@ public class CouponController {
 	@GetMapping(path = { "coupon" })
 	public String showCouponForm(HttpSession session, Model model) {
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        
 		CustomerDto customer = (CustomerDto) session.getAttribute("loginuser");
 		CouponDto coupon;
 		List<CouponMakeDto> couponMakes = new ArrayList<>();

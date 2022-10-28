@@ -94,11 +94,11 @@
 	                                        <span>${ couponMake.couponEnd }</span>
 	                                    </td>
 	                                    <td class="text-center small--hide">
-		                                    <input class="btn btn--secondary cart__remove" type="button" id="deleteCoupon" data-couponMakeId="${ couponMake.couponMakeId }" value="X">
-<!-- 		                                    <a href="#" type="" class="btn btn--secondary cart__remove" -->
-<!-- 		                                       title="Remove tem"> -->
-<!-- 		                                    	<i class="icon icon anm anm-times-l"></i> -->
-<!-- 		                                    </a> -->
+	                                    	<input type="hidden" id="couponMakeId" name="couponMakeId" value="${ couponMake.couponMakeId }">  
+	                                    	<a href="#" type="submit" class="btn btn--secondary cart__remove"
+	                                    	   title="Remove tem">
+	                                    		<i class="icon icon anm anm-times-l"></i>
+	                                    	</a>
 	                                    </td>
 	                                </tr>
 	                                </c:forEach>
@@ -125,27 +125,20 @@
 	</div>
 	<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 	<script type="text/javascript">
-		$(function)() {
-			$('#deleteCoupon').on('click', function(event) {
-				var couponMakeId = $(this).attr("data-couponMakeId")
-				location.href = 'deleteCoupon';
-			});
+		$('#createCoupon').on('click', function(event) {
+			event.preventDefault();
 			
-			$('#createCoupon').on('click', function(event) {
-				event.preventDefault();
-				
-				const formData = $('#createcouponform').serialize(); // form 내부의 모든 입력 요소의 값을 전송가능한 형식으로 반환
-				
-				$.ajax({
-					"url": "coupon",
-					"method": "post",
-					"data": formData,
-					"success": function(data, status, xhr) {},
-					"error": function(xhr, status, err) {}
-				});
-				$('#couponId').val("");
+			const formData = $('#createcouponform').serialize(); // form 내부의 모든 입력 요소의 값을 전송가능한 형식으로 반환
+			
+			$.ajax({
+				"url": "coupon",
+				"method": "post",
+				"data": formData,
+				"success": function(data, status, xhr) {},
+				"error": function(xhr, status, err) {}
 			});
+			$('#couponId').val("");
 		});
-	</script>
+		</script>
 </body>
 </html>
