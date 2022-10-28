@@ -193,8 +193,9 @@
                                         <!-- end product image -->
 
                                         <!-- Start product button -->
-                                        <form class="variants add" action="#" onclick="window.location.href='cart.html'"method="post">
-                                            <button class="btn btn-addto-cart" type="button">ADD TO CART</button>
+                                         <form class="variants add" action="update-order" method="post">
+                                        	<input type="hidden" name="prodId" value="2">
+                                            <button class="btn btn-addto-cart update-order" type="submit">ADD TO CART</button>
                                         </form>
                                         <div class="button-set">
                                             <a href="javascript:void(0)" title="Quick View" class="quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
@@ -236,10 +237,10 @@
                                         <!-- start product image -->
                                         <a href="#">
                                             <!-- image -->
-                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image3.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image3.jpg" alt="image" title="product">
+                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/iced_black_tea.jpg" src="/project-template-prac/resources/assets/images/product-images/iced_black_tea.jpg" alt="image" title="product">
                                             <!-- End image -->
                                             <!-- Hover image -->
-                                            <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image3-1.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image3-1.jpg" alt="image" title="product">
+                                            <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/iced_black_tea.jpg" src="/project-template-prac/resources/assets/images/product-images/iced_black_tea.jpg" alt="image" title="product">
                                             <!-- End hover image -->
                                             <!-- product label -->
                                             <div class="product-labels rectangular"><span class="lbl pr-label2">Hot</span></div>
@@ -248,8 +249,9 @@
                                         <!-- end product image -->
 
                                         <!-- Start product button -->
-                                        <form class="variants add" action="#" onclick="window.location.href='cart.html'"method="post">
-                                            <button class="btn btn-addto-cart" type="button">Add To Cart</button>
+                                            <form class="variants add" action="update-order" method="post">
+                                        	<input type="hidden" name="prodId" value="3">
+                                            <button class="btn btn-addto-cart update-order" type="submit">ADD TO CART</button>
                                         </form>
                                         <div class="button-set">
                                             <a href="javascript:void(0)" title="Quick View" class="quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
@@ -274,7 +276,7 @@
                                     <div class="product-details text-center">
                                         <!-- product name -->
                                         <div class="product-name">
-                                            <a href="#">3/4 Sleeve Kimono Dress</a>
+                                            <a href="#">Iced Black Tea</a>
                                         </div>
                                         <!-- End product name -->
                                         <!-- product price -->
@@ -282,22 +284,6 @@
                                             <span class="price">$550.00</span>
                                         </div>
                                         <!-- End product price -->
-                                        
-                                        <div class="product-review">
-                                            <i class="font-13 fa fa-star"></i>
-                                            <i class="font-13 fa fa-star"></i>
-                                            <i class="font-13 fa fa-star"></i>
-                                            <i class="font-13 fa fa-star"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                        </div>
-                                        <!-- Variant -->
-                                        <ul class="swatches">
-                                            <li class="swatch medium rounded"><img src="/project-template-prac/resources/assets/images/product-images/variant3-1.jpg" alt="image" /></li>
-                                            <li class="swatch medium rounded"><img src="/project-template-prac/resources/assets/images/product-images/variant3-2.jpg" alt="image" /></li>
-                                            <li class="swatch medium rounded"><img src="/project-template-prac/resources/assets/images/product-images/variant3-3.jpg" alt="image" /></li>
-                                            <li class="swatch medium rounded"><img src="/project-template-prac/resources/assets/images/product-images/variant3-4.jpg" alt="image" /></li>
-                                        </ul>
-                                        <!-- End Variant -->
                                     </div>
                                     <!-- End product details -->
                                 </div>
