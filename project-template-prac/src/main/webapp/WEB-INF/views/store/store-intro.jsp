@@ -65,7 +65,7 @@
                                 </c:when>
                                 <c:otherwise>
                                 <ul class="inline-list">   
-                                        <li><i class="icon anm anm-comments-l"></i> <a href="/${ store.storeId}/open" style="color: red;">CLOSE</a></li>
+                                        <li><i class="icon anm anm-comments-l"></i> <a href="#" style="color: red;">CLOSE</a></li>
                                     </ul>
                                 </c:otherwise>
                                 
