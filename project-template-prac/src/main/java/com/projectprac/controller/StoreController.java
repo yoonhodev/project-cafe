@@ -88,7 +88,7 @@ public class StoreController {
 		
 		
 		
-		return "store/writeStore";
+		return "redirect:/store";
 		
 	}
 	

@@ -62,7 +62,7 @@
                                		 <ul class="inline-list">   
                                         <li><i class="icon anm anm-comments-l"></i> <a style="color: green;">OPEN</a></li>
                                         <c:if test="${ loginuser.userType }">
-                                        <input type="button" class="btn" id="change_to_close" value="close" data-storeId="${ store.storeId }" />
+                                        <input type="button" class="change_to_close btn" id="close-${ store.storeId }"   value="close" data-storeId="${ store.storeId }" />
                                         </c:if>
                                     </ul>
                                 </c:when>
@@ -70,7 +70,7 @@
                                 <ul class="inline-list">   
                                         <li><i class="icon anm anm-comments-l"></i> <a style="color: red;">CLOSE</a></li>
                                         <c:if test="${ loginuser.userType }">
-                                        <input type="button" class="btn" id="change_to_open" value="open" data-storeId="${ store.storeId }" />
+                                        <input type="button" class="change_to_open btn" id="open-${ store.storeId }"   value="open" data-storeId="${ store.storeId }" />
                                         </c:if>
                                     </ul>
                                 </c:otherwise>
@@ -113,22 +113,28 @@
 		<!-- Common-js -->
 		<jsp:include page="/WEB-INF/views/modules/common-js.jsp"></jsp:include>
 		<script type="text/javascript">
-                       
+        
+// 		var change_to_open = ('.change_to_open').attr('class');
+// 		var change_to_close = ('.change_to_close').attr('class');
+		
                        $(function() {
-							$('#change_to_open').on('click', function(event) {
+//                     	   var storeId = $(this).attr("data-storeId");
+                    	   
+                    	   
+							$(".change_to_open").on('click', function(event) {
 								
 								var storeId = $(this).attr("data-storeId")
 								
-								alert(storeId);
+// 								alert(storeId);
 								
 								location.href = storeId + '/open';
 							});	
 							
-							$('#change_to_close').on('click', function(event) {
+							$(".change_to_close").on('click', function(event) {
 								
 								var storeId = $(this).attr("data-storeId")
 								
-								alert(storeId);
+// 								alert(storeId);
 								
 								location.href = storeId + '/close';
 								
