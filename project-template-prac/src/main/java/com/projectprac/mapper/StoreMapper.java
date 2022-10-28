@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -25,9 +26,14 @@ public interface StoreMapper {
 
 	
 	@Update("update store " +
-			"set store_open = 1 " +
+			"set store_open = TRUE " +
 			"where store_id = #{storeId} " )
 	void changeToOpen(int storeId);
+
+	@Update("update store " +
+			"set store_open = FALSE " +
+			"where store_id = #{storeId} " )
+	void changeToClose(int storeId);
 
 	
 	/*

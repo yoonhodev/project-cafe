@@ -92,16 +92,27 @@ public class StoreController {
 		
 	}
 	
-	@GetMapping(path = {"{storeId}/open"})
+	@GetMapping(path = {"/{storeId}/open"})
 	public String changeToOpen(@PathVariable("storeId")int storeId ) {
+		
 		
 		storeService.changeToOpen(storeId);
 		
-		return "redirect:/store/store-intro";
+		
+		return "redirect:/store";
 		
 	}
 	
-	
+	@GetMapping(path = {"/{storeId}/close"})
+	public String changeToClose(@PathVariable("storeId")int storeId ) {
+		
+		
+		storeService.changeToClose(storeId);
+		
+		
+		return "redirect:/store";
+		
+	}
 	
 }
 
