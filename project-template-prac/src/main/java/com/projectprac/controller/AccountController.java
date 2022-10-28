@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.projectprac.dto.CustomerDto;
 import com.projectprac.service.AccountService;
@@ -113,11 +114,9 @@ public class AccountController {
 		System.out.printf("%s\n", passwdCheck);
 		
 		if (!passwd.equals(passwdCheck)) {
-			System.out.println(3);
 			model.addAttribute("resetpasswdfail", passwd);
 			return "account/findpasswd";
 		}
-		System.out.println(46);
 		CustomerDto customer = (CustomerDto) session.getAttribute("founduser");
 		accountService.updatePassword(customer.getCustomerId(), passwd);
 
