@@ -3,6 +3,11 @@
     
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+<c:set var="enter" value="
+" />  <!-- 엔터쳤을때 화면에서 실제 적용하게 해주는 코드  -->
+
 
 
 
@@ -101,12 +106,17 @@
                                 </li>
                             </ul>
                             <div class="rte"> 
-                                <p>${ boardDetail.content }</p>
+
+                                <p><c:set var="enter" value="
+" />
+								   ${ fn:replace(boardDetail.content, enter, "<br>") }</p>
                             </div>
-                            <p><a href="#" class="btn btn-secondary btn--small">Read more <i class="fa fa-caret-right" aria-hidden="true"></i></a></p>
-                        </div>
+                            
+                      	    </div>
                         <div class="loadmore-post">	
-                            <a href="#;" class="btn loadMorepost">Load More</a>
+                            <a href="#;" class="btn ">수정</a>
+                            <a id="delete_button" class="btn ">삭제</a>
+                            <a href="noticeBoard?pageNo=${ pageNo }" class="btn ">목록보기</a>
                         </div>
                     </div>
                 </div>
@@ -136,6 +146,23 @@
      <script src="resources/assets/js/lazysizes.js"></script>
      <script src="resources/assets/js/main.js"></script>
 </div>
+<script type="text/javascript">
+	$(function() {
+		$('#delete_button').on('click', function(event) {
+			const ok = confirm("${ boardDetail.boardId }번 글을 삭제할까요?");
+			if (!ok) return;
+			
+			//location.href = 'delete.action?boardId=${boardDetail.boardId}&pageNo=${pageNo}';
+			location.href = 'delete/' + ${ boardDetail.boardId } + '/?&pageNo=${pageNo}';
+			
+
+		});
+		
+		
+	})
+
+</script>
+
 </body>
 
 <!-- belle/blog-fullwidth.html   11 Nov 2019 12:46:09 GMT -->

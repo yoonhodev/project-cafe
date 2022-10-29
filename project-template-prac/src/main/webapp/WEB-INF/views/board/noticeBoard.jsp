@@ -97,18 +97,9 @@
                                     <div class="spr-container">
                                         <div class="spr-header clearfix">
                                             <div class="spr-summary">
-<!--                                                 <span class="product-review"><a class="reviewLink"><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i> </a><span class="spr-summary-actions-togglereviews">Based on 6 reviews456</span></span>
-
- -->                                                <span class="spr-summary-actions">
-                                                    
-                                                <!-- <span class="spr-summary-actions"> -->
                                                     <a href="#" id="toggle-form-btn" class="spr-summary-actions-newreview btn">글 쓰기</a>
-
-                                                </span>
                                             </div>
-                                           
                                             </div>
-                                       
                                         <div id="toggle">
                                         <div class="spr-content">
 
@@ -125,11 +116,8 @@
                                                 <form method="post" action="writeBoard" id="new-review-form" class="new-review-form" >
                                                     <h3 class="spr-form-title">Write notice</h3>
                                                     <fieldset class="spr-form-contact">
-                                                  
                                                     </fieldset>
                                                     <fieldset class="spr-form-review">
-                                                  
-                                                
                                                       <div class="spr-form-review-title">
                                                         <label class="spr-form-label" for="review_title_10508262282">제목</label>
                                                         <input class="spr-form-input spr-form-input-text " id="review_title_10508262282" type="text" name="title" value="" placeholder="Give your review a title">
@@ -151,14 +139,14 @@
                                             </div>
                                            	</div>
                                            	
-                                            <div class="spr-reviews">
+                                            <div>
                                             <!-- 게시글 1개 시작 -->
                                         	<c:forEach var="boards" items="${ boards }">
-                                                <a href="noticeBoardDetail?boardId=${ boards.boardId }">
+                                                <a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">
                                                 <div class="spr-review">
                                                     <div class="spr-review-header">
                                                         <h3 class="spr-review-header-title">공지번호 : ${ boards.boardId } &nbsp| &nbsp&nbsp&nbsp 제목 : ${ boards.title } </h3>
-                                                        <span class="spr-review-header-byline"><strong>작성자 : ${ boards.workerId } &nbsp| &nbsp&nbsp&nbsp</strong><strong>작성일 : <fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd HH:mm"/> &nbsp </strong></span>
+                                                        <span class="spr-review-header-byline"><strong>작성자 : ${ boards.workerId } &nbsp| &nbsp&nbsp&nbsp</strong><strong>작성일 : <fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/> &nbsp </strong></span>
                                                     </div>
                                                 </div>
                                                 </a>
@@ -166,18 +154,9 @@
                                              <!-- 게시글 1개 끝 -->
                                               
                                             </div>
-                                            
-                                           <!-- Pagenation -->
-                                               <div class="pagination_section" style="text-align:center;" >
-										            <a href="#"><< Previous</a>
-										            <a href="#" title="Algorithm">1</a>
-										            <a href="#" title="DataStructure">2</a>
-										            <a href="#" title="Languages">3</a>
-										            <a href="#" title="Interview" class="active">4</a>
-										            <a href="#" title="practice">5</a>
-										            <a href="#">Next >></a>
-										        </div>
-										    <!-- End of Pagenation -->
+                                            <div style="text-align: center;">
+	                                            ${ pager }
+											</div>
                                     </div>
                                    
                                 </div>

@@ -21,10 +21,20 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- Controller를 따로 만들지 않고 View로 연결하는 설정 -->
+	<view-controller path="/" view-name="home" />
+	<view-controller path="/home" view-name="home" />
+	
+	<!-- apache commons fileupload component와 spring framwork를 연결해 주는 클래스 -->
 	<beans:bean id="multipartResolver"
 					class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 	</beans:bean>
-	
+	<interceptors>
+		<interceptor>
+			<mapping path="/**" />
+			<beans:bean class="com.projectprac.interceptor.AuthInterceptor" />
+		</interceptor>
+	</interceptors>
 	<context:component-scan base-package="com.projectprac.controller" />
 	
 	

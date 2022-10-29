@@ -26,7 +26,7 @@
 				<c:otherwise>
 				<ul class="customer-links list-inline">
 					<li><a href="#">${ loginuser.customerId }님</a></li>
-					<li><a href="#">마이페이지</a></li>
+					<li><a href="mypage">마이페이지</a></li>
 					<li><a href="logout">로그아웃</a></li>
 				</ul>
 				</c:otherwise>
@@ -172,12 +172,20 @@
 							<c:if test="${ loginuser.userType }">
 								<li><a href="writeStore" class="site-nav">지점 소개 추가</a></li>
 								</c:if>	
-								
+								<li><a href="store" class="site-nav">지점 소개</a></li>
 							</ul></li>
 						<li class="lvl1"><a href="order" style="font-size: 15pt"><b>Buy
 									Now!</b> <i class="anm anm-angle-down-l"></i></a></li>
 						<c:if test="${ loginuser.userType }">			
-						<li class="lvl1"><a href="admin" style="font-size: 15pt">ADMIN PAGE <i class="anm anm-angle-down-l"></i></a></li>	
+						<li class="lvl1 parent dropdown"><a href="admin"
+							style="font-size: 15pt"><b>ADMIN PAGE</b> <i
+								class="anm anm-angle-down-l"></i></a>
+							<ul class="dropdown">
+							<li><a href="fixedspend" class="site-nav">고정 지출</a></li>
+								
+							<li><a href="#" class="site-nav">필요하면 추가하세요</a></li>
+							
+							</ul></li>
 						</c:if>					
 					</ul>
 				</nav>

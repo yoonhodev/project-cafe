@@ -31,7 +31,7 @@
       		</div>
 		</div> 
         <!--End Page Title-->
-<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+
                
             </div>
         </div>
@@ -50,7 +50,7 @@
 
                             <!-- Article Image --> 
                             
-                            <a class="article_featured-image" ><img class="blur-up lazyload article_featured-image" src="/project-template-prac/resources/assets/images/cafe-out-image-folder/${ store.storeUniqueimage }" alt="이미지 업로드 실패"></a>                          
+                            <a class="article_featured-image" ><img class="blur-up lazyload article_featured-image" src="/project-template-prac/resources/assets/images/cafe-out-image-folder/${ store.storeUniqueimage }" alt="이미지 로드 실패"></a>                          
                             
                             <h2 class="h3"  >${ store.storeName }</h2>
                             <ul class="publish-detail">                      
@@ -60,12 +60,18 @@
                                 <c:choose>
                                 <c:when test="${ store.storeOpen }">
                                		 <ul class="inline-list">   
-                                        <li><i class="icon anm anm-comments-l"></i> <a href="#" style="color: green;">OPEN</a></li>
+                                        <li><i class="icon anm anm-comments-l"></i> <a style="color: green;">OPEN</a></li>
+                                        <c:if test="${ loginuser.userType }">
+                                        <input type="button" class="change_to_close btn" id="close-${ store.storeId }"   value="close" data-storeId="${ store.storeId }" />
+                                        </c:if>
                                     </ul>
                                 </c:when>
                                 <c:otherwise>
                                 <ul class="inline-list">   
-                                        <li><i class="icon anm anm-comments-l"></i> <a href="/${ store.storeId}/open" style="color: red;">CLOSE</a></li>
+                                        <li><i class="icon anm anm-comments-l"></i> <a style="color: red;">CLOSE</a></li>
+                                        <c:if test="${ loginuser.userType }">
+                                        <input type="button" class="change_to_open btn" id="open-${ store.storeId }"   value="open" data-storeId="${ store.storeId }" />
+                                        </c:if>
                                     </ul>
                                 </c:otherwise>
                                 
@@ -79,49 +85,15 @@
                                 <p>${ store.storeIntroduce }</p>
                                  </div>
                            <!--  <p><a href="#" class="btn btn-secondary btn--small">Read more <i class="fa fa-caret-right" aria-hidden="true"></i></a></p> -->
+                      
                         </c:forEach> 
                         </div>
                        
-<!--                         <div class="article">  -->
-<!--                             Article Image  -->
-<!--                              <a class="article_featured-image" href="#"><img class="blur-up lazyload" data-src="resources/assets/images/blog/blog-post-2.jpg" src="resources/assets/images/blog/blog-post-2.jpg" alt="27 Days of Spring Fashion Recap"></a>  -->
-<!--                             <h2 class="h3"><a href="blog-right-sidebar.html">27 Days of Spring Fashion Recap</a></h2> -->
-<!--                             <ul class="publish-detail">                       -->
-<!--                                 <li><i class="anm anm-user-al" aria-hidden="true"></i>  User</li> -->
-<!--                                 <li><i class="icon anm anm-clock-r"></i> <time datetime="2017-05-02">May 02, 2017</time></li> -->
-<!--                                 <li> -->
-<!--                                     <ul class="inline-list">    -->
-<!--                                         <li><i class="icon anm anm-comments-l"></i> <a href="#"> 0 comments</a></li> -->
-<!--                                     </ul> -->
-<!--                                 </li> -->
-<!--                             </ul> -->
-<!--                             <div class="rte">  -->
-<!--                                 <p>Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée par l'addition d'humour ou de mots aléatoires qui ne ressemblent pas une seconde à du texte standard. Si vous voulez utiliser un passage du Lorem Ipsum, vous devez être sûr qu'il n'y a rien d'embarrassant caché dans le texte. Tous les générateurs de Lorem Ipsum sur Internet tendent à reproduire......</p> -->
-<!--                                  </div> -->
-<!--                             <p><a href="#" class="btn btn-secondary btn--small">Read more <i class="fa fa-caret-right" aria-hidden="true"></i></a></p> -->
-<!--                         </div> -->
-<!--                         <div class="article">  -->
-<!-- <!--                             Article Image  --> 
-<!--                              <a class="article_featured-image" href="#"><img class="blur-up lazyload" data-src="resources/assets/images/blog/blog-post-3.jpg" src="resources/assets/images/blog/blog-post-3.jpg" alt="How to Wear The Folds Trend Four Ways"></a>  -->
-<!--                             <h2 class="h3"><a href="#">How to Wear The Folds Trend Four Ways</a></h2> -->
-<!--                             <ul class="publish-detail">                       -->
-<!--                                 <li><i class="anm anm-user-al" aria-hidden="true"></i>  User</li> -->
-<!--                                 <li><i class="icon anm anm-clock-r"></i> <time datetime="2017-05-02">May 02, 2017</time></li> -->
-<!--                                 <li> -->
-<!--                                     <ul class="inline-list">    -->
-<!--                                         <li><i class="icon anm anm-comments-l"></i> <a href="#"> 10 comments</a></li> -->
-<!--                                     </ul> -->
-<!--                                 </li> -->
-<!--                             </ul> -->
-<!--                             <div class="rte">  -->
-<!--                                 <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure......</p> -->
-<!--                                  </div> -->
-<!--                             <p><a href="#" class="btn btn-secondary btn--small">Read more <i class="fa fa-caret-right" aria-hidden="true"></i></a></p> -->
-<!--                         </div> -->
+					 
+                       
+                       
+                       
 
-<!--                          <div class="loadmore-post" >	  -->
-<!--                              <a href="add-store" type="hidden" class="btn">Load More</a>  -->
-<!--                          </div> -->
                     </div>
                 </div>
                 <!--End Main Content-->
@@ -140,6 +112,36 @@
     
 		<!-- Common-js -->
 		<jsp:include page="/WEB-INF/views/modules/common-js.jsp"></jsp:include>
+		<script type="text/javascript">
+        
+// 		var change_to_open = ('.change_to_open').attr('class');
+// 		var change_to_close = ('.change_to_close').attr('class');
+		
+                       $(function() {
+//                     	   var storeId = $(this).attr("data-storeId");
+                    	   
+                    	   
+							$(".change_to_open").on('click', function(event) {
+								
+								var storeId = $(this).attr("data-storeId")
+								
+// 								alert(storeId);
+								
+								location.href = storeId + '/open';
+							});	
+							
+							$(".change_to_close").on('click', function(event) {
+								
+								var storeId = $(this).attr("data-storeId")
+								
+// 								alert(storeId);
+								
+								location.href = storeId + '/close';
+								
+							});
+					   });
+        </script>
+		
 </div>
 </body>
 

@@ -45,6 +45,15 @@ public class StoreServiceImpl implements StoreService{
 
 
 
+	@Override
+	public void changeToClose(int storeId) {
+		
+		storeMapper.changeToClose(storeId);
+		
+	}
+
+
+
 
 
 	/*

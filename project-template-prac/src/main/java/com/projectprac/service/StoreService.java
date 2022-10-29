@@ -14,6 +14,8 @@ public interface StoreService {
 
 	void changeToOpen(int storeId);
 
+	void changeToClose(int storeId);
+
 	/* List<StoreDto> findStoreByStoreId(int storeId); */
 
 	/* List<StoreDto> findStore(StoreDto storeDto); */

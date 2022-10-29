@@ -9,16 +9,24 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.projectprac.dto.BoardDto;
 import com.projectprac.dto.StoreDto;
 import com.projectprac.service.BoardService;
+import com.projectprac.ui.ThePager;
+
 
 @Controller
 public class BoardController {
 
+	private final int PAGE_SIZE = 5; 	// 한 페이지에 표시되는 데이터 개수
+	private final int PAGER_SIZE = 5;	// 한 번에 표시할 페이지 번호 개수
+	private final String LINK_URL = "noticeBoard"; // 페이지 번호를 클릭했을 때 이동할 페이지 경로
+	
+	
 	@Autowired
 	@Qualifier("boardService")
 	private BoardService boardService;
@@ -40,18 +48,23 @@ public class BoardController {
 		
 		boardService.writeBoard(board);
 		
-		return "board/noticeBoard";
+		return "redirect:noticeBoard";
 	}
 	
 	@GetMapping(path = { "noticeBoard" })
-	public String showBoardList( Model model, BoardDto boardDto) {
+	public String showBoardList(@RequestParam(defaultValue = "1")int pageNo, Model model) {
 		// 1. 요청 데이터 읽기 ( 전달인자로 대체 )
 		// 2. 데이터 처리 ( 데이터 조회 )		
 
-		List<BoardDto> boards = boardService.showBoardList(boardDto);
+		List<BoardDto> boards = boardService.findBoardByPage(pageNo, PAGE_SIZE);
+		int boardCount = boardService.findBoardCount();
 		
+		ThePager pager = new ThePager(boardCount, pageNo, PAGE_SIZE, PAGER_SIZE, LINK_URL);
+
 		// 3. View에서 읽을 수 있도록 데이터 저장
 		model.addAttribute("boards", boards);
+		model.addAttribute("pager", pager);
+		model.addAttribute("pageNo", pageNo);
 ;
 		
 		// 4. View or Controller로 이동
@@ -59,17 +72,51 @@ public class BoardController {
 	}
 	
 	@GetMapping(path = { "/noticeBoardDetail" })
-	public String showBoardDetail(int boardId,
+	public String showBoardDetail(@RequestParam(defaultValue = "-1") int boardId, 
+								  @RequestParam(defaultValue = "-1") int pageNo,
 								  HttpSession session, 
 								  Model model) {	
 		
+//		if (boardId == -1 || pageNo == -1) { // 요청 데이터가 잘못된 경우
+//			return "redirect:noticeBoard";
+//		}
 		
 		
 		BoardDto boardDetail = boardService.showBoardDetail(boardId);
 		
-		model.addAttribute("boardDetail", boardDetail);
+		if (boardDetail == null) { // 조회되지 않은 경우 (글 번호가 잘못되었거나 또는 삭제된 글인 경우)
+			return "redirect:list.action";
+		}
 		
+		// 3. View에서 읽을 수 있도록 데이터 전달
+		model.addAttribute("boardDetail", boardDetail);
+		model.addAttribute("pageNo", pageNo);
+		
+		// 4. View 또는 Controller로 이동
 		return "board/noticeBoardDetail";
 	}
+	
+	
+	@GetMapping(path = { "/delete/{boardId}" })
+	public String deleteBoard(@PathVariable("boardId") int boardId,
+							  @RequestParam (defaultValue = "-1")int pageNo,
+							  Model model) { //Model --> jsp로 데이터 전달할때 씀
+		
+//		if (pageNo == -1) {
+//			//return "redirect:list.action";
+//			model.addAttribute("error_type", "delete");
+//			model.addAttribute("message", "잘못된 요청 : 글번호 또는 페이지 번호가 없습니다.");		
+//			return "board/error"; // WEB-ING/views/+ board/error + .jsp (오류가 나면 board/error페이지로 보냄) 
+//		}
+		
+		boardService.deleteBoard(boardId);
+		
+		// 3. View에서 사용할 수 있도록 데이터 저장
+		
+		// 4. View 또는 다른 Controller로 이동
+		return "redirect:/noticeBoard?pageNo=" + pageNo;
+	}
+	
+	
 	
 }
