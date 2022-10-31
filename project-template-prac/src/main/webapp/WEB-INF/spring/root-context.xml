@@ -38,5 +38,6 @@
 	<import resource="order-context.xml" />
 	<import resource="coupon-context.xml" />
 	<import resource="spend-context.xml" />
+	<import resource="mypage-context.xml" />
 	
 </beans>
