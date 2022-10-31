@@ -50,6 +50,18 @@ public interface BoardMapper {
 			"WHERE board_id = #{ boardId }") // ? : 나중에 채워질 영역 표시)
 	public void deleteBoard(int boardId);
 
+	
+	@Select("SELECT board_id boardid, worker_id workerid, title, content, regdate, deleted " +
+			"FROM board " +	
+			"WHERE board_id = #{ boardId } AND deleted = FALSE")
+	BoardDto selectBoardByBoardNo(int boardId);
+	
+	@Update("UPDATE board " +
+			"SET title = #{ title }, content = #{ content } " +
+			"WHERE board_id = #{ boardId } ")	
+	public void updateBoard(BoardDto board);
+	
+
 
 
 	
