@@ -30,18 +30,19 @@ public class CouponServiceImpl implements CouponService {
 
 	@Override
 	public List<CouponMakeDto> showCouponList(String customerId) {
-		
 		List<CouponMakeDto> couponMakeDtos = couponMapper.selectCouponMakeByCustomerId(customerId);
 		return couponMakeDtos;
-		
 	}
 
 	@Override
 	public CouponDto findCouponByCouponId(int couponId) {
-		
 		CouponDto coupon = couponMapper.selectCouponByCouponId(couponId);
 		return coupon;
-		
+	}
+
+	@Override
+	public void deleteCouponMake(String customerId, int couponMakeId) {
+		couponMapper.deleteCouponMake(customerId, couponMakeId);
 	}
 
 //	// 1. 회원 가입 : 회원 데이터를 받아서 필요한 처리 ( 데이터베이스 저장은 Dao에 전달 )

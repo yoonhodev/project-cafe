@@ -1,6 +1,8 @@
 package com.projectprac.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -37,6 +39,12 @@ public class CouponController {
 			couponMakes.add(couponMakeDto);
 		}
 		model.addAttribute("couponMakes", couponMakes);
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar cal = Calendar.getInstance();
+        String today = sdf.format(cal.getTime());
+        model.addAttribute("today", today);
+		
 		return "mypage/coupon";
 		
 	}
@@ -50,8 +58,22 @@ public class CouponController {
 
 		// 3. View에서 사용할 수 있도록 데이터 전달
 		// 4. View 또는 다른 Controller로 이동
-		return "mypage/coupon";
+		return "redirect:coupon";
 	}
+	
+	@PostMapping(path = { "deletecoupon" })
+	public String deleteCoupon(HttpSession session, CouponMakeDto couponMake) {
+		// 1. 요청 데이터 읽기 -> DTO에 저장 : 전달인자 사용으로 대체
+		// 2. 요청 처리
+		CustomerDto customer = (CustomerDto) session.getAttribute("loginuser");
+		couponService.deleteCouponMake(customer.getCustomerId(), couponMake.getCouponMakeId());
+
+		// 3. View에서 사용할 수 있도록 데이터 전달
+		// 4. View 또는 다른 Controller로 이동
+		return "redirect:coupon";
+	}
+	
+	
 
 //	@GetMapping(path = { "register" }) // FrontController에 연결 설정
 //	public String showRegisterForm() {

@@ -2,6 +2,7 @@ package com.projectprac.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -24,5 +25,10 @@ public interface CouponMapper {
 			"FROM coupon " +
 			"WHERE coupon_id = #{ couponId } ")
 	CouponDto selectCouponByCouponId(int couponId);
+
+	@Delete("DELETE " +
+			"FROM coupon_make " +
+			"WHERE coupon_make_id = #{ couponMakeId } AND customer_id = #{ customerId } ")
+	void deleteCouponMake(@Param("customerId") String customerId, @Param("couponMakeId") int couponMakeId);
 
 }
