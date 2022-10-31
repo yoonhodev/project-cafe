@@ -30,10 +30,74 @@
 					<div class="tabs-listing">
 						<br> <br> <br> <br>
 						<ul class="product-tabs">
-							<li data-name="cost-input" ><a class="tablink">고정 지출 입력</a></li>
 							<li data-name="monthly-cost"><a class="tablink">월별 고정 지출</a></li>
+							<li data-name="cost-input" ><a class="tablink">고정 지출 입력</a></li>
 						</ul>
 						<div class="tab-container">
+							<!-- History Tab -->
+							<div id="monthly-cost" class="tab-content">
+								<div id="shopify-product-reviews">
+									<div class="spr-container">
+										<div class="spr-header clearfix">
+											<div class="spr-summary">
+												<h1>지점명</h1><br>
+											    <form action="fixedSpend2" method="post" id="show-cost-form">
+												    <select id="StoreName">
+												    	<option selected disabled hidden="">==지점 선택==</option>
+												      	<c:forEach var="store" items="${ stores }" varStatus="status">
+												        	<option value="${ store.storeId }">${ store.storeName }</option>
+												        </c:forEach>
+													</select>
+													<br><br>
+													<input type="hidden" id="StoreId1" name="storeId">
+													<input type="submit"
+														   class="spr-button spr-button-primary button button-primary btn btn-primary"
+														   value="확인">
+												</form>
+												
+											</div>
+										</div>
+										<div class="spr-content">
+											<div class="spr-form clearfix">
+												<form action="order" method="post" class="cart style2">
+													<table>
+														<thead class="cart__row cart__header">
+															<tr>
+																<th class="text-center">날짜</th>
+																<th class="text-center">지점명</th>
+																<th class="text-center">임대료</th>
+																<th class="text-center">관리비</th>
+																<th class="text-center">전기세</th>
+																<th class="text-center">수도세</th>
+																<th class="text-center">광고비</th>
+																<th class="text-center">배달비</th>
+															</tr>
+														</thead>
+														<tbody>
+															<c:forEach var="fixedSpend" items="${ fixedSpends }" varStatus="status">
+															<tr class="cart__row border-bottom line1 cart-flex border-top"
+																align="center">
+																<td><span>${ fixedSpend.month }</span></td>
+																<td><span>${ fixedSpend.storeId }</span></td>
+																<td><span>${ fixedSpend.monthPay }</span></td>
+																<td><span>${ fixedSpend.managePay }</span></td>
+																<td><span>${ fixedSpend.elecPay }</span></td>
+																<td><span>${ fixedSpend.waterPay }</span></td>
+																<td><span>${ fixedSpend.adPay }</span></td>
+																<td><span>${ fixedSpend.deliPay }</span></td>
+																	
+															</tr>
+															</c:forEach>
+														</tbody>
+													</table>
+												</form>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- ./History Tab -->
+							
 							<!-- Input Tab -->
 							<div id="cost-input" class="tab-content">
 								<div id="shopify-product-reviews">
@@ -95,7 +159,7 @@
 															<input id="DeliPay" type="text" name="deliPay"
 																   placeholder="배달대행비를 입력해주세요 (단위: 만)">
 														</div>
-														<input type="hidden" id="StoreId" name="storeId">
+														<input type="hidden" id="StoreId2" name="storeId">
 													</fieldset>
 													<fieldset class="spr-form-actions">
 														<input type="submit"
@@ -109,45 +173,6 @@
 								</div>
 							</div>
 							<!-- ./Input Tab -->
-							
-							<!-- History Tab -->
-							<div id="monthly-cost" class="tab-content">
-								<div class="row">
-									<br> <br>
-									<div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
-										<form action="order" method="post" class="cart style2">
-											<table>
-												<thead class="cart__row cart__header">
-													<tr>
-														<th class="text-center">날짜</th>
-														<th class="text-center">지점명</th>
-														<th class="text-center">임대료</th>
-														<th class="text-center">관리비</th>
-														<th class="text-center">전기세</th>
-														<th class="text-center">수도세</th>
-														<th class="text-center">광고비</th>
-														<th class="text-center">배달비</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr class="cart__row border-bottom line1 cart-flex border-top"
-														align="center">
-														<td><span>22.10</span></td>
-														<td><span></span></td>
-														<td><span></span></td>
-														<td><span></span></td>
-														<td><span></span></td>
-														<td><span></span></td>
-														<td><span></span></td>
-														<td><span></span></td>
-													</tr>
-												</tbody>
-											</table>
-										</form>
-									</div>
-								</div>
-							</div>
-							<!-- ./History Tab -->
 						</div>
 					</div>
 					<!-- ./Product Tabs -->
@@ -180,7 +205,8 @@
 		});
 		$("#StoreName").on("change", function() {
 			var storeId = $(this).val()
-			$("#StoreId").val(storeId);
+			$("#StoreId1").val(storeId);
+			$("#StoreId2").val(storeId);
 		});
     </script>
 </body>

@@ -15,8 +15,8 @@ public class FixedSpendServiceImpl implements FixedSpendService {
 	
 	
 	@Override
-	public void insertCost(FixedSpendDto spendDto) {
-		fixedSpendMapper.insertCost(spendDto);
+	public void insertCost(FixedSpendDto fixedSpend) {
+		fixedSpendMapper.insertCost(fixedSpend);
 	}
 
 
@@ -24,6 +24,13 @@ public class FixedSpendServiceImpl implements FixedSpendService {
 	public List<StoreDto> showAllStore() {
 		List<StoreDto> stores = fixedSpendMapper.selectAllStore();
 		return stores;
+	}
+
+
+	@Override
+	public List<FixedSpendDto> selectCostByStoreId(int storeId) {
+		List<FixedSpendDto> fixedSpends = fixedSpendMapper.selectCostByStoreId(storeId);
+		return fixedSpends;
 	}
 
 }
