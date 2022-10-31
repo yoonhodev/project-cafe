@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 
 <!DOCTYPE html>
 <html class="no-js" lang="ko">
@@ -96,85 +98,48 @@
                                     <div id="shopify-product-reviews">
                                     <div class="spr-container">
                                         <div class="spr-header clearfix">
-                                            <div class="spr-summary">
-                                                    <a href="#" id="toggle-form-btn" class="spr-summary-actions-newreview btn">글 쓰기</a>
-                                            </div>
-                                            </div>
+                                                                                        </div>
                                         <div id="toggle">
                                         <div class="spr-content">
 
                                          
 
                                         <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
-                                            <div class="spr-form clearfix" id="toggle-form" style="display:none">
-                                            	<script>
-													$( "#toggle-form-btn" ).click(function() {
-													  $( "#toggle-form" ).toggle( "slow" );
-													});
-													</script>
-
-                                                <form method="post" action="writeBoard" id="new-review-form" class="new-review-form" >
-                                                    <h3 class="spr-form-title">Write notice</h3>
+                                            <div class="spr-form clearfix" id="toggle-form" style="display:">
+                                            	<form method="post" action="edit" id="new-review-form" class="new-review-form" >
+                                            		<input type="hidden" name="boardId" value="${ board.boardId }">
+		        									<input type="hidden" name="pageNo" value="${ pageNo }">
+                                                    <h3 class="spr-form-title">글 수정하기</h3>
                                                     <fieldset class="spr-form-contact">
                                                     </fieldset>
                                                     <fieldset class="spr-form-review">
                                                       <div class="spr-form-review-title">
                                                         <label class="spr-form-label" for="review_title_10508262282">제목</label>
-                                                        <input class="spr-form-input spr-form-input-text " id="review_title_10508262282" type="text" name="title" value="" placeholder="Give your review a title">
+                                                        <input class="spr-form-input spr-form-input-text " id="review_title_10508262282" type="text" name="title" value="${ board.title }" placeholder="">
                                                       </div>
-                                                
+                                                		
                                                       <div class="spr-form-review-body">
                                                         <label class="spr-form-label" for="review_body_10508262282">내용<span class="spr-form-review-body-charactersremaining">(1500)</span></label>
                                                         <div class="spr-form-input">
-                                                          <textarea class="spr-form-input spr-form-input-textarea " id="review_body_10508262282" data-product-id="10508262282" name="content" rows="10" placeholder="Write your comments here"></textarea>
+                                                          <textarea class="spr-form-input spr-form-input-textarea " id="review_body_10508262282" data-product-id="10508262282" name="content" rows="10">${ board.content }</textarea>
                                                         </div>
                                                       </div>
                                                     </fieldset>
                                                     <fieldset class="spr-form-actions">
-                                                        <input type="submit" class="spr-button spr-button-primary button button-primary btn btn-primary" value="Submit">
+                                                        <input type="submit" class="spr-button spr-button-primary button button-primary btn btn-primary" value="수정하기">
                                                         <input id="btn-cancel" type="button" class="spr-button spr-button-primary button button-primary btn btn-primary" value="Cancel">
                                                     </fieldset>
-                                                   
                                                 </form>
                                             </div>
                                            	</div>
                                            	
-                                            <div>
-                                            <!-- 게시글 1개 시작 -->
-                                        	<c:forEach var="boards" items="${ boards }">
-                                        		<c:choose>
-                                        		<c:when test="${ boards.deleted }">
-                                                <div class="spr-review">
-                                                    <div class="spr-review-header">
-                                                        <h3 class="spr-review-header-title">공지번호 : ${ boards.boardId } &nbsp| &nbsp&nbsp&nbsp 제목 : [삭제된 글입니다] </h3>
-                                                        <span class="spr-review-header-byline"><strong>작성자 : ${ boards.workerId } &nbsp| &nbsp&nbsp&nbsp</strong><strong>작성일 : <fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/> &nbsp </strong></span>
-                                                    </div>
-                                                </div>
-                                        		</c:when>
-                                        		<c:otherwise>
-                                                <a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">
-                                                <div class="spr-review">
-                                                    <div class="spr-review-header">
-                                                        <h3 class="spr-review-header-title">공지번호 : ${ boards.boardId } &nbsp| &nbsp&nbsp&nbsp 제목 : ${ boards.title } </h3>
-                                                        <span class="spr-review-header-byline"><strong>작성자 : ${ boards.workerId } &nbsp| &nbsp&nbsp&nbsp</strong><strong>작성일 : <fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/> &nbsp </strong></span>
-                                                    </div>
-                                                </div>
-                                                </a>
-                                                </c:otherwise>
-                                                </c:choose>
-											</c:forEach>
-                                             <!-- 게시글 1개 끝 -->
-                                              
-                                            </div>
-                                            <div style="text-align: center;">
-	                                            ${ pager }
-											</div>
+                                            
                                     </div>
                                    
                                 </div>
                                 
                             </div>
-                            
+
                             <div id="tab-event-board" class="tab-content">
                                 <div id="shopify-product-reviews">
                                     <div class="spr-container">
@@ -317,11 +282,13 @@
 
      <script>
         $(function(){
-        	
         	$('#btn-cancel').on('click', function(event) {
-    			location.href = 'noticeBoard?boardId=${board.boardId}' +
+    			location.href = 'noticeBoardDetail?boardId=${board.boardId}' +
     							'&pageNo=${pageNo}';
     		});
+        	
+        	
+        	
         	
             var $pswp = $('.pswp')[0],
                 image = [],

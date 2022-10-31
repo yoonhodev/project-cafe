@@ -67,6 +67,23 @@ public class BoardServiceImpl implements BoardService {
 		
 	}
 
+	@Override
+	public BoardDto findBoardByBoardNo(int boardId) {
+		
+		BoardDto board = boardMapper.selectBoardByBoardNo(boardId);
+		
+		return board;
+	}
+
+	@Override
+	public void modifyBoard(BoardDto board) {
+
+		boardMapper.updateBoard(board);
+		
+		System.out.println("dd");
+		
+	}
+
 		
 }
 	
