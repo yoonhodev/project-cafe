@@ -102,12 +102,12 @@ public class BoardController {
 							  @RequestParam (defaultValue = "-1")int pageNo,
 							  Model model) { //Model --> jsp로 데이터 전달할때 씀
 		
-//		if (pageNo == -1) {
-//			//return "redirect:list.action";
-//			model.addAttribute("error_type", "delete");
-//			model.addAttribute("message", "잘못된 요청 : 글번호 또는 페이지 번호가 없습니다.");		
-//			return "board/error"; // WEB-ING/views/+ board/error + .jsp (오류가 나면 board/error페이지로 보냄) 
-//		}
+		if (pageNo == -1) {
+			//return "redirect:list.action";
+			model.addAttribute("error_type", "delete");
+			model.addAttribute("message", "잘못된 요청 : 글번호 또는 페이지 번호가 없습니다.");		
+			return "board/error"; // WEB-ING/views/+ board/error + .jsp (오류가 나면 board/error페이지로 보냄) 
+		}
 		
 		boardService.deleteBoard(boardId);
 		
