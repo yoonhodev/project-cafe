@@ -13,4 +13,6 @@ public interface CouponService {
 
 	CouponDto findCouponByCouponId(int couponId);
 
+	void deleteCouponMake(String customerId, int couponMakeId);
+
 }

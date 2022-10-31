@@ -39,7 +39,8 @@
 	        </div>
 	        <div class="container">
 	        	<div style="margin: 0 auto; width: 600px">
-					<img alt="할로윈 이벤트 배너" src="/project-template-prac/resources/assets/images/event/halloween.jpg">
+					<img alt="할로윈 이벤트 배너"
+						 src="/project-template-prac/resources/assets/images/event/halloween.jpg">
 				</div>
 				<br>
 				<div class="row">
@@ -47,20 +48,21 @@
 						<table>
 							<tr>
 								<td>
-									<input type="text" id="couponId" name="couponId" placeholder="쿠폰 입력">
+									<input type="text" id="couponId" name="couponId"
+										   placeholder="쿠폰 입력">
 								</td>
 								<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 								<td>
-				        			<a href="#" type="submit" id="createCoupon" class="btn btn-secondary btn--small">
-				        				확인<i class="fa fa-caret-right" aria-hidden="true"></i>
-					        		</a>
+				        			<button type="submit" class="btn btn-secondary btn--small">
+				        			확인</button>
 				        		</td>
 			        		</tr>
 		        		</table>
 	        		</form>
 	        		<br> <br> <br>
 					<div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
-						<form action="order" method="post" class="cart style2">
+						<form action="deletecoupon" method="post" id="deleteCouponForm"
+							  class="cart style2">
 							<table>
 								<thead class="cart__row cart__header">
 									<tr>
@@ -73,37 +75,45 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach var="couponMake" items="${ couponMakes }" varStatus="status">
-	                                <tr class="cart__row border-bottom line1 cart-flex border-top"
-	                                	align="center">
-	                                    <td>
-	                                        <span>${ status.count }</span>
-	                                    </td>
-	                                    <td>
-	                                        <div class="list-view-item__title">
-	                                            <span>${ couponMake.couponDto.couponName }</span>
-	                                        </div>
-	                                    </td>
-	                                    <td>
-	                                        <span>${ couponMake.couponDto.couponRate }원 할인</span>
-	                                    </td>
-	                                    <td>
-	                                        <span>${ couponMake.couponStart }</span>
-	                                    </td>
-	                                    <td>
-	                                        <span>${ couponMake.couponEnd }</span>
-	                                    </td>
-	                                    <td class="text-center small--hide">
-	                                    	<input type="hidden" id="couponMakeId" name="couponMakeId" value="${ couponMake.couponMakeId }">  
-	                                    	<a href="#" type="submit" class="btn btn--secondary cart__remove"
-	                                    	   title="Remove tem">
-	                                    		<i class="icon icon anm anm-times-l"></i>
-	                                    	</a>
-	                                    </td>
-	                                </tr>
+									<c:forEach var="couponMake" items="${ couponMakes }"
+											   varStatus="status">
+										<c:choose>
+										<c:when test="${ couponMake.couponEnd < today }">
+										<tr class="cart__row border-bottom line1 cart-flex border-top"
+				                           	align="center" style="color: lightgray">
+										</c:when>
+										<c:otherwise>
+										<tr class="cart__row border-bottom line1 cart-flex border-top"
+											align="center">
+										</c:otherwise>
+			                            </c:choose>
+		                                    <td>
+		                                        <span>${ status.count }</span>
+		                                    </td>
+		                                    <td>
+		                                        <span>${ couponMake.couponDto.couponName }</span>
+		                                    </td>
+		                                    <td>
+		                                        <span>${ couponMake.couponDto.couponRate }원 할인</span>
+		                                    </td>
+		                                    <td>
+		                                        <span>${ couponMake.couponStart }</span>
+		                                    </td>
+		                                    <td>
+		                                        <span>${ couponMake.couponEnd }</span>
+		                                    </td>
+		                                    <td class="text-center small--hide">
+		                                    	<input type="hidden" name="couponMakeId"
+		                                    		   id="deleteCouponMakeId">
+		                                    	<button type="button"
+		                                    			data-couponMakeId="${ couponMake.couponMakeId }"
+		                                    			class="btn btn-secondary btn--small btn-delete">
+		                                    		<i class="icon icon anm anm-times-l"></i>
+		                                    	</button>
+		                                    </td>
+		                                </tr>
 	                                </c:forEach>
                            		</tbody>
-								<tfoot></tfoot>
 							</table>
 						</form>
 					</div>
@@ -125,20 +135,13 @@
 	</div>
 	<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 	<script type="text/javascript">
-		$('#createCoupon').on('click', function(event) {
-			event.preventDefault();
-			
-			const formData = $('#createcouponform').serialize(); // form 내부의 모든 입력 요소의 값을 전송가능한 형식으로 반환
-			
-			$.ajax({
-				"url": "coupon",
-				"method": "post",
-				"data": formData,
-				"success": function(data, status, xhr) {},
-				"error": function(xhr, status, err) {}
+		$(function() {
+			$(".btn-delete").on("click", function() {
+				var couponMakeId = $(this).attr("data-couponMakeId");
+				$("#deleteCouponMakeId").val(couponMakeId);
+				$("#deleteCouponForm").submit();
 			});
-			$('#couponId').val("");
 		});
-		</script>
+	</script>
 </body>
 </html>

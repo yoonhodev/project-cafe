@@ -1,10 +1,7 @@
 package com.projectprac.dto;
 
-import java.util.Date;
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -27,7 +24,7 @@ public class CustomerDto {
 	@Email
 	private String email;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date birth;
+	private String birth;
 	private int stamp;
 	private boolean userType;
 //	private String userType;
