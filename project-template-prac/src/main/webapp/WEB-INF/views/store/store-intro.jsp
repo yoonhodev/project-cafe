@@ -47,7 +47,10 @@
                     	
                     	<div class="article"> 
                   			<c:forEach var="store" items="${ stores }">
-
+							<c:choose>
+							<c:when test="${ store.deleted }">
+							</c:when>
+							<c:otherwise>
                             <!-- Article Image --> 
                             
                             <a class="article_featured-image" ><img class="blur-up lazyload article_featured-image" src="/project-template-prac/resources/assets/images/cafe-out-image-folder/${ store.storeUniqueimage }" alt="이미지 로드 실패"></a>                          
@@ -74,18 +77,18 @@
                                         </c:if>
                                     </ul>
                                 </c:otherwise>
-                                
                                 </c:choose>
-<!--                                     <ul class="inline-list">    -->
-<!--                                         <li><i class="icon anm anm-comments-l"></i> <a href="#"> 오픈현황</a></li> -->
-<!--                                     </ul> -->
                                 </li>
                             </ul>
                             <div class="rte"> 
                                 <p>${ store.storeIntroduce }</p>
                                  </div>
                            <!--  <p><a href="#" class="btn btn-secondary btn--small">Read more <i class="fa fa-caret-right" aria-hidden="true"></i></a></p> -->
-                      
+                     					 <c:if test="${ loginuser.userType }">
+                                        <input type="button" class="deleted_store_intro btn" id="deleted-${ store.storeId }"   value="삭제" data-storeId="${ store.storeId }" />
+                                        </c:if>
+                        </c:otherwise>
+                        </c:choose>
                         </c:forEach> 
                         </div>
                        
@@ -137,6 +140,16 @@
 // 								alert(storeId);
 								
 								location.href = storeId + '/close';
+								
+							});
+							
+							$(".deleted_store_intro").on('click', function(event) {
+								
+								var storeId = $(this).attr("data-storeId")
+								
+// 								alert(storeId);
+								
+								location.href = storeId + '/deleted';
 								
 							});
 					   });
