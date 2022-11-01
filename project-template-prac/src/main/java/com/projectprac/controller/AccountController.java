@@ -34,12 +34,11 @@ public class AccountController {
 			System.out.println("유효성 검사 오류 발생");
 			return "redirect:register";
 		}
-		
 		// 1. 요청 데이터 읽기 -> DTO에 저장 : 전달인자 사용으로 대체
-		System.out.println(customer);
 
 		// 2. 요청 처리
 		accountService.registerCustomer(customer);
+		System.out.println(customer);
 
 		// 3. View에서 사용할 수 있도록 데이터 전달 / 4. View 또는 다른 Controller로 이동
 		return "account/login";

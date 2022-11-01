@@ -13,8 +13,8 @@ import com.projectprac.dto.CustomerDto;
 public interface CustomerMapper {
 
 	// 7) 코드 작성
-	@Insert("INSERT INTO customer (customer_id, passwd, phone, email, address, sex, birth) " +
-			"VALUES (#{ customerId }, #{ passwd }, #{ phone }, #{ email }, #{ address }, #{ sex }, #{ birth }) ")
+	@Insert("INSERT INTO customer (customer_id, passwd, phone, email, address, sex, birth, reg_date) " +
+			"VALUES (#{ customerId }, #{ passwd }, #{ phone }, #{ email }, #{ address }, #{ sex }, #{ birth }, #{ regDate }) ")
 	void insertCustomer(CustomerDto customer);
 
 	@Select("SELECT customer_id customerId, passwd, phone, address, sex, email, birth, stamp, usertype " +

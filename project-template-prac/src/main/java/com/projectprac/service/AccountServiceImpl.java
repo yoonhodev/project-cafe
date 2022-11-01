@@ -1,5 +1,8 @@
 package com.projectprac.service;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import com.projectprac.common.Util;
 import com.projectprac.dto.CustomerDto;
 import com.projectprac.mapper.CustomerMapper;
@@ -18,7 +21,13 @@ public class AccountServiceImpl implements AccountService {
 
 		String passwd = Util.getHashedString(customer.getPasswd(), "SHA-256");
 		customer.setPasswd(passwd); // 암호화된 패스워드를 멤버에 저장
-		customerMapper.insertCustomer(customer);
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar cal = Calendar.getInstance();
+        String regDate = sdf.format(cal.getTime());
+        customer.setRegDate(regDate);
+		
+        customerMapper.insertCustomer(customer);
 
 	}
 	

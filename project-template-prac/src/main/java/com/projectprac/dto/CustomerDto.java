@@ -27,8 +27,8 @@ public class CustomerDto {
 	private String birth;
 	private int stamp;
 	private boolean userType;
-//	private String userType;
-//	private Date regDate;
+
+	private String regDate;
 //	private boolean active;
 	
 }
