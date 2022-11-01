@@ -75,44 +75,56 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach var="couponMake" items="${ couponMakes }"
-											   varStatus="status">
-										<c:choose>
-										<c:when test="${ couponMake.couponEnd < today }">
-										<tr class="cart__row border-bottom line1 cart-flex border-top"
-				                           	align="center" style="color: lightgray">
+									<c:choose>
+										<c:when test="${ not empty couponMakes }">
+											<c:forEach var="couponMake" items="${ couponMakes }"
+													   varStatus="status">
+												<c:choose>
+													<c:when test="${ couponMake.couponEnd < today }">
+														<tr class="cart__row border-bottom line1 cart-flex border-top"
+								                           	align="center" style="color: lightgray">
+													</c:when>
+													<c:otherwise>
+														<tr class="cart__row border-bottom line1 cart-flex border-top"
+															align="center">
+													</c:otherwise>
+					                            </c:choose>
+				                                    <td>
+				                                        <span>${ status.count }</span>
+				                                    </td>
+				                                    <td>
+				                                        <span>${ couponMake.couponDto.couponName }</span>
+				                                    </td>
+				                                    <td>
+				                                        <span>${ couponMake.couponDto.couponRate }원 할인</span>
+				                                    </td>
+				                                    <td>
+				                                        <span>${ couponMake.couponStart }</span>
+				                                    </td>
+				                                    <td>
+				                                        <span>${ couponMake.couponEnd }</span>
+				                                    </td>
+				                                    <td class="text-center small--hide">
+				                                    	<input type="hidden" name="couponMakeId"
+				                                    		   id="deleteCouponMakeId">
+				                                    	<button type="button"
+				                                    			data-couponMakeId="${ couponMake.couponMakeId }"
+				                                    			class="btn btn-secondary btn--small btn-delete">
+				                                    		<i class="icon icon anm anm-times-l"></i>
+				                                    	</button>
+				                                    </td>
+				                                </tr>
+											</c:forEach>
 										</c:when>
-										<c:otherwise>
+									<c:otherwise>
 										<tr class="cart__row border-bottom line1 cart-flex border-top"
 											align="center">
-										</c:otherwise>
-			                            </c:choose>
-		                                    <td>
-		                                        <span>${ status.count }</span>
-		                                    </td>
-		                                    <td>
-		                                        <span>${ couponMake.couponDto.couponName }</span>
-		                                    </td>
-		                                    <td>
-		                                        <span>${ couponMake.couponDto.couponRate }원 할인</span>
-		                                    </td>
-		                                    <td>
-		                                        <span>${ couponMake.couponStart }</span>
-		                                    </td>
-		                                    <td>
-		                                        <span>${ couponMake.couponEnd }</span>
-		                                    </td>
-		                                    <td class="text-center small--hide">
-		                                    	<input type="hidden" name="couponMakeId"
-		                                    		   id="deleteCouponMakeId">
-		                                    	<button type="button"
-		                                    			data-couponMakeId="${ couponMake.couponMakeId }"
-		                                    			class="btn btn-secondary btn--small btn-delete">
-		                                    		<i class="icon icon anm anm-times-l"></i>
-		                                    	</button>
-		                                    </td>
-		                                </tr>
-	                                </c:forEach>
+											<td colspan="6" >
+												<span>보유한 쿠폰이 없습니다.</span>
+											</td>
+										</tr>
+									</c:otherwise>
+									</c:choose>
                            		</tbody>
 							</table>
 						</form>
