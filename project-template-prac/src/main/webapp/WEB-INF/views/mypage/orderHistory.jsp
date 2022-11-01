@@ -45,62 +45,42 @@
 					<thead class="cart__row cart__header">
 						<tr>
 							<th class="text-center">주문번호</th>
+							<th class="text-center">주문지점</th>
 							<th class="text-center">주문내용</th>
 							<th class="text-center">주문금액</th>
 							<th class="text-center">주문일자</th>
 						</tr>
 					</thead>
 						<tbody>
-                              <tr  class="cart__row border-bottom line1 cart-flex border-top" align="center">
+							<c:forEach var="orderHistory" items="${ orderHistory }" >
+                              	<tr class="cart__row border-bottom line1 cart-flex border-top" align="center">
                                   <td height="200px">
-                                      <span>2022102700001</span>
+                                      <span>${ orderHistory.order_id }</span>
                                   </td>
                                   <td>
-                                      <span>Americano (Ice) * 1</span><br>
-                                      <span>Caffe Latte (Ice) * 1</span>
+                                      <span>${ orderHistory.store_id }</span>
                                   </td>
                                   <td>
-                                      <span>￦6,500</span>
+                                      <span>${ orderHistory.prod_id } * ${ orderHistory.amount }</span>
                                   </td>
                                   <td>
-                                      <span>2022.10.27</span>
+                                      <span>${ orderHistory.order_pay }</span>
+                                  </td>
+                                  <td>
+                                      <span>${ orderHistory.order_date }</span>
                                   </td>
                               	</tr>
-                              	
-                              	<tr  class="cart__row border-bottom line1 cart-flex border-top" align="center">
-                                  <td height="200px">
-                                      <span>2022102600002</span>
-                                  </td>
-                                  <td>
-                                      <span>Caffe Mocha (Hot) * 1</span>
-                                  </td>
-                                  <td>
-                                      <span>￦4,500</span>
-                                  </td>
-                                  <td>
-                                      <span>2022.10.26</span>
-                                  </td>
-                              	</tr>
-                              	
-                              	<tr  class="cart__row border-bottom line1 cart-flex border-top" align="center">
-                                  <td height="200px">
-                                      <span>2022102600001</span>
-                                  </td>
-                                  <td>
-                                      <span>Americano (Ice) * 1</span>
-                                  </td>
-                                  <td>
-                                      <span>￦2,000</span>
-                                  </td>
-                                  <td>
-                                      <span>2022.10.26</span>
-                                  </td>
-                              	</tr>
+                             </c:forEach>
                               	
                               	
                       		</tbody>
 					<tfoot></tfoot>
 				</table>
+				
+				                              	
+				<br><br>
+                              	
+				${ pager }
         	
         	
         	</div>

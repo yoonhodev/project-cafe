@@ -23,7 +23,9 @@ public class AuthInterceptor implements HandlerInterceptor {
 		if (customer == null) {	// 로그인 하지 않은 사용자
 			if (uri.contains("/coupon") 	|| 
 				uri.contains("/mypage")		||
-				uri.contains("/writeStore")) 	{ // 로그인한 사용자만 볼 수 있는 요청
+				uri.contains("/writeStore") ||
+				uri.contains("/order")      ||
+				uri.contains("/shop"))  	{ // 로그인한 사용자만 볼 수 있는 요청
 			
 				resp.sendRedirect("/project-template-prac/login");
 				return false; // 예정된 컨트롤러 호출을 취소
