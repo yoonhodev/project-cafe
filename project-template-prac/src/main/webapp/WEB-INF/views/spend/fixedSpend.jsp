@@ -59,10 +59,10 @@
                                                 <form method="post" action="#" id="new-review-form" class="new-review-form">
                                                     <h3 class="spr-form-title">고정 지출 입력</h3>
                                                     <fieldset class="spr-form-contact">
-                                                    	<div class="spr-form-contact-name">
-                                                          <label class="spr-form-label" for="review_author_10508262282">월</label>
-                                                          <input class="spr-form-input spr-form-input-text " id="review_author_10508262282" type="date" name="month" placeholder="월을 입력해주세요">
-                                                        </div>
+<!--                                                     	<div class="spr-form-contact-name"> -->
+<!--                                                           <label class="spr-form-label" for="review_author_10508262282">월</label> -->
+<!--                                                           <input class="spr-form-input spr-form-input-text " id="review_author_10508262282" type="date" name="month" placeholder="월을 입력해주세요"> -->
+<!--                                                         </div> -->
                                                         <div class="spr-form-contact-name">
                                                           <label class="spr-form-label" for="review_author_10508262282">임대료</label>
                                                           <input class="spr-form-input spr-form-input-text " id="review_author_10508262282" type="text" name="monthPay" placeholder="임대료 입력해주세요">
