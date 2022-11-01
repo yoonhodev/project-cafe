@@ -22,49 +22,6 @@
 <meta name="description" content="description">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jsp:include page="/WEB-INF/views/modules/common-css.jsp"></jsp:include>
-<style>
- 
-        /* pagination position styling */
-        .pagination_section {
-            position: relative;
-        }
- 
-        /* pagination styling */
-        .pagination_section a {
-            color: black;
-            padding: 10px 18px;
-            text-decoration: none;
-        }
- 
-        /* pagination hover effect on non-active */
-        .pagination_section a:hover:not(.active) {
-            background-color: #031F3B;
-            color: white;
-        }
- 
-        /* pagination hover effect on active*/
- 
-        a:nth-child(5) {
-            background-color: green;
-            color: white;
-        }
- 
-        a:nth-child(1) {
-            font-weight: bold;
-        }
- 
-        a:nth-child(7) {
-            font-weight: bold;
-        }
- 
-        .content-pagenation {
-            margin: 50px;
-            padding: 15px;
-            width: 700px;
-            height: 200px;
-            border: 2px solid black;
-        }
-    </style>
 
 </head>
 <body class="template-blog belle">
@@ -92,12 +49,12 @@
                         
                     </div>
                     <div class="blog--list-view blog--grid-load-more">
-                        <div class="article"> 
+                        <div class="article" style="font-size: 17px"> 
                             <!-- Article Image --> 
                              <a class="article_featured-image" href="#"><img class="blur-up lazyload" data-src="resources/assets/images/blog/blog-post-3.jpg" src="resources/assets/images/blog/blog-post-3.jpg" alt="How to Wear The Folds Trend Four Ways"></a> 
-                            <h2 class="h3"><a href="#">${ boardDetail.title }</a></h2>
+                            <h2 class="h3" style="font-size: 17px"><a href="#">${ boardDetail.title }</a></h2>
                             <ul class="publish-detail">                      
-                                <li><i class="anm anm-user-al" aria-hidden="true"></i>  ${ boardDetail.workerId }</li>
+                                <li><i class="anm anm-user-al" aria-hidden="true"></i> ADMIN</li>
                                 <li><i class="icon anm anm-clock-r"></i> <time datetime="2017-05-02"><fmt:formatDate value="${ boardDetail.regdate }" pattern="yyyy-MM-dd"/></time></li>
                                 <li>
                                     <ul class="inline-list">   
@@ -105,6 +62,7 @@
                                     </ul>
                                 </li>
                             </ul>
+                            <br>
                             <div class="rte"> 
 
                                 <p><c:set var="enter" value="
@@ -115,10 +73,10 @@
                       	    </div>
                         <div class="loadmore-post">	
                             <a></a>
-                          	<%-- 로그인한 사용자와 작성자가 같은 경우에 편집, 삭제 버튼 표시 --%>
-                          	
+                          	<c:if test="${ loginuser.userType }">
                             <a id="update_button" class="btn" style="color: white">수정</a>
                             <a id="delete_button" class="btn" style="color: white">삭제</a>
+                            </c:if>
                             <a href="noticeBoard?pageNo=${ pageNo }" class="btn" style="color: white">목록보기</a>
                         </div>
                      

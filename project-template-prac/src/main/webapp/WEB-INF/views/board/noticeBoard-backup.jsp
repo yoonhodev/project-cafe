@@ -15,10 +15,52 @@
 <meta name="description" content="description">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jsp:include page="/WEB-INF/views/modules/common-css.jsp"></jsp:include>
+<style>
+ 
+        /* pagination position styling */
+        .pagination_section {
+            position: relative;
+        }
+ 
+        /* pagination styling */
+        .pagination_section a {
+            color: black;
+            padding: 10px 18px;
+            text-decoration: none;
+        }
+ 
+        /* pagination hover effect on non-active */
+        .pagination_section a:hover:not(.active) {
+            background-color: #031F3B;
+            color: white;
+        }
+ 
+        /* pagination hover effect on active*/
+ 
+        a:nth-child(5) {
+            background-color: green;
+            color: white;
+        }
+ 
+        a:nth-child(1) {
+            font-weight: bold;
+        }
+ 
+        a:nth-child(7) {
+            font-weight: bold;
+        }
+ 
+        .content-pagenation {
+            margin: 50px;
+            padding: 15px;
+            width: 700px;
+            height: 200px;
+            border: 2px solid black;
+        }
+    </style>
 
 </head>
 <body class="template-product belle">
-
 	<div class="pageWrapper">
     	<jsp:include page="/WEB-INF/views/modules/header.jsp"></jsp:include>
         <br><br><br>
@@ -56,28 +98,30 @@
                                     <div id="shopify-product-reviews">
                                     <div class="spr-container">
                                         <div class="spr-header clearfix">
-                                        
                                         	<c:if test="${ loginuser.userType }">
+                             
                                                     <a href="#" id="toggle-form-btn" class="spr-summary-actions-newreview btn">글 쓰기</a>
+                                
                                             </c:if>
-                                            
-                                        </div>
-                                        <h3 class="spr-form-title"></h3>
-                                                    <fieldset class="spr-form-contact">
-                                                    </fieldset>
+                                            </div>
                                         <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
                                             <div class="spr-form clearfix" id="toggle-form" style="display:none">
                                             	<script>
 													$( "#toggle-form-btn" ).click(function() {
 													  $( "#toggle-form" ).toggle( "slow" );
 													});
-												</script>
+													</script>
 
                                                 <form method="post" action="writeBoard" id="new-review-form" class="new-review-form" >
                                                     <h3 class="spr-form-title">Write notice</h3>
                                                     <fieldset class="spr-form-contact">
                                                     </fieldset>
                                                     <fieldset class="spr-form-review">
+                                                      <div class="spr-form-review-title">
+                                                        <label class="spr-form-label" for="review_title_10508262282">작성자</label>
+                                                        <input class="spr-form-input spr-form-input-text " id="review_title_10508262282" type="text" name="title" value="" placeholder="ADMIN">
+                                                      </div>
+                                                    
                                                       <div class="spr-form-review-title">
                                                         <label class="spr-form-label" for="review_title_10508262282">제목</label>
                                                         <input class="spr-form-input spr-form-input-text " id="review_title_10508262282" type="text" name="title" value="" placeholder="제목을 입력하세요.">
@@ -91,64 +135,42 @@
                                                       </div>
                                                     </fieldset>
                                                     <fieldset class="spr-form-actions">
-                                                        <input type="submit" class="spr-button spr-button-primary button button-primary btn btn-primary" value="확인">
-                                                        <input id="btn-cancel" type="button" class="spr-button spr-button-primary button button-primary btn btn-primary" value="취소">
+                                                        <input type="submit" class="spr-button spr-button-primary button button-primary btn btn-primary" value="Submit">
+                                                        <input id="btn-cancel" type="button" class="spr-button spr-button-primary button button-primary btn btn-primary" value="Cancel">
                                                     </fieldset>
-                                                   	<br>
+                                                   
                                                 </form>
                                             </div>
                                            	</div>
                                            	
                                             <div>
-                                           
-                            <div style="font-size: 15pt">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th style="height: 25px; font-size: 17px">No.</th>
-                                            <th style="height: 25px; font-size: 17px">제목</th>
-                                            <th style="height: 25px; font-size: 17px">작성자</th>
-                                            <th style="height: 25px; font-size: 17px">조회수</th>
-                                            <th style="height: 25px; font-size: 17px">작성일</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    	<c:forEach var="boards" items="${ boards }">
-                                    	<c:choose>
-                                        <c:when test="${ boards.deleted }">
-                                        <tr>
-                                            <td style="height: 25px; font-size: 17px">${ boards.boardId }</td>
-                                            <td style="height: 25px; font-size: 17px">[삭제된 글입니다.]</td>
-                                            <td style="height: 25px; font-size: 17px">ADMIN</td>
-                                            <td style="height: 25px; font-size: 17px">0</td>
-                                            <td style="height: 25px; font-size: 17px"><fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/></td>
-                                        </tr>
-                                        </c:when>
-                                        <c:otherwise>
-                              			<tr>
-                                            <td style="height: 25px; font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.boardId }</a></td>
-                                            <td style="height: 25px; font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.title }</a></td>
-                                            <td style="height: 25px; font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">ADMIN</a></td>
-                                            <td style="height: 25px; font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">0</a></td>
-                                            <td style="height: 25px; font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }"><fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/></a></td>
-                                        </tr>  
-                                         </c:otherwise>
-                                         </c:choose>
-										</c:forEach>
-                                
-                                      
-                                    </tbody>
-                                </table>
-                                <br>
-                                <div style="text-align: center; background-color: white">
-	                                            <span style="background-color: white">${ pager }</span>
-								</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                      
-											
+                                            <!-- 게시글 1개 시작 -->
+                                        	<c:forEach var="boards" items="${ boards }">
+                                        		<c:choose>
+                                        		<c:when test="${ boards.deleted }">
+                                                <div class="spr-review">
+                                                        <span class="spr-review-header-byline" style="font-size: 10pt"><strong>[No.${ boards.boardId }] &nbsp&nbsp&nbsp 제목 : [삭제된 글입니다] </strong></span>
+                                                        <span class="spr-review-header-byline" style="font-size: 10pt; text-align: right;"><strong>작성자 : ADMIN </strong><strong>작성일 : <fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/> </strong></span>
+                                                </div>
+                                        		</c:when>
+                                        		<c:otherwise>
+                                                <a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">
+                                                <div class="spr-review">
+                                                    <div class="spr-review-header">
+                                                        <h3 class="spr-review-header-title">공지번호 : ${ boards.boardId } &nbsp| &nbsp&nbsp&nbsp 제목 : ${ boards.title } </h3>
+                                                        <span class="spr-review-header-byline"><strong>작성자 : ADMIN &nbsp| &nbsp&nbsp&nbsp</strong><strong>작성일 : <fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/> &nbsp </strong></span>
+                                                    </div>
+                                                </div>
+                                                </a>
+                                                </c:otherwise>
+                                                </c:choose>
+											</c:forEach>
+                                             <!-- 게시글 1개 끝 -->
+                                              
+                                            </div>
+                                            <div style="text-align: center;">
+	                                            ${ pager }
+											</div>
                                     </div>
                                    
                                 </div>

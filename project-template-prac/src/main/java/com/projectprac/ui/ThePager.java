@@ -30,17 +30,17 @@ public class ThePager {
 		//1. 처음, 이전 항목 만들기
 		if (pageNo > 1) {
 			linkString.append(
-				String.format("[<a href='%s?pageNo=1'>처음</a>]",linkUrl));
+				String.format("<a href='%s?pageNo=1'>&nbsp<<&nbsp</a>",linkUrl));
 			linkString.append("&nbsp;");
 			linkString.append("&nbsp;");
 			linkString.append(String.format(
-				"[<a href='%s?pageNo=%d'>이전</a>]", linkUrl, pageNo - 1));
+				"<a href='%s?pageNo=%d'>&nbsp<&nbsp</a>", linkUrl, pageNo - 1));
 			linkString.append("&nbsp;");
 		} else {
-			linkString.append("[<span style='color:lightgray'>처음</span>]");
+			linkString.append("<span style='color:lightgray'>&nbsp<<&nbsp</span>");
 			linkString.append("&nbsp;");
 			linkString.append("&nbsp;");
-			linkString.append("[<span style='color:lightgray'>이전</span>]");
+			linkString.append("<span style='color:lightgray'>&nbsp<&nbsp</span>");
 			linkString.append("&nbsp;");
 		}
 		
@@ -52,7 +52,7 @@ public class ThePager {
 			if (i > pageCount) break;
 			linkString.append("&nbsp;");
 			if(i == pageNo) {
-				linkString.append(String.format("[%d]", i));
+				linkString.append(String.format("<span style='color:red; font-weight: bold'>[%d]</span>", i));
 			} else { 
 				linkString.append(String.format(
 					"<a href='%s?pageNo=%d'>%d</a>", linkUrl, i, i));
@@ -64,16 +64,16 @@ public class ThePager {
 		if (pageNo < pageCount) {
 			linkString.append("&nbsp;");
 			linkString.append(String.format(
-				"[<a href='%s?pageNo=%d'>다음</a>]",linkUrl, pageNo + 1));
+				"<a href='%s?pageNo=%d'>&nbsp>&nbsp</a>",linkUrl, pageNo + 1));
 			linkString.append("&nbsp;");
 			linkString.append("&nbsp;");
 			linkString.append(String.format(
-				"[<a href='%s?pageNo=%d'>마지막</a>]", linkUrl, pageCount));
+				"<a href='%s?pageNo=%d'>&nbsp>>&nbsp</a>", linkUrl, pageCount));
 		} else {
-			linkString.append("[<span style='color:lightgray'>다음</span>]");
+			linkString.append("<span style='color:lightgray'>&nbsp>&nbsp</span>");
 			linkString.append("&nbsp;");
 			linkString.append("&nbsp;");
-			linkString.append("[<span style='color:lightgray'>마지막</span>]");
+			linkString.append("<span style='color:lightgray'>&nbsp>>&nbsp</span>");
 			linkString.append("&nbsp;");
 		}
 		

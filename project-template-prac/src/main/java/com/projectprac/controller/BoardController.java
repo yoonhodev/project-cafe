@@ -22,7 +22,7 @@ import com.projectprac.ui.ThePager;
 @Controller
 public class BoardController {
 
-	private final int PAGE_SIZE = 5; 	// 한 페이지에 표시되는 데이터 개수
+	private final int PAGE_SIZE = 10; 	// 한 페이지에 표시되는 데이터 개수
 	private final int PAGER_SIZE = 5;	// 한 번에 표시할 페이지 번호 개수
 	private final String LINK_URL = "noticeBoard"; // 페이지 번호를 클릭했을 때 이동할 페이지 경로
 	
