@@ -60,8 +60,8 @@
                                 <li>
                                 <c:choose>
                                 <c:when test="${ store.storeOpen }">
-                               		 <ul class="inline-list">   
-                                        <li><i class="icon anm anm-comments-l"></i> <a style="color: green;">OPEN</a></li>
+                               		 <ul class="inline-list">                                          
+                                        <li><i class="icon anm anm-comments-l"></i> <a style="color: green;">OPEN</a></li>                                        
                                         <c:if test="${ loginuser.userType }">
                                         <input type="button" class="change_to_close btn" id="close-${ store.storeId }"   value="close" data-storeId="${ store.storeId }" />
                                         </c:if>
@@ -117,6 +117,7 @@
 								var storeId = $(this).attr("data-storeId")
 								
 								location.href = storeId + '/open';
+								
 							});	
 							
 							$(".change_to_close").on('click', function(event) {
@@ -133,8 +134,9 @@
 								
 								location.href = storeId + '/deleted';
 								
-							});
-					   });
+							});						
+
+						 });
         </script>
 		
 </div>
