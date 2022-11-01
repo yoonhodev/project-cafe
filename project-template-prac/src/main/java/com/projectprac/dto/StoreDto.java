@@ -14,5 +14,6 @@ public class StoreDto {
 	private boolean storeOpen;
 	private String storeImage;
 	private String storeUniqueimage;
+	private boolean deleted;
 	
 }

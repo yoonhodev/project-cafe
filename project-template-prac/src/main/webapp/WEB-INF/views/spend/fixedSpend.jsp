@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Green Coffe</title>
+<title>Green Coffee</title>
 <meta name="description" content="description">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Common-css -->
@@ -19,7 +19,6 @@
 		<!-- Header -->
 		<jsp:include page="/WEB-INF/views/modules/header.jsp"></jsp:include>
 		<!-- ./Header -->
-
 		<!-- Body Content -->
 		<div id="page-content">
 			<!-- MainContent -->
@@ -41,8 +40,8 @@
 										<div class="spr-header clearfix">
 											<div class="spr-summary">
 												<h1>지점명</h1><br>
-											    <form action="fixedSpend2" method="post" id="show-cost-form">
-												    <select id="StoreName">
+											    <form action="fixedSpend" method="get" id="show-cost-form">
+												    <select id="StoreName" name="storeId" class="StoreName">
 												    	<option selected disabled hidden="">==지점 선택==</option>
 												      	<c:forEach var="store" items="${ stores }" varStatus="status">
 												        	<option value="${ store.storeId }">${ store.storeName }</option>
@@ -52,6 +51,7 @@
 													<input type="hidden" id="StoreId1" name="storeId">
 													<input type="submit"
 														   class="spr-button spr-button-primary button button-primary btn btn-primary"
+														   id="SelectStore"
 														   value="확인">
 												</form>
 												
@@ -59,7 +59,8 @@
 										</div>
 										<div class="spr-content">
 											<div class="spr-form clearfix">
-												<form action="order" method="post" class="cart style2">
+												<div id="loadList">
+												<form action="order" method="post" class="cart style2">													
 													<table>
 														<thead class="cart__row cart__header">
 															<tr>
@@ -72,8 +73,8 @@
 																<th class="text-center">광고비</th>
 																<th class="text-center">배달비</th>
 															</tr>
-														</thead>
-														<tbody>
+														</thead>																										
+														<tbody>																												
 															<c:forEach var="fixedSpend" items="${ fixedSpends }" varStatus="status">
 															<tr class="cart__row border-bottom line1 cart-flex border-top"
 																align="center">
@@ -84,13 +85,13 @@
 																<td><span>${ fixedSpend.elecPay }</span></td>
 																<td><span>${ fixedSpend.waterPay }</span></td>
 																<td><span>${ fixedSpend.adPay }</span></td>
-																<td><span>${ fixedSpend.deliPay }</span></td>
-																	
-															</tr>
-															</c:forEach>
-														</tbody>
+																<td><span>${ fixedSpend.deliPay }</span></td>										
+															</tr>																												
+															</c:forEach>																												
+														</tbody>																												
 													</table>
 												</form>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -105,7 +106,7 @@
 										<div class="spr-header clearfix">
 											<div class="spr-summary">
 												<h1>지점명</h1>
-											    <select id="StoreName">
+											    <select id="StoreName2" class="StoreName">
 											    	<option selected disabled hidden="">==지점 선택==</option>
 											      	<c:forEach var="store" items="${ stores }" varStatus="status">
 											        	<option value="${ store.storeId }">${ store.storeName }</option>
@@ -203,11 +204,18 @@
 			var activeTab = $(this).attr("data-name"); 
 			$("#"+activeTab).fadeIn();
 		});
-		$("#StoreName").on("change", function() {
+		$(".StoreName").on("change", function() {
 			var storeId = $(this).val()
 			$("#StoreId1").val(storeId);
 			$("#StoreId2").val(storeId);
 		});
+		
+		
+		$('#SelectStore').on('click', function(event) {
+			$('#loadList').load(location.href + ' #loadList');
+		});
+		
+		
     </script>
 </body>
 </html>

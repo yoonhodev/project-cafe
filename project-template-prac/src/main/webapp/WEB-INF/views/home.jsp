@@ -37,10 +37,10 @@
 								<div class="slideshow__text-content left">
 									<div class="container">
 										<div class="wrap-caption left">
-											<h2 class="h1 mega-title slideshow__title">Gift For her</h2>
+											<h2 class="h1 mega-title slideshow__title">CHECK OUR MENU</h2>
 											<span class="mega-subtitle slideshow__subtitle">
-												The latest collection from italian brands</span>
-											<span class="btn">Shop now</span>
+												Order now!</span>
+											<a href="shop"><span class="btn">MENU</span></a>
 										</div>
 									</div>
 								</div>
@@ -55,15 +55,15 @@
 			<div class="section">
 				<div class="hero hero--large hero__overlay bg-size">
 					<img class="bg-img blur-up"
-						src="/project-template-prac/resources/assets/images/parallax-banners/home9-parallax-banner1.jpg"
-						alt="" />
+						src="/project-template-prac/resources/assets/images/cafe-out-image-folder/cafe_light01.png"
+						alt="1" />
 					<div class="hero__inner">
 						<div class="container">
 							<div class="wrap-text right text-medium font-bold">
-								<h2 class="h2 mega-title">Kids Collection</h2>
+								<h2 class="h2 mega-title">STORE INTRODUCE</h2>
 								<div class="rte-setting mega-subtitle">
-									Plenty of options for your kids. Be the first to buy</div>
-								<a href="#" class="btn">Shop Kids</a>
+									Check our cafe introduce</div>
+								<a href="store" class="btn">지점 소개</a>
 							</div>
 						</div>
 					</div>
@@ -75,22 +75,21 @@
 			<div class="section">
 				<div class="hero hero--large hero__overlay bg-size">
 					<img class="bg-img"
-						src="/project-template-prac/resources/assets/images/parallax-banners/home9-parallax-banner2.jpg"
+						src="/project-template-prac/resources/assets/images/cafe-out-image-folder/coffee_for_home.jpg"
 						alt="" />
 					<div class="hero__inner">
 						<div class="container">
 							<div class="wrap-text  left text-large font-bold">
 								<h2 class="h2 mega-title">
-									The mid season SALE.<br>UP TO 50% OFF
+									NOTICE / EVENT BOARD
 								</h2>
 								<div class="rte-setting mega-subtitle">
-									Live life Comfortable.<br>This flip flops switch, flip
-									&amp; reverse to make up to 246 combos!
+									Check event board and enter event!!
 									<p>
-										<b>FREE SHIPPING on all orders over $199</b>
+										<b></b>
 									</p>
 								</div>
-								<a href="#" class="btn">Shop Now</a>
+								<a href="noticeBoard" class="btn">BOARD</a>
 							</div>
 						</div>
 					</div>
@@ -102,15 +101,14 @@
 			<div class="section">
 				<div class="hero hero--large hero__overlay bg-size">
 					<img class="bg-img"
-						src="/project-template-prac/resources/assets/images/parallax-banners/home9-parallax-banner3.jpg"
+						src="/project-template-prac/resources/assets/images/cafe-out-image-folder/cafe_for_home01.jpg"
 						alt="" />
 					<div class="hero__inner">
 						<div class="container">
 							<div class="wrap-text  center text-medium font-bold">
-								<h2 class="h2 mega-title">Women Wallets</h2>
-								<div class="rte-setting mega-subtitle">Carry this stylist
-									wallets for party</div>
-								<a href="#" class="btn">Explore more</a>
+								<h2 class="h2 mega-title">CREATE YOUR ACCOUNT</h2>
+								<div class="rte-setting mega-subtitle">Create your own account and get coupon!!</div>
+								<a href="register" class="btn">REGISTER</a>
 							</div>
 						</div>
 					</div>

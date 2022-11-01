@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.projectprac.dto.FixedSpendDto;
 import com.projectprac.dto.StoreDto;
@@ -21,8 +22,14 @@ public class FixedSpendController {
 	private FixedSpendService fixedSpendService;
 	
 	@GetMapping(path = {"fixedSpend"})
-	public String fixSpend(FixedSpendDto fixedSpend, Model model) {
+	public String fixSpend(@RequestParam(defaultValue = "-1" )int storeId, FixedSpendDto fixedSpend, Model model) {
 		List<StoreDto> stores = fixedSpendService.showAllStore();
+		if(storeId != -1 ) {
+			List<FixedSpendDto> fixedSpends = fixedSpendService.selectCostByStoreId(storeId);
+			System.out.println(fixedSpends);
+			model.addAttribute("fixedSpends", fixedSpends);
+		}
+		
 		// fixedSpendService.showCostByStoreId();
 		model.addAttribute("stores", stores);
 		
@@ -35,13 +42,13 @@ public class FixedSpendController {
 		return "redirect:fixedSpend";
 	}
 	
-	@PostMapping(path = {"fixedSpend2"})
-	public String showCostByStoreId(int storeId, Model model) {
-		List<FixedSpendDto> fixedSpends = fixedSpendService.selectCostByStoreId(storeId);
-		System.out.println(fixedSpends);
-		model.addAttribute("fiexedSpends", fixedSpends);
-		
-		return "redirect:fixedSpend";
-	}
+//	@PostMapping(path = {"fixedSpend2"})
+//	public String showCostByStoreId(int storeId, Model model) {
+//		List<FixedSpendDto> fixedSpends = fixedSpendService.selectCostByStoreId(storeId);
+//		System.out.println(fixedSpends);
+//		model.addAttribute("fixedSpends", fixedSpends);
+//		
+//		return "spend/fixedSpend";
+//	}
 	
 }

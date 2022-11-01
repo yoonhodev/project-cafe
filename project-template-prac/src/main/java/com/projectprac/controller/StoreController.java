@@ -114,5 +114,13 @@ public class StoreController {
 		
 	}
 	
+	@GetMapping(path = {"/{storeId}/deleted"})
+	public String deletedStoreIntro(@PathVariable("storeId")int storeId ) {
+		
+		
+		storeService.deletedStoreIntro(storeId);
+		
+		
+		return "redirect:/store";
+	}
 }
-

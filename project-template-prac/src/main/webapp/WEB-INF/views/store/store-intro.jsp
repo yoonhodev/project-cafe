@@ -9,7 +9,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Blog Fullwidth &ndash; Belle Multipurpose Bootstrap 4 Template</title>
+<title>지점 소개</title>
 <meta name="description" content="description">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Common-css -->
@@ -19,8 +19,7 @@
 <div class="pageWrapper">
 		<!-- Top Header --> <!-- Header --> <!-- Mobile Menu -->
 		<jsp:include page="/WEB-INF/views/modules/header.jsp"></jsp:include>
-		<!-- ./Top Header --> <!-- ./Header --> <!-- ./Mobile Menu -->
-    
+		<!-- ./Top Header --> <!-- ./Header --> <!-- ./Mobile Menu -->    
     <!--Body Content-->
     <div id="page-content">
     	<!--Page Title-->
@@ -30,9 +29,7 @@
         		<div class="wrapper"><h1 class="page-width">지점 소개</h1></div>
       		</div>
 		</div> 
-        <!--End Page Title-->
-
-               
+        <!--End Page Title-->               
             </div>
         </div>
          <br> <br> 
@@ -45,9 +42,13 @@
                     <div class="blog--list-view blog--grid-load-more">
                     	
                     	
-                    	<div class="article"> 
+                    	<div class="article" > 
                   			<c:forEach var="store" items="${ stores }">
-
+							<c:choose>
+							<c:when test="${ store.deleted }">
+							<h2>폐업</h2>
+							</c:when>
+							<c:otherwise>
                             <!-- Article Image --> 
                             
                             <a class="article_featured-image" ><img class="blur-up lazyload article_featured-image" src="/project-template-prac/resources/assets/images/cafe-out-image-folder/${ store.storeUniqueimage }" alt="이미지 로드 실패"></a>                          
@@ -74,26 +75,19 @@
                                         </c:if>
                                     </ul>
                                 </c:otherwise>
-                                
                                 </c:choose>
-<!--                                     <ul class="inline-list">    -->
-<!--                                         <li><i class="icon anm anm-comments-l"></i> <a href="#"> 오픈현황</a></li> -->
-<!--                                     </ul> -->
                                 </li>
                             </ul>
                             <div class="rte"> 
                                 <p>${ store.storeIntroduce }</p>
                                  </div>
-                           <!--  <p><a href="#" class="btn btn-secondary btn--small">Read more <i class="fa fa-caret-right" aria-hidden="true"></i></a></p> -->
-                      
+                     					 <c:if test="${ loginuser.userType }">
+                                        <input type="button" class="deleted_store_intro btn" id="deleted-${ store.storeId }"   value="삭제" data-storeId="${ store.storeId }" />
+                                        </c:if>
+                        </c:otherwise>
+                        </c:choose>
                         </c:forEach> 
-                        </div>
-                       
-					 
-                       
-                       
-                       
-
+                        </div>   
                     </div>
                 </div>
                 <!--End Main Content-->
@@ -113,19 +107,14 @@
 		<!-- Common-js -->
 		<jsp:include page="/WEB-INF/views/modules/common-js.jsp"></jsp:include>
 		<script type="text/javascript">
-        
-// 		var change_to_open = ('.change_to_open').attr('class');
-// 		var change_to_close = ('.change_to_close').attr('class');
 		
                        $(function() {
-//                     	   var storeId = $(this).attr("data-storeId");
+
                     	   
                     	   
 							$(".change_to_open").on('click', function(event) {
 								
 								var storeId = $(this).attr("data-storeId")
-								
-// 								alert(storeId);
 								
 								location.href = storeId + '/open';
 							});	
@@ -134,9 +123,15 @@
 								
 								var storeId = $(this).attr("data-storeId")
 								
-// 								alert(storeId);
-								
 								location.href = storeId + '/close';
+								
+							});
+							
+							$(".deleted_store_intro").on('click', function(event) {
+								
+								var storeId = $(this).attr("data-storeId")
+								
+								location.href = storeId + '/deleted';
 								
 							});
 					   });
