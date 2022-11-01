@@ -19,6 +19,10 @@ public interface BoardService {
 	List<BoardDto> findBoardByPage(int pageNo, int pageSize);
 
 	void deleteBoard(int boardId);
+
+	BoardDto findBoardByBoardNo(int boardId);
+
+	void modifyBoard(BoardDto board);
 	
 	
 }

@@ -98,7 +98,7 @@
                             <h2 class="h3"><a href="#">${ boardDetail.title }</a></h2>
                             <ul class="publish-detail">                      
                                 <li><i class="anm anm-user-al" aria-hidden="true"></i>  ${ boardDetail.workerId }</li>
-                                <li><i class="icon anm anm-clock-r"></i> <time datetime="2017-05-02"><fmt:formatDate value="${ boardDetail.regdate }" pattern="yyyy-MM-dd HH:mm"/></time></li>
+                                <li><i class="icon anm anm-clock-r"></i> <time datetime="2017-05-02"><fmt:formatDate value="${ boardDetail.regdate }" pattern="yyyy-MM-dd"/></time></li>
                                 <li>
                                     <ul class="inline-list">   
                                         <li><i class="icon anm anm-comments-l"></i> <a href="#"> 10 comments</a></li>
@@ -114,10 +114,14 @@
                             
                       	    </div>
                         <div class="loadmore-post">	
-                            <a href="#;" class="btn ">수정</a>
-                            <a id="delete_button" class="btn ">삭제</a>
-                            <a href="noticeBoard?pageNo=${ pageNo }" class="btn ">목록보기</a>
+                            <a></a>
+                          	<%-- 로그인한 사용자와 작성자가 같은 경우에 편집, 삭제 버튼 표시 --%>
+                          	
+                            <a id="update_button" class="btn" style="color: white">수정</a>
+                            <a id="delete_button" class="btn" style="color: white">삭제</a>
+                            <a href="noticeBoard?pageNo=${ pageNo }" class="btn" style="color: white">목록보기</a>
                         </div>
+                     
                     </div>
                 </div>
                 <!--End Main Content-->
@@ -148,15 +152,27 @@
 </div>
 <script type="text/javascript">
 	$(function() {
+		
+		// 글 내용 삭제
 		$('#delete_button').on('click', function(event) {
 			const ok = confirm("${ boardDetail.boardId }번 글을 삭제할까요?");
 			if (!ok) return;
-			
 			//location.href = 'delete.action?boardId=${boardDetail.boardId}&pageNo=${pageNo}';
 			location.href = 'delete/' + ${ boardDetail.boardId } + '/?&pageNo=${pageNo}';
-			
-
 		});
+		
+		// 글 내용 수정 
+		$('#update_button').on('click', function(event) {
+			const ok = confirm("${ boardDetail.boardId }번 글을 수정할까요???");
+			if (!ok) return;
+			
+			location.href = 'edit?boardId=${boardDetail.boardId}&pageNo=${pageNo}';
+		});
+		
+		
+		
+		
+		
 		
 		
 	})

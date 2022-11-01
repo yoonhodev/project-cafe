@@ -77,16 +77,16 @@ public class BoardController {
 								  HttpSession session, 
 								  Model model) {	
 		
-//		if (boardId == -1 || pageNo == -1) { // 요청 데이터가 잘못된 경우
-//			return "redirect:noticeBoard";
-//		}
+		if (boardId == -1 || pageNo == -1) { // 요청 데이터가 잘못된 경우
+			return "redirect:noticeBoard";
+		}
 		
 		
 		BoardDto boardDetail = boardService.showBoardDetail(boardId);
 		
-		if (boardDetail == null) { // 조회되지 않은 경우 (글 번호가 잘못되었거나 또는 삭제된 글인 경우)
-			return "redirect:list.action";
-		}
+//		if (boardDetail == null) { // 조회되지 않은 경우 (글 번호가 잘못되었거나 또는 삭제된 글인 경우)
+//			return "redirect:aaa.action";
+//		}
 		
 		// 3. View에서 읽을 수 있도록 데이터 전달
 		model.addAttribute("boardDetail", boardDetail);
@@ -102,12 +102,12 @@ public class BoardController {
 							  @RequestParam (defaultValue = "-1")int pageNo,
 							  Model model) { //Model --> jsp로 데이터 전달할때 씀
 		
-//		if (pageNo == -1) {
-//			//return "redirect:list.action";
-//			model.addAttribute("error_type", "delete");
-//			model.addAttribute("message", "잘못된 요청 : 글번호 또는 페이지 번호가 없습니다.");		
-//			return "board/error"; // WEB-ING/views/+ board/error + .jsp (오류가 나면 board/error페이지로 보냄) 
-//		}
+		if (pageNo == -1) {
+			//return "redirect:list.action";
+			model.addAttribute("error_type", "delete");
+			model.addAttribute("message", "잘못된 요청 : 글번호 또는 페이지 번호가 없습니다.");		
+			return "board/error"; // WEB-ING/views/+ board/error + .jsp (오류가 나면 board/error페이지로 보냄) 
+		}
 		
 		boardService.deleteBoard(boardId);
 		
@@ -117,6 +117,45 @@ public class BoardController {
 		return "redirect:/noticeBoard?pageNo=" + pageNo;
 	}
 	
+	@GetMapping(path = {"/edit" })
+	public String showBoardEditForm(@RequestParam(defaultValue = "-1")int boardId, 
+									@RequestParam(defaultValue = "-1")int pageNo, 
+									Model model) {
+								
+		if (boardId == -1 || pageNo == -1 ) {
+			model.addAttribute("error_type", "edit");
+			model.addAttribute("message", "글번호 또는 페이지 번호가 없습니다.");
+			return "board/error";	
+		}
+			
+		BoardDto board = boardService.findBoardByBoardNo(boardId);
+
+		// View에게 전달할 데이터 저장
+		model.addAttribute("board", board);
+		model.addAttribute("boardId", boardId);
+		model.addAttribute("pageNo", pageNo);		
+		 return "board/edit";  // WEB-INF/views/ + board/edit + .jsp
+		//return "redirect:edit.action?boardNo=" + boardNo + "&pageNo=" + pageNo;
+	}
+	
+	@PostMapping(path = {"/edit" })
+	public String modifyBoard(@RequestParam(defaultValue = "-1") int pageNo,
+							  @RequestParam(defaultValue = "-1") int boardId,
+							  BoardDto board,
+							  Model model) {
+		if (boardId == -1 || pageNo == -1 ) {
+			model.addAttribute("error_type", "edit");
+			model.addAttribute("message", "글번호 또는 페이지 번호가 없습니다.");
+			return "board/error";	
+		}
+		boardService.modifyBoard(board);
+		
+		//return "redirect:noticeBoardDetail?boardId=" + board.getBoardId() + "&pageNo=" + pageNo;
+		//return "redirect:/noticeBoard?pageNo=" + pageNo;
+
+		return "redirect:/noticeBoardDetail?boardId=" + boardId + "&pageNo=" + pageNo;
+
+}
 	
 	
 }

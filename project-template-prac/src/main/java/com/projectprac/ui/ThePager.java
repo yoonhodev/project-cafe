@@ -1,6 +1,7 @@
 package com.projectprac.ui;
 
 public class ThePager {
+	
 	private int pageSize;//한 페이지당 데이터 개수
 	private int pagerSize;//번호로 보여주는 페이지 Link 개수
 	private int dataCount;//총 데이터 수
@@ -11,8 +12,7 @@ public class ThePager {
 	private String linkUrl;//페이저가 포함되는 페이지의 주소
 	
 	
-	public ThePager(int dataCount, int pageNo, 
-		int pageSize, int pagerSize, String linkUrl) {
+	public ThePager(int dataCount, int pageNo, int pageSize, int pagerSize, String linkUrl) {
 		
 		this.linkUrl = linkUrl;
 		
