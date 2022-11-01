@@ -174,6 +174,7 @@
 							</div>
 							<!-- ./Input Tab -->
 						</div>
+>>>>>>> 111f08256cc5d642c7e85815ae8d1bf342b76f65
 					</div>
 					<!-- ./Product Tabs -->
 				</div>
