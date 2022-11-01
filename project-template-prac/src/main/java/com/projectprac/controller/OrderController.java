@@ -4,16 +4,14 @@ import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import com.projectprac.dto.OrderDetailDto;
-import com.projectprac.dto.OrderDto;
 import com.projectprac.dto.ProductDto;
 import com.projectprac.service.OrderService;
 
@@ -25,31 +23,39 @@ public class OrderController {
 	@Qualifier("orderService")
 	private OrderService orderService;
 	
-	LinkedHashSet<ProductDto> productIds = new LinkedHashSet();
-	
 	@GetMapping(path = { "order" })
-	public String order(Model model) {
+	public String order(HttpSession session) {
 		
-		LinkedHashSet<ProductDto> products = new LinkedHashSet();
+		List<ProductDto> products = new ArrayList<>();
+		LinkedHashSet<ProductDto> productIds = null;
 		
-		for (ProductDto product : productIds) {
-			product = orderService.showOrder(product.getProdId());
-			products.add(product);
-		}
-		
-		// View에서 읽을 수 있도록 데이터 저장
-		model.addAttribute("products", products);
+		productIds = (LinkedHashSet<ProductDto>) session.getAttribute("productIds");
+		if(productIds != null) {
+			for (ProductDto product : productIds) {
+				product = orderService.showOrder(product.getProdId());
+				products.add(product);
+			}
+		} 
+		session.setAttribute("products", products);
 		return "shop/order";
 	}
 	
 	@PostMapping(path = { "update-order" })
-	public String updateOrder(ProductDto product) {
-		
+	public String updateOrder(ProductDto product, HttpSession session) {
+		LinkedHashSet<ProductDto> productIds = new LinkedHashSet();
 		productIds.add(product);
+		session.setAttribute("productIds", productIds);
 		return "shop/shop";
-		
+	}
 	
+	@GetMapping(path = {"delete-all-order"})
+	public String deleteAllOrder(HttpSession session) {
+		
+		
+		session.removeAttribute("productIds");
+		return "redirect:order";
+	}
 		
 	}
 	
-}
+

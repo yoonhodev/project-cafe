@@ -56,6 +56,7 @@
 
 								<tbody>
 								<c:forEach var="product" items="${ products }" varStatus="status">
+								
 								<c:set var="quantity" value="1" />
 								<tr class="cart__row border-bottom line1 cart-flex border-top">
                                     <td class="cart__image-wrapper cart-flex-item text-center">
@@ -84,6 +85,7 @@
                                     </td>
                                     <td class="text-center small--hide"><a href="#" class="btn btn--secondary cart__remove" title="Remove tem"><i class="icon icon anm anm-times-l"></i></a></td>
                                 </tr>
+                                
                                 </c:forEach>
                            		</tbody>
 								<tfoot>
@@ -92,9 +94,8 @@
 											class="btn btn-secondary btn--small cart-continue">Continue
 												shopping</a></td>
 										<td colspan="3" class="text-right">
-											<button type="submit" name="update"
-												class="btn btn-secondary btn--small cart-continue ml-2">Clear
-												Cart</button>
+											<a href="delete-all-order" class="btn btn-secondary btn--small cart-continue ml-2">Clear Cart
+												</a>
 										</td>
 									</tr>
 								</tfoot>
@@ -221,7 +222,10 @@
 				$(qtyField).find(".qty").val(newVal);
 				$("#price-" + prodId).text( price );
 			});
+			
 		});
+ 		
+ 		
 	</script>
 </body>
 

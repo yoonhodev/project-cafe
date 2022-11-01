@@ -1,5 +1,6 @@
 package com.projectprac.mapper;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -12,5 +13,12 @@ public interface OrderMapper {
 			"FROM product " +
 			"WHERE prod_id = #{ prodId } ")
 	ProductDto findProductByProdId(int prodId);
+
+//	@
+//	ProductDto delete(String prodName);
+	
+	@Delete("DELETE TABLE product")
+	
+	ProductDto deleteAll(int prodId);
 
 }

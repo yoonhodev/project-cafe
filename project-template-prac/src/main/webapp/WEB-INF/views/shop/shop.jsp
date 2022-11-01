@@ -28,7 +28,7 @@
     	<div class="collection-header">
 			<div class="collection-hero">
         		<div class="collection-hero__image"><img class="blur-up lazyload" data-src="/project-template-prac/resources/assets/images/cat-women2.jpg" src="/project-template-prac/resources/assets/images/cat-women2.jpg" alt="Women" title="Women" /></div>
-        		<div class="collection-hero__title-wrapper"><h1 class="collection-hero__title page-width">Shop Grid 3 Column</h1></div>
+        		<div class="collection-hero__title-wrapper"><h1 class="collection-hero__title page-width">Menu</h1></div>
       		</div>
 		</div>
         <!--End Collection Banner-->
@@ -44,28 +44,14 @@
                             <div class="widget-title"><h2>Categories</h2></div>
                             <div class="widget-content">
                                 <ul class="sidebar_categories">
-                                    <li class="level1 sub-level"><a href="#;" class="site-nav">Clothing</a>
-                                    	<ul class="sublinks">
-                                        	<li class="level2"><a href="#;" class="site-nav">Men</a></li>
-                                            <li class="level2"><a href="#;" class="site-nav">Women</a></li>
-                                            <li class="level2"><a href="#;" class="site-nav">Child</a></li>
-                                            <li class="level2"><a href="#;" class="site-nav">View All Clothing</a></li>
-                                        </ul>
+                                    <li class="level1 sub-level"><a href="#;" class="site-nav">Hot Coffees</a>
+                                    
                                     </li>
-                                    <li class="level1 sub-level"><a href="#;" class="site-nav">Jewellery</a>
-                                    	<ul class="sublinks">
-                                        	<li class="level2"><a href="#;" class="site-nav">Ring</a></li>
-                                            <li class="level2"><a href="#;" class="site-nav">Neckalses</a></li>
-                                            <li class="level2"><a href="#;" class="site-nav">Eaarings</a></li>
-                                            <li class="level2"><a href="#;" class="site-nav">View All Jewellery</a></li>
-                                        </ul>
+                                    <li class="level1 sub-level"><a href="#;" class="site-nav">Hot Teas</a>
+                                    	
                                     </li>
-                                    <li class="lvl-1"><a href="#;" class="site-nav">Shoes</a></li>
-                                    <li class="lvl-1"><a href="#;" class="site-nav">Accessories</a></li>
-                                    <li class="lvl-1"><a href="#;" class="site-nav">Collections</a></li>
-                                    <li class="lvl-1"><a href="#;" class="site-nav">Sale</a></li>
-                                    <li class="lvl-1"><a href="#;" class="site-nav">Page</a></li>
-                                </ul>
+                                    <li class="lvl-1"><a href="#;" class="site-nav">Cold Coffees</a></li>
+                                    <li class="lvl-1"><a href="#;" class="site-nav">Iced Teas</a></li>
                             </div>
                         </div>
                         <!--Categories-->
@@ -76,7 +62,7 @@
                 <!--Main Content-->
                 <div class="col-12 col-sm-12 col-md-9 col-lg-9 main-col">
                 	<div class="category-description">
-                    	<h3>넣을거 넣으세요</h3>
+                    	<h3>Drinks</h3>
                     </div>
                     <hr>
                 	<div class="productList">
@@ -137,9 +123,9 @@
                                         <!-- end product image -->
     
                                         <!-- Start product button -->
-                                        <form class="variants add" action="update-order" method="post">
+                                        <form class="variants add" id="addform" action="update-order" method="post">
                                         	<input type="hidden" name="prodId" value="1">
-                                            <button class="btn btn-addto-cart update-order" type="submit">ADD TO CART</button>
+                                            <button class="btn btn-addto-cart update-order" type="button" onclick="alert('상품이 장바구니에 담겼습니다.')")>ADD TO CART</button>
                                         </form>
                                         
                                         <div class="button-set">
@@ -195,7 +181,7 @@
                                         <!-- Start product button -->
                                          <form class="variants add" action="update-order" method="post">
                                         	<input type="hidden" name="prodId" value="2">
-                                            <button class="btn btn-addto-cart update-order" type="submit">ADD TO CART</button>
+                                           <button class="btn btn-addto-cart update-order" type="button" onclick="alert('상품이 장바구니에 담겼습니다.')")>ADD TO CART</button>
                                         </form>
                                         <div class="button-set">
                                             <a href="javascript:void(0)" title="Quick View" class="quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
@@ -251,7 +237,7 @@
                                         <!-- Start product button -->
                                             <form class="variants add" action="update-order" method="post">
                                         	<input type="hidden" name="prodId" value="3">
-                                            <button class="btn btn-addto-cart update-order" type="submit">ADD TO CART</button>
+                                            <button class="btn btn-addto-cart update-order" type="button">ADD TO CART</button>
                                         </form>
                                         <div class="button-set">
                                             <a href="javascript:void(0)" title="Quick View" class="quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
@@ -1375,6 +1361,25 @@
     <jsp:include page="/WEB-INF/views/modules/common-js.jsp"></jsp:include>
     
 </div>
+<script src="https://code.jquery.com/jquery-3-6-1.js"></script>
+<script type="text/javascript">
+$('.update-order').on('click', function(event) {
+
+	/* const formData = $('#addform').serialize(); //form 내부의 모든 입력 요소의 값을 전송가능한 문자열 형식으로 반환 */
+	const formData = $('#addform').serializeArray(); //form 내부의 모든 입력 요소의 값을 전송가능한 객체 배열 형식으로 반환
+				
+	$.ajax({
+		"url": "update-order",
+		"method": "post",
+		"data": formData,
+		"success": function(data, status, xhr) {
+			},
+		"error": function(xhr, status, err) {
+			
+			}
+	});
+});
+</script>
 </body>
 
 <!-- belle/shop-grid-3.html   11 Nov 2019 12:39:06 GMT -->
