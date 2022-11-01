@@ -26,8 +26,7 @@ public class CouponController {
 	@Qualifier("couponService")
 	private CouponService couponService;
 
-	@GetMapping(path = { "coupon" })
-	public String showCouponForm(HttpSession session, Model model) {
+	public List<CouponMakeDto> CouponMakeList(HttpSession session) {
 		
 		CustomerDto customer = (CustomerDto) session.getAttribute("loginuser");
 		CouponDto coupon;
@@ -38,8 +37,23 @@ public class CouponController {
 			couponMakeDto.setCouponDto(coupon);
 			couponMakes.add(couponMakeDto);
 		}
-		model.addAttribute("couponMakes", couponMakes);
+		return couponMakes;
 		
+	}
+	
+	@GetMapping(path = { "coupon" })
+	public String showCouponForm(HttpSession session, Model model) {
+		
+		List<CouponMakeDto> couponMakeDtos = CouponMakeList(session);
+		List<CouponMakeDto> couponMakes = new ArrayList<>();
+		for (CouponMakeDto couponMake : couponMakeDtos) {
+			if (!couponMake.isCouponDeleted()) {
+				couponMakes.add(couponMake);
+			}
+		}
+		
+		model.addAttribute("couponMakes", couponMakes);
+		System.out.println(couponMakes);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Calendar cal = Calendar.getInstance();
         String today = sdf.format(cal.getTime());
@@ -50,10 +64,24 @@ public class CouponController {
 	}
 
 	@PostMapping(path = { "coupon" })
-	public String createNewCoupon(HttpSession session, CouponDto coupon) {
+	public String createNewCoupon(HttpSession session, CouponDto coupon, Model model) {
 		// 1. 요청 데이터 읽기 -> DTO에 저장 : 전달인자 사용으로 대체
 		// 2. 요청 처리
+		int couponId;
+		String customerId;
 		CustomerDto customer = (CustomerDto) session.getAttribute("loginuser");
+		
+		List<CouponMakeDto> couponMakes = CouponMakeList(session);
+		for (CouponMakeDto couponMake : couponMakes) {
+			couponId = couponMake.getCouponDto().getCouponId();
+			customerId = couponMake.getCustomerId();
+			if(couponId == coupon.getCouponId() && customerId.equals(customer.getCustomerId())) {
+				model.addAttribute("msg", "이미 발급된 쿠폰입니다");
+				model.addAttribute("url", "coupon");
+				return "modules/alert";
+			}
+		}
+		
 		couponService.createNewCoupon(customer.getCustomerId(), coupon.getCouponId());
 
 		// 3. View에서 사용할 수 있도록 데이터 전달

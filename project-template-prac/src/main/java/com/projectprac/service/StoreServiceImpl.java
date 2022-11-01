@@ -54,6 +54,15 @@ public class StoreServiceImpl implements StoreService{
 
 
 
+	@Override
+	public void deletedStoreIntro(int storeId) {
+		
+		storeMapper.deletedStoreIntro(storeId);
+		
+	}
+
+
+
 
 
 	/*
