@@ -181,7 +181,7 @@
 							style="font-size: 15pt"><b>ADMIN PAGE</b> <i
 								class="anm anm-angle-down-l"></i></a>
 							<ul class="dropdown">
-							<li><a href="fixedspend" class="site-nav">고정 지출</a></li>
+							<li><a href="fixedSpend" class="site-nav">고정 지출</a></li>
 								
 							<li><a href="#" class="site-nav">필요하면 추가하세요</a></li>
 							
