@@ -1,6 +1,7 @@
 package com.projectprac.controller;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,12 +25,13 @@ public class OrderController {
 	@Qualifier("orderService")
 	private OrderService orderService;
 	
-	List<ProductDto> productIds = new ArrayList<>();
+	LinkedHashSet<ProductDto> productIds = new LinkedHashSet();
 	
 	@GetMapping(path = { "order" })
 	public String order(Model model) {
 		
-		List<ProductDto> products = new ArrayList<>();
+		LinkedHashSet<ProductDto> products = new LinkedHashSet();
+		
 		for (ProductDto product : productIds) {
 			product = orderService.showOrder(product.getProdId());
 			products.add(product);
@@ -45,6 +47,8 @@ public class OrderController {
 		
 		productIds.add(product);
 		return "shop/shop";
+		
+	
 		
 	}
 	
