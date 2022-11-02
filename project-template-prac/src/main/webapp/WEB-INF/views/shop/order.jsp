@@ -33,7 +33,6 @@
 			</div>
 			<!--End Page Title-->
 
-			
 			<div class="container">
 				<div class="row">
 					<div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
@@ -53,10 +52,8 @@
 										<th class="action">&nbsp;</th>
 									</tr>
 								</thead>
-
 								<tbody>
 								<c:forEach var="product" items="${ products }" varStatus="status">
-								
 								<c:set var="quantity" value="1" />
 								<tr class="cart__row border-bottom line1 cart-flex border-top">
                                     <td class="cart__image-wrapper cart-flex-item text-center">
@@ -68,24 +65,22 @@
                                         </div>
                                     </td>
                                     <td class="cart__price-wrapper cart-flex-item">
-                                        <span class="money">${ product.prodPrice }</span>
-                                        <c:set var="prodPrice" value="${ product.prodPrice }" />
+                                        <span class="money" id="prodPrice-${ product.prodId }">${ product.prodPrice }</span>
                                     </td>
                                     <td class="cart__update-wrapper cart-flex-item text-right">
                                         <div class="cart__qty text-center">
                                             <div class="qtyField">
-                                                <a class="qtyBtn minus" href="javascript:void(0);" data-productId="${ status.index }"><i class="icon icon-minus"></i></a>
+                                                <a class="qtyBtn minus" href="javascript:void(0);" data-productId="${ product.prodId }"><i class="icon icon-minus"></i></a>
                                                 <input class="cart__qty-input qty" type="text" name="updates[]" id="qty" value="1" pattern="[0-9]*">
-                                                <a class="qtyBtn plus"  href="javascript:void(0);" data-productId="${ status.index }"><i class="icon icon-plus"></i></a>
+                                                <a class="qtyBtn plus"  href="javascript:void(0);" data-productId="${ product.prodId }"><i class="icon icon-plus"></i></a>
                                             </div>
                                         </div>
                                     </td>
                                     <td class="text-right small--hide cart-price">
-                                        <div><span id="price-${ status.index }">${ product.prodPrice }</span></div>
+                                        <div><span id="price-${ product.prodId }">${ product.prodPrice }</span></div>
                                     </td>
-                                    <td class="text-center small--hide"><a href="/{prodId}/delete" class="btn btn--secondary cart__remove" title="Remove tem"><i class="icon icon anm anm-times-l"></i></a></td>
+                                    <td class="text-center small--hide"><a href="delete-order?prodId=${ product.prodId }" class="btn btn--secondary cart__remove" title="Remove tem"><i class="icon icon anm anm-times-l"></i></a></td>
                                 </tr>
-                                
                                 </c:forEach>
                            		</tbody>
 								<tfoot>
@@ -207,11 +202,10 @@
 			$(".qtyBtn").on("click", function() {
 				var qtyField = $(this).parent(".qtyField"),
 					oldValue = $(qtyField).find(".qty").val(),
-					newVal = 1,
-					price = ${ prodPrice };
-					
-				var prodId = $(this).attr("data-productId")
-					
+					newVal = 1
+				var prodId = $(this).attr("data-productId");
+				var price = $("#prodPrice-" + prodId).text();
+				
 				if ($(this).is(".plus")) {
 					newVal = parseInt(oldValue) + 1;
 				} else if (oldValue > 1) {

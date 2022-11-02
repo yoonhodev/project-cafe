@@ -59,12 +59,25 @@ public class OrderController {
 	      return "shop/shop";
 	}
 	
-//	@GetMapping(path = {"delete"})
-//	public String deleteOrder(ProductDto product, HttpSession session) {
-//		 List<ProductDto> productIds = (List<ProductDto>) session.getAttribute("productIds");
-//		 productIds.remove()
-//		
-//	}
+	@GetMapping(path = {"delete-order"})
+	public String deleteOrder(@RequestParam(defaultValue = "-1") int prodId, HttpSession session) {
+		
+		if (prodId == -1) {
+			return "redirect:order";
+		}
+		
+		List<ProductDto> productIds = (List<ProductDto>) session.getAttribute("productIds");
+		for (ProductDto product : productIds) {
+			if (product.getProdId() == prodId) {
+				productIds.remove(product);
+				session.setAttribute("productIds", productIds);
+				return "redirect:order";
+			}
+		}
+		
+		return "redirect:order";
+		
+	}
 	
 	@GetMapping(path = {"delete-all-order"})
 	public String deleteAllOrder(HttpSession session) {	
