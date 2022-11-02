@@ -48,14 +48,14 @@
 										<div class="form-group">
 											<label for="newPassword">새 비밀번호</label>
 											<input type="password" name="passwd" placeholder=""
-												   id="newPassword">
+												   id="newPassword" required>
 										</div>
 									</div>
 									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
 										<div class="form-group">
 											<label for="PasswordCheck">비밀번호 확인</label>
 											<input type="password" name="passwdCheck" placeholder=""
-												   id="PasswordCheck">
+												   id="PasswordCheck" required>
 										</div>
 									</div>
 								</div>

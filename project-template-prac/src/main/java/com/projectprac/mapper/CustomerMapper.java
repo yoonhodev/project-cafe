@@ -1,5 +1,7 @@
 package com.projectprac.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -31,5 +33,9 @@ public interface CustomerMapper {
 			"SET passwd = #{ passwd } " +
 			"WHERE customer_id = #{ customerId } ")
 	void updatePassword(@Param("customerId") String customerId, @Param("passwd")String passwd);
+
+	@Select("SELECT customer_id customerId, passwd, phone, address, sex, email, birth, stamp, usertype, reg_date regDate " +
+			"FROM customer ")
+	List<CustomerDto> selectAllCustomer();
 	
 }

@@ -1,5 +1,7 @@
 package com.projectprac.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -10,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.projectprac.dto.CustomerDto;
 import com.projectprac.service.AccountService;
@@ -23,7 +24,11 @@ public class AccountController {
 	private AccountService accountService;
 	
 	@GetMapping(path = { "register" }) // FrontController에 연결 설정
-	public String showRegisterForm() {
+	public String showRegisterForm(HttpSession session) {
+		
+		List<CustomerDto> customers = accountService.showAllCustomer();
+		session.setAttribute("idDupleCheck", customers);
+		
 		return "account/register"; // WEB-INF/views/ + account/register + .jsp
 	}
 

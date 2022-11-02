@@ -123,9 +123,9 @@
                                         <!-- end product image -->
     
                                         <!-- Start product button -->
-                                        <form class="variants add" id="addform" action="update-order" method="post">
+                                        <form class="variants add addform" id="addform" action="update-order" method="post">
                                         	<input type="hidden" name="prodId" value="1">
-                                            <button class="btn btn-addto-cart update-order" type="button" onclick="alert('상품이 장바구니에 담겼습니다.')")>ADD TO CART</button>
+                                            <button class="btn btn-addto-cart update-order" type="button" onclick="alert('상품이 장바구니에 담겼습니다. 수량은 주문 페이지에서 변경 가능합니다.')")>ADD TO CART</button>
                                         </form>
                                         
                                         <div class="button-set">
@@ -164,6 +164,7 @@
                                     </div>
                                     <!-- End product details -->
                                 </div>
+                               
                                 <div class="col-6 col-sm-6 col-md-4 col-lg-4 item">
                                     <!-- start product image -->
                                     <div class="product-image">
@@ -179,7 +180,7 @@
                                         <!-- end product image -->
 
                                         <!-- Start product button -->
-                                         <form class="variants add" action="update-order" method="post">
+                                         <form class="variants add addform" action="update-order" method="post">
                                         	<input type="hidden" name="prodId" value="2">
                                            <button class="btn btn-addto-cart update-order" type="button" onclick="alert('상품이 장바구니에 담겼습니다.')")>ADD TO CART</button>
                                         </form>
@@ -1364,14 +1365,14 @@
 <script src="https://code.jquery.com/jquery-3-6-1.js"></script>
 <script type="text/javascript">
 $('.update-order').on('click', function(event) {
-
-	/* const formData = $('#addform').serialize(); //form 내부의 모든 입력 요소의 값을 전송가능한 문자열 형식으로 반환 */
-	const formData = $('#addform').serializeArray(); //form 내부의 모든 입력 요소의 값을 전송가능한 객체 배열 형식으로 반환
-				
+	var addform = $(this).parent(".addform").serialize();
+//    const formData = $('.addform').serialize(); //form 내부의 모든 입력 요소의 값을 전송가능한 문자열 형식으로 반환
+/* const formData = $('#addform').serializeArray(); */ //form 내부의 모든 입력 요소의 값을 전송가능한 객체 배열 형식으로 반환
+	alert(addform);
 	$.ajax({
 		"url": "update-order",
 		"method": "post",
-		"data": formData,
+		"data": addform,
 		"success": function(data, status, xhr) {
 			},
 		"error": function(xhr, status, err) {

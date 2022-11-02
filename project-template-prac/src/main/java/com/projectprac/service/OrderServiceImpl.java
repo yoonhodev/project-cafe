@@ -18,6 +18,12 @@ public class OrderServiceImpl implements OrderService  {
 		return product;
 		
 	}
+	
+	@Override
+	public ProductDto deleteOrder(int prodId) {
+		ProductDto product = orderMapper.delete(prodId);
+		return product;
+	}
 
 	@Override
 	public ProductDto deleteAllOrder(int prodId) {

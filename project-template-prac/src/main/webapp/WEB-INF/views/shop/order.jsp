@@ -83,7 +83,7 @@
                                     <td class="text-right small--hide cart-price">
                                         <div><span id="price-${ status.index }">${ product.prodPrice }</span></div>
                                     </td>
-                                    <td class="text-center small--hide"><a href="#" class="btn btn--secondary cart__remove" title="Remove tem"><i class="icon icon anm anm-times-l"></i></a></td>
+                                    <td class="text-center small--hide"><a href="/{prodId}/delete" class="btn btn--secondary cart__remove" title="Remove tem"><i class="icon icon anm anm-times-l"></i></a></td>
                                 </tr>
                                 
                                 </c:forEach>
@@ -218,12 +218,27 @@
 					newVal = parseInt(oldValue) - 1;
 				}
 				
-				price = newVal * price;
+				total = newVal * price;
 				$(qtyField).find(".qty").val(newVal);
 				$("#price-" + prodId).text( price );
 			});
 			
-		});
+		/* 	$('.cart__remove').on('click', function(event) {
+				var addform = $(this).parent(".addform").serialize();
+			    const formData = $('.addform').serialize(); //form 내부의 모든 입력 요소의 값을 전송가능한 문자열 형식으로 반환
+			/* const formData = $('#addform').serializeArray(); */ //form 내부의 모든 입력 요소의 값을 전송가능한 객체 배열 형식으로 반환
+				/* alert(addform);
+				$.ajax({
+					"url": "update-order",
+					"method": "post",
+					"data": addform,
+					"success": function(data, status, xhr) {
+						},
+					"error": function(xhr, status, err) {
+						
+						}
+				}); */
+			}); 
  		
  		
 	</script>
