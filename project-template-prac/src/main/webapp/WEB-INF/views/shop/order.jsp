@@ -33,7 +33,6 @@
 			</div>
 			<!--End Page Title-->
 
-			
 			<div class="container">
 				<div class="row">
 					<div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
@@ -210,8 +209,8 @@
 					newVal = 1,
 					price = ${ prodPrice };
 					
-				var prodId = $(this).attr("data-productId")
-					
+				var prodId = $(this).attr("data-productId");
+				alert("prodId");
 				if ($(this).is(".plus")) {
 					newVal = parseInt(oldValue) + 1;
 				} else if (oldValue > 1) {
@@ -220,6 +219,7 @@
 				
 				total = newVal * price;
 				$(qtyField).find(".qty").val(newVal);
+				
 				$("#price-" + prodId).text( price );
 			});
 			
