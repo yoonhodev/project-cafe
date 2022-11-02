@@ -44,7 +44,6 @@ public class OrderController {
 	
 	@PostMapping(path = { "update-order" })
 	public String updateOrder(ProductDto product, HttpSession session) {
-		
 		List<ProductDto> productIds = new ArrayList<>();
 	      if (session.getAttribute("productIds") != null) {
 	         productIds = (List<ProductDto>) session.getAttribute("productIds");
@@ -60,13 +59,12 @@ public class OrderController {
 	      return "shop/shop";
 	}
 	
-	@GetMapping(path = {"delete"})
-	public String deleteOrder(@PathVariable("prodId") int prodId, HttpSession session) {
-		session.removeAttribute("prodId");
-		
-		return "redirect:order";
-		
-	}
+//	@GetMapping(path = {"delete"})
+//	public String deleteOrder(ProductDto product, HttpSession session) {
+//		 List<ProductDto> productIds = (List<ProductDto>) session.getAttribute("productIds");
+//		 productIds.remove()
+//		
+//	}
 	
 	@GetMapping(path = {"delete-all-order"})
 	public String deleteAllOrder(HttpSession session) {	

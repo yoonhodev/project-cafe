@@ -218,7 +218,7 @@
 					newVal = parseInt(oldValue) - 1;
 				}
 				
-				total = newVal * price;
+				price = newVal * price;
 				$(qtyField).find(".qty").val(newVal);
 				$("#price-" + prodId).text( price );
 			});
