@@ -2,6 +2,7 @@ package com.projectprac.service;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 
 import com.projectprac.common.Util;
 import com.projectprac.dto.CustomerDto;
@@ -52,6 +53,12 @@ public class AccountServiceImpl implements AccountService {
 	public void updatePassword(String customerId, String passwd) {
 		passwd = Util.getHashedString(passwd, "SHA-256");
 		customerMapper.updatePassword(customerId, passwd);
+	}
+
+	@Override
+	public List<CustomerDto> showAllCustomer() {
+		List<CustomerDto> customers = customerMapper.selectAllCustomer();
+		return customers;
 	}
 
 }

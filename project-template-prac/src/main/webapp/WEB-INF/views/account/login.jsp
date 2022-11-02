@@ -43,15 +43,15 @@
 									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
 										<div class="form-group">
 											<label for="CustomerId">아이디</label>
-											<input type="text" name="customerId" placeholder=""
-												   id="CustomerId" autofocus>
+											<input type="text" name="customerId" placeholder="아이디를 입력하세요"
+												   id="CustomerId" autofocus required minlength="3">
 										</div>
 									</div>
 									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
 										<div class="form-group">
 											<label for="Password">비밀번호</label>
-											<input type="password" name="passwd" placeholder=""
-												   id="Password">
+											<input type="password" name="passwd" placeholder="비밀번호를 입력하세요"
+												   id="Password" required>
 										</div>
 									</div>
 								</div>
