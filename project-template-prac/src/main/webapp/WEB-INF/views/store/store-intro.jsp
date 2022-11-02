@@ -14,6 +14,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Common-css -->
 <jsp:include page="/WEB-INF/views/modules/common-css.jsp"></jsp:include>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@500&display=swap');
+	
+	.Korean-font-style {
+		font-family: 'Hahmlet';
+	}
+	
+</style>
+
 </head>
 <body class="template-blog belle">
 <div class="pageWrapper">
@@ -26,7 +36,7 @@
     	<br> <br> <br> <br>
     	<div class="page section-header text-center mb-0">
 			<div class="page-title">
-        		<div class="wrapper"><h1 class="page-width">지점 소개</h1></div>
+        		<div class="wrapper"><h1 class="page-width Korean-font-style">지점 소개</h1></div>
       		</div>
 		</div> 
         <!--End Page Title-->               
@@ -79,7 +89,7 @@
                                 </li>
                             </ul>
                             <div class="rte"> 
-                                <p>${ store.storeIntroduce }</p>
+                                <p class="Korean-font-style">${ store.storeIntroduce }</p>
                                  </div>
                      					 <c:if test="${ loginuser.userType }">
                                         <input type="button" class="deleted_store_intro btn" id="deleted-${ store.storeId }"   value="삭제" data-storeId="${ store.storeId }" />
