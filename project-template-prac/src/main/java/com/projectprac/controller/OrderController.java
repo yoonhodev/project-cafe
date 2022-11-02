@@ -60,9 +60,21 @@ public class OrderController {
 	      return "shop/shop";
 	}
 	
-	@GetMapping(path = {"delete"})
-	public String deleteOrder(@PathVariable("prodId") int prodId, HttpSession session) {
-		session.removeAttribute("prodId");
+	@GetMapping(path = {"delete-order"})
+	public String deleteOrder(@RequestParam(defaultValue = "-1") int prodId, HttpSession session) {
+		
+		if (prodId == -1) {
+			return "redirect:order";
+		}
+		
+		List<ProductDto> productIds = (List<ProductDto>) session.getAttribute("productIds");
+		for (ProductDto product : productIds) {
+			if (product.getProdId() == prodId) {
+				productIds.remove(product);
+				session.setAttribute("productIds", productIds);
+				return "redirect:order";
+			}
+		}
 		
 		return "redirect:order";
 		
