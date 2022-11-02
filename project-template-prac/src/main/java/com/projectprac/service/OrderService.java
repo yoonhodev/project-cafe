@@ -7,5 +7,7 @@ public interface OrderService {
 		ProductDto showOrder(int prodId);
 
 		ProductDto deleteAllOrder(int prodId);
+
+		ProductDto deleteOrder(int prodId);
 		
 	}
