@@ -11,53 +11,10 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Short Description &ndash; Belle Multipurpose Bootstrap 4 Template</title>
+<title>Notice Board</title>
 <meta name="description" content="description">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jsp:include page="/WEB-INF/views/modules/common-css.jsp"></jsp:include>
-<style>
- 
-        /* pagination position styling */
-        .pagination_section {
-            position: relative;
-        }
- 
-        /* pagination styling */
-        .pagination_section a {
-            color: black;
-            padding: 10px 18px;
-            text-decoration: none;
-        }
- 
-        /* pagination hover effect on non-active */
-        .pagination_section a:hover:not(.active) {
-            background-color: #031F3B;
-            color: white;
-        }
- 
-        /* pagination hover effect on active*/
- 
-        a:nth-child(5) {
-            background-color: green;
-            color: white;
-        }
- 
-        a:nth-child(1) {
-            font-weight: bold;
-        }
- 
-        a:nth-child(7) {
-            font-weight: bold;
-        }
- 
-        .content-pagenation {
-            margin: 50px;
-            padding: 15px;
-            width: 700px;
-            height: 200px;
-            border: 2px solid black;
-        }
-    </style>
 
 </head>
 <body class="template-product belle">
@@ -292,7 +249,7 @@
     	<!--End Body Content-->
     
     <!--Footer-->
-   <jsp:include page="/WEB-INF/views/modules/home-footer.jsp"></jsp:include>
+   <jsp:include page="/WEB-INF/views/modules/footer.jsp"></jsp:include>
     <!--End Footer-->
     <!--Scoll Top-->
     <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>

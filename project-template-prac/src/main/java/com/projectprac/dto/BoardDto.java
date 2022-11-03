@@ -13,6 +13,7 @@ public class BoardDto {
 	private String content;
 	private Date regdate;
 	private boolean deleted;
+	private boolean boardType;
 	
 	
 }

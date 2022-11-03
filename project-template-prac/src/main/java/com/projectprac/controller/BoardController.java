@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.projectprac.dto.BoardDto;
-import com.projectprac.dto.StoreDto;
 import com.projectprac.service.BoardService;
 import com.projectprac.ui.ThePager;
 
@@ -31,21 +30,9 @@ public class BoardController {
 	@Qualifier("boardService")
 	private BoardService boardService;
 	
-//	@GetMapping(path = { "noticeBoard" })
-//	public String noticeBoard() {
-//		
-//		return "board/noticeBoard";
-//	}
-	
-	@GetMapping(path = { "eventBoard" })
-	public String eventBoard() {
-		
-		return "board/noticeBoard";
-	}
-	
 	@PostMapping(path = { "writeBoard" })
 	public String writeBoard(BoardDto board) {
-		
+	
 		boardService.writeBoard(board);
 		
 		return "redirect:noticeBoard";
@@ -65,7 +52,8 @@ public class BoardController {
 		model.addAttribute("boards", boards);
 		model.addAttribute("pager", pager);
 		model.addAttribute("pageNo", pageNo);
-;
+
+		System.out.println(boardCount);
 		
 		// 4. View or Controller로 이동
 		return "board/noticeBoard"; 	// /WEB-INF/views/ + board/list + .jsp
@@ -80,7 +68,6 @@ public class BoardController {
 		if (boardId == -1 || pageNo == -1) { // 요청 데이터가 잘못된 경우
 			return "redirect:noticeBoard";
 		}
-		
 		
 		BoardDto boardDetail = boardService.showBoardDetail(boardId);
 		
@@ -114,8 +101,10 @@ public class BoardController {
 		// 3. View에서 사용할 수 있도록 데이터 저장
 		
 		// 4. View 또는 다른 Controller로 이동
+		
 		return "redirect:/noticeBoard?pageNo=" + pageNo;
 	}
+	
 	
 	@GetMapping(path = {"/edit" })
 	public String showBoardEditForm(@RequestParam(defaultValue = "-1")int boardId, 
@@ -155,7 +144,6 @@ public class BoardController {
 
 		return "redirect:/noticeBoardDetail?boardId=" + boardId + "&pageNo=" + pageNo;
 
-}
-	
+	}	
 	
 }

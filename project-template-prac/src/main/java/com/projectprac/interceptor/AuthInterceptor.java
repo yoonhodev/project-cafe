@@ -25,7 +25,9 @@ public class AuthInterceptor implements HandlerInterceptor {
 				uri.contains("/mypage")		||
 				uri.contains("/writeStore") ||
 				uri.contains("/order")      ||
-				uri.contains("/shop"))  	{ // 로그인한 사용자만 볼 수 있는 요청
+				uri.contains("/shop")		||
+				uri.contains("/fixedSpend")	||
+				uri.contains("/admin"))  	{ // 로그인한 사용자만 볼 수 있는 요청
 			
 				resp.sendRedirect("/project-template-prac/login");
 				return false; // 예정된 컨트롤러 호출을 취소
@@ -33,7 +35,9 @@ public class AuthInterceptor implements HandlerInterceptor {
 		}
 		
 		if (customer != null && customer.isUserType() == false) {	// 로그인 하지 않은 사용자
-			if (uri.contains("/writeStore")) 	{ // 로그인한 사용자만 볼 수 있는 요청
+			if (uri.contains("/writeStore")	||
+				uri.contains("/fixedSpend")	||
+				uri.contains("/admin")) 	{ // 로그인한 사용자만 볼 수 있는 요청
 			
 				resp.sendRedirect("/project-template-prac/home");
 				return false; // 예정된 컨트롤러 호출을 취소
