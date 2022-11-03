@@ -67,7 +67,7 @@
 											<label for="PasswordCheck">비밀번호 확인</label>
 											<input type="password" name="passwdchk"
 												   placeholder="" id="PasswordCheck" required
-												   minlength="8" maxlength="20" onchange="check_pw()">
+												   onchange="check_pw()">
 											<span id="check"></span>										
 										</div>
 									</div>
@@ -140,34 +140,71 @@
 	</div>
 	<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 	<script type="text/javascript">
-		function check_pw() {
-			if ($("#Password").val() != $("#PasswordCheck").val()) {
-				$("#check").text("비밀번호가 일치하지 않습니다.");
-				$("#check").css("color", "red");
-			} else {
-				$("#check").text("비밀번호가 일치합니다.")
-				$("#check").css("color", "blue");
-			}
-		}
-		$("#idcheckbtn").on("click", function() {
-			alert("확인");
-			var customerId = $("#CustomerId").val();
-			var chk = 0;
-			if (customerId != null) {
-				for (int i = 0; i < customers.length; i++) {
-					if ($("#customer-" + i).eq(customerId)) {
-						$("#CustomerId").val("");
-						$("#idcheck").text("이미 가입된 아이디입니다.")
-						$("#idcheck").css("color", "red");
-						chk = 1;
-					}
+		$(function() {
+			$("#PasswordCheck").on("change", function() {
+				if ($("#Password").val() != $("#PasswordCheck").val()) {
+					$("#check").text("비밀번호가 일치하지 않습니다.");
+					$("#check").css("color", "red");
+				} else {
+					$("#check").text("비밀번호가 일치합니다.")
+					$("#check").css("color", "blue");
 				}
-				if(!chk.eq(1)) {
-					$("#idcheck").text("사용 가능한 아이디 입니다.")
-					$("#idcheck").css("color", "blue");
-				}
-			}
+			});
+			
+			$("#idcheckbtn").on("click", function() {
+	 			
+	 			var customerId = $("#CustomerId").val();
+				var chk = 0;
+	 			if (customerId == "") {
+	 				alert("널");
+	 			} else {
+	 				while (i<customers.length) {
+	 					alert(i++);
+	 					
+	 				}
+	 			}
+// 	 			if (customerId != null) {
+// 	 				for (int i = 0; i < customers.length; i++) {
+// 	 					if ($("#customer-" + i).eq(customerId)) {
+// 	 						$("#CustomerId").val("");
+// 	 						$("#idcheck").text("이미 가입된 아이디입니다.")
+// 	 						$("#idcheck").css("color", "red");
+// 	 						chk = 1;
+// 	 					}
+// 	 				}
+// 	 				if(!chk.eq(1)) {
+// 	 					$("#idcheck").text("사용 가능한 아이디 입니다.")
+// 	 					$("#idcheck").css("color", "blue");
+// 	 				}
+// 	 			}
+	 		});
+			
+			
+			
+			
 		});
+// 		function check_pw() {
+			
+// 		}
+// 		$("#idcheckbtn").on("click", function() {
+// 			alert("확인");
+// 			var customerId = $("#CustomerId").val();
+// 			var chk = 0;
+// 			if (customerId != null) {
+// 				for (int i = 0; i < customers.length; i++) {
+// 					if ($("#customer-" + i).eq(customerId)) {
+// 						$("#CustomerId").val("");
+// 						$("#idcheck").text("이미 가입된 아이디입니다.")
+// 						$("#idcheck").css("color", "red");
+// 						chk = 1;
+// 					}
+// 				}
+// 				if(!chk.eq(1)) {
+// 					$("#idcheck").text("사용 가능한 아이디 입니다.")
+// 					$("#idcheck").css("color", "blue");
+// 				}
+// 			}
+// 		});
 	</script>
 </body>
 </html>
