@@ -1,5 +1,8 @@
 package com.projectprac.service;
 
+import java.util.List;
+
+import com.projectprac.dto.CouponMakeDto;
 import com.projectprac.dto.ProductDto;
 
 public interface OrderService {
@@ -9,5 +12,7 @@ public interface OrderService {
 		ProductDto deleteAllOrder(int prodId);
 
 		ProductDto deleteOrder(int prodId);
+		
+		List<CouponMakeDto> showCoupon(String customerId);
 		
 	}
