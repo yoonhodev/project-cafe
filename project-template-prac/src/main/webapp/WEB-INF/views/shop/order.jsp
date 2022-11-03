@@ -108,15 +108,29 @@
 						<div class="row">
 							<div class="col-12 col-sm-12 col-md-4 col-lg-4 mb-4">
 								<h5>Discount Codes</h5>
-								<form action="#" method="post">
-									<div class="form-group">
+								<form action="applycoupon" method="get" id="apply-coupon">
+									<select id="couponName" name="couponId" class="form-group couponName">
+										<option selected disabled hidden="">쿠폰 선택</option>
+											<c:forEach var="couponMake" items="${ couponMakes }" varStatus="status">
+												<option value="${ couponMakes.couponDto.couponName }">${ couponMakes.couponDto.couponName }</option>
+											</c:forEach>
+										</select>
+									<!-- <div class="form-group">
 										<label for="address_zip">Enter your coupon code if you
 											have one.</label> <input type="text" name="coupon">
-									</div>
+									</div> -->
+									<!-- <br><br>
+													<input type="hidden" id="StoreId1" name="storeId">
+													<input type="submit"
+														   class="spr-button spr-button-primary button button-primary btn btn-primary"
+														   id="SelectStore"
+														   value="확인"> -->
 									<div class="actionRow">
 										<div>
-											<input type="button" class="btn btn-secondary btn--small"
-												value="Apply Coupon">
+											<input type="hidden" id="couponMakeId1" name="couponId">
+											<input type="submit" class="btn btn-secondary btn--small"
+												   id="SelectCoupon"
+												   value="쿠폰 적용">
 										</div>
 									</div>
 								</form>
