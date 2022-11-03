@@ -13,53 +13,10 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Short Description &ndash; Belle Multipurpose Bootstrap 4 Template</title>
+<title>Green Coffee</title>
 <meta name="description" content="description">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jsp:include page="/WEB-INF/views/modules/common-css.jsp"></jsp:include>
-<style>
- 
-        /* pagination position styling */
-        .pagination_section {
-            position: relative;
-        }
- 
-        /* pagination styling */
-        .pagination_section a {
-            color: black;
-            padding: 10px 18px;
-            text-decoration: none;
-        }
- 
-        /* pagination hover effect on non-active */
-        .pagination_section a:hover:not(.active) {
-            background-color: #031F3B;
-            color: white;
-        }
- 
-        /* pagination hover effect on active*/
- 
-        a:nth-child(5) {
-            background-color: green;
-            color: white;
-        }
- 
-        a:nth-child(1) {
-            font-weight: bold;
-        }
- 
-        a:nth-child(7) {
-            font-weight: bold;
-        }
- 
-        .content-pagenation {
-            margin: 50px;
-            padding: 15px;
-            width: 700px;
-            height: 200px;
-            border: 2px solid black;
-        }
-    </style>
 
 </head>
 <body class="template-product belle">
@@ -76,33 +33,17 @@
             <!--MainContent-->
             <div id="MainContent" class="main-content" role="main">
                 <!--Breadcrumb-->
-                <div class="bredcrumbWrap">
-                    <div class="container breadcrumbs">
-                   <!--      <a href="index.html" title="Back to the home page">Home</a><span aria-hidden="true">›</span><span>Short Description</span> -->
-                    </div>
-                </div>
+              
    
                 
                 <div id="ProductSection-product-template" class="product-template__container prstyle1 container">
                
                     <!--Product Tabs-->
                     <div class="tabs-listing">
-                        <ul class="product-tabs">
-                            <li rel="tab-notice-board"><a class="tablink">Notice Board</a></li>
-                            <li rel="tab-event-board"><a class="tablink">Event Board</a></li>
-                        </ul>
-               
                         <div class="tab-container">
                             <div id="tab-notice-board" class="tab-content">
-                                
                                     <div id="shopify-product-reviews">
                                     <div class="spr-container">
-                                        <div class="spr-header clearfix">
-                                                                                        </div>
-                                        <div id="toggle">
-                                        <div class="spr-content">
-
-                                         
 
                                         <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
                                             <div class="spr-form clearfix" id="toggle-form" style="display:">
@@ -194,42 +135,6 @@
                                                     </fieldset>
                                                 </form>
                                             </div>
-                                            <div class="spr-reviews">
-                                                <div class="spr-review">
-                                                    <div class="spr-review-header">
-                                                        
-                                                        <h3 class="spr-review-header-title">Lorem ipsum dolor sit amet</h3>
-                                                        <span class="spr-review-header-byline"><strong>dsacc</strong> on <strong>Apr 09, 2019</strong></span>
-                                                    </div>
-                                                    <div class="spr-review-content">
-                                                        <p class="spr-review-content-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                                    </div>
-                                                </div>
-                                                <div class="spr-review">
-                                                  <div class="spr-review-header">
-                                                    <span class="product-review spr-starratings spr-review-header-starratings"><span class="reviewLink"><i class="fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i></span></span>
-                                                    <h3 class="spr-review-header-title">Lorem Ipsum is simply dummy text of the printing</h3>
-                                                    <span class="spr-review-header-byline"><strong>larrydude</strong> on <strong>Dec 30, 2018</strong></span>
-                                                  </div>
-                                            
-                                                  <div class="spr-review-content">
-                                                    <p class="spr-review-content-body">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-                                                    </p>
-                                                  </div>
-                                                </div>
-                                                <div class="spr-review">
-                                                  <div class="spr-review-header">
-                                                    <span class="product-review spr-starratings spr-review-header-starratings"><span class="reviewLink"><i class="fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i></span></span>
-                                                    <h3 class="spr-review-header-title">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</h3>
-                                                    <span class="spr-review-header-byline"><strong>quoctri1905</strong> on <strong>Dec 30, 2018</strong></span>
-                                                  </div>
-                                            
-                                                  <div class="spr-review-content">
-                                                    <p class="spr-review-content-body">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.<br>
-                                                    <br>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                                                  </div>
-                                                </div>
-                                            </div>
                                         </div>
                                         </div>
                                   
@@ -255,7 +160,7 @@
     	<!--End Body Content-->
     
     <!--Footer-->
-   <jsp:include page="/WEB-INF/views/modules/home-footer.jsp"></jsp:include>
+   <jsp:include page="/WEB-INF/views/modules/footer.jsp"></jsp:include>
     <!--End Footer-->
     <!--Scoll Top-->
     <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>

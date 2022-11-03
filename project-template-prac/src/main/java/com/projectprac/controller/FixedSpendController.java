@@ -28,12 +28,16 @@ public class FixedSpendController {
 			List<FixedSpendDto> fixedSpends = fixedSpendService.selectCostByStoreId(storeId);
 			System.out.println(fixedSpends);
 			model.addAttribute("fixedSpends", fixedSpends);
+			for (StoreDto store : stores) {
+				if (store.getStoreId() == storeId) {
+					model.addAttribute("storeName10", store.getStoreName());
+				}
+			}
 		}
 		
 		// fixedSpendService.showCostByStoreId();
 		model.addAttribute("stores", stores);
-		
-		return "spend/fixedSpend";
+		return "spend/admin-fixedSpend";
 	}
 	
 	@PostMapping(path = {"fixedSpend"})

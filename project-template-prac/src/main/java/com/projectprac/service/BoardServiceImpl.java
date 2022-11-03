@@ -28,6 +28,15 @@ public class BoardServiceImpl implements BoardService {
 //				boardDao.insertBoardAttach(attachment);
 			}
 	
+	
+	
+	@Override
+	public void writeEventBoard(BoardDto board) {
+
+		boardMapper.insertEventBoard(board);
+		
+	}
+
 	public List<BoardDto> showBoardList(BoardDto boardDto) {
 		
 		List<BoardDto> boards = boardMapper.showBoardList(boardDto);
@@ -43,6 +52,15 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
+	public BoardDto showEventBoardDetail(int boardId) {
+
+		BoardDto boardDetail = boardMapper.showEventBoardDetail(boardId);
+		
+		return null;
+	}
+
+	
+	@Override
 	public List<BoardDto> findBoardByPage(int pageNo, int pageSize) {
 		
 		int from = (pageNo - 1) * pageSize;
@@ -52,6 +70,18 @@ public class BoardServiceImpl implements BoardService {
 		return boards;
 		
 	}
+	
+	@Override
+	public List<BoardDto> findEventBoardByPage(int pageNo, int pageSize) {
+		
+		int from = (pageNo - 1) * pageSize;
+		int count = pageSize;
+		
+		List<BoardDto> boards = boardMapper.selectEventBoardByPage(from, count);
+		return boards;
+		
+	}
+
 
 	@Override
 	public int findBoardCount() {
@@ -60,10 +90,26 @@ public class BoardServiceImpl implements BoardService {
 		return boardCount;
 	
 	}
+	@Override
+	public int findEventBoardCount() {
+		
+		int boardCount = boardMapper.selectEventBoardCount();
+		return boardCount;
+		
+	}
+
+
 	
 	public void deleteBoard(int boardId) {
 		
 		boardMapper.deleteBoard(boardId);
+		
+	}
+	
+	@Override
+	public void deleteEventBoard(int boardId) {
+		
+		boardMapper.deleteEventBoard(boardId);
 		
 	}
 
@@ -74,15 +120,47 @@ public class BoardServiceImpl implements BoardService {
 		
 		return board;
 	}
+	
+	@Override
+	public BoardDto findEventBoardByBoardNo(int boardId) {
+		
+		BoardDto board = boardMapper.selectEventBoardByBoardNo(boardId);
+		
+		return board;
+	}
+
 
 	@Override
 	public void modifyBoard(BoardDto board) {
 
 		boardMapper.updateBoard(board);
 		
-		System.out.println("dd");
-		
 	}
+
+	@Override
+	public void modifyEventBoard(BoardDto board) {
+		
+		boardMapper.updateEventBoard(board);
+		System.out.println("dd");
+	}
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
 
 		
 }
