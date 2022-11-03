@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.projectprac.dto.CouponDto;
+import com.projectprac.dto.CouponMakeDto;
 import com.projectprac.dto.CustomerDto;
 import com.projectprac.dto.ProductDto;
 import com.projectprac.service.OrderService;
@@ -83,8 +85,21 @@ public class OrderController {
 	public String deleteAllOrder(HttpSession session) {	
 		session.removeAttribute("productIds");
 		return "redirect:order";
-		}
-		
+	}
+	
+//	public List<CouponMakeDto> CouponMakeList(HttpSession session) {
+//	
+//		CustomerDto customer = (CustomerDto) session.getAttribute("loginuser");
+//		CouponDto coupon;
+//		List<CouponMakeDto> couponMakes = new ArrayList<>();
+//		List<CouponMakeDto> couponMakeDtos = couponService.showCouponList(customer.getCustomerId());
+//		for (CouponMakeDto couponMakeDto : couponMakeDtos) {
+//			coupon = couponService.findCouponByCouponId(couponMakeDto.getCouponId());
+//			couponMakeDto.setCouponDto(coupon);
+//			couponMakes.add(couponMakeDto);
+//		}
+//		return couponMakes;
+//		
 	}
 	
 

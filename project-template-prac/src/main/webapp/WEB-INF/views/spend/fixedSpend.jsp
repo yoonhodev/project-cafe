@@ -41,7 +41,7 @@
 											<div class="spr-summary">
 												<h1>지점명</h1><br>
 											    <form action="fixedSpend" method="get" id="show-cost-form">
-												    <select id="StoreName" name="storeId" class="StoreName">
+												    <select id="StoreName" name="storeName" class="StoreName">
 												    	<option selected disabled hidden="">==지점 선택==</option>
 												      	<c:forEach var="store" items="${ stores }" varStatus="status">
 												        	<option value="${ store.storeId }">${ store.storeName }</option>
@@ -211,9 +211,9 @@
 		});
 		
 		
-		$('#SelectStore').on('click', function(event) {
-			$('#loadList').load(location.href + ' #loadList');
-		});
+// 		$('#SelectStore').on('click', function(event) {
+// 			$('#loadList').load(location.href + ' #loadList');
+// 		});
 		
 		
     </script>
