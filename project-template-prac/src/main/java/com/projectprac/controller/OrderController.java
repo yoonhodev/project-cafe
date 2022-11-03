@@ -44,7 +44,6 @@ public class OrderController {
 	
 	@PostMapping(path = { "update-order" })
 	public String updateOrder(ProductDto product, HttpSession session) {
-		
 		List<ProductDto> productIds = new ArrayList<>();
 	      if (session.getAttribute("productIds") != null) {
 	         productIds = (List<ProductDto>) session.getAttribute("productIds");
