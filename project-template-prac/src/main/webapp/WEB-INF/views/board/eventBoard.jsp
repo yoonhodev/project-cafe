@@ -2,8 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
 
 <!DOCTYPE html>
 <html class="no-js" lang="ko">
@@ -13,19 +11,20 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Green Coffee</title>
+<title>Event Board</title>
 <meta name="description" content="description">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jsp:include page="/WEB-INF/views/modules/common-css.jsp"></jsp:include>
 
 </head>
 <body class="template-product belle">
+
 	<div class="pageWrapper">
     	<jsp:include page="/WEB-INF/views/modules/header.jsp"></jsp:include>
         <br><br><br>
     	<div class="page section-header text-center mb-0">
 			<div class="page-title">
-        		<div class="wrapper"><h1 class="page-width">Notice Board</h1></div>
+        		<div class="wrapper"><h1 class="page-width">Event Board</h1></div>
       		</div>
 		</div>
         <!--Body Content-->
@@ -33,8 +32,7 @@
             <!--MainContent-->
             <div id="MainContent" class="main-content" role="main">
                 <!--Breadcrumb-->
-              
-   
+               
                 
                 <div id="ProductSection-product-template" class="product-template__container prstyle1 container">
                
@@ -42,108 +40,116 @@
                     <div class="tabs-listing">
                         <div class="tab-container">
                             <div id="tab-notice-board" class="tab-content">
+                                
                                     <div id="shopify-product-reviews">
                                     <div class="spr-container">
-
+                                        <div class="spr-header clearfix">
+                                        
+                                        	<c:if test="${ loginuser.userType }">
+                                                    <a href="#" id="toggle-form-btn" class="spr-summary-actions-newreview btn">글 쓰기</a>
+                                            </c:if>
+                                            
+                                        </div>
+                                        <h3 class="spr-form-title"></h3>
+                                                    <fieldset class="spr-form-contact">
+                                                    </fieldset>
                                         <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
-                                            <div class="spr-form clearfix" id="toggle-form" style="display:">
-                                            	<form method="post" action="edit" id="new-review-form" class="new-review-form" >
-                                            		<input type="hidden" name="boardId" value="${ board.boardId }">
-		        									<input type="hidden" name="pageNo" value="${ pageNo }">
-                                                    <h3 class="spr-form-title">글 수정하기</h3>
+                                            <div class="spr-form clearfix" id="toggle-form" style="display:none">
+                                            	<script>
+													$( "#toggle-form-btn" ).click(function() {
+													  $( "#toggle-form" ).toggle( "slow" );
+													});
+												</script>
+
+                                                <form method="post" action="writeEventBoard" id="new-review-form" class="new-review-form" >
+                                                	<input type="hidden" name="boardType" value="false">
+                                                    <h3 class="spr-form-title">Write notice</h3>
                                                     <fieldset class="spr-form-contact">
                                                     </fieldset>
                                                     <fieldset class="spr-form-review">
                                                       <div class="spr-form-review-title">
                                                         <label class="spr-form-label" for="review_title_10508262282">제목</label>
-                                                        <input class="spr-form-input spr-form-input-text " id="review_title_10508262282" type="text" name="title" value="${ board.title }" placeholder="">
+                                                        <input class="spr-form-input spr-form-input-text " id="review_title_10508262282" type="text" name="title" value="" placeholder="제목을 입력하세요.">
                                                       </div>
-                                                		
+                                                
+                                                      <div class="spr-form-review-body">
+                                                        <label class="spr-form-label" for="review_body_10508262282">첨부파일<span class="spr-form-review-body-charactersremaining"></span></label>
+                                                        <div class="spr-form-input">
+                                                          <input type="file" name="attach" id="review_body_10508262282">
+                                                        </div>
+                                                      </div>
+                                                      
                                                       <div class="spr-form-review-body">
                                                         <label class="spr-form-label" for="review_body_10508262282">내용<span class="spr-form-review-body-charactersremaining">(1500)</span></label>
                                                         <div class="spr-form-input">
-                                                          <textarea class="spr-form-input spr-form-input-textarea " id="review_body_10508262282" data-product-id="10508262282" name="content" rows="10">${ board.content }</textarea>
+                                                          <textarea class="spr-form-input spr-form-input-textarea " id="review_body_10508262282" data-product-id="10508262282" name="content" rows="10" placeholder="내용을 입력하세요."></textarea>
                                                         </div>
                                                       </div>
                                                     </fieldset>
                                                     <fieldset class="spr-form-actions">
-                                                        <input type="submit" class="spr-button spr-button-primary button button-primary btn btn-primary" value="수정하기">
-                                                        <input id="btn-cancel" type="button" class="spr-button spr-button-primary button button-primary btn btn-primary" value="Cancel">
+                                                        <input type="submit" class="spr-button spr-button-primary button button-primary btn btn-primary" value="확인">
+                                                        <input id="btn-cancel" type="button" class="spr-button spr-button-primary button button-primary btn btn-primary" value="취소">
                                                     </fieldset>
+                                                   	<br>
                                                 </form>
                                             </div>
                                            	</div>
                                            	
-                                            
+                                            <div>
+                                           
+                            <div style="font-size: 15pt">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th style="height: 25px; font-size: 17px">No.</th>
+                                            <th style="height: 25px; font-size: 17px">제목</th>
+                                            <th style="height: 25px; font-size: 17px">작성자</th>
+                                            <th style="height: 25px; font-size: 17px">조회수</th>
+                                            <th style="height: 25px; font-size: 17px">작성일</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    	<c:forEach var="boards" items="${ boards }">
+                                    	<c:choose>
+                                        <c:when test="${ boards.deleted }">
+                                        <tr>
+                                            <td style="height: 25px; font-size: 17px">${ boards.boardId }</td>
+                                            <td style="height: 25px; width: 800px; font-size: 17px">[삭제된 글입니다.]</td>
+                                            <td style="height: 25px; font-size: 17px">ADMIN</td>
+                                            <td style="height: 25px; font-size: 17px">0</td>
+                                            <td style="height: 25px; font-size: 17px"><fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/></td>
+                                        </tr>
+                                        </c:when>
+                                        <c:otherwise>
+                              			<tr>
+                                            <td style="height: 25px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.boardId }</a></td>
+                                            <td style="height: 25px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.title }</a></td>
+                                            <td style="height: 25px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">ADMIN</a></td>
+                                            <td style="height: 25px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">0</a></td>
+                                            <td style="height: 25px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }"><fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/></a></td>
+                                        </tr>  
+                                         </c:otherwise>
+                                         </c:choose>
+										</c:forEach>
+                                    </tbody>
+                                </table>
+                                <br>
+                                <div style="text-align: center; background-color: white">
+	                                            <span style="background-color: white">${ pager }</span>
+								</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                      
+											
                                     </div>
                                    
                                 </div>
                                 
                             </div>
-
-                            <div id="tab-event-board" class="tab-content">
-                                <div id="shopify-product-reviews">
-                                    <div class="spr-container">
-                                        <div class="spr-header clearfix">
-                                            <div class="spr-summary">
-                                                <span class="product-review"><a class="reviewLink"><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i> </a><span class="spr-summary-actions-togglereviews">Based on 6 reviews456</span></span>
-                                                <span class="spr-summary-actions" >
-                                                    <a href="#" class="spr-summary-actions-newreview btn">Write a review</a>
-                                                </span>
-                                            </div>
-                                        </div>
-                                  
-                                        
-                                        </script>
-                                        
-                                        <div class="spr-content">
-                                            <div class="spr-form clearfix" >
-                                                <form method="post" action="#" id="new-review-form" class="new-review-form">
-                                                    <h3 class="spr-form-title">Write a review</h3>
-                                                    <fieldset class="spr-form-contact">
-                                                        <div class="spr-form-contact-name">
-                                                          <label class="spr-form-label" for="review_author_10508262282">Name</label>
-                                                          <input class="spr-form-input spr-form-input-text " id="review_author_10508262282" type="text" name="review[author]" value="" placeholder="Enter your name">
-                                                        </div>
-                                                        <div class="spr-form-contact-email">
-                                                          <label class="spr-form-label" for="review_email_10508262282">Email</label>
-                                                          <input class="spr-form-input spr-form-input-email " id="review_email_10508262282" type="email" name="review[email]" value="" placeholder="john.smith@example.com">
-                                                        </div>
-                                                    </fieldset>
-                                                    <fieldset class="spr-form-review">
-                                                      <div class="spr-form-review-rating">
-                                                        <label class="spr-form-label">Rating</label>
-                                                        <div class="spr-form-input spr-starrating">
-                                                          <div class="product-review"><a class="reviewLink" href="#"><i class="fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i></a></div>
-                                                        </div>
-                                                      </div>
-                                                
-                                                      <div class="spr-form-review-title">
-                                                        <label class="spr-form-label" for="review_title_10508262282">Review Title</label>
-                                                        <input class="spr-form-input spr-form-input-text " id="review_title_10508262282" type="text" name="review[title]" value="" placeholder="Give your review a title">
-                                                      </div>
-                                                
-                                                      <div class="spr-form-review-body">
-                                                        <label class="spr-form-label" for="review_body_10508262282">Body of Review <span class="spr-form-review-body-charactersremaining">(1500)</span></label>
-                                                        <div class="spr-form-input">
-                                                          <textarea class="spr-form-input spr-form-input-textarea " id="review_body_10508262282" data-product-id="10508262282" name="review[body]" rows="10" placeholder="Write your comments here"></textarea>
-                                                        </div>
-                                                      </div>
-                                                    </fieldset>
-                                                    <fieldset class="spr-form-actions">
-                                                        <input type="submit" class="spr-button spr-button-primary button button-primary btn btn-primary" value="Submit Review">
-                                                    </fieldset>
-                                                </form>
-                                            </div>
-                                        </div>
-                                        </div>
-                                  
-                                </div>
-                            	
-                            <div>
-                        </div>
-                    </div>
-                    <!--End Product Tabs-->
+                            
+                          
                     
                     <!--Related Product Slider-->
                     
@@ -187,13 +193,11 @@
 
      <script>
         $(function(){
+        	
         	$('#btn-cancel').on('click', function(event) {
-    			location.href = 'noticeBoardDetail?boardId=${board.boardId}' +
+    			location.href = 'noticeBoard?boardId=${board.boardId}' +
     							'&pageNo=${pageNo}';
     		});
-        	
-        	
-        	
         	
             var $pswp = $('.pswp')[0],
                 image = [],

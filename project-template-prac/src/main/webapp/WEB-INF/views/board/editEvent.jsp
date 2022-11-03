@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 
 <!DOCTYPE html>
 <html class="no-js" lang="ko">
@@ -11,7 +13,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Notice Board</title>
+<title>Green Coffee</title>
 <meta name="description" content="description">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jsp:include page="/WEB-INF/views/modules/common-css.jsp"></jsp:include>
@@ -23,7 +25,7 @@
         <br><br><br>
     	<div class="page section-header text-center mb-0">
 			<div class="page-title">
-        		<div class="wrapper"><h1 class="page-width">Notice Board</h1></div>
+        		<div class="wrapper"><h1 class="page-width">Event Board</h1></div>
       		</div>
 		</div>
         <!--Body Content-->
@@ -31,109 +33,54 @@
             <!--MainContent-->
             <div id="MainContent" class="main-content" role="main">
                 <!--Breadcrumb-->
-                <div class="bredcrumbWrap">
-                    <div class="container breadcrumbs">
-                   <!--      <a href="index.html" title="Back to the home page">Home</a><span aria-hidden="true">›</span><span>Short Description</span> -->
-                    </div>
-                </div>
+              
    
                 
                 <div id="ProductSection-product-template" class="product-template__container prstyle1 container">
                
                     <!--Product Tabs-->
                     <div class="tabs-listing">
-                        <ul class="product-tabs">
-                            <li rel="tab-notice-board"><a class="tablink">Notice Board</a></li>
-                            <li rel="tab-event-board"><a class="tablink">Event Board</a></li>
-                            
-                            
-                        </ul>
-               
                         <div class="tab-container">
                             <div id="tab-notice-board" class="tab-content">
-                                
                                     <div id="shopify-product-reviews">
                                     <div class="spr-container">
-                                        <div class="spr-header clearfix">
-                                        	<c:if test="${ loginuser.userType }">
-                             
-                                                    <a href="#" id="toggle-form-btn" class="spr-summary-actions-newreview btn">글 쓰기</a>
-                                
-                                            </c:if>
-                                            </div>
-                                        <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
-                                            <div class="spr-form clearfix" id="toggle-form" style="display:none">
-                                            	<script>
-													$( "#toggle-form-btn" ).click(function() {
-													  $( "#toggle-form" ).toggle( "slow" );
-													});
-													</script>
 
-                                                <form method="post" action="writeBoard" id="new-review-form" class="new-review-form" >
-                                                    <h3 class="spr-form-title">Write notice</h3>
+                                        <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+                                            <div class="spr-form clearfix" id="toggle-form" style="display:">
+                                            	<form method="post" action="editEvent" id="new-review-form" class="new-review-form" >
+                                            		<input type="hidden" name="boardId" value="${ board.boardId }">
+		        									<input type="hidden" name="pageNo" value="${ pageNo }">
+                                                    <h3 class="spr-form-title">글 수정하기</h3>
                                                     <fieldset class="spr-form-contact">
                                                     </fieldset>
                                                     <fieldset class="spr-form-review">
                                                       <div class="spr-form-review-title">
-                                                        <label class="spr-form-label" for="review_title_10508262282">작성자</label>
-                                                        <input class="spr-form-input spr-form-input-text " id="review_title_10508262282" type="text" name="title" value="" placeholder="ADMIN">
-                                                      </div>
-                                                    
-                                                      <div class="spr-form-review-title">
                                                         <label class="spr-form-label" for="review_title_10508262282">제목</label>
-                                                        <input class="spr-form-input spr-form-input-text " id="review_title_10508262282" type="text" name="title" value="" placeholder="제목을 입력하세요.">
+                                                        <input class="spr-form-input spr-form-input-text " id="review_title_10508262282" type="text" name="title" value="${ board.title }" placeholder="">
                                                       </div>
-                                                
+                                                		
                                                       <div class="spr-form-review-body">
                                                         <label class="spr-form-label" for="review_body_10508262282">내용<span class="spr-form-review-body-charactersremaining">(1500)</span></label>
                                                         <div class="spr-form-input">
-                                                          <textarea class="spr-form-input spr-form-input-textarea " id="review_body_10508262282" data-product-id="10508262282" name="content" rows="10" placeholder="내용을 입력하세요."></textarea>
+                                                          <textarea class="spr-form-input spr-form-input-textarea " id="review_body_10508262282" data-product-id="10508262282" name="content" rows="10">${ board.content }</textarea>
                                                         </div>
                                                       </div>
                                                     </fieldset>
                                                     <fieldset class="spr-form-actions">
-                                                        <input type="submit" class="spr-button spr-button-primary button button-primary btn btn-primary" value="Submit">
+                                                        <input type="submit" class="spr-button spr-button-primary button button-primary btn btn-primary" value="수정하기">
                                                         <input id="btn-cancel" type="button" class="spr-button spr-button-primary button button-primary btn btn-primary" value="Cancel">
                                                     </fieldset>
-                                                   
                                                 </form>
                                             </div>
                                            	</div>
                                            	
-                                            <div>
-                                            <!-- 게시글 1개 시작 -->
-                                        	<c:forEach var="boards" items="${ boards }">
-                                        		<c:choose>
-                                        		<c:when test="${ boards.deleted }">
-                                                <div class="spr-review">
-                                                        <span class="spr-review-header-byline" style="font-size: 10pt"><strong>[No.${ boards.boardId }] &nbsp&nbsp&nbsp 제목 : [삭제된 글입니다] </strong></span>
-                                                        <span class="spr-review-header-byline" style="font-size: 10pt; text-align: right;"><strong>작성자 : ADMIN </strong><strong>작성일 : <fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/> </strong></span>
-                                                </div>
-                                        		</c:when>
-                                        		<c:otherwise>
-                                                <a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">
-                                                <div class="spr-review">
-                                                    <div class="spr-review-header">
-                                                        <h3 class="spr-review-header-title">공지번호 : ${ boards.boardId } &nbsp| &nbsp&nbsp&nbsp 제목 : ${ boards.title } </h3>
-                                                        <span class="spr-review-header-byline"><strong>작성자 : ADMIN &nbsp| &nbsp&nbsp&nbsp</strong><strong>작성일 : <fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/> &nbsp </strong></span>
-                                                    </div>
-                                                </div>
-                                                </a>
-                                                </c:otherwise>
-                                                </c:choose>
-											</c:forEach>
-                                             <!-- 게시글 1개 끝 -->
-                                              
-                                            </div>
-                                            <div style="text-align: center;">
-	                                            ${ pager }
-											</div>
+                                            
                                     </div>
                                    
                                 </div>
                                 
                             </div>
-                            
+
                             <div id="tab-event-board" class="tab-content">
                                 <div id="shopify-product-reviews">
                                     <div class="spr-container">
@@ -188,42 +135,6 @@
                                                     </fieldset>
                                                 </form>
                                             </div>
-                                            <div class="spr-reviews">
-                                                <div class="spr-review">
-                                                    <div class="spr-review-header">
-                                                        
-                                                        <h3 class="spr-review-header-title">Lorem ipsum dolor sit amet</h3>
-                                                        <span class="spr-review-header-byline"><strong>dsacc</strong> on <strong>Apr 09, 2019</strong></span>
-                                                    </div>
-                                                    <div class="spr-review-content">
-                                                        <p class="spr-review-content-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                                    </div>
-                                                </div>
-                                                <div class="spr-review">
-                                                  <div class="spr-review-header">
-                                                    <span class="product-review spr-starratings spr-review-header-starratings"><span class="reviewLink"><i class="fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i></span></span>
-                                                    <h3 class="spr-review-header-title">Lorem Ipsum is simply dummy text of the printing</h3>
-                                                    <span class="spr-review-header-byline"><strong>larrydude</strong> on <strong>Dec 30, 2018</strong></span>
-                                                  </div>
-                                            
-                                                  <div class="spr-review-content">
-                                                    <p class="spr-review-content-body">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-                                                    </p>
-                                                  </div>
-                                                </div>
-                                                <div class="spr-review">
-                                                  <div class="spr-review-header">
-                                                    <span class="product-review spr-starratings spr-review-header-starratings"><span class="reviewLink"><i class="fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i></span></span>
-                                                    <h3 class="spr-review-header-title">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</h3>
-                                                    <span class="spr-review-header-byline"><strong>quoctri1905</strong> on <strong>Dec 30, 2018</strong></span>
-                                                  </div>
-                                            
-                                                  <div class="spr-review-content">
-                                                    <p class="spr-review-content-body">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.<br>
-                                                    <br>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                                                  </div>
-                                                </div>
-                                            </div>
                                         </div>
                                         </div>
                                   
@@ -276,11 +187,13 @@
 
      <script>
         $(function(){
-        	
         	$('#btn-cancel').on('click', function(event) {
-    			location.href = 'noticeBoard?boardId=${board.boardId}' +
+    			location.href = 'eventBoardDetail?boardId=${board.boardId}' +
     							'&pageNo=${pageNo}';
     		});
+        	
+        	
+        	
         	
             var $pswp = $('.pswp')[0],
                 image = [],

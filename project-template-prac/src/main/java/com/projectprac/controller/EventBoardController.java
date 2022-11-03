@@ -19,32 +19,38 @@ import com.projectprac.ui.ThePager;
 
 
 @Controller
-public class BoardController {
+public class EventBoardController {
 
 	private final int PAGE_SIZE = 10; 	// 한 페이지에 표시되는 데이터 개수
 	private final int PAGER_SIZE = 5;	// 한 번에 표시할 페이지 번호 개수
-	private final String LINK_URL = "noticeBoard"; // 페이지 번호를 클릭했을 때 이동할 페이지 경로
+	private final String LINK_URL = "eventBoard"; // 페이지 번호를 클릭했을 때 이동할 페이지 경로
 	
 	
 	@Autowired
 	@Qualifier("boardService")
 	private BoardService boardService;
 	
-	@PostMapping(path = { "writeBoard" })
-	public String writeBoard(BoardDto board) {
+//	@GetMapping(path = { "noticeBoard" })
+//	public String noticeBoard() {
+//		
+//		return "board/noticeBoard";
+//	}
 	
-		boardService.writeBoard(board);
+	@PostMapping(path = { "writeEventBoard" })
+	public String writeEventBoard(BoardDto board) {
+	
+		boardService.writeEventBoard(board);
 		
-		return "redirect:noticeBoard";
+		return "redirect:eventBoard";
 	}
 	
-	@GetMapping(path = { "noticeBoard" })
-	public String showBoardList(@RequestParam(defaultValue = "1")int pageNo, Model model) {
+	@GetMapping(path = { "eventBoard" })
+	public String showEventBoardList(@RequestParam(defaultValue = "1")int pageNo, Model model) {
 		// 1. 요청 데이터 읽기 ( 전달인자로 대체 )
 		// 2. 데이터 처리 ( 데이터 조회 )		
 
-		List<BoardDto> boards = boardService.findBoardByPage(pageNo, PAGE_SIZE);
-		int boardCount = boardService.findBoardCount();
+		List<BoardDto> boards = boardService.findEventBoardByPage(pageNo, PAGE_SIZE);
+		int boardCount = boardService.findEventBoardCount();
 		
 		ThePager pager = new ThePager(boardCount, pageNo, PAGE_SIZE, PAGER_SIZE, LINK_URL);
 
@@ -53,20 +59,19 @@ public class BoardController {
 		model.addAttribute("pager", pager);
 		model.addAttribute("pageNo", pageNo);
 
-		System.out.println(boardCount);
 		
 		// 4. View or Controller로 이동
-		return "board/noticeBoard"; 	// /WEB-INF/views/ + board/list + .jsp
+		return "board/eventBoard"; 	// /WEB-INF/views/ + board/list + .jsp
 	}
 	
-	@GetMapping(path = { "/noticeBoardDetail" })
-	public String showBoardDetail(@RequestParam(defaultValue = "-1") int boardId, 
+	@GetMapping(path = { "/eventBoardDetail" })
+	public String showEventBoardDetail(@RequestParam(defaultValue = "-1") int boardId, 
 								  @RequestParam(defaultValue = "-1") int pageNo,
 								  HttpSession session, 
 								  Model model) {	
 		
 		if (boardId == -1 || pageNo == -1) { // 요청 데이터가 잘못된 경우
-			return "redirect:noticeBoard";
+			return "redirect:eventBoard";
 		}
 		
 		BoardDto boardDetail = boardService.showBoardDetail(boardId);
@@ -80,12 +85,11 @@ public class BoardController {
 		model.addAttribute("pageNo", pageNo);
 		
 		// 4. View 또는 Controller로 이동
-		return "board/noticeBoardDetail";
+		return "board/eventBoardDetail";
 	}
 	
-	
-	@GetMapping(path = { "/delete/{boardId}" })
-	public String deleteBoard(@PathVariable("boardId") int boardId,
+	@GetMapping(path = { "/deleteEvent/{boardId}" })
+	public String deleteEventBoard(@PathVariable("boardId") int boardId,
 							  @RequestParam (defaultValue = "-1")int pageNo,
 							  Model model) { //Model --> jsp로 데이터 전달할때 씀
 		
@@ -96,18 +100,17 @@ public class BoardController {
 			return "board/error"; // WEB-ING/views/+ board/error + .jsp (오류가 나면 board/error페이지로 보냄) 
 		}
 		
-		boardService.deleteBoard(boardId);
+		boardService.deleteEventBoard(boardId);
 		
 		// 3. View에서 사용할 수 있도록 데이터 저장
 		
 		// 4. View 또는 다른 Controller로 이동
 		
-		return "redirect:/noticeBoard?pageNo=" + pageNo;
+		return "redirect:/eventBoard?pageNo=" + pageNo;
 	}
 	
-	
-	@GetMapping(path = {"/edit" })
-	public String showBoardEditForm(@RequestParam(defaultValue = "-1")int boardId, 
+	@GetMapping(path = {"/editEvent" })
+	public String showBoardEventEditForm(@RequestParam(defaultValue = "-1")int boardId, 
 									@RequestParam(defaultValue = "-1")int pageNo, 
 									Model model) {
 								
@@ -117,18 +120,18 @@ public class BoardController {
 			return "board/error";	
 		}
 			
-		BoardDto board = boardService.findBoardByBoardNo(boardId);
-
+		BoardDto board = boardService.findEventBoardByBoardNo(boardId);
+	
 		// View에게 전달할 데이터 저장
 		model.addAttribute("board", board);
 		model.addAttribute("boardId", boardId);
 		model.addAttribute("pageNo", pageNo);		
-		 return "board/edit";  // WEB-INF/views/ + board/edit + .jsp
+		 return "board/editEvent";  // WEB-INF/views/ + board/edit + .jsp
 		//return "redirect:edit.action?boardNo=" + boardNo + "&pageNo=" + pageNo;
 	}
 	
-	@PostMapping(path = {"/edit" })
-	public String modifyBoard(@RequestParam(defaultValue = "-1") int pageNo,
+	@PostMapping(path = {"/editEvent" })
+	public String modifyEventBoard(@RequestParam(defaultValue = "-1") int pageNo,
 							  @RequestParam(defaultValue = "-1") int boardId,
 							  BoardDto board,
 							  Model model) {
@@ -137,13 +140,14 @@ public class BoardController {
 			model.addAttribute("message", "글번호 또는 페이지 번호가 없습니다.");
 			return "board/error";	
 		}
-		boardService.modifyBoard(board);
+		boardService.modifyEventBoard(board);
 		
 		//return "redirect:noticeBoardDetail?boardId=" + board.getBoardId() + "&pageNo=" + pageNo;
 		//return "redirect:/noticeBoard?pageNo=" + pageNo;
 
-		return "redirect:/noticeBoardDetail?boardId=" + boardId + "&pageNo=" + pageNo;
+		return "redirect:/eventBoardDetail?boardId=" + boardId + "&pageNo=" + pageNo;
 
-	}	
+}
+	
 	
 }

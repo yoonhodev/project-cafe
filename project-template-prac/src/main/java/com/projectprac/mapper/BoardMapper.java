@@ -24,31 +24,57 @@ public interface BoardMapper {
 
 	
 
-	@Insert("INSERT INTO board (title, content) " +
-			"VALUES (#{ title }, #{ content })")
+	@Insert("INSERT INTO board (title, content, board_type) " +
+			"VALUES (#{ title }, #{ content }, #{ boardType })")
 	//@Options(useGeneratedKeys = true, keyColumn = "boardno", keyProperty = "boardNo")
 	void insertBoard(BoardDto board);
+	
+	@Insert("INSERT INTO board (title, content, board_type) " +
+			"VALUES (#{ title }, #{ content }, #{ boardType })")
+	//@Options(useGeneratedKeys = true, keyColumn = "boardno", keyProperty = "boardNo")
+	void insertEventBoard(BoardDto board);
 
-	@Select("select board_id boardid, worker_id workerid, title, content, regdate, deleted from board order by boardid DESC ")
+	@Select("select board_id boardid, worker_id workerid, title, content, regdate, deleted " +
+			"from board " +
+			"order by boardid DESC ")
 	List<BoardDto> showBoardList(BoardDto boardDto);
 	
 	@Select("select board_id boardid, worker_id workerid, title, content, regdate, deleted from board where board_id = #{ boardId }")
 	BoardDto showBoardDetail(int boardId);
 	
-	@Select("SELECT board_id boardid, worker_id workerid, title, regdate, deleted " +
+	@Select("select board_id boardid, worker_id workerid, title, content, regdate, deleted from board where board_id = #{ boardId }")
+	BoardDto showEventBoardDetail(int boardId);
+	
+	@Select("SELECT board_id boardid, worker_id workerid, title, regdate, deleted, board_type " +
 			"FROM board " +
+			"WHERE board_type = TRUE " +
 			"ORDER BY boardid DESC " + // 최신 글이 앞에 보이도록 조회
 			"LIMIT #{ from }, #{ count } ")
 	List<BoardDto> selectBoardByPage(@Param("from") int from, @Param("count") int count);
+	
+	@Select("SELECT board_id boardid, worker_id workerid, title, regdate, deleted, board_type " +
+			"FROM board " +
+			"WHERE board_type = FALSE " +
+			"ORDER BY boardid DESC " + // 최신 글이 앞에 보이도록 조회
+			"LIMIT #{ from }, #{ count } ")
+	List<BoardDto> selectEventBoardByPage(@Param("from") int from, @Param("count") int count);
 
 
-	@Select("select count(*) from board")
+	@Select("select count(*) from board where board_type = true")
 	public int selectBoardCount();
+	
+	@Select("select count(*) from board where board_type = false")
+	public int selectEventBoardCount();
 
 	@Update("UPDATE board " +
 			"SET deleted = TRUE " +
 			"WHERE board_id = #{ boardId }") // ? : 나중에 채워질 영역 표시)
 	public void deleteBoard(int boardId);
+	
+	@Update("UPDATE board " +
+			"SET deleted = TRUE " +
+			"WHERE board_id = #{ boardId }") // ? : 나중에 채워질 영역 표시)
+	void deleteEventBoard(int boardId);
 
 	
 	@Select("SELECT board_id boardid, worker_id workerid, title, content, regdate, deleted " +
@@ -56,10 +82,32 @@ public interface BoardMapper {
 			"WHERE board_id = #{ boardId } AND deleted = FALSE")
 	BoardDto selectBoardByBoardNo(int boardId);
 	
+	@Select("SELECT board_id boardid, worker_id workerid, title, content, regdate, deleted " +
+			"FROM board " +	
+			"WHERE board_id = #{ boardId } AND deleted = FALSE")
+	BoardDto selectEventBoardByBoardNo(int boardId);
+
+	
+	
+	
+	
+	
 	@Update("UPDATE board " +
 			"SET title = #{ title }, content = #{ content } " +
 			"WHERE board_id = #{ boardId } ")	
 	public void updateBoard(BoardDto board);
+
+	@Update("UPDATE board " +
+			"SET title = #{ title }, content = #{ content } " +
+			"WHERE board_id = #{ boardId } ")	
+	void updateEventBoard(BoardDto board);
+
+
+
+	
+	
+
+	
 	
 
 

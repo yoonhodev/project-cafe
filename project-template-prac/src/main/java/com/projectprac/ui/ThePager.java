@@ -22,7 +22,9 @@ public class ThePager {
 		this.pageNo = pageNo;		
 		pageCount = 
 			(dataCount / pageSize) + ((dataCount % pageSize) > 0 ? 1 : 0); 
-	}
+		
+		
+	}		
 	
 	public String toString(){
 		StringBuffer linkString = new StringBuffer(2048);

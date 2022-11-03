@@ -18,7 +18,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Notice Board</title>
+<title>Event Board</title>
 <meta name="description" content="description">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jsp:include page="/WEB-INF/views/modules/common-css.jsp"></jsp:include>
@@ -74,10 +74,10 @@
                         <div class="loadmore-post">	
                             <a></a>
                           	<c:if test="${ loginuser.userType }">
-                            <a id="update_button" class="btn" style="color: white">수정</a>
-                            <a id="delete_button" class="btn" style="color: white">삭제</a>
+                            <a id="update_event_button" class="btn" style="color: white">수정</a>
+                            <a id="delete_event_button" class="btn" style="color: white">삭제</a>
                             </c:if>
-                            <a href="noticeBoard?pageNo=${ pageNo }" class="btn" style="color: white">목록보기</a>
+                            <a href="eventBoard?pageNo=${ pageNo }" class="btn" style="color: white">목록보기</a>
                         </div>
                      
                     </div>
@@ -112,19 +112,19 @@
 	$(function() {
 		
 		// 글 내용 삭제
-		$('#delete_button').on('click', function(event) {
+		$('#delete_event_button').on('click', function(event) {
 			const ok = confirm("${ boardDetail.boardId }번 글을 삭제할까요?");
 			if (!ok) return;
 			//location.href = 'delete.action?boardId=${boardDetail.boardId}&pageNo=${pageNo}';
-			location.href = 'delete/' + ${ boardDetail.boardId } + '/?&pageNo=${pageNo}';
+			location.href = 'deleteEvent/' + ${ boardDetail.boardId } + '/?&pageNo=${pageNo}';
 		});
 		
 		// 글 내용 수정 
-		$('#update_button').on('click', function(event) {
+		$('#update_event_button').on('click', function(event) {
 			const ok = confirm("${ boardDetail.boardId }번 글을 수정할까요???");
 			if (!ok) return;
 			
-			location.href = 'edit?boardId=${boardDetail.boardId}&pageNo=${pageNo}';
+			location.href = 'editEvent?boardId=${boardDetail.boardId}&pageNo=${pageNo}';
 		});
 		
 		
