@@ -39,10 +39,98 @@
 	            </div>
         	</div>
 		
+		<%
+			
 		
-		<div class="orderhistory-wrapper" style="text-align: center;">
+		%>
 		
-		<!-- 로그인 여부 확인하고 로그인 안되어 있으면 로그인 페이지로 사출 -->
+		<div class="editAccount-wrapper" style="text-align: center;">
+			
+			<div class="container" style="text-align: left;">
+				<div class="row">
+					<div class="col-12 col-sm-12 col-md-6 col-lg-6 main-col offset-md-3">
+						<div class="mb-4">
+							<c:set var="customers" value="${ customers }" />
+							<c:forEach var="customer" items="${ customers }" varStatus="status">
+								<input type="hidden" value="${ customer.customerId }" id="customer-${ status.index }">
+							</c:forEach>
+							<form method="post" action="register" id="registerform">
+								<div class="row">
+									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+										<div class="form-group">
+											<label for="CustomerId">아이디</label>
+											<br>
+											${ loginuser.customerId }
+										</div>
+										<br>
+									</div>
+									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+										<div class="form-group">
+											<label for="oldPassword">기존 비밀번호</label>
+											<input type="password" name="oldpasswd"
+												   placeholder="" id="oldPassword" required
+												   minlength="8" maxlength="20" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$">
+										</div>
+									</div>
+									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+										<div class="form-group">
+											<label for="Password">새 비밀번호</label>
+											<input type="password" name="passwd"
+												   placeholder="" id="Password" required
+												   minlength="8" maxlength="20" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$">
+										</div>
+									</div>
+									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+										<div class="form-group">
+											<label for="PasswordCheck">새 비밀번호 확인</label>
+											<input type="password" name="passwdchk"
+												   placeholder="" id="PasswordCheck" required
+												   minlength="8" maxlength="20" onchange="check_newpw()">
+											<span id="check"></span>										
+										</div>
+									</div>
+									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+										<div class="form-group">
+											<label for="Phone">전화번호</label>
+											<input type="tel" name="phone"
+												   value="${ loginuser.phone }" id="Phone" required>
+										</div>
+									</div>
+									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+										<div class="form-group">
+											<label for="Address">주소</label>
+											<input type="text" name="address"
+												   value="${ loginuser.address }" id="Address" required>
+										</div>
+									</div>
+									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+										<div class="form-group">
+											<label for="Email">이메일</label>
+											<input type="email" name="email"
+												   value="${ loginuser.email }" id="Email" required>
+										</div>
+									</div>
+									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+										<div class="form-group">
+											<label for="Birth">생년월일</label>
+											<input type="date" name="birth" placeholder="${ loginuser.birth }" id="Birth" required>
+										</div>
+									</div>
+								</div>
+								<br> <br>
+								<div class="row">
+									<div class="text-center col-12 col-sm-12 col-md-12 col-lg-12">
+										<input type="submit" class="btn mb-3" value="회원정보 수정 완료" onchange="check_oldpw()">
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- ./Create Account -->
+			
+		
 		
 		
 		
@@ -67,6 +155,29 @@
 
 		<!-- Common-js -->
 		<jsp:include page="/WEB-INF/views/modules/common-js.jsp"></jsp:include>
+		<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+		<script type="text/javascript">
+			function check_newpw() {
+				if ($("#Password").val() != $("#PasswordCheck").val())  {
+					$("#check").text("새 비밀번호가 일치하지 않습니다.");
+					$("#check").css("color", "red");
+				} else {
+					$("#check").text("새 비밀번호가 일치합니다.")
+					$("#check").css("color", "blue");
+				}
+			}
+			
+			function check_oldpw() {
+				if ($("#oldPassword").val() = passwd ) {
+					pageContext.forward("mypage");
+				}
+				else {
+					alert("기존 비밀번호가 일치하지 않습니다");
+					break;
+				}
+			}
+		</script>
+		
 	</div>
 </body>
 </html>
