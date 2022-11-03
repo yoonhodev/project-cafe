@@ -12,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.projectprac.dto.CustomerDto;
 import com.projectprac.service.AccountService;
@@ -24,14 +26,28 @@ public class AccountController {
 	private AccountService accountService;
 	
 	@GetMapping(path = { "register" }) // FrontController에 연결 설정
-	public String showRegisterForm(HttpSession session) {
-		
-		List<CustomerDto> customers = accountService.showAllCustomer();
-		session.setAttribute("idDupleCheck", customers);
-		
+	public String showRegisterForm(String customerId, HttpSession session, Model model) {
 		return "account/register"; // WEB-INF/views/ + account/register + .jsp
 	}
 
+	@GetMapping(path = { "duplecheck" })
+	@ResponseBody
+	public String idDupleCheck(@RequestParam(defaultValue = "0") String customerId, HttpSession session, Model model) {
+		List<CustomerDto> customers = accountService.showAllCustomer();
+		for (CustomerDto customer : customers) {
+			 if(customer.getCustomerId().equals(customerId)) {
+				 model.addAttribute("duple", customerId);
+				 System.out.println(customerId);
+				 System.out.println(customer.getCustomerId());
+				 return "account/register";
+			 }
+		}
+		
+		model.addAttribute("noneduple", customerId);
+		
+		return "account/register";
+	}
+	
 	@PostMapping(path = { "register" })
 	public String register(@Valid CustomerDto customer, BindingResult br) { // @Valid에 의해 검출된 오류 정보가 저장된 객체
 		
