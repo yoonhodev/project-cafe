@@ -22,9 +22,9 @@
 
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="pages/icons/mdi.html">
+              <a class="nav-link" href="workerInfo">
                 <span class="icon-bg"><i class="mdi mdi-contacts menu-icon"></i></span>
-                <span class="menu-title">Icons</span>
+                <span class="menu-title">직원</span>
               </a>
             </li>
             <li class="nav-item">

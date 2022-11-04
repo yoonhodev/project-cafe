@@ -39,5 +39,5 @@
 	<import resource="coupon-context.xml" />
 	<import resource="spend-context.xml" />
 	<import resource="mypage-context.xml" />
-	
+	<import resource="worker-context.xml" />
 </beans>
