@@ -9,9 +9,10 @@ public class WorkerDto {
 	private int storeId;
 	private String workerName;
 	private String workTime;
-	private int salary;
+	private String salary;
 	private String workerPhone;
-	
+	private String workYear;
+	private String workMonth;
 	
 	
 }

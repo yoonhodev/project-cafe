@@ -202,7 +202,6 @@
 		});
 		$(".StoreName").on("change", function() {
 			var storeId = $(this).val()
-			var storeName = $("#store-" + storeId).attr("data-storeName");
 			
 			$("#StoreId1").val(storeId);	
 			$("#StoreId2").val(storeId);

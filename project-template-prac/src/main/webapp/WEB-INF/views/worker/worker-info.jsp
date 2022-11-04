@@ -42,15 +42,15 @@
                     		<div class="card">
                           <div class="card-body text-center">
 			          	<h1 style="color: black;">지점명</h1><br>
-						    <form action="fixedSpend" method="get" id="show-cost-form">
-							    <select id="StoreName" name="storeName" class="StoreName">
+						    <form action="workerInfo" method="get" id="show-worker-form">
+							    <select id="StoreName1" name="storeName1" class="StoreName1">
 							    	<option selected disabled hidden="">지점 선택</option>
 							      	<c:forEach var="store" items="${ stores }" varStatus="status">
 							        	<option id="store-${ store.storeId }" value="${ store.storeId }" data-storeName="${ store.storeName }">${ store.storeName }</option>
 							        </c:forEach>
 								</select>
 								<br><br>
-								<input type="hidden" id="StoreId1" name="storeId">
+								<input type="hidden" id="StoreId11" name="storeId">
 								<input type="submit"
 									   class="spr-button spr-button-primary button button-primary btn btn-primary"
 									   id="SelectStore"
@@ -64,15 +64,19 @@
            <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                  	<h4 class="card-title"><span id="boardTitle" >${ storeName10 }</span></h4>
+                  	<h4 class="card-title"><span id="boardTitle1" >${ storeName11 }</span>
+                  	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  	<input type="button" value="급여 상세" class="btn btn-light btn-fw btn-rounded"></h4>
+                  	
                     
                     <table class="table table-bordered">
                       <thead>
                         <tr>
 							<th class="text-center">직원명</th>
 							<th class="text-center">지점명</th>
-							<th class="text-center">근무시간</th>
-							<th class="text-center">급여</th>
+							<th class="text-center">근무 년도</th>
+							<th class="text-center">근무 월</th>
+							<th class="text-center">시급</th>
 							<th class="text-center">연락쳐</th>
 <!-- 							<th class="text-center">수도세</th> -->
 <!-- 							<th class="text-center">광고비</th> -->
@@ -80,14 +84,15 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <c:forEach var="fixedSpend" items="${ fixedSpends }" varStatus="status">
+                        <c:forEach var="worker" items="${ workers }" varStatus="status">
 						<tr class="cart__row border-bottom line1 cart-flex border-top"
 							align="center">
-							<td><span>${ fixedSpend.month }</span></td>
-							<td><span>${ storeName10 }</span></td>
-							<td><span>${ fixedSpend.monthPay }</span></td>
-							<td><span>${ fixedSpend.managePay }</span></td>
-							<td><span>${ fixedSpend.elecPay }</span></td>
+							<td><span>${ worker.workerName }</span></td>
+							<td><span>${ storeName11 }</span></td>
+							<td><span>${ worker.workYear }</span></td>
+							<td><span>${ worker.workMonth }</span></td>
+							<td><span>${ worker.salary }</span></td>
+							<td><span>${ worker.workerPhone }</span></td>
 										
 						</tr>																												
 						</c:forEach>								
@@ -105,7 +110,7 @@
                     		<div class="card">
                           <div class="card-body text-center">
 							<h1 style="color: black;">지점명</h1>
-						    <select id="StoreName2" class="StoreName">
+						    <select id="StoreName22" class="StoreName1">
 						    	<option selected disabled hidden="">지점 선택</option>
 						      	<c:forEach var="store" items="${ stores }" varStatus="status">
 						        	<option value="${ store.storeId }">${ store.storeName }</option>
@@ -122,37 +127,30 @@
 						<div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">고정 지출 입력</h4>
-                    <form class="forms-sample" method="post" action="fixedSpend">
+                    <h4 class="card-title">직원 정보 입력</h4>
+                    <form class="forms-sample" method="post" action="workerInfo">
                       <div class="form-group">
-                        <label>월</label>
-                        <input type="date" name="month" class="form-control" id="Month" placeholder="월을 입력해주세요">
+                        <label>근무 년도</label>
+                        <input type="text" name="workYear" class="form-control" id="WorkYear" placeholder="근무 년도를 입력해주세요">
                       </div>
                       <div class="form-group">
-                        <label>임대료</label>
-                        <input type="text" name="monthPay" class="form-control" id="MonthPay" placeholder="임대료를 입력해주세요 (단위: 만)">
+                        <label>근무 월</label>
+                        <input type="text" name="workMonth" class="form-control" id="WorkMonth" placeholder="근무 월을 입력해주세요">
+                      </div>                      
+                      <div class="form-group">
+                        <label>직원명</label>
+                        <input type="text" name="workerName" class="form-control" id="WorkerName" placeholder="직원명을 입력해주세요">
                       </div>
                        <div class="form-group">
-                        <label>관리비용</label>
-                        <input type="text" name="managePay" class="form-control" id="ManagePay" placeholder="관리비를 입력해주세요 (단위: 만)">
+                        <label>급여</label>
+                        <input type="text" name="salary" class="form-control" id="Salary" placeholder="급여를 입력해주세요 (단위: 만)">
                       </div>
                       <div class="form-group">
-                        <label>전기세</label>
-                        <input type="text" name="elecPay" class="form-control" id="ElecPay" placeholder="전기세를 입력해주세요 (단위: 만)">
+                        <label>직원 연락처</label>
+                        <input type="text" name="workerPhone" class="form-control" id="WorkerPhone" placeholder="직원 연락처를 입력해주세요">
                       </div>
-                      <div class="form-group">
-                        <label>수도세</label>
-                        <input type="text" name="waterPay" class="form-control" id="WaterPay" placeholder="수도세를 입력해주세요 (단위: 만)">
-                      </div>
-                      <div class="form-group">
-                        <label>광고비용</label>
-                        <input type="text" name="adPay" class="form-control" id="AdPay" placeholder="광고비를 입력해주세요 (단위: 만)">
-                      </div>
-                      <div class="form-group">
-                        <label>배달대행비용</label>
-                        <input type="text" name="deliPay" class="form-control" id="DeliPay" placeholder="배달대행비를 입력해주세요 (단위: 만)">
-                      </div>
-                      <input type="hidden" id="StoreId2" name="storeId">
+
+                      <input type="hidden" id="StoreId22" name="storeId">
                   
                       <input type="submit"
 							   class="btn btn-primary mr-2"
@@ -198,12 +196,12 @@
 			var activeTab = $(this).attr("data-name"); 
 			$("#"+activeTab).fadeIn();
 		});
-		$(".StoreName").on("change", function() {
+		$(".StoreName1").on("change", function() {
 			var storeId = $(this).val()
-			var storeName = $("#store-" + storeId).attr("data-storeName");
 			
-			$("#StoreId1").val(storeId);	
-			$("#StoreId2").val(storeId);
+			
+			$("#StoreId11").val(storeId);	
+			$("#StoreId22").val(storeId);
 			
 		});
 
