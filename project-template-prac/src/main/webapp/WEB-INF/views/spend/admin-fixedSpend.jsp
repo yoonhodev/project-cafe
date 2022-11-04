@@ -8,7 +8,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Connect Plus</title>
+    <title>Green Coffee</title>
     <!-- Common-css -->
 	<jsp:include page="/WEB-INF/views/admin-modules/admin-common-css.jsp"></jsp:include>
   </head>
@@ -41,10 +41,10 @@
                     	<div class="col-xl-3 col-lg-6 col-sm-6 grid-margin stretch-card">
                     		<div class="card">
                           <div class="card-body text-center">
-			          	<h1>지점명</h1><br>
+			          	<h1 style="color: black;">지점명</h1><br>
 						    <form action="fixedSpend" method="get" id="show-cost-form">
 							    <select id="StoreName" name="storeName" class="StoreName">
-							    	<option selected disabled hidden="">==지점 선택==</option>
+							    	<option selected disabled hidden="">지점 선택</option>
 							      	<c:forEach var="store" items="${ stores }" varStatus="status">
 							        	<option id="store-${ store.storeId }" value="${ store.storeId }" data-storeName="${ store.storeName }">${ store.storeName }</option>
 							        </c:forEach>
@@ -106,9 +106,9 @@
                     	<div class="col-xl-3 col-lg-6 col-sm-6 grid-margin stretch-card">
                     		<div class="card">
                           <div class="card-body text-center">
-							<h1>지점명</h1>
+							<h1 style="color: black;">지점명</h1>
 						    <select id="StoreName2" class="StoreName">
-						    	<option selected disabled hidden="">==지점 선택==</option>
+						    	<option selected disabled hidden="">지점 선택</option>
 						      	<c:forEach var="store" items="${ stores }" varStatus="status">
 						        	<option value="${ store.storeId }">${ store.storeName }</option>
 						        </c:forEach>
