@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.projectprac.dto.BoardCommentDto;
 import com.projectprac.dto.BoardDto;
 import com.projectprac.service.BoardService;
 import com.projectprac.ui.ThePager;
@@ -164,15 +166,47 @@ public class EventBoardController {
 
 	}
 	
-//	@GetMapping(path = { "/comment-list.action" })
-//	public String showCommentList(int boardNo, Model model) {
-//		
-//		List<BoardCommentDto> comments = boardService.findBoardCommentByBoard(boardNo);
-//		
-//		// View에서 일긍ㄹ 수 있도록 데이터 저장
-//		model.addAttribute("comments", comments);
-//		return "board/comment-list";  // /WEB-INF/views/ + board/comment-list + .jsp
-//	}
+
+	
+	@ResponseBody
+	@PostMapping(path = {"/write-comment.action" })
+	public String writeComment(BoardCommentDto commentDto, int pageNo, int boardId) {
+		// 1. 요청 데이터 읽기 ( 전달인자로 대체 )
+		// 2. 요청 처리
+		boardService.writeComment(commentDto); // commentDto에 자동 증가된 commentNo가 저장됨.
+		// 최상위 댓글의 글번호를 그룹번호로 저장
+		//boardService.updateGroupNo(commentDto.getCommentId(), commentDto.getCommentNo());
+		// 3. View에서 읽을 수 있도록 데이터 저장
+		// 4. View 또는 다른 컨트롤러로 이동
+		//return String.format("redirect:detail.action?boardNo=%d&pageNo=%d",commentDto.getBoardNo(), pageNo);
+		return "success";
+	}
+	
+	@GetMapping(path = { "/comment-list.action" })
+	public String showCommentList(int boardId, Model model) {
+		
+		List<BoardCommentDto> comments = boardService.findBoardCommentByBoard(boardId);
+		
+		// View에서 일긍ㄹ 수 있도록 데이터 저장
+		model.addAttribute("comments", comments);
+		return "board/comment-list";  // /WEB-INF/views/ + board/comment-list + .jsp
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
