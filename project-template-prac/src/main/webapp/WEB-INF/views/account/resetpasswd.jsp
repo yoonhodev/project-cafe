@@ -47,15 +47,17 @@
 									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
 										<div class="form-group">
 											<label for="newPassword">새 비밀번호</label>
-											<input type="password" name="passwd" placeholder=""
-												   id="newPassword" required>
+											<input class="form-control" type="password" name="passwd" placeholder="새로운 비밀번호를 입력하세요"
+												   id="newPassword" required
+												   minlength="8" maxlength="20" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$">
 										</div>
 									</div>
 									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
 										<div class="form-group">
 											<label for="PasswordCheck">비밀번호 확인</label>
-											<input type="password" name="passwdCheck" placeholder=""
+											<input class="form-control" type="password" name="passwdCheck" placeholder="비밀번호를 똑같이 입력해주세요"
 												   id="PasswordCheck" required>
+											<span id="pwcheck"></span>
 										</div>
 									</div>
 								</div>
@@ -85,5 +87,22 @@
 		<!-- Common-js -->
 		<jsp:include page="/WEB-INF/views/modules/common-js.jsp"></jsp:include>
 	</div>
+	<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$("#PasswordCheck").on("change", function(event) {
+				if ($("#newPassword").val() != $("#PasswordCheck").val()) {
+					$("#pwcheck").text("비밀번호가 일치하지 않습니다.");
+					$("#pwcheck").css("color", "red");
+				} else {
+					$("#pwcheck").text("비밀번호가 일치합니다.");
+					$("#pwcheck").css("color", "blue");
+				}
+			});
+			$('#Password').on("change", function(event) {
+				$("#pwcheck").text("");
+			});
+		});
+	</script>
 </body>
 </html>

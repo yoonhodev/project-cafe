@@ -42,21 +42,22 @@
 									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
 										<div class="form-group">
 											<label for="CustomerId">아이디</label>
-											<input type="text" name="customerId" placeholder=""
+											<input class="form-control" type="text" name="customerId" placeholder="아이디를 입력하세요"
 												   id="CustomerId" autofocus>
 										</div>
 									</div>
 									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
 										<div class="form-group">
 											<label for="Phone">전화번호</label>
-											<input type="text" name="phone" placeholder=""
+											<input class="form-control" type="text" name="phone" placeholder="전화번호를 입력하세요"
 												   id="Phone">
 										</div>
 									</div>
 								</div>
+								<br>
 								<div class="row">
 									<div class="text-center col-12 col-sm-12 col-md-12 col-lg-12">
-										<input type="submit" class="btn mb-3" value="아이디 확인">
+										<input type="submit" class="btn mb-3" value="찾기">
 									</div>
 								</div>
 							</form>
@@ -87,7 +88,7 @@
 				alert('계정이 없거나 전화번호가 틀렸습니다.');
 			</c:if>
 			<c:if test="${ not empty resetpasswdfail }">
-				alert('비밀번호 입력이 틀렸습니다.');
+				alert('비밀번호가 일치하지 않습니다.');
 			</c:if>
 		});
 	</script>
