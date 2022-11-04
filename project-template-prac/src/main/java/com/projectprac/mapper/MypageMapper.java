@@ -18,5 +18,10 @@ public interface MypageMapper {
 			"WHERE customer_id = #{ customerId } AND passwd = #{ passwd } ")
 	MypageDto selectOrderByIdAndPasswd(@Param("customerId") String customerId, @Param("passwd") String passwd);
 	
+	@Select("SELECT coupon_deleted " +
+			"FROM modeling_cafe.coupon_make " +
+			"WHERE customer_id= #{ customerId } AND coupon_deleted=\"0\"")
+	MypageDto selectCouponByCustomerId(@Param("customerId") String customerId);
+	
 
 }

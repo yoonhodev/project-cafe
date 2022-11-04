@@ -1,9 +1,12 @@
 package com.projectprac.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import com.projectprac.dto.CouponMakeDto;
 import com.projectprac.dto.ProductDto;
 
 @Mapper
@@ -17,7 +20,6 @@ public interface OrderMapper {
 	ProductDto deleteAll(int prodId);
 
 	ProductDto delete(int prodId);
-
 
 
 }

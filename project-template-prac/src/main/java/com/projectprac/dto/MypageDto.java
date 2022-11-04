@@ -12,6 +12,7 @@ public class MypageDto {
 	private String order_pay;
 	private String order_type;
 	private Date order_date;
+	private int coupon_deleted;
 	
 
 }

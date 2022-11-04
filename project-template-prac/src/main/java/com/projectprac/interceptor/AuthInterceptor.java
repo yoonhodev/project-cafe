@@ -25,7 +25,6 @@ public class AuthInterceptor implements HandlerInterceptor {
 				uri.contains("/mypage")		||
 				uri.contains("/writeStore") ||
 				uri.contains("/order")      ||
-				uri.contains("/shop")		||
 				uri.contains("/fixedSpend")	||
 				uri.contains("/admin"))  	{ // 로그인한 사용자만 볼 수 있는 요청
 			

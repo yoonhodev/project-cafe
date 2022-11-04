@@ -57,7 +57,7 @@
 								</div>
 								<div class="row">
 									<div class="text-center col-12 col-sm-12 col-md-12 col-lg-12">
-										<input type="submit" class="btn mb-3" value="로그인">
+										<input id="loginbtn" type="submit" class="btn mb-3" value="로그인">
 										<p class="mb-4">
 											<a href="findpasswd" id="RecoverPassword">Forgot your password?</a>
 											&nbsp; | &nbsp;
@@ -89,9 +89,19 @@
 	<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 	<script type="text/javascript">
 		$(function() {
-			<c:if test="${ not empty loginfail }">
-				alert('로그인 실패 : 아이디와 패스워드를 확인하세요');
-			</c:if>
+			var formData = $("#loginform").serialize();
+			$.ajax({
+				"url": "login",
+				"method": "post",
+				"data": formData,
+				"success": function(data, status, xhr) {
+					$('#loginform').load('account/login');
+					<c:if test="${ not empty loginfail }">
+						alert('로그인 실패 : 아이디와 패스워드를 확인하세요');
+		 			</c:if>	
+				},
+				"error": function(xhr, status, err) {}
+			});
 		});
 	</script>
 </body>

@@ -18,7 +18,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Notice Board</title>
+<title>Event Board</title>
 <meta name="description" content="description">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jsp:include page="/WEB-INF/views/modules/common-css.jsp"></jsp:include>
@@ -74,23 +74,45 @@
                         <div class="loadmore-post">	
                             <a></a>
                           	<c:if test="${ loginuser.userType }">
-                            <a id="update_button" class="btn" style="color: white">수정</a>
-                            <a id="delete_button" class="btn" style="color: white">삭제</a>
+                            <a id="update_event_button" class="btn" style="color: white">수정</a>
+                            <a id="delete_event_button" class="btn" style="color: white">삭제</a>
                             </c:if>
-                            <a href="noticeBoard?pageNo=${ pageNo }" class="btn" style="color: white">목록보기</a>
+                            <a href="eventBoard?pageNo=${ pageNo }" class="btn" style="color: white">목록보기</a>
                         </div>
                      
                     </div>
                 </div>
                 <!--End Main Content-->
-               
             </div>
-             
+            <br><br>
+            	<form id="commentform" action="write-comment.action" method="post">
+            	<input type="hidden" name="boardId" value="${ board.boardNo }" />
+				<input type="hidden" name="pageNo" value="${ pageNo }" />				
+				<input type="hidden" name="writer" value="${ loginuser.memberId }" />
+                <div class="card mb-2">
+					<div class="card-header bg-light">
+					        <i class="fa fa-comment fa"></i> REPLY
+					</div>
+					<div class="card-body">
+						<ul class="list-group list-group-flush">
+						    <li class="list-group-item">
+							<textarea class="form-control" id="comment_content" name="content" rows="3"></textarea>
+							<button type="button" id="writecomment" class="btn btn-dark mt-3" style="float: right;">댓글 등록</button>
+						    </li>
+						</ul>
+					</div>
+				</div>
+				</form>
+				
+				
+				    
+        </div>
+            
+        </div>
         
     </div>
     <!--End Body Content-->
- 
-
+    
     <!--Footer-->
     <jsp:include page="/WEB-INF/views/modules/footer.jsp"></jsp:include>
     <!--End Footer-->
@@ -114,19 +136,19 @@
 	$(function() {
 		
 		// 글 내용 삭제
-		$('#delete_button').on('click', function(event) {
+		$('#delete_event_button').on('click', function(event) {
 			const ok = confirm("${ boardDetail.boardId }번 글을 삭제할까요?");
 			if (!ok) return;
 			//location.href = 'delete.action?boardId=${boardDetail.boardId}&pageNo=${pageNo}';
-			location.href = 'delete/' + ${ boardDetail.boardId } + '/?&pageNo=${pageNo}';
+			location.href = 'deleteEvent/' + ${ boardDetail.boardId } + '/?&pageNo=${pageNo}';
 		});
 		
 		// 글 내용 수정 
-		$('#update_button').on('click', function(event) {
+		$('#update_event_button').on('click', function(event) {
 			const ok = confirm("${ boardDetail.boardId }번 글을 수정할까요???");
 			if (!ok) return;
 			
-			location.href = 'edit?boardId=${boardDetail.boardId}&pageNo=${pageNo}';
+			location.href = 'editEvent?boardId=${boardDetail.boardId}&pageNo=${pageNo}';
 		});
 		
 		
