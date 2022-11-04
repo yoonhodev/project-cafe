@@ -9,7 +9,8 @@
 
 	<!-- 6-2) 의존성 주입 -->
 	<bean id="boardService" class="com.projectprac.service.BoardServiceImpl">
-		<property name="boardMapper" ref="boardMapper" />
+		<property name="boardMapper" ref="boardMapper"/>
+		<property name="commentMapper" ref="boardCommentMapper"/>
 	</bean>
  
 

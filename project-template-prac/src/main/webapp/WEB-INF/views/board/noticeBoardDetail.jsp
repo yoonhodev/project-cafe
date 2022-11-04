@@ -36,7 +36,7 @@
     	<!--Page Title-->
     	<div class="page section-header text-center mb-0">
 			<div class="page-title">
-        		<div class="wrapper"><h1 class="page-width">Blog Fullwidth</h1></div>
+        		<div class="wrapper"><h1 class="page-width">NOTICE BOARD</h1></div>
       		</div>
 		</div>
         <!--End Page Title-->
@@ -83,12 +83,14 @@
                     </div>
                 </div>
                 <!--End Main Content-->
+               
             </div>
-        </div>
+             
         
     </div>
     <!--End Body Content-->
-    
+ 
+
     <!--Footer-->
     <jsp:include page="/WEB-INF/views/modules/footer.jsp"></jsp:include>
     <!--End Footer-->
