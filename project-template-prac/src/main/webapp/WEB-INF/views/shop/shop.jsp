@@ -111,10 +111,10 @@
                                         <!-- start product image -->
                                         <a href="#">
                                             <!-- image -->
-                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/coldbrew.jpg" src="/project-template-prac/resources/assets/images/product-images/coldbrew.jpg" alt="image" title="product">
+                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/caffe-americano.png" src="/project-template-prac/resources/assets/images/product-images/caffe-americano.png" alt="image" title="product">
                                             <!-- End image -->
                                             <!-- Hover image -->
-                                            <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/coldbrew.jpg" src="/project-template-prac/resources/assets/images/product-images/coldbrew.jpg" alt="image" title="product">
+                                            <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/caffe-americano.png" src="/project-template-prac/resources/assets/images/product-images/caffe-americano.png" alt="image" title="product">
                                             <!-- End hover image -->
                                             <!-- product label -->
                                             <div class="product-labels rectangular"><span class="lbl on-sale">-16%</span> <span class="lbl pr-label1">new</span></div>
@@ -151,7 +151,7 @@
                                     <div class="product-details text-center">
                                         <!-- product name -->
                                         <div class="product-name">
-                                            <a href="#">Cold Brew</a>
+                                            <a href="#">아메리카노</a>
                                         </div>
                                         <!-- End product name -->
                                         <!-- product price -->
@@ -171,10 +171,10 @@
                                         <!-- start product image -->
                                         <a href="#">
                                             <!-- image -->
-                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/va_coldbrew.jpg" src="/project-template-prac/resources/assets/images/product-images/va_coldbrew.jpg" alt="image" title="product">
+                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/caffe-latte.png" src="/project-template-prac/resources/assets/images/product-images/caffe-latte.png" alt="image" title="product">
                                             <!-- End image -->
                                             <!-- Hover image -->
-                                            <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/va_coldbrew.jpg" src="/project-template-prac/resources/assets/images/product-images/va_coldbrew.jpg" alt="image" title="product">
+                                            <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/caffe-latte.png" src="/project-template-prac/resources/assets/images/product-images/caffe-latte.png" alt="image" title="product">
                                             <!-- End hover image -->
                                         </a>
                                         <!-- end product image -->
@@ -207,7 +207,7 @@
                                     <div class="product-details text-center">
                                         <!-- product name -->
                                         <div class="product-name">
-                                            <a href="#">Vanilla Cold Brew</a>
+                                            <a href="#">카페 라떼</a>
                                         </div>
                                         <!-- End product name -->
                                         <!-- product price -->
@@ -224,10 +224,10 @@
                                         <!-- start product image -->
                                         <a href="#">
                                             <!-- image -->
-                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/iced_black_tea.jpg" src="/project-template-prac/resources/assets/images/product-images/iced_black_tea.jpg" alt="image" title="product">
+                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/caffe-mocha.png" src="/project-template-prac/resources/assets/images/product-images/caffe-mocha.png" alt="image" title="product">
                                             <!-- End image -->
                                             <!-- Hover image -->
-                                            <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/iced_black_tea.jpg" src="/project-template-prac/resources/assets/images/product-images/iced_black_tea.jpg" alt="image" title="product">
+                                            <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/caffe-mocha.png" src="/project-template-prac/resources/assets/images/product-images/caffe-mocha.png" alt="image" title="product">
                                             <!-- End hover image -->
                                             <!-- product label -->
                                             <div class="product-labels rectangular"><span class="lbl pr-label2">Hot</span></div>
@@ -263,7 +263,7 @@
                                     <div class="product-details text-center">
                                         <!-- product name -->
                                         <div class="product-name">
-                                            <a href="#">Iced Black Tea</a>
+                                            <a href="#">카페 모카</a>
                                         </div>
                                         <!-- End product name -->
                                         <!-- product price -->
@@ -280,10 +280,10 @@
                                         <!-- start product image -->
                                         <a href="#">
                                             <!-- image -->
-                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image4.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image4.jpg" alt="image" title="product" />
+                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/cappuccino.png" src="/project-template-prac/resources/assets/images/product-images/cappuccino.png" alt="image" title="product" />
                                             <!-- End image -->
                                             <!-- Hover image -->
-                                            <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image4-1.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image4-1.jpg" alt="image" title="product" />
+                                            <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/cappuccino.png" src="/project-template-prac/resources/assets/images/product-images/cappuccino.png" alt="image" title="product" />
                                             <!-- End hover image -->
                                             <!-- product label -->
                                             <div class="product-labels"><span class="lbl on-sale">Sale</span></div>
@@ -318,7 +318,7 @@
                                     <div class="product-details text-center">
                                         <!-- product name -->
                                         <div class="product-name">
-                                            <a href="#">Cape Dress</a>
+                                            <a href="#">카푸치노</a>
                                         </div>
                                         <!-- End product name -->
                                         <!-- product price -->
@@ -327,22 +327,7 @@
                                             <span class="price">$788.00</span>
                                         </div>
                                         <!-- End product price -->
-                                        
-                                        <div class="product-review">
-                                            <i class="font-13 fa fa-star"></i>
-                                            <i class="font-13 fa fa-star"></i>
-                                            <i class="font-13 fa fa-star"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                        </div>
-                                        <!-- Variant -->
-                                        <ul class="swatches">
-                                            <li class="swatch medium rounded"><img src="/project-template-prac/resources/assets/images/product-images/variant4-1.jpg" alt="image" /></li>
-                                            <li class="swatch medium rounded"><img src="/project-template-prac/resources/assets/images/product-images/variant4-2.jpg" alt="image" /></li>
-                                            <li class="swatch medium rounded"><img src="/project-template-prac/resources/assets/images/product-images/variant4-3.jpg" alt="image" /></li>
-                                            <li class="swatch medium rounded"><img src="/project-template-prac/resources/assets/images/product-images/variant4-4.jpg" alt="image" /></li>
-                                        </ul>
-                                        <!-- End Variant -->
+                                       
                                     </div>
                                     <!-- End product details -->
                                 </div>
@@ -352,10 +337,10 @@
                                         <!-- start product image -->
                                         <a href="#">
                                             <!-- image -->
-                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image5.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image5.jpg" alt="image" title="product" />
+                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/caramel-macchiato.png" src="/project-template-prac/resources/assets/images/product-images/caramel-macchiato.png" alt="image" title="product" />
                                             <!-- End image -->
                                             <!-- Hover image -->
-                                            <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image5-1.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image5-1.jpg" alt="image" title="product" />
+                                            <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/caramel-macchiato.png" src="/project-template-prac/resources/assets/images/product-images/caramel-macchiato.png" alt="image" title="product" />
                                             <!-- End hover image -->
                                             <!-- product label -->
                                             <div class="product-labels"><span class="lbl on-sale">Sale</span></div>
@@ -390,7 +375,7 @@
                                     <div class="product-details text-center">
                                         <!-- product name -->
                                         <div class="product-name">
-                                            <a href="#">Paper Dress</a>
+                                            <a href="#">카라멜 마끼야또</a>
                                         </div>
                                         <!-- End product name -->
                                         <!-- product price -->
@@ -398,22 +383,7 @@
                                             <span class="price">$550.00</span>
                                         </div>
                                         <!-- End product price -->
-                                        
-                                        <div class="product-review">
-                                            <i class="font-13 fa fa-star"></i>
-                                            <i class="font-13 fa fa-star"></i>
-                                            <i class="font-13 fa fa-star"></i>
-                                            <i class="font-13 fa fa-star"></i>
-                                            <i class="font-13 fa fa-star"></i>
-                                        </div>
-                                        <!-- Variant -->
-                                        <ul class="swatches">
-                                            <li class="swatch medium rounded"><img src="/project-template-prac/resources/assets/images/product-images/variant3-1.jpg" alt="image" /></li>
-                                            <li class="swatch medium rounded"><img src="/project-template-prac/resources/assets/images/product-images/variant3-2.jpg" alt="image" /></li>
-                                            <li class="swatch medium rounded"><img src="/project-template-prac/resources/assets/images/product-images/variant3-3.jpg" alt="image" /></li>
-                                            <li class="swatch medium rounded"><img src="/project-template-prac/resources/assets/images/product-images/variant3-4.jpg" alt="image" /></li>
-                                        </ul>
-                                        <!-- End Variant -->
+                                       
                                     </div>
                                     <!-- End product details -->
                                 </div>
@@ -423,10 +393,10 @@
                                         <!-- start product image -->
                                         <a href="#">
                                             <!-- image -->
-                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image17.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image17.jpg" alt="image" title="product" />
+                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/chai-tea-latte.png" src="/project-template-prac/resources/assets/images/product-images/chai-tea-latte.png" alt="image" title="product" />
                                             <!-- End image -->
                                             <!-- Hover image -->
-                                            <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image17-1.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image17-1.jpg" alt="image" title="product" />
+                                            <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/chai-tea-latte.png" src="/project-template-prac/resources/assets/images/product-images/chai-tea-latte.png" alt="image" title="product" />
                                             <!-- End hover image -->
                                             <!-- product label -->
                                             <div class="product-labels"><span class="lbl on-sale">Sale</span></div>
@@ -461,7 +431,7 @@
                                     <div class="product-details text-center">
                                         <!-- product name -->
                                         <div class="product-name">
-                                            <a href="#">Buttercup Dress</a>
+                                            <a href="#">홍차 라떼</a>
                                         </div>
                                         <!-- End product name -->
                                         <!-- product price -->
@@ -469,14 +439,7 @@
                                             <span class="price">$420.00</span>
                                         </div>
                                         <!-- End product price -->
-                                        
-                                        <div class="product-review">
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                        </div>
+                                
                                     </div>
                                     <!-- End product details -->
                                 </div>
@@ -486,10 +449,10 @@
                                         <!-- start product image -->
                                         <a href="#">
                                             <!-- image -->
-                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image18.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image18.jpg" alt="image" title="product" />
+                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/chai-tea.png" src="/project-template-prac/resources/assets/images/product-images/chai-tea.png" alt="image" title="product" />
                                             <!-- End image -->
                                             <!-- Hover image -->
-                                            <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image18-1.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image18-1.jpg" alt="image" title="product" />
+                                            <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/chai-tea.png" src="/project-template-prac/resources/assets/images/product-images/chai-tea.png" alt="image" title="product" />
                                             <!-- End hover image -->
                                         </a>
                                         <!-- end product image -->
@@ -521,7 +484,7 @@
                                     <div class="product-details text-center">
                                         <!-- product name -->
                                         <div class="product-name">
-                                            <a href="#">Lima Shirt</a>
+                                            <a href="#">홍차</a>
                                         </div>
                                         <!-- End product name -->
                                         <!-- product price -->
@@ -529,22 +492,7 @@
                                             <span class="price">$698.00</span>
                                         </div>
                                         <!-- End product price -->
-                                        
-                                        <div class="product-review">
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                        </div>
-                                        <!-- Variant -->
-                                        <ul class="swatches">
-                                            <li class="swatch medium rounded"><img src="/project-template-prac/resources/assets/images/product-images/variant5-1.jpg" alt="image" /></li>
-                                            <li class="swatch medium rounded"><img src="/project-template-prac/resources/assets/images/product-images/variant5-1.jpg" alt="image" /></li>
-                                            <li class="swatch medium rounded"><img src="/project-template-prac/resources/assets/images/product-images/variant5-1.jpg" alt="image" /></li>
-                                            <li class="swatch medium rounded"><img src="/project-template-prac/resources/assets/images/product-images/variant5-1.jpg" alt="image" /></li>
-                                        </ul>
-                                        <!-- End Variant -->
+                                       
                                     </div>
                                     <!-- End product details -->
                                 </div>
@@ -554,10 +502,10 @@
                                         <!-- start product image -->
                                         <a href="#">
                                             <!-- image -->
-                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image19.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image19.jpg" alt="image" title="product" />
+                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/iced-black-tea.png" src="/project-template-prac/resources/assets/images/product-images/iced-black-tea.png" alt="image" title="product" />
                                             <!-- End image -->
                                             <!-- Hover image -->
-                                            <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image19-1.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image19-1.jpg" alt="image" title="product" />
+                                            <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/iced-black-tea.png" src="/project-template-prac/resources/assets/images/product-images/iced-black-tea.png" alt="image" title="product" />
                                             <!-- End hover image -->
                                         </a>
                                         <!-- end product image -->
@@ -589,7 +537,7 @@
                                     <div class="product-details text-center">
                                         <!-- product name -->
                                         <div class="product-name">
-                                            <a href="#">Romary Dress</a>
+                                            <a href="#">아이스 홍차</a>
                                         </div>
                                         <!-- End product name -->
                                         <!-- product price -->
@@ -598,13 +546,6 @@
                                         </div>
                                         <!-- End product price -->
                                         
-                                        <div class="product-review">
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                        </div>
                                     </div>
                                     <!-- End product details -->
                                 </div>
@@ -614,10 +555,10 @@
                                         <!-- start product image -->
                                         <a href="#">
                                             <!-- image --> 
-                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image20.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image20.jpg" alt="image" title="product" />
+                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/iced-black-tea-lemonade.png" src="/project-template-prac/resources/assets/images/product-images/iced-black-tea-lemonade.png" alt="image" title="product" />
                                             <!-- End image -->
                                             <!-- Hover image -->
-                                            <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image20-1.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image20-1.jpg" alt="image" title="product" />
+                                            <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/iced-black-tea-lemonade.png" src="/project-template-prac/resources/assets/images/product-images/iced-black-tea-lemonade.png" alt="image" title="product" />
                                             <!-- End hover image -->
                                             <!-- product label -->
                                             <div class="product-labels"><span class="lbl pr-label3">Popular</span></div>
@@ -652,7 +593,7 @@
                                     <div class="product-details text-center">
                                         <!-- product name -->
                                         <div class="product-name">
-                                            <a href="#">Floral Sleeveless Dress</a>
+                                            <a href="#">아이스 레모네이드 홍차</a>
                                         </div>
                                         <!-- End product name -->
                                         <!-- product price -->
@@ -661,13 +602,6 @@
                                         </div>
                                         <!-- End product price -->
                                         
-                                        <div class="product-review">
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                        </div>
                                     </div>
                                     <!-- End product details -->
                                 </div>
@@ -677,10 +611,10 @@
                                         <!-- start product image -->
                                         <a href="#">
                                             <!-- image -->
-                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image21.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image21.jpg" alt="image" title="product" />
+                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/iced-caffe-americano.png" src="/project-template-prac/resources/assets/images/product-images/iced-caffe-americano.png" alt="image" title="product" />
                                             <!-- End image -->
                                             <!-- Hover image -->
-                                            <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image21-1.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image21-1.jpg" alt="image" title="product" />
+                                            <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/iced-caffe-americano.png" src="/project-template-prac/resources/assets/images/product-images/iced-caffe-americano.png" alt="image" title="product" />
                                             <!-- End hover image -->
                                         </a>
                                         <!-- end product image -->
@@ -712,7 +646,7 @@
                                     <div class="product-details text-center">
                                         <!-- product name -->
                                         <div class="product-name">
-                                            <a href="#">Button Up Dress</a>
+                                            <a href="#">아이스 아메리카노</a>
                                         </div>
                                         <!-- End product name -->
                                         <!-- product price -->
@@ -720,14 +654,7 @@
                                             <span class="price">$400.00</span>
                                         </div>
                                         <!-- End product price -->
-                                        
-                                        <div class="product-review">
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                        </div>
+                                       
                                     </div>
                                     <!-- End product details -->
                                 </div>
@@ -737,10 +664,10 @@
                                         <!-- start product image -->
                                         <a href="#">
                                             <!-- image -->
-                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image22.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image22.jpg" alt="image" title="product" />
+                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/iced-chai-tea-latte.png" src="/project-template-prac/resources/assets/images/product-images/iced-chai-tea-latte.png" alt="image" title="product" />
                                             <!-- End image -->
                                             <!-- Hover image -->
-                                            <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image22-1.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image22-1.jpg" alt="image" title="product" />
+                                            <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/iced-chai-tea-latte.png" src="/project-template-prac/resources/assets/images/product-images/iced-chai-tea-latte.png" alt="image" title="product" />
                                             <!-- End hover image -->
                                         </a>
                                         <!-- end product image -->
@@ -772,7 +699,7 @@
                                     <div class="product-details text-center">
                                         <!-- product name -->
                                         <div class="product-name">
-                                            <a href="#">Lexie Shirt</a>
+                                            <a href="#">아이스 홍차 라떼</a>
                                         </div>
                                         <!-- End product name -->
                                         <!-- product price -->
@@ -780,14 +707,7 @@
                                             <span class="price">$200.00</span>
                                         </div>
                                         <!-- End product price -->
-                                        
-                                        <div class="product-review">
-                                            <i class="font-13 fa fa-star"></i>
-                                            <i class="font-13 fa fa-star"></i>
-                                            <i class="font-13 fa fa-star"></i>
-                                            <i class="font-13 fa fa-star"></i>
-                                            <i class="font-13 fa fa-star"></i>
-                                        </div>
+                                       
                                     </div>
                                     <!-- End product details -->
                                 </div>
@@ -797,10 +717,10 @@
                                         <!-- start product image -->
                                         <a href="#">
                                             <!-- image -->
-                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image23.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image23.jpg" alt="image" title="product" />
+                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/iced-caffe-mocha.png" src="/project-template-prac/resources/assets/images/product-images/iced-caffe-mocha.png" alt="image" title="product" />
                                             <!-- End image -->
                                             <!-- Hover image -->
-                                            <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image23-1.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image23-1.jpg" alt="image" title="product" />
+                                            <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/iced-caffe-mocha.png" src="/project-template-prac/resources/assets/images/product-images/iced-caffe-mocha.png" alt="image" title="product" />
                                             <!-- End hover image -->
                                         </a>
                                         <!-- end product image -->
@@ -832,7 +752,7 @@
                                     <div class="product-details text-center">
                                         <!-- product name -->
                                         <div class="product-name">
-                                            <a href="#">One Shoulder Dress in Navy</a>
+                                            <a href="#">아이스 카페 모카</a>
                                         </div>
                                         <!-- End product name -->
                                         <!-- product price -->
@@ -840,509 +760,19 @@
                                             <span class="price">$1,048.60</span>
                                         </div>
                                         <!-- End product price -->
-                                        
-                                        <div class="product-review">
-                                            <i class="font-13 fa fa-star"></i>
-                                            <i class="font-13 fa fa-star"></i>
-                                            <i class="font-13 fa fa-star"></i>
-                                            <i class="font-13 fa fa-star"></i>
-                                            <i class="font-13 fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <!-- End product details -->
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-4 col-lg-4 item">
-                                    <!-- start product image -->
-                                    <div class="product-image">
-                                        <!-- start product image -->
-                                        <a href="#">
-                                            <!-- image -->
-                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image24.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image24.jpg" alt="image" title="product" />
-                                            <!-- End image -->
-                                            <!-- Hover image -->
-                                            <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image24-1.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image24-1.jpg" alt="image" title="product" />
-                                            <!-- End hover image -->
-                                        </a>
-                                        <!-- end product image -->
-
-                                        <!-- Start product button -->
-                                        <form class="variants add" action="#" onclick="window.location.href='cart.html'"method="post">
-                                            <button class="btn btn-addto-cart" type="button">Add to cart</button>
-                                        </form>
-                                        <div class="button-set">
-                                            <a href="javascript:void(0)" title="Quick View" class="quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
-                                                        <i class="icon anm anm-search-plus-r"></i>
-                                                    </a>
-                                            <div class="wishlist-btn">
-                                                <a class="wishlist add-to-wishlist" href="#" title="Add to Wishlist">
-                                                    <i class="icon anm anm-heart-l"></i>
-                                                </a>
-                                            </div>
-                                            <div class="compare-btn">
-                                                <a class="compare add-to-compare" href="compare.html" title="Add to Compare">
-                                                    <i class="icon anm anm-random-r"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <!-- end product button -->
-                                    </div>
-                                    <!-- end product image -->
-
-                                    <!--start product details -->
-                                    <div class="product-details text-center">
-                                        <!-- product name -->
-                                        <div class="product-name">
-                                            <a href="#">Triangle Sleeveless Dress in Multi</a>
-                                        </div>
-                                        <!-- End product name -->
-                                        <!-- product price -->
-                                        <div class="product-price">
-                                            <span class="price">$684.60</span>
-                                        </div>
-                                        <!-- End product price -->
-                                        
-                                        <div class="product-review">
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                        </div>
-                                    </div>
-                                    <!-- End product details -->
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-4 col-lg-4 item">
-                                    <!-- start product image -->
-                                    <div class="product-image">
-                                        <!-- start product image -->
-                                        <a href="#">
-                                            <!-- image -->
-                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image25.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image25.jpg" alt="image" title="product" />
-                                            <!-- End image -->
-                                            <!-- Hover image -->
-                                            <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image25-1.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image25-1.jpg" alt="image" title="product" />
-                                            <!-- End hover image -->
-                                        </a>
-                                        <!-- end product image -->
-
-                                        <!-- Start product button -->
-                                        <form class="variants add" action="#" onclick="window.location.href='cart.html'"method="post">
-                                            <button class="btn btn-addto-cart" type="button">Add to cart</button>
-                                        </form>
-                                        <div class="button-set">
-                                            <a href="javascript:void(0)" title="Quick View" class="quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
-                                                        <i class="icon anm anm-search-plus-r"></i>
-                                                    </a>
-                                            <div class="wishlist-btn">
-                                                <a class="wishlist add-to-wishlist" href="#" title="Add to Wishlist">
-                                                    <i class="icon anm anm-heart-l"></i>
-                                                </a>
-                                            </div>
-                                            <div class="compare-btn">
-                                                <a class="compare add-to-compare" href="compare.html" title="Add to Compare">
-                                                    <i class="icon anm anm-random-r"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <!-- end product button -->
-                                    </div>
-                                    <!-- end product image -->
-
-                                    <!--start product details -->
-                                    <div class="product-details text-center">
-                                        <!-- product name -->
-                                        <div class="product-name">
-                                            <a href="#">ACB Top</a>
-                                        </div>
-                                        <!-- End product name -->
-                                        <!-- product price -->
-                                        <div class="product-price">
-                                            <span class="price">$280.00</span>
-                                        </div>
-                                        <!-- End product price -->
-                                        
-                                        <div class="product-review">
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                        </div>
-                                    </div>
-                                    <!-- End product details -->
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-4 col-lg-4 item">
-                                    <!-- start product image -->
-                                    <div class="product-image">
-                                        <!-- start product image -->
-                                        <a href="#">
-                                            <!-- image -->
-                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image26.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image26.jpg" alt="image" title="product" />
-                                            <!-- End image -->
-                                            <!-- Hover image -->
-                                            <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image26-1.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image26-1.jpg" alt="image" title="product" />
-                                            <!-- End hover image -->
-                                        </a>
-                                        <!-- end product image -->
-
-                                        <!-- Start product button -->
-                                        <form class="variants add" action="#" onclick="window.location.href='cart.html'"method="post">
-                                            <button class="btn btn-addto-cart" type="button">Add to cart</button>
-                                        </form>
-                                        <div class="button-set">
-                                            <a href="javascript:void(0)" title="Quick View" class="quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
-                                                        <i class="icon anm anm-search-plus-r"></i>
-                                                    </a>
-                                            <div class="wishlist-btn">
-                                                <a class="wishlist add-to-wishlist" href="#" title="Add to Wishlist">
-                                                    <i class="icon anm anm-heart-l"></i>
-                                                </a>
-                                            </div>
-                                            <div class="compare-btn">
-                                                <a class="compare add-to-compare" href="compare.html" title="Add to Compare">
-                                                    <i class="icon anm anm-random-r"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <!-- end product button -->
-                                    </div>
-                                    <!-- end product image -->
-
-                                    <!--start product details -->
-                                    <div class="product-details text-center">
-                                        <!-- product name -->
-                                        <div class="product-name">
-                                            <a href="#">A-Line Jacket</a>
-                                        </div>
-                                        <!-- End product name -->
-                                        <!-- product price -->
-                                        <div class="product-price">
-                                            <span class="price">$698.60</span>
-                                        </div>
-                                        <!-- End product price -->
-                                        
-                                        <div class="product-review">
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                        </div>
-                                    </div>
-                                    <!-- End product details -->
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-4 col-lg-4 item grid-view-item--sold-out">
-                                    <!-- start product image -->
-                                    <div class="product-image">
-                                        <!-- start product image -->
-                                        <a href="#">
-                                            <!-- image -->
-                                            <img class="grid-view-item__image primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image27.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image27.jpg" alt="image" title="product" />
-                                            <!-- End image -->
-                                            <!-- Hover image -->
-                                            <img class="grid-view-item__image hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image27-1.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image27-1.jpg" alt="image" title="product" />
-                                            <!-- End hover image -->
-                                            <span class="sold-out"><span>Sold out</span></span>
-                                        </a>
-                                        <!-- end product image -->
-
-                                        <!-- Start product button -->
-                                        <form class="variants add" action="#" onclick="window.location.href='cart.html'"method="post">
-                                            <button class="btn btn-addto-cart" type="button">Add to cart</button>
-                                        </form>
-                                        <div class="button-set">
-                                            <a href="javascript:void(0)" title="Quick View" class="quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
-                                                        <i class="icon anm anm-search-plus-r"></i>
-                                                    </a>
-                                            <div class="wishlist-btn">
-                                                <a class="wishlist add-to-wishlist" href="#" title="Add to Wishlist">
-                                                    <i class="icon anm anm-heart-l"></i>
-                                                </a>
-                                            </div>
-                                            <div class="compare-btn">
-                                                <a class="compare add-to-compare" href="compare.html" title="Add to Compare">
-                                                    <i class="icon anm anm-random-r"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <!-- end product button -->
-                                    </div>
-                                    <!-- end product image -->
-
-                                    <!--start product details -->
-                                    <div class="product-details text-center">
-                                        <!-- product name -->
-                                        <div class="product-name">
-                                            <a href="#">Camelia Reversible Jacket in Navy/Blue</a>
-                                        </div>
-                                        <!-- End product name -->
-                                        <!-- product price -->
-                                        <div class="product-price">
-                                            <span class="price">$488.00</span>
-                                        </div>
-                                        <!-- End product price -->
-                                        
-                                        <div class="product-review">
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                        </div>
-                                    </div>
-                                    <!-- End product details -->
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-4 col-lg-4 item">
-                                    <!-- start product image -->
-                                    <div class="product-image">
-                                        <!-- start product image -->
-                                        <a href="#">
-                                            <!-- image -->
-                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image28.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image28.jpg" alt="image" title="product" />
-                                            <!-- End image -->
-                                            <!-- Hover image -->
-                                            <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image28-1.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image28-1.jpg" alt="image" title="product" />
-                                            <!-- End hover image -->
-                                        </a>
-                                        <!-- end product image -->
-
-                                        <!-- Start product button -->
-                                        <form class="variants add" action="#" onclick="window.location.href='cart.html'"method="post">
-                                            <button class="btn btn-addto-cart" type="button">Add to cart</button>
-                                        </form>
-                                        <div class="button-set">
-                                            <a href="javascript:void(0)" title="Quick View" class="quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
-                                                        <i class="icon anm anm-search-plus-r"></i>
-                                                    </a>
-                                            <div class="wishlist-btn">
-                                                <a class="wishlist add-to-wishlist" href="#" title="Add to Wishlist">
-                                                    <i class="icon anm anm-heart-l"></i>
-                                                </a>
-                                            </div>
-                                            <div class="compare-btn">
-                                                <a class="compare add-to-compare" href="compare.html" title="Add to Compare">
-                                                    <i class="icon anm anm-random-r"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <!-- end product button -->
-                                    </div>
-                                    <!-- end product image -->
-
-                                    <!--start product details -->
-                                    <div class="product-details text-center">
-                                        <!-- product name -->
-                                        <div class="product-name">
-                                            <a href="#">Wrinkled Tux Shirt in Navy</a>
-                                        </div>
-                                        <!-- End product name -->
-                                        <!-- product price -->
-                                        <div class="product-price">
-                                            <span class="price">$158.00</span>
-                                        </div>
-                                        <!-- End product price -->
-                                        
-                                        <div class="product-review">
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                        </div>
-                                    </div>
-                                    <!-- End product details -->
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-4 col-lg-4 item">
-                                    <!-- start product image -->
-                                    <div class="product-image">
-                                        <!-- start product image -->
-                                        <a href="#">
-                                            <!-- image -->
-                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image29.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image29.jpg" alt="image" title="product" />
-                                            <!-- End image -->
-                                            <!-- Hover image -->
-                                            <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image29-1.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image29-1.jpg" alt="image" title="product" />
-                                            <!-- End hover image -->
-                                        </a>
-                                        <!-- end product image -->
-
-                                        <!-- Start product button -->
-                                        <form class="variants add" action="#" onclick="window.location.href='cart.html'"method="post">
-                                            <button class="btn btn-addto-cart" type="button">Add to cart</button>
-                                        </form>
-                                        <div class="button-set">
-                                            <a href="javascript:void(0)" title="Quick View" class="quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
-                                                        <i class="icon anm anm-search-plus-r"></i>
-                                                    </a>
-                                            <div class="wishlist-btn">
-                                                <a class="wishlist add-to-wishlist" href="#" title="Add to Wishlist">
-                                                    <i class="icon anm anm-heart-l"></i>
-                                                </a>
-                                            </div>
-                                            <div class="compare-btn">
-                                                <a class="compare add-to-compare" href="compare.html" title="Add to Compare">
-                                                    <i class="icon anm anm-random-r"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <!-- end product button -->
-                                    </div>
-                                    <!-- end product image -->
-
-                                    <!--start product details -->
-                                    <div class="product-details text-center">
-                                        <!-- product name -->
-                                        <div class="product-name">
-                                            <a href="#">A-Line Mini Dress in Blue</a>
-                                        </div>
-                                        <!-- End product name -->
-                                        <!-- product price -->
-                                        <div class="product-price">
-                                            <span class="price">$348.00</span>
-                                        </div>
-                                        <!-- End product price -->
-                                        
-                                        <div class="product-review">
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                        </div>
-                                    </div>
-                                    <!-- End product details -->
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-4 col-lg-4 item">
-                                    <!-- start product image -->
-                                    <div class="product-image">
-                                        <!-- start product image -->
-                                        <a href="#">
-                                            <!-- image -->
-                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image30.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image30.jpg" alt="image" title="product" />
-                                            <!-- End image -->
-                                            <!-- Hover image -->
-                                            <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image30-1.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image30-1.jpg" alt="image" title="product" />
-                                            <!-- End hover image -->
-                                        </a>
-                                        <!-- end product image -->
-
-                                        <!-- Start product button -->
-                                        <form class="variants add" action="#" onclick="window.location.href='cart.html'"method="post">
-                                            <button class="btn btn-addto-cart" type="button">Add to cart</button>
-                                        </form>
-                                        <div class="button-set">
-                                            <a href="javascript:void(0)" title="Quick View" class="quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
-                                                        <i class="icon anm anm-search-plus-r"></i>
-                                                    </a>
-                                            <div class="wishlist-btn">
-                                                <a class="wishlist add-to-wishlist" href="#" title="Add to Wishlist">
-                                                    <i class="icon anm anm-heart-l"></i>
-                                                </a>
-                                            </div>
-                                            <div class="compare-btn">
-                                                <a class="compare add-to-compare" href="compare.html" title="Add to Compare">
-                                                    <i class="icon anm anm-random-r"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <!-- end product button -->
-                                    </div>
-                                    <!-- end product image -->
-
-                                    <!--start product details -->
-                                    <div class="product-details text-center">
-                                        <!-- product name -->
-                                        <div class="product-name">
-                                            <a href="#">Asymmetric Dress in Black</a>
-                                        </div>
-                                        <!-- End product name -->
-                                        <!-- product price -->
-                                        <div class="product-price">
-                                            <span class="price">$578.00</span>
-                                        </div>
-                                        <!-- End product price -->
-                                        
-                                        <div class="product-review">
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                        </div>
-                                    </div>
-                                    <!-- End product details -->
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-4 col-lg-4 item">
-                                    <!-- start product image -->
-                                    <div class="product-image">
-                                        <!-- start product image -->
-                                        <a href="#">
-                                            <!-- image -->
-                                            <img class="primary blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image31.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image31.jpg" alt="image" title="product" />
-                                            <!-- End image -->
-                                            <!-- Hover image -->
-                                            <img class="hover blur-up lazyload" data-src="/project-template-prac/resources/assets/images/product-images/product-image31-1.jpg" src="/project-template-prac/resources/assets/images/product-images/product-image31-1.jpg" alt="image" title="product" />
-                                            <!-- End hover image -->
-                                        </a>
-                                        <!-- end product image -->
-
-                                        <!-- Start product button -->
-                                        <form class="variants add" action="#" onclick="window.location.href='cart.html'"method="post">
-                                            <button class="btn btn-addto-cart" type="button">Add to cart</button>
-                                        </form>
-                                        <div class="button-set">
-                                            <a href="javascript:void(0)" title="Quick View" class="quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
-                                                        <i class="icon anm anm-search-plus-r"></i>
-                                                    </a>
-                                            <div class="wishlist-btn">
-                                                <a class="wishlist add-to-wishlist" href="#" title="Add to Wishlist">
-                                                    <i class="icon anm anm-heart-l"></i>
-                                                </a>
-                                            </div>
-                                            <div class="compare-btn">
-                                                <a class="compare add-to-compare" href="compare.html" title="Add to Compare">
-                                                    <i class="icon anm anm-random-r"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <!-- end product button -->
-                                    </div>
-                                    <!-- end product image -->
-
-                                    <!--start product details -->
-                                    <div class="product-details text-center">
-                                        <!-- product name -->
-                                        <div class="product-name">
-                                            <a href="#">Babydoll Bow Dress</a>
-                                        </div>
-                                        <!-- End product name -->
-                                        <!-- product price -->
-                                        <div class="product-price">
-                                            <span class="price">$313.60</span>
-                                        </div>
-                                        <!-- End product price -->
-                                        
-                                        <div class="product-review">
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                        </div>
-                                    </div>
-                                    <!-- End product details -->
+                          	      </div>                               
                                 </div>  
                             </div>
                         </div>
-                    </div>
+                    </div> 
                     <hr class="clear">
                     <div class="pagination">
-                      <ul>
+                    <!--   <ul>
                         <li class="active"><a href="#">1</a></li>
                         <li><a href="#">2</a></li>
                         <li class="next"><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i></a></li>
-                      </ul>
-                    </div>
+                      </ul>  -->
+                    </div> 
                 </div>
                 <!--End Main Content-->
             </div>

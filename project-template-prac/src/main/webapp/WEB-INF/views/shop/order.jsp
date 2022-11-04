@@ -38,7 +38,7 @@
 					<div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
 						<div class="alert alert-success text-uppercase" role="alert">
 							<i class="icon anm anm-truck-l icon-large"></i>&nbsp;
-							<strong>Congratulations!</strong>You've got free shipping!
+							<strong>맛있게 가져다드릴게요</strong>&nbsp; 항상 감사합니다 :)
 						</div>
 						<form action="order" method="post" class="cart style2">
 							<table>
@@ -71,7 +71,7 @@
                                         <div class="cart__qty text-center">
                                             <div class="qtyField">
                                                 <a class="qtyBtn minus" href="javascript:void(0);" data-productId="${ product.prodId }"><i class="icon icon-minus"></i></a>
-                                                <input class="cart__qty-input qty" type="text" name="updates[]" id="qty" value="1" pattern="[0-9]*">
+                                                <input class="cart__qty-input qty" type="text" name="updates[]" id="qty" value="1" pattern="[0-9]*" disabled>
                                                 <a class="qtyBtn plus"  href="javascript:void(0);" data-productId="${ product.prodId }"><i class="icon icon-plus"></i></a>
                                             </div>
                                         </div>
@@ -86,10 +86,9 @@
 								<tfoot>
 									<tr>
 										<td colspan="3" class="text-left"><a href="shop"
-											class="btn btn-secondary btn--small cart-continue">Continue
-												shopping</a></td>
+											class="btn btn-secondary btn--small cart-continue">쇼핑 계속하기</a></td>
 										<td colspan="3" class="text-right">
-											<a href="delete-all-order" class="btn btn-secondary btn--small cart-continue ml-2">Clear Cart
+											<a href="delete-all-order" class="btn btn-secondary btn--small cart-continue ml-2">장바구니 전체 삭제
 												</a>
 										</td>
 									</tr>
@@ -107,24 +106,15 @@
 					<div class="container mt-4">
 						<div class="row">
 							<div class="col-12 col-sm-12 col-md-4 col-lg-4 mb-4">
-								<h5>Discount Codes</h5>
+								<h5>쿠폰</h5>
 								<form action="applycoupon" method="get" id="apply-coupon">
 									<select id="couponName" name="couponId" class="form-group couponName">
-										<option selected disabled hidden="">쿠폰 선택</option>
+										<option selected value="none">쿠폰 없음</option>
 											<c:forEach var="couponMake" items="${ couponMakes }" varStatus="status">
-												<option value="${ couponMakes.couponDto.couponName }">${ couponMakes.couponDto.couponName }</option>
+												<option id="coupon-option" value="${ couponMake.couponDto.couponName }">${ couponMake.couponDto.couponName }</option>
 											</c:forEach>
 										</select>
-									<!-- <div class="form-group">
-										<label for="address_zip">Enter your coupon code if you
-											have one.</label> <input type="text" name="coupon">
-									</div> -->
-									<!-- <br><br>
-													<input type="hidden" id="StoreId1" name="storeId">
-													<input type="submit"
-														   class="spr-button spr-button-primary button button-primary btn btn-primary"
-														   id="SelectStore"
-														   value="확인"> -->
+
 									<div class="actionRow">
 										<div>
 											<input type="hidden" id="couponMakeId1" name="couponId">
@@ -133,63 +123,70 @@
 												   value="쿠폰 적용">
 										</div>
 									</div>
+									
 								</form>
 							</div>
 							<div class="col-12 col-sm-12 col-md-4 col-lg-4 mb-4">
-								<h5>Estimate Shipping and Tax</h5>
+								<h5>결제수단</h5>
 								<form action="#" method="post">
-									<div class="form-group">
-										<label for="address_zip">Postal/Zip Code</label> <input
-											type="text" id="address_zip" name="address[zip]">
-									</div>
+									<select id="couponName" name="couponId" class="form-group couponName">
+										<option selected value="none" disabled>결제 수단을 선택해주세요.</option>	
+												<option value="1">신용/체크카드</option>
+												<option value="2">휴대폰결제</option>
+												<option value="3">네이버페이</option>
+												<option value="4">카카오페이</option>
+												<option value="5">토스페이</option>
+												<option value="6">만나서 카드결제</option>
+												<option value="7">만나서 현금결제</option>
+										</select>
 
-									<div class="actionRow">
+									<!-- <div class="actionRow">
 										<div>
 											<input type="button" class="btn btn-secondary btn--small"
 												value="Calculate shipping">
 										</div>
-									</div>
+									</div> -->
 								</form>
 							</div>
 
 							<div class="col-12 col-sm-12 col-md-4 col-lg-4 cart__footer">
 								<div class="solid-border">
 									<div class="row border-bottom pb-2">
-										<span class="col-12 col-sm-6 cart__subtotal-title">Subtotal</span>
+										<span class="col-12 col-sm-6 cart__subtotal-title">음료 금액</span>
 										<span class="col-12 col-sm-6 text-right"><span
-											class="money">$735.00</span></span>
+											class="money"><span id="price-${ product.prodId }">${ product.prodPrice }</span></span></span>
 									</div>
 									<div class="row border-bottom pb-2 pt-2">
-										<span class="col-12 col-sm-6 cart__subtotal-title">Tax</span>
-										<span class="col-12 col-sm-6 text-right">$10.00</span>
+										<span class="col-12 col-sm-6 cart__subtotal-title">쿠폰 할인</span>
+											<c:forEach var="couponMake" items="${ couponMakes }" varStatus="status">
+												<span class="col-12 col-sm-6 text-right">${ couponMake.couponDto.couponRate }</span>	
+											</c:forEach>
+									
 									</div>
 									<div class="row border-bottom pb-2 pt-2">
-										<span class="col-12 col-sm-6 cart__subtotal-title">Shipping</span>
+										<span class="col-12 col-sm-6 cart__subtotal-title">배송비</span>
 										<span class="col-12 col-sm-6 text-right">Free shipping</span>
 									</div>
 									<div class="row border-bottom pb-2 pt-2">
-										<span class="col-12 col-sm-6 cart__subtotal-title"><strong>Grand
-												Total</strong></span> <span
+										<span class="col-12 col-sm-6 cart__subtotal-title"><strong>총 금액</strong></span> <span
 											class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span
 											class="money">$1001.00</span></span>
 									</div>
-									<div class="cart__shipping">Shipping &amp; taxes
-										calculated at checkout</div>
-									<p class="cart_tearm">
+									<br>
+								<!-- 	<p class="cart_tearm">
 										<label> <input type="checkbox" name="tearm"
-											class="checkbox" value="tearm" required=""> I agree
-											with the terms and conditions
+											class="checkbox" value="tearm" required="">
 										</label>
-									</p>
+									</p> -->
 									<input type="submit" name="checkout" id="cartCheckout"
 										class="btn btn--small-wide checkout"
-										value="Proceed To Checkout" disabled="disabled">
-									<div class="paymnet-img">
+										value="결제" disabled="disabled">
+									<!-- <div class="paymnet-img">
 										<img src="#" alt="Payment">
 									</div>
 									<p>
 										<a href="#;">Checkout with Multiple Addresses</a>
-									</p>
+									</p>  -->
 								</div>
 							</div>
 						</div>
@@ -230,6 +227,7 @@
 				$(qtyField).find(".qty").val(newVal);
 				$("#price-" + prodId).text( price );
 			});
+			
 			
 		/* 	$('.cart__remove').on('click', function(event) {
 				var addform = $(this).parent(".addform").serialize();
