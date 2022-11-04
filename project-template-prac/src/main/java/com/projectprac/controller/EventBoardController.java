@@ -164,15 +164,15 @@ public class EventBoardController {
 
 	}
 	
-	@GetMapping(path = { "/comment-list.action" })
-	public String showCommentList(int boardNo, Model model) {
-		
-		List<BoardCommentDto> comments = boardService.findBoardCommentByBoard(boardNo);
-		
-		// View에서 일긍ㄹ 수 있도록 데이터 저장
-		model.addAttribute("comments", comments);
-		return "board/comment-list";  // /WEB-INF/views/ + board/comment-list + .jsp
-	}
+//	@GetMapping(path = { "/comment-list.action" })
+//	public String showCommentList(int boardNo, Model model) {
+//		
+//		List<BoardCommentDto> comments = boardService.findBoardCommentByBoard(boardNo);
+//		
+//		// View에서 일긍ㄹ 수 있도록 데이터 저장
+//		model.addAttribute("comments", comments);
+//		return "board/comment-list";  // /WEB-INF/views/ + board/comment-list + .jsp
+//	}
 	
 	
 	

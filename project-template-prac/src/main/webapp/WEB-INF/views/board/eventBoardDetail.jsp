@@ -54,7 +54,7 @@
                              <a class="article_featured-image" href="#"><img class="blur-up lazyload" data-src="resources/assets/images/blog/blog-post-3.jpg" src="resources/assets/images/blog/blog-post-3.jpg" alt="How to Wear The Folds Trend Four Ways"></a> 
                             <h2 class="h3" style="font-size: 17px"><a href="#">${ boardDetail.title }</a></h2>
                             <ul class="publish-detail">                      
-                                <li><i class="anm anm-user-al" aria-hidden="true"></i> ADMIN</li>
+                                <li><i class="anm anm-user-al" aria-hidden="true"></i> ${ loginuser.customerId }</li>
                                 <li><i class="icon anm anm-clock-r"></i> <time datetime="2017-05-02"><fmt:formatDate value="${ boardDetail.regdate }" pattern="yyyy-MM-dd"/></time></li>
                                 <li>
                                     <ul class="inline-list">   
@@ -73,7 +73,7 @@
                       	    </div>
                         <div class="loadmore-post">	
                             <a></a>
-                          	<c:if test="${ loginuser.userType }">
+                          	<c:if test="${ not empty loginuser and loginuser.customerId eq board.writer }">
                             <a id="update_event_button" class="btn" style="color: white">수정</a>
                             <a id="delete_event_button" class="btn" style="color: white">삭제</a>
                             </c:if>
@@ -86,9 +86,9 @@
             </div>
             <br><br>
             	<form id="commentform" action="write-comment.action" method="post">
-            	<input type="hidden" name="boardId" value="${ board.boardNo }" />
+            	<input type="hidden" name="boardId" value="${ board.boardId }" />
 				<input type="hidden" name="pageNo" value="${ pageNo }" />				
-				<input type="hidden" name="writer" value="${ loginuser.memberId }" />
+				<input type="hidden" name="writer" value="${ loginuser.customerId }" />
                 <div class="card mb-2">
 					<div class="card-header bg-light">
 					        <i class="fa fa-comment fa"></i> REPLY
@@ -103,6 +103,15 @@
 					</div>
 				</div>
 				</form>
+				
+					<!-- comment list area  -->
+	<br>
+    <hr style="width:550px;margin:0 auto">
+    <br>
+    <table id="comment-list" style="width:550px;border:solid 1px;margin:0 auto">
+	
+	</table>
+		<!-- end of comment list area	 -->
 				
 				
 				    
