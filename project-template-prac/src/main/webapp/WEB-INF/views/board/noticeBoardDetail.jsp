@@ -83,12 +83,14 @@
                     </div>
                 </div>
                 <!--End Main Content-->
+               
             </div>
-        </div>
+             
         
     </div>
     <!--End Body Content-->
-    
+ 
+
     <!--Footer-->
     <jsp:include page="/WEB-INF/views/modules/footer.jsp"></jsp:include>
     <!--End Footer-->

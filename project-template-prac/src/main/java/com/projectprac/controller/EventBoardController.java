@@ -1,5 +1,6 @@
 package com.projectprac.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -70,15 +71,29 @@ public class EventBoardController {
 								  HttpSession session, 
 								  Model model) {	
 		
+		// 1. 요청 데이터 읽기 ( 전달인자로 대체 )
 		if (boardId == -1 || pageNo == -1) { // 요청 데이터가 잘못된 경우
-			return "redirect:eventBoard";
+			return "redirect:board/eventBoard";
 		}
+		
+		// 2. 데이터 처리
+//				ArrayList<Integer> readList = (ArrayList<Integer>)session.getAttribute("read-list");
+//				if (readList == null) { // 세션에 목록이 없으면 
+//					readList = new ArrayList<>(); // 목록 새로 만들기
+//					session.setAttribute("read-list", readList); // 세션에 목록 등록
+//				}
+//				
+//				if (!readList.contains(boardId)) { // 현재 글 번호가 읽은 글 목록에 포함되지 않은 경우
+//					boardService.increaseBoardReadCount(boardId); // 글 조회수 증가
+//					readList.add(boardId); // 읽은 글 목록에 현개 글 번호 추가			
+//				}
+				
 		
 		BoardDto boardDetail = boardService.showBoardDetail(boardId);
 		
-//		if (boardDetail == null) { // 조회되지 않은 경우 (글 번호가 잘못되었거나 또는 삭제된 글인 경우)
-//			return "redirect:aaa.action";
-//		}
+		if (boardDetail == null) { // 조회되지 않은 경우 (글 번호가 잘못되었거나 또는 삭제된 글인 경우)
+			return "redirect:board/eventBoard";
+		}
 		
 		// 3. View에서 읽을 수 있도록 데이터 전달
 		model.addAttribute("boardDetail", boardDetail);
@@ -90,8 +105,8 @@ public class EventBoardController {
 	
 	@GetMapping(path = { "/deleteEvent/{boardId}" })
 	public String deleteEventBoard(@PathVariable("boardId") int boardId,
-							  @RequestParam (defaultValue = "-1")int pageNo,
-							  Model model) { //Model --> jsp로 데이터 전달할때 씀
+							  	   @RequestParam (defaultValue = "-1")int pageNo,
+							  	   Model model) { //Model --> jsp로 데이터 전달할때 씀
 		
 		if (pageNo == -1) {
 			//return "redirect:list.action";
@@ -147,7 +162,20 @@ public class EventBoardController {
 
 		return "redirect:/eventBoardDetail?boardId=" + boardId + "&pageNo=" + pageNo;
 
-}
+	}
+	
+	@GetMapping(path = { "/comment-list.action" })
+	public String showCommentList(int boardNo, Model model) {
+		
+		List<BoardCommentDto> comments = boardService.findBoardCommentByBoard(boardNo);
+		
+		// View에서 일긍ㄹ 수 있도록 데이터 저장
+		model.addAttribute("comments", comments);
+		return "board/comment-list";  // /WEB-INF/views/ + board/comment-list + .jsp
+	}
+	
+	
+	
 	
 	
 }

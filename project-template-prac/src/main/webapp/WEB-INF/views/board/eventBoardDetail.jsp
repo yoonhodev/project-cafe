@@ -84,6 +84,30 @@
                 </div>
                 <!--End Main Content-->
             </div>
+            <br><br>
+            	<form id="commentform" action="write-comment.action" method="post">
+            	<input type="hidden" name="boardId" value="${ board.boardNo }" />
+				<input type="hidden" name="pageNo" value="${ pageNo }" />				
+				<input type="hidden" name="writer" value="${ loginuser.memberId }" />
+                <div class="card mb-2">
+					<div class="card-header bg-light">
+					        <i class="fa fa-comment fa"></i> REPLY
+					</div>
+					<div class="card-body">
+						<ul class="list-group list-group-flush">
+						    <li class="list-group-item">
+							<textarea class="form-control" id="comment_content" name="content" rows="3"></textarea>
+							<button type="button" id="writecomment" class="btn btn-dark mt-3" style="float: right;">댓글 등록</button>
+						    </li>
+						</ul>
+					</div>
+				</div>
+				</form>
+				
+				
+				    
+        </div>
+            
         </div>
         
     </div>
