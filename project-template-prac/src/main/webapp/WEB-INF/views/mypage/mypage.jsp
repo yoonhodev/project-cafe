@@ -74,7 +74,7 @@
 						</td>
 						<td style="text-align: center;">
 							<a href="coupon">
-							쿠폰함
+							쿠폰함 <span></span>
 							</a>
 						</td>
 					</tr>
@@ -97,6 +97,16 @@
 						<td style="text-align: center;">
 							<a href="orderHistory">
 							주문내역
+							</a>
+						</td>
+					</tr>
+				</table>
+				<br><br>
+				<table style="width:300px;">
+					<tr>
+						<td style="text-align: center;">
+							<a href="#" style="color:silver;">
+							회원 탈퇴
 							</a>
 						</td>
 					</tr>
