@@ -86,6 +86,8 @@
                 </div>
                 <!--End Main Content-->
             </div>
+            
+            <!-- write comment area -->
             <br><br>
             	<form id="commentform" action="write-comment.action" method="post">
             	<input type="hidden" name="boardId" value="${ boardDetail.boardId }" />
@@ -105,21 +107,21 @@
 					</div>
 				</div>
 				</form>
-				
-				
-			
             <br>
-   
-    
-		
+            <!-- end of write comment area -->	
 		
 		<!-- comment list area  -->
-	
+					
+					
+		adfadfasfdsaff1111111111111
+		<br>
+	    <hr style="width:550px;margin:0 auto">
+	    <br>
+	    <table id="comment-list" style="width:550px;border:solid 1px;margin:0 auto">
+		
+		</table>
 		<!-- end of comment list area	 -->
-			
-			
-				
-				
+
 				    
         </div>
       
@@ -149,7 +151,6 @@
      <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 	 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 	
-</div>
 
 
 <script type="text/javascript">
@@ -171,108 +172,45 @@
 			location.href = 'editEvent?boardId=${boardDetail.boardId}&pageNo=${pageNo}';
 		});
 		
-		$('#writecomment').on('click', function(event){
-			alert('서버로 댓글 쓰기 요청');
-			$('#commentform').submit(); // form 객체의 submit 메서드는 form을 서버로 전송하는 명령
-		});
-				
-		var currentEditCommentNo = null;
-		
-		$('#comment-list').on('click', '.edit-comment', function(event){
-			event.preventDefault();
-			
-			if (currentEditCommentNo != null) { // 댓글 수정중일때 다른댓글 수정화면 닫기
-				$('#comment-view-area-' + currentEditCommentNo).show();
-				$('#comment-edit-area-' + currentEditCommentNo).hide();
-			}
-			
-			var commentNo = $(this).data('comment-no'); // $(this) : 이벤트 발생 객체 (여기서는 <a class="ediht-comment" ...>를 의미함)
-			
-			$('#comment-view-area-' + commentNo).hide();
-			$('#comment-edit-area-' + commentNo).show();
-			
-			currentEditCommentNo = commentNo;
-		});
-		
-		$('#comment-list').on('click', '.cancel-edit-comment', function(event){
-			event.preventDefault();
-			
-			var commentNo = $(this).data("comment-no"); // $(this) : 이벤트 발생 객체 (여기서는 <a class="cancle-ediht-comment" ...>를 의미함)
-			const editForm = $('#comment-edit-area-' + commentNo + ' form');
-			editForm[0].reset(); // editForm : jQuery 객체, editForm[0] : javascript 객체// 지우는게 아니라 원래대로 돌아가게 해줌
-			
-			$('#comment-view-area-' + commentNo).show();
-			$('#comment-edit-area-' + commentNo).hide();
-			
-			currentEditCommentNo = null;
-		});
-		
-// 		//$('#comment-list .delete-comment').on('click', function(event) { // 이렇게하면 첫화면 댓글 삭제한후 다음부턴 안먹힘 계쏙 새로고침해야됨
-// 		$('#comment-list').on('click', '.delete-comment', function(event) { // 새로고침안해도 계속 삭제 됨
-// 		event.preventDefault();
-		
-// 		var commentNo = $(this).data('comment-no'); // .data(comment-no') --> data-comment-no="value"를 조회
-		
-// 		const yn = confirm(commentNo + "번 댓글을 삭제할까요?");
-// 		if (!yn) return;   // 아니오 클릭했을때
-		
-// 		// 동기 방식 요청 (All Refresh)
-// 		//location.href =
-// 		//'delete-comment.action?commentNo=' + commentNo + '&boardNo=${ board.boardNo }&pageNo=${ pageNo }';
-					
-// 		// jQuery 기반의 비동기(ajax) 요청
-// 		$.ajax({
-// 			"url": "delete-comment.action",
-// 			"method": "get",
-// 			"data": 'commentId=' + commentId,
-// 			"success": function(data, status, xhr) {
-// 				if (data == "success") {
-// 					// 1. 해당 댓글만 수정
-// 					/* const html = `<br><br>
-// 					<span style='color:gray'>삭제된 글입니다.</span>
-// 					<br><br>`
-// 					$('#comment-view-area-' + commentNo).html(html); */
-// 					//alert('삭제 성공!');
-// 					// 2. 댓글 목록 전체 갱신
-// 					//       jQuery의 load 함수 : 지정된 html 요소의 내용을 응답받는 부분 HTML로 (비동기) 갱신 
-// 					$('#comment-list').load("comment-list.action?boardId=${ board.boardId}"); // 작업 다 끝난 후 화면 갱신 
-// 				} else {
-// 					alert('삭제실패 2');
-// 				}
-// 			},
-// 			"error": function(xhr, status, err) {
-// 				alert('삭제 실패!');
-// 			}
-		
-// 		});
-// 	});
-		//$('#comment-list').on('click', '.update-comment', function(event) { // 이렇게 하면 화면 새로고침한후 클릭안됨	
-// 		$('#comment-list').on('click', '.update-comment', function(event) {
-// 			const commentNo = $(this).data('comment-no'); // $(this) : 이벤트 발생한 객체, .data('abc') : data-abc값 읽기
-				
-// 			const editForm = $('#comment-edit-area-' + commentNo + ' form')
-// 			//alert(editForm.serialize());
-		
-// 			$.ajax({
-// 				"url": "update-comment.action",
-// 				"method": "post", 
-// 				"data": editForm.serialize(),
-// 				"success": function(data) {
-// 					if (data == "success") {
-// 						$('#comment-list').load("comment-list.action?boardId=${ board.boardId}"); // 작업 다 끝난 후 화면 갱신
-// 					}
-// 				},
-// 				"error": function(xhr, status, err) {
-// 					alert('fail : ' + status);
-// 				}
-			
-// 			});
-			
-// 		});
+		$('#comment-list').load("comment-list.action?boardId=${ board.boardId}");
+
 				
 		})
 		
-
+		$('#writecomment').on('click', function(event){
+				// alert('서버로 댓글 쓰기 요청');
+				// $('#commentform').submit(); // form 객체의 submit 메서드는 form을 서버로 전송하는 명령
+				
+				/* const boardNo = $('#commentform input[name=boardNo]').val();
+				const writer = $('#commentform input[name=writer').val();
+				const content = $('#commentform textarea[name=content]').val();
+				// 위에 3줄은 데이터 가져오기
+				
+				alert(boardNo + "/" + writer + "/" + content); */
+				
+				const formData = $('#commentform').serialize(); //form 내부의 모든 입력 요소의 값을 전송 가능한 객체로 반환
+	
+				//const formData = $('#commentform').serializeArray(); //form 내부의 모든 입력 요소의 값을 전송 가능한 문자열 형식으로 반환
+				
+				$.ajax({
+				"url": "write-comment.action",
+				"method": "post",
+				"data": formData,
+				"success": function(data, status, xhr) {
+					if (data == "success") {
+						//alert("댓글을 등록했습니다.");
+						$('#comment-list').load("comment-list.action?boardId=${ board.boardId}");
+						$('#commentform textarea').val("");
+					}
+				},
+					
+			
+				"error": function(xhr,status, err) {
+				
+				
+				}
+			});
+		});
 
 </script>
 

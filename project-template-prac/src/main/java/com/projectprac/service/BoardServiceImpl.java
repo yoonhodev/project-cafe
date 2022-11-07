@@ -155,6 +155,7 @@ public class BoardServiceImpl implements BoardService {
 	public void writeComment(BoardCommentDto comment) {
 
 		commentMapper.insertComment(comment);
+
 		
 	}
 
