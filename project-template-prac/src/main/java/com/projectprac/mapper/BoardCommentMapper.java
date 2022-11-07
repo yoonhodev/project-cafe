@@ -17,13 +17,21 @@ public interface BoardCommentMapper {
 	
 	@Insert("INSERT INTO comment (board_id, customer_id, content) " +
 			"VALUES (#{ boardId }, #{ customerId } , #{ content })")
-	//@Options(useGeneratedKeys = true, keyColumn = "commentid", keyProperty = "commentId") // 자동증가 데이터 가져오기
+	@Options(useGeneratedKeys = true, keyColumn = "commentid", keyProperty = "commentId") // 자동증가 데이터 가져오기
 	void insertComment(BoardCommentDto comment);
 	
 	@Select("SELECT comment_id commentId, customer_id customerId, content, regdate, deleted " +
 			"FROM comment " +
-			"WHERE board_id = #{ boardId }")
+			"WHERE board_id = #{ boardId } " +
+			"order by commentId DESC")
 	List<BoardCommentDto> selectCommentByBoardNo(int boardId);
+
+	
+	
+	@Update("UPDATE comment " +
+			"SET deleted = TRUE " +
+			"WHERE comment_id = #{ commentId }")
+	void deleteComment(int commentId);
 
 
 	

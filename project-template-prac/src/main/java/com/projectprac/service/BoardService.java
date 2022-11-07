@@ -43,6 +43,8 @@ public interface BoardService {
 	public List<BoardCommentDto> findBoardCommentByBoard(int boardId);
 
 	void writeComment(BoardCommentDto comment);
+
+	void deleteComment(int commentId);
 		
 		
 
