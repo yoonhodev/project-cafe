@@ -83,7 +83,7 @@
 								</a>
 							</ul></li>
 						<li class="lvl1 parent dropdown"><a href="store"
-							style="font-size: 15pt"><b>지점소개</b> <i
+							style="font-size: 15pt"><b>BRANCH OFFICE</b> <i
 								class="anm anm-angle-down-l"></i></a>
 							<ul class="dropdown">
 							<c:if test="${ loginuser.userType }">

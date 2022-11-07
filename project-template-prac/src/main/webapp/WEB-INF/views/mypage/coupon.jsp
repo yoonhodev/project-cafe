@@ -48,8 +48,8 @@
 						<table>
 							<tr>
 								<td>
-									<input type="text" id="couponId" name="couponId"
-										   placeholder="쿠폰 입력">
+									<input class="form-control" type="text" id="couponId" name="couponId"
+										   placeholder="쿠폰 번호 입력" required>
 								</td>
 								<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 								<td>

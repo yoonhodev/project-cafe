@@ -16,7 +16,10 @@
 		class="com.projectprac.service.OrderHistoryServiceImpl">
 		<property name="orderHistoryMapper" ref="orderHistoryMapper" />
 	</bean>
-
+	<bean id="mypageService"
+		class="com.projectprac.service.MypageServiceImpl">
+		<property name="mypageMapper" ref="mypageMapper" />
+	</bean>
 
 </beans>
 
