@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.projectprac.dto.AddressDto;
 import com.projectprac.dto.CustomerDto;
 import com.projectprac.service.AccountService;
 
@@ -51,7 +52,7 @@ public class AccountController {
 	// 회원가입) 회원 정보 저장
 	@PostMapping(path = { "register" })
 	public String register(@Valid CustomerDto customer, BindingResult br, String idchk, String passwdchk, Model model,
-						   String postId, String address, String detailAddress, String extraAddress) { // @Valid에 의해 검출된 오류 정보가 저장된 객체
+						   AddressDto addressDto) { // @Valid에 의해 검출된 오류 정보가 저장된 객체
 		
 		if (br.hasErrors()) {
 			System.out.println("유효성 검사 오류 발생");
@@ -73,7 +74,9 @@ public class AccountController {
 		}
 		
 		// 2. 요청 처리
+		accountService.addAddress(addressDto);
 		accountService.registerCustomer(customer); // 회원 정보 삽입
+		System.out.println(addressDto);
 		System.out.println(customer);
 
 		// 3. View에서 사용할 수 있도록 데이터 전달 / 4. View 또는 다른 Controller로 이동

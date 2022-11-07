@@ -11,5 +11,6 @@ public class AddressDto {
 	private String address;
 	private String detailAddress;
 	private String extraAddress;
+	private boolean mainAddress;
 	
 }

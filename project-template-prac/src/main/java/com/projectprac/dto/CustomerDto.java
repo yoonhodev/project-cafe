@@ -14,7 +14,6 @@ public class CustomerDto {
 	private String customerId;
 	private String passwd;
 	private String phone;
-	private String address;
 	private boolean sex;
 	@Email
 	private String email;
