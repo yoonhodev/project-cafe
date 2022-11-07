@@ -74,10 +74,10 @@ public class AccountController {
 		}
 		
 		// 2. 요청 처리
-		accountService.addAddress(addressDto);
 		accountService.registerCustomer(customer); // 회원 정보 삽입
-		System.out.println(addressDto);
+		accountService.addAddress(addressDto);
 		System.out.println(customer);
+		System.out.println(addressDto);
 
 		// 3. View에서 사용할 수 있도록 데이터 전달 / 4. View 또는 다른 Controller로 이동
 		return "account/login";

@@ -39,7 +39,7 @@ public interface CustomerMapper {
 			"FROM customer ")
 	List<CustomerDto> selectAllCustomer();
 
-	@Insert("INSERT INTO address (customer_id, post_id, address, detail_adress, extra_address, main_address) " +
+	@Insert("INSERT INTO address (customer_id, post_id, address, detail_address, extra_address, main_address) " +
 			"VALUES (#{ customerId }, #{ postId }, #{ address }, #{ detailAddress }, #{ extraAddress }, 1) ")
 	void insertAddress(AddressDto addressDto);
 	
