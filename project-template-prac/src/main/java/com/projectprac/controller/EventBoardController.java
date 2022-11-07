@@ -166,11 +166,9 @@ public class EventBoardController {
 
 	}
 	
-
-	
 	@ResponseBody
 	@PostMapping(path = {"/write-comment.action" })
-	public String writeComment(BoardCommentDto commentDto, int pageNo, int boardId) {
+	public String writeComment(BoardCommentDto commentDto, int pageNo) {
 		// 1. 요청 데이터 읽기 ( 전달인자로 대체 )
 		// 2. 요청 처리
 		boardService.writeComment(commentDto); // commentDto에 자동 증가된 commentNo가 저장됨.
@@ -179,37 +177,19 @@ public class EventBoardController {
 		// 3. View에서 읽을 수 있도록 데이터 저장
 		// 4. View 또는 다른 컨트롤러로 이동
 		//return String.format("redirect:detail.action?boardNo=%d&pageNo=%d",commentDto.getBoardNo(), pageNo);
-		return "success";
+		return "success";	
 	}
 	
 	@GetMapping(path = { "/comment-list.action" })
-	public String showCommentList(int boardId, Model model) {
+	public String showCommentList(int boardId, Model model, int pageNo) {
 		
 		List<BoardCommentDto> comments = boardService.findBoardCommentByBoard(boardId);
 		
 		// View에서 일긍ㄹ 수 있도록 데이터 저장
 		model.addAttribute("comments", comments);
-		return "board/comment-list";  // /WEB-INF/views/ + board/comment-list + .jsp
+		return "redirect:/eventBoardDetail?boardId=" + boardId + "&pageNo=" + pageNo;	
+		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 }

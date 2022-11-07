@@ -17,12 +17,12 @@ public interface BoardCommentMapper {
 	
 	@Insert("INSERT INTO comment (board_id, customer_id, content) " +
 			"VALUES (#{ boardId }, #{ customerId } , #{ content })")
-	//@Options(useGeneratedKeys = true, keyColumn = "commentno", keyProperty = "commentNo") // 자동증가 데이터 가져오기
+	//@Options(useGeneratedKeys = true, keyColumn = "commentid", keyProperty = "commentId") // 자동증가 데이터 가져오기
 	void insertComment(BoardCommentDto comment);
 	
-	@Select("SELECT commentId, customerId, content, regdate, deleted " +
+	@Select("SELECT comment_id commentId, customer_id customerId, content, regdate, deleted " +
 			"FROM comment " +
-			"WHERE boardId = #{ boardId }")
+			"WHERE board_id = #{ boardId }")
 	List<BoardCommentDto> selectCommentByBoardNo(int boardId);
 
 
