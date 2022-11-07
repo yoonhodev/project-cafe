@@ -55,9 +55,10 @@
                             <!-- Article Image --> 
                              <a class="article_featured-image" href="#"><img class="blur-up lazyload" data-src="resources/assets/images/blog/blog-post-3.jpg" src="resources/assets/images/blog/blog-post-3.jpg" alt="How to Wear The Folds Trend Four Ways"></a> 
                             <h2 class="h3" style="font-size: 17px"><a href="#">${ boardDetail.title }</a></h2>
-                            <ul class="publish-detail">                      
+                            <ul class="publish-detail">   
+                       	        <li><i class="icon anm anm-map-marker-al" aria-hidden="true"></i> ${ boardDetail.boardId }</li>                   
                                 <li><i class="anm anm-user-al" aria-hidden="true"></i> ADMIN</li>
-                                <li><i class="icon anm anm-clock-r"></i> <time datetime="2017-05-02"><fmt:formatDate value="${ boardDetail.regdate }" pattern="yyyy-MM-dd"/></time></li>
+                                <li><i class="icon anm anm-clock-r"></i> <fmt:formatDate value="${ boardDetail.regdate }" pattern="yyyy-MM-dd"/></li>
                                 <li>
                                     <ul class="inline-list">   
                                         <li><i class="icon anm anm-comments-l"></i> <a href="#"> 10 comments</a></li>
@@ -107,26 +108,14 @@
 					</div>
 				</div>
 				</form>
-            <br>
-            <!-- end of write comment area -->	
-		
+        <!-- end of write comment area -->	
 		<!-- comment list area  -->
-					
-					
-		adfadfasfdsaff1111111111111
 		<br>
-	    <hr style="width:550px;margin:0 auto">
-	    <br>
-	    <table id="comment-list" style="width:550px;border:solid 1px;margin:0 auto">
-		
+	    <table id="comment-list" style="border:solid 1px;margin:0 auto">
 		</table>
 		<!-- end of comment list area	 -->
-
-				    
         </div>
-      
         </div>
-        
     </div>
     <!--End Body Content-->
     
@@ -172,46 +161,35 @@
 			location.href = 'editEvent?boardId=${boardDetail.boardId}&pageNo=${pageNo}';
 		});
 		
-		$('#comment-list').load("comment-list.action?boardId=${ board.boardId}");
+		$('#comment-list').load("comment-list.action?boardId=${ boardDetail.boardId}");
 
-				
+		// 댓글 쓰기버튼 눌렀을때	
 		})
 		
 		$('#writecomment').on('click', function(event){
-				// alert('서버로 댓글 쓰기 요청');
-				// $('#commentform').submit(); // form 객체의 submit 메서드는 form을 서버로 전송하는 명령
-				
-				/* const boardNo = $('#commentform input[name=boardNo]').val();
-				const writer = $('#commentform input[name=writer').val();
-				const content = $('#commentform textarea[name=content]').val();
-				// 위에 3줄은 데이터 가져오기
-				
-				alert(boardNo + "/" + writer + "/" + content); */
-				
-				const formData = $('#commentform').serialize(); //form 내부의 모든 입력 요소의 값을 전송 가능한 객체로 반환
-	
-				//const formData = $('#commentform').serializeArray(); //form 내부의 모든 입력 요소의 값을 전송 가능한 문자열 형식으로 반환
-				
-				$.ajax({
-				"url": "write-comment.action",
-				"method": "post",
-				"data": formData,
-				"success": function(data, status, xhr) {
-					if (data == "success") {
-						//alert("댓글을 등록했습니다.");
-						$('#comment-list').load("comment-list.action?boardId=${ board.boardId}");
-						$('#commentform textarea').val("");
-					}
-				},
-					
 			
-				"error": function(xhr,status, err) {
+			alert('댓글 등록 완료');
 				
-				
-				}
-			});
 		});
-
+	
+	$('#comment-list').on('click', '.delete-comment', function(event) {
+		event.preventDefault();
+		
+		var commentId = $(this).data('comment-no'); // .data(comment-no') --> data-comment-no="value"를 조회
+		
+		const yn = confirm(commentId + "번 댓글을 삭제할까요?");
+		if (!yn) return;   // 아니오 클릭했을때
+		
+		location.href = 'delete-comment.action?commentId=' + commentId + '&boardId=${ boardDetail.boardId }&pageNo=${ pageNo }';
+		
+	});
+	
+	
+		
+	
+	
+	
+	
 </script>
 
 </body>

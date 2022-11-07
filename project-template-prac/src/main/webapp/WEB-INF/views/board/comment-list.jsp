@@ -1,67 +1,45 @@
 <%@page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <c:set var="enter" value="
-" />  <!-- 엔터쳤을때 화면에서 실제 적용하게 해주는 코드  -->
+" />
+<!-- 엔터쳤을때 화면에서 실제 적용하게 해주는 코드  -->
 
-<c:forEach var="comment" items="${ comments }">	
-		<tr>
-			<td style="text-align:left;margin:5px;border-bottom: solid 1px;">
-				<table>
-					<tr>
-						<td>
-<%-- 							<c:forEach begin="0" end="${ comment.depth }"> --%>
-<!-- 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
-<%-- 							</c:forEach> --%>
-<%-- 							<c:if test="${ comment.depth > 0 }">   --%>
-<!-- 							<img src="/spring-demoweb-e/resources/image/re.gif"> -->
-<!-- 							&nbsp; -->
-<%-- 							</c:if> --%>
-						</td>					
-						<td>
-							<div id="comment-view-area-${ comment.commentId }">
-						<c:choose>
-						<c:when test="${ comment.deleted }">
-							<br><br>
-							<span style='color:gray'>삭제된 글입니다.</span>
-							<br><br>
-						</c:when>
-						<c:otherwise>
-							${ comment.customerId } &nbsp;&nbsp; [${ comment.regDate }]
-						    <br /><br />
-						    <span>${ fn:replace(comment.content, enter, "<br>") }</span>
-							<br /><br />
-							<div style='display:${ (not empty loginuser and loginuser.customerId == comment.customerId) ? "block" : "none" }'>
-						        <a class="edit-comment" data-comment-no="${ comment.commentId }" href="javascript:">편111집</a>
-								&nbsp;
-								<a class="delete-comment" data-comment-no="${ comment.commentId }" href="javascript:">삭제</a>
-							</div>
-<%-- 							<a href="#" data-comment-no="${ comment.commentId }" class="recomment-link btn btn-sm btn-success">댓글 쓰기</a> --%>
-						</c:otherwise>
-						</c:choose>
-			        		
-						</div>	                
-<%-- 						<div id="comment-edit-area-${ comment.commentId }" style="display: none"> --%>
-<%-- 							${ comment.customerId } &nbsp;&nbsp; [${ comment.regDate }] --%>
-<!-- 							<br /><br /> -->
-<!-- 							<form> -->
-<%-- 							<input type="hidden" name="commentId" value="${ comment.commentId }" /> --%>
-<!-- 							<textarea name="content" style="width: 250px" rows="3"  -->
-<%-- 								maxlength="200">${ comment.content }</textarea> --%>
-<!-- 							</form> -->
-<!-- 							<br /> -->
-<!-- 							<div> -->
-<%-- 								<a class="update-comment" data-comment-no="${ comment.commentId }" href="javascript:">수정</a>  --%>
-<!-- 								&nbsp;  -->
-<%-- 								<a class="cancel-edit-comment" data-comment-no="${ comment.commentId }" href="javascript:">취소</a> --%>
-<!-- 							</div> -->
-<!-- 						</div> -->
-						</td>				
-					</tr>
-				</table>
-			</td>
-		</tr>
-	</c:forEach>        	
+<c:forEach var="comment" items="${ comments }">
+	<c:choose>
+	<c:when test="${ comment.deleted }">
+			<div class="card-header bg-light">
+				<i class="icon anm anm-map-marker-al" aria-hidden="true"></i> ${ comment.commentId } &nbsp;&nbsp; 
+			</div>
+			<div>
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item"><span>댓글이 삭제 되었습니다.</span>
+				
+					</li>
+				</ul>
+			</div>
+	</c:when>
+	<c:otherwise>
+			<div class="card-header bg-light">
+				<i class="icon anm anm-map-marker-al" aria-hidden="true"></i> ${ comment.commentId } &nbsp;&nbsp; 
+				<span class="anm anm-user-al" aria-hidden="true"> ${ comment.customerId }</span> &nbsp;&nbsp; 
+				<span class="icon anm anm-clock-r" aria-hidden="true"> <fmt:formatDate value="${ comment.regDate }" pattern="yyyy-MM-dd-hh:mm:ss" /></span> 
+				<span style='float:right; display:${ (not empty loginuser and loginuser.customerId == comment.customerId) ? "inline-block" : "none" }'>
+					<a class="edit-comment" id="edit-comment" data-comment-no="${ comment.commentId }" href="javascript:">편집</a> &nbsp; 
+					<a class="delete-comment" id="delete-comment" data-comment-no="${ comment.commentId }" href="javascript:">삭22제</a> 
+				</span>
+			</div>
+			<div class="card-body">
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item"><span>${ fn:replace(comment.content, enter, "<br>") }</span>
+				
+					</li>
+				</ul>
+			</div>
+	</c:otherwise>
+	</c:choose>
+</c:forEach>

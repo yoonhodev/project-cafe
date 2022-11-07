@@ -166,9 +166,9 @@ public class EventBoardController {
 
 	}
 	
-	@ResponseBody
-	@PostMapping(path = {"/write-comment.action" })
-	public String writeComment(BoardCommentDto commentDto, int pageNo) {
+	
+	@PostMapping(path = {"/write-comment.action"})
+	public String writeComment(BoardCommentDto commentDto, int pageNo, int boardId) {
 		// 1. 요청 데이터 읽기 ( 전달인자로 대체 )
 		// 2. 요청 처리
 		boardService.writeComment(commentDto); // commentDto에 자동 증가된 commentNo가 저장됨.
@@ -177,18 +177,36 @@ public class EventBoardController {
 		// 3. View에서 읽을 수 있도록 데이터 저장
 		// 4. View 또는 다른 컨트롤러로 이동
 		//return String.format("redirect:detail.action?boardNo=%d&pageNo=%d",commentDto.getBoardNo(), pageNo);
-		return "success";	
+		return "redirect:/eventBoardDetail?boardId=" + boardId + "&pageNo=" + pageNo;	
 	}
 	
 	@GetMapping(path = { "/comment-list.action" })
-	public String showCommentList(int boardId, Model model, int pageNo) {
+	public String showCommentList(int boardId, Model model) {
 		
 		List<BoardCommentDto> comments = boardService.findBoardCommentByBoard(boardId);
 		
 		// View에서 일긍ㄹ 수 있도록 데이터 저장
 		model.addAttribute("comments", comments);
-		return "redirect:/eventBoardDetail?boardId=" + boardId + "&pageNo=" + pageNo;	
+		return "board/comment-list";	
 		
+	}
+	
+	@GetMapping(path = {"/delete-comment{commentId}"})
+	public String deleteComment(@RequestParam(defaultValue = "-1") int commentId, int boardId, int pageNo) {
+		System.out.println("컨트롤러");
+		boardService.deleteComment(commentId);
+		// 1. 요청 데이터 읽기 (전달인자로 대체)
+		if (commentId == -1) {
+			return "fail"; // @ResponseBody 떼매 "fail" 문자열을 응답
+		}
+		
+		// 2. 데이터 처리
+		
+		
+		return "redirect:/eventBoardDetail?boardId=" + boardId + "&pageNo=" + pageNo;		
+		//return "redirect:/eventBoard?pageNo=" + pageNo;
+		//return "success"; // @ResponseBody 떼매 >> 안됨 (WEB-INF/views/ + success + .jsp)
+						  // @ResponseBody 떼매 "success" 문자열을 응답 
 	}
 	
 	
