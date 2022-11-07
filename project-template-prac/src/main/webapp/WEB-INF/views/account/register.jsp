@@ -47,12 +47,11 @@
 								<div class="row">
 									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
 										<div class="form-group">
-											<label for="CustomerId">아이디</label>
+											<label for="CustomerId">아이디<span style="color: lightgray">(3~20자의 영문 대 소문자, 숫자만 사용 가능)</span></label>
 											<div class="input-group">
 												<input class="form-control" type="text" name="customerId" placeholder="아이디를 입력하세요"
 													   id="CustomerId" autofocus required pattern="^[a-zA-Z0-9]+$"
-													   minlength="3" maxlength="20">
-												&nbsp;
+													   minlength="3" maxlength="20">&nbsp;
 												<span class="input-group-btn">
 													<input class="btn" type="button" style="float: right" id="idcheckbtn" value="중복확인">
 												</span>
@@ -63,7 +62,7 @@
 									</div>
 									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
 										<div class="form-group">
-											<label for="Password">비밀번호</label>
+											<label for="Password">비밀번호<span style="color: lightgray">(3~20자의 영문 대 소문자, 숫자, 특수문자를 사용 하세요)</span></label>
 											<input class="form-control" type="password" name="passwd"
 												   placeholder="비밀번호를 입력하세요" id="Password" required
 												   minlength="8" maxlength="20" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$">
@@ -89,18 +88,13 @@
 											<label for="Address">주소</label>
 											<div  style="line-height: 80%">
 												<div class="input-group">
-													<input class="form-control" name="postId" type="text" id="sample2_postcode" placeholder="우편번호" required>
-													&nbsp;&nbsp;&nbsp;&nbsp;
-													<input class="form-control" type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기">
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													<input style="width: 80px" class="form-control" name="postId" type="text" id="sample2_postcode" placeholder="우편번호" required>
+													<div style="width: 20px"></div>
+													<input class="btn" style="width: px" class="form-control" type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기">
+													<div style="width: 100px"></div><div style="width: 100px"></div>
+													<div style="width: 100px"></div><div style="width: 100px"></div>
 												</div><br>
-												<input class="form-control" name="address" type="text" id="sample2_address" placeholder="주소"><br>
+												<input class="form-control" name="address" type="text" id="sample2_address" placeholder="주소" required><br>
 												<div class="input-group">
 													<input class="form-control" name="detailAddress" type="text" id="sample2_detailAddress" placeholder="상세주소">
 													&nbsp;&nbsp;&nbsp;&nbsp;

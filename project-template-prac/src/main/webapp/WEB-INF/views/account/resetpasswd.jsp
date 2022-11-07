@@ -46,7 +46,7 @@
 									</div>
 									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
 										<div class="form-group">
-											<label for="newPassword">새 비밀번호</label>
+											<label for="newPassword">새 비밀번호<span style="color: lightgray">(3~20자의 영문 대 소문자, 숫자, 특수문자를 사용 하세요)</span></label>
 											<input class="form-control" type="password" name="passwd" placeholder="새로운 비밀번호를 입력하세요"
 												   id="newPassword" required
 												   minlength="8" maxlength="20" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$">
