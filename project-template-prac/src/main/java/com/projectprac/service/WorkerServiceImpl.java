@@ -3,6 +3,7 @@ package com.projectprac.service;
 import java.util.List;
 
 import com.projectprac.dto.FixedSpendDto;
+import com.projectprac.dto.SalaryDto;
 import com.projectprac.dto.StoreDto;
 import com.projectprac.dto.WorkerDto;
 import com.projectprac.mapper.WorkerMapper;
@@ -32,5 +33,30 @@ public class WorkerServiceImpl implements WorkerService {
 		
 		workerMapper.insertCost(worker);
 	}
+
+	@Override
+	public SalaryDto showAllWorkerDtail(int workerId) {
+
+		SalaryDto showWorkerDtail = workerMapper.showAllWorkerDtail(workerId);
+		
+		return showWorkerDtail;
+	}
+
+	@Override
+	public void insertWorkerDetail(SalaryDto salary) {
+		
+		workerMapper.insertWorkerDetail(salary);
+		
+	}
+
+	@Override
+	public List<SalaryDto> selectSalaryList(SalaryDto salary) {
+		
+		List<SalaryDto> selectSalaryList = workerMapper.selectSalaryList(salary);
+		
+		return null;
+	}
+
+	
 	
 }
