@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.projectprac.dto.FixedSpendDto;
+import com.projectprac.dto.SalaryDto;
 import com.projectprac.dto.StoreDto;
 import com.projectprac.dto.WorkerDto;
 import com.projectprac.service.WorkerService;
@@ -27,7 +28,7 @@ public class WorkerController {
 		List<StoreDto> stores = workerService.showAllStores();
 		if(storeId != -1 ) {
 			List<WorkerDto> workers = workerService.selectWorkerByStoreId(storeId);
-			System.out.println(workers);
+//			System.out.println(workers);
 			model.addAttribute("workers", workers);
 			for (StoreDto store : stores) {
 				if (store.getStoreId() == storeId) {
@@ -46,4 +47,45 @@ public class WorkerController {
 		workerService.insertWorker(worker);
 		return "redirect:workerInfo";
 	}
+
+	@GetMapping(path = {"worker-infoDtail"})
+	public String showWorkerDtail(int workerId , Model model, SalaryDto salary) {
+		
+		
+		
+		if(workerId != -1) {
+			SalaryDto showSalaryList = workerService.showAllWorkerDtail(workerId);
+			System.out.println(showSalaryList);
+			
+			model.addAttribute("showSalaryList",showSalaryList);
+		}	
+		
+		
+		model.addAttribute("workerId", workerId);
+
+		return "worker/worker-infoDtail";
+	}
+
+	@PostMapping(path = {"worker-infoDtail"})
+	public String insertWorkerDetail(SalaryDto salary, int workerId) {
+		
+		workerService.insertWorkerDetail(salary);
+		
+		System.out.println(workerId);
+		
+		return "redirect:worker-infoDtail?workerId=" + workerId;
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+

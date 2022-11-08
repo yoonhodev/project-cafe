@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
+import com.projectprac.dto.SalaryDto;
 import com.projectprac.dto.StoreDto;
 import com.projectprac.dto.WorkerDto;
 
@@ -28,4 +30,26 @@ public interface WorkerMapper {
 			"values (#{workTime}, #{workerName}, #{salary}, #{workerPhone}, #{storeId}, #{workYear}, #{workMonth} ) " )
 	void insertCost(WorkerDto worker);
 
+	
+	@Select("select worker_id workerId, worktime, fee, fee_date feeDate, work_week workDate " +
+			"from salary " +
+			"where worker_id = #{workerId} " )
+	SalaryDto showAllWorkerDtail(@Param("workerId") int workerId);
+
+	
+	@Insert("insert into salary (work_week, worktime , fee_date, worker_id ) " +
+			"values (#{workWeek}, #{workTime}, #{feeDate}, #{workerId} ) " )
+	void insertWorkerDetail(SalaryDto salary);
+
+	
+	@Select("select worker_id workerId, worktime, fee, fee_date feeDate, work_week workDate " +
+			"from salary " +
+			"where worker_id = #{workerId} " )
+	List<SalaryDto> selectSalaryList(SalaryDto salary);
+
+	
+
+
+	
+	
 }
