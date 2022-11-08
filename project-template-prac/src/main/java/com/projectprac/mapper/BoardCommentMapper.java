@@ -26,12 +26,15 @@ public interface BoardCommentMapper {
 			"order by commentId DESC")
 	List<BoardCommentDto> selectCommentByBoardNo(int boardId);
 
-	
-	
 	@Update("UPDATE comment " +
 			"SET deleted = TRUE " +
 			"WHERE comment_id = #{ commentId }")
 	void deleteComment(int commentId);
+
+	@Update("UPDATE comment " +
+			"SET content = #{ content } " +
+			"WHERE comment_id = #{ commentId }")
+	void updateComment(BoardCommentDto comment);
 
 
 	

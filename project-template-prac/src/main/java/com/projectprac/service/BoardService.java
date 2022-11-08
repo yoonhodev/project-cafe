@@ -45,6 +45,8 @@ public interface BoardService {
 	void writeComment(BoardCommentDto comment);
 
 	void deleteComment(int commentId);
+
+	void updateComment(BoardCommentDto comment);
 		
 		
 

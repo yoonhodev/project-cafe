@@ -80,7 +80,7 @@
                                                       </div>
                                                     </fieldset>
                                                     <fieldset class="spr-form-actions">
-                                                        <input type="submit" class="spr-button spr-button-primary button button-primary btn btn-primary" value="확인">
+                                                        <input type="submit" id="btn-notice-write" class="spr-button spr-button-primary button button-primary btn btn-primary" value="확인">
                                                         <input id="btn-cancel" type="button" class="spr-button spr-button-primary button button-primary btn btn-primary" value="취소">
                                                     </fieldset>
                                                    	<br>
@@ -188,6 +188,22 @@
 
      <script>
         $(function(){
+        	
+        	$('#btn-notice-write').on('click', function(event){
+				if($("#review_title_10508262282").val()==""){
+					alert("제목을 입력해 주세요.");
+					$("#review_title_10508262282").focus();
+					return false;
+				}
+				
+				if($("#review_body_10508262282").val()==""){
+					alert("내용을 입력해 주세요.");
+					$("#review_body_10508262282").focus();
+					return false;
+				}
+				
+				
+			});
         	
         	$('#btn-cancel').on('click', function(event) {
     			location.href = 'noticeBoard?boardId=${board.boardId}' +
