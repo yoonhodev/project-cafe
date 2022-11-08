@@ -9,5 +9,5 @@ public class SalaryDto {
 	private int workTime;
 	private int fee;
 	private String feeDate;
-	
+	private int workWeek;
 }
