@@ -122,8 +122,7 @@
 												   id="SelectCoupon"
 												   value="쿠폰 적용">
 										</div>
-									</div>
-									
+									</div>	
 								</form>
 							</div>
 							<div class="col-12 col-sm-12 col-md-4 col-lg-4 mb-4">
@@ -139,6 +138,7 @@
 												<option value="6">만나서 카드결제</option>
 												<option value="7">만나서 현금결제</option>
 										</select>
+							
 
 									<!-- <div class="actionRow">
 										<div>
@@ -173,11 +173,11 @@
 											class="money">$1001.00</span></span>
 									</div>
 									<br>
-								<!-- 	<p class="cart_tearm">
-										<label> <input type="checkbox" name="tearm"
-											class="checkbox" value="tearm" required="">
-										</label>
-									</p> -->
+								 	<p class="cart_tearm">
+										<strong>매장</strong>&nbsp;&nbsp;<input type="radio" id="orderType" name="orderType" value="A" required>
+ 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<strong>포장</strong>&nbsp;&nbsp;<input type="radio" id="orderType" name="orderType" value="B" >
+									</p> 
 									<input type="submit" name="checkout" id="cartCheckout"
 										class="btn btn--small-wide checkout"
 										value="결제" disabled="disabled">

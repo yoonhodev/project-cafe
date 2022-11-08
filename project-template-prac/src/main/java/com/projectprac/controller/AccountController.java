@@ -115,6 +115,7 @@ public class AccountController {
 	public String logout(HttpSession session) {
 		session.removeAttribute("loginuser");
 		session.removeAttribute("founduser");
+		session.removeAttribute("productIds");
 		return "redirect:home";
 	}
 	

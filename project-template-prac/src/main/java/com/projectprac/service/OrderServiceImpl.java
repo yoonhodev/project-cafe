@@ -17,8 +17,7 @@ public class OrderServiceImpl implements OrderService  {
 
 	// 상품번호를 받아서 상품 조회 및 반환
 	@Override
-	public ProductDto showOrder(int prodId) {
-		
+	public ProductDto showOrder(int prodId) {		
 		ProductDto product = orderMapper.findProductByProdId(prodId);
 		return product;
 		
@@ -42,5 +41,10 @@ public class OrderServiceImpl implements OrderService  {
 		return coupons;
 	}
 
+	@Override
+	public List<ProductDto> showMenuImg() {
+		List<ProductDto> products = orderMapper.findShop();
+		return products;
+	}
 
 }

@@ -10,5 +10,6 @@ public class ProductDto {
 	private String prodName;
 	private int prodPrice;
 	private String prodDes;
+	private String prodImg;
 	
 }
