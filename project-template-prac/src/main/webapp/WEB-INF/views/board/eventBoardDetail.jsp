@@ -64,6 +64,16 @@
                                         <li><i class="icon anm anm-comments-l"></i> <a href="#"> 10 comments</a></li>
                                     </ul>
                                 </li>
+                                <li>
+                                	첨부파일
+                                   <c:forEach var="attachment" items="${ board.attachments }">
+					               <a href="download.action?attachNo=${ attachment.attachNo }" style="text-decoration: none">
+					                  ${ attachment.userFileName }
+					               </a>
+					             
+			                <br>
+			            </c:forEach>
+                                </li>
                             </ul>
                             <br>
                             <div class="rte"> 
@@ -163,13 +173,15 @@
 		
 		$('#comment-list').load("comment-list.action?boardId=${ boardDetail.boardId}");
 
-		// 댓글 쓰기버튼 눌렀을때	
-		})
+
 		
 		$('#writecomment').on('click', function(event){
-			
-			alert('댓글 등록 완료');
-				
+				if($("#comment_content").val()==""){
+					alert("댓글을 써주세요.");
+					$("#comment_content").focus();
+					return false;
+				}
+				alert('댓글 등록 완료');
 		});
 	
 	$('#comment-list').on('click', '.delete-comment', function(event) {
@@ -184,8 +196,80 @@
 		
 	});
 	
+	var currentEditCommentId = null;
 	
+	$('#comment-list').on('click', '.edit-comment', function(event){
+		event.preventDefault();
 		
+		if (currentEditCommentId != null) { // 댓글 수정중일때 다른댓글 수정화면 닫기
+			$('#comment-view-area-' + currentEditCommentId).show();
+			$('#comment-edit-area-' + currentEditCommentId).hide();
+		}
+		
+		var commentId = $(this).data('comment-no'); // $(this) : 이벤트 발생 객체 (여기서는 <a class="edit-comment" ...>를 의미함)
+		
+		$('#comment-view-area-' + commentId).hide();
+		$('#comment-edit-area-' + commentId).show();
+		
+		currentEditCommentId = commentId;
+	});
+	
+	$('#comment-list').on('click', '.cancel-edit-comment', function(event){
+		event.preventDefault();
+		
+		var commentId = $(this).data("comment-no"); // $(this) : 이벤트 발생 객체 (여기서는 <a class="cancle-ediht-comment" ...>를 의미함)
+		const editForm = $('#comment-edit-area-' + commentId + ' form');
+		editForm[0].reset(); // editForm : jQuery 객체, editForm[0] : javascript 객체// 지우는게 아니라 원래대로 돌아가게 해줌
+		
+		$('#comment-view-area-' + commentId).show();
+		$('#comment-edit-area-' + commentId).hide();
+		
+		currentEditCommentId = null;
+	});
+	
+	$('#comment-list').on('click', '.update-comment', function(event) {
+		const commentId = $(this).data('comment-no'); // $(this) : 이벤트 발생한 객체, .data('abc') : data-abc값 읽기
+
+		/*
+		const editForm = $('#comment-edit-area-' + commentId + ' form')
+		//alert(editForm.serialize());
+		alert('댓글 수정 완료');
+		$.ajax({
+			"url": "update-comment.action",
+			"method": "post", 
+			"data": editForm.serialize(),
+			"success": function(data) {
+				if (data == "success") {
+					$('#comment-list').load("comment-list.action?boardId=${ boardDetail.boardId}"); // 작업 다 끝난 후 화면 갱신
+				}
+			},
+			"error": function(xhr, status, err) {
+				alert('fail : ' + status);
+			}
+		
+		});
+		*/
+		const editLi = $('#comment-edit-area-' + commentId + ' li')
+		//alert(editForm.serialize());
+		const formData = 'commentId=' + editLi.find('input[name=commentId]').val() + '&content=' + editLi.find('textarea[name=content]').val();
+		alert('댓글 수정 완료');
+		$.ajax({
+			"url": "update-comment.action",
+			"method": "post", 
+			"data": formData,
+			"success": function(data) {
+				if (data == "success") {
+					$('#comment-list').load("comment-list.action?boardId=${ boardDetail.boardId}"); // 작업 다 끝난 후 화면 갱신
+				}
+			},
+			"error": function(xhr, status, err) {
+				alert('fail : ' + status);
+			}
+		
+		});
+		
+	});
+	});
 	
 	
 	

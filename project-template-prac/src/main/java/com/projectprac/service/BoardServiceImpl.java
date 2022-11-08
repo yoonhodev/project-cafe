@@ -177,6 +177,15 @@ public class BoardServiceImpl implements BoardService {
 
 
 
+	@Override
+	public void updateComment(BoardCommentDto comment) {
+		
+		commentMapper.updateComment(comment);
+		
+	}
+
+
+
 
 
 

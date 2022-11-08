@@ -82,21 +82,19 @@
                                                       <div class="spr-form-review-body">
                                                         <label class="spr-form-label" for="review_body_10508262282">내용<span class="spr-form-review-body-charactersremaining">(1500)</span></label>
                                                         <div class="spr-form-input">
-                                                          <textarea class="spr-form-input spr-form-input-textarea " id="review_body_10508262282" data-product-id="10508262282" name="content" rows="10" placeholder="내용을 입력하세요."></textarea>
+                                                          <textarea class="spr-form-input spr-form-input-textarea " id="review_body_10508262281" data-product-id="10508262282" name="content" rows="10" placeholder="내용을 입력하세요."></textarea>
                                                         </div>
                                                       </div>
                                                     </fieldset>
                                                     <fieldset class="spr-form-actions">
-                                                        <input type="submit" class="spr-button spr-button-primary button button-primary btn btn-primary" value="확인">
+                                                        <input type="submit" id="btn-event-write" class="spr-button spr-button-primary button button-primary btn btn-primary" value="확인">
                                                         <input id="btn-cancel" type="button" class="spr-button spr-button-primary button button-primary btn btn-primary" value="취소">
                                                     </fieldset>
                                                    	<br>
                                                 </form>
                                             </div>
                                            	</div>
-                                           	
                                             <div>
-                                           
                             <div style="font-size: 15pt">
                                 <table>
                                     <thead>
@@ -140,17 +138,11 @@
                             </div>
                         </div>
                     </div>
-                    
-                      
-											
                                     </div>
                                    
                                 </div>
                                 
                             </div>
-                            
-                          
-                    
                     <!--Related Product Slider-->
                     
                     <!--End Related Product Slider-->
@@ -171,9 +163,6 @@
     <!--Scoll Top-->
     <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
     <!--End Scoll Top-->
-    
-    
-    
         
      <!-- Including Jquery -->
      <script src="resources/assets/js/vendor/jquery-3.3.1.min.js"></script>
@@ -194,8 +183,22 @@
      <script>
         $(function(){
         	
+        	$('#btn-event-write').on('click', function(event){
+				if($("#review_title_10508262282").val()==""){
+					alert("제목을 입력해 주세요.");
+					$("#review_title_10508262282").focus();
+					return false;
+				}
+				if($("#review_body_10508262281").val()==""){
+					alert("내용을 입력해 주세요.");
+					$("#review_body_10508262281").focus();
+					return false;
+				}
+			});
+        	
+        	
         	$('#btn-cancel').on('click', function(event) {
-    			location.href = 'noticeBoard?boardId=${board.boardId}' +
+    			location.href = 'eventBoard?boardId=${board.boardId}' +
     							'&pageNo=${pageNo}';
     		});
         	

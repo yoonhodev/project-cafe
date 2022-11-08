@@ -67,6 +67,10 @@ public class EventBoardController {
 		return "board/eventBoard"; 	// /WEB-INF/views/ + board/list + .jsp
 	}
 	
+
+	
+	
+	
 	@GetMapping(path = { "/eventBoardDetail" })
 	public String showEventBoardDetail(@RequestParam(defaultValue = "-1") int boardId, 
 								  @RequestParam(defaultValue = "-1") int pageNo,
@@ -77,19 +81,6 @@ public class EventBoardController {
 		if (boardId == -1 || pageNo == -1) { // 요청 데이터가 잘못된 경우
 			return "redirect:board/eventBoard";
 		}
-		
-		// 2. 데이터 처리
-//				ArrayList<Integer> readList = (ArrayList<Integer>)session.getAttribute("read-list");
-//				if (readList == null) { // 세션에 목록이 없으면 
-//					readList = new ArrayList<>(); // 목록 새로 만들기
-//					session.setAttribute("read-list", readList); // 세션에 목록 등록
-//				}
-//				
-//				if (!readList.contains(boardId)) { // 현재 글 번호가 읽은 글 목록에 포함되지 않은 경우
-//					boardService.increaseBoardReadCount(boardId); // 글 조회수 증가
-//					readList.add(boardId); // 읽은 글 목록에 현개 글 번호 추가			
-//				}
-				
 		
 		BoardDto boardDetail = boardService.showBoardDetail(boardId);
 		
@@ -208,6 +199,19 @@ public class EventBoardController {
 		//return "success"; // @ResponseBody 떼매 >> 안됨 (WEB-INF/views/ + success + .jsp)
 						  // @ResponseBody 떼매 "success" 문자열을 응답 
 	}
+	
+	@PostMapping(path = { "/update-comment.action" })
+	@ResponseBody String updateComment(BoardCommentDto comment) {
+		
+		boardService.updateComment(comment);
+		
+		return "success";
+	}
+	
+	
+	
+	
+	
 	
 	
 }
