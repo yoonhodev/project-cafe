@@ -54,7 +54,7 @@
 							<c:forEach var="customer" items="${ customers }" varStatus="status">
 								<input type="hidden" value="${ customer.customerId }" id="customer-${ status.index }">
 							</c:forEach>
-							<form method="post" action="register" id="registerform">
+							<form method="post" action="editAccount" id="editAccountForm">
 								<div class="row">
 									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
 										<div class="form-group">
@@ -100,7 +100,7 @@
 										<div class="form-group">
 											<label for="Address">주소</label>
 											<input type="text" name="address"
-												   value="${ loginuser.address }" id="Address" required>
+												   value="" id="Address" required>
 										</div>
 									</div>
 									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
@@ -128,7 +128,8 @@
 					</div>
 				</div>
 			</div>
-			<!-- ./Create Account -->
+			
+			
 			
 		
 		
@@ -168,13 +169,12 @@
 			}
 			
 			function check_oldpw() {
-				if ($("#oldPassword").val() = passwd ) {
-					pageContext.forward("mypage");
-				}
-				else {
+				if ($("#oldPassword").val() != passwd ) {
 					alert("기존 비밀번호가 일치하지 않습니다");
 					break;
 				}
+
+				pageContext.forward("editComplete");
 			}
 		</script>
 		
