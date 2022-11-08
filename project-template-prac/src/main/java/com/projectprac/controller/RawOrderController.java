@@ -20,13 +20,14 @@ public class RawOrderController {
 	private FixedSpendService fixedSpendService;
 	
 	@Autowired
-	@Qualifier("orderService")
-	private OrderService orderService;
+	@Qualifier("rawOrderService")
+	private RawOrderService rawOrderService;
 	
 	@GetMapping(path = { "raw-order" })
 	public String rawOrder(Model model) {
 		
 		List<StoreDto> stores = fixedSpendService.showAllStore();
+		List<RawOrderDto> rawData = rawOrderService.showAllRaws();
 		model.addAttribute("stores", stores);
 		
 		return "raw-order/raw-order";
