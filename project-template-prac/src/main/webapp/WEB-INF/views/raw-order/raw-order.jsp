@@ -109,7 +109,7 @@
 													<tfoot>
 														<tr>
 															<td colspan="6" align="center">
-																<button type="button" class="btn btn-outline-secondary btn-fw btn-rounded">조회</button>
+																<button id="lookup" type="button" class="btn btn-outline-secondary btn-fw btn-rounded">조회</button>
 															</td>
 														</tr>
 													</tfoot>
@@ -136,48 +136,29 @@
 														</tr>
 													</thead>
 													<tbody>
-														<tr>
-															<td><input type="checkbox"></td>
-															<td>아라비카 커피 원두 1KG</td>
-															<td>상온</td>
-															<td>9,000원</td>
-															<td>
-																<button type="button" class="btn btn-outline-secondary btn-sm">
-																	<i class="mdi mdi-minus"></i>
-																</button>
-																&nbsp;&nbsp;1&nbsp;&nbsp;
-																<button type="button" class="btn btn-outline-secondary btn-sm">
-																	<i class="mdi mdi-plus"></i>
-																</button>
-															</td>
-															<td>9000</td>
-															<td>
-																<button type="button" class="btn btn-outline-secondary btn-md">
-																	<i class="mdi mdi-cart-plus" style="font-size: 14pt"></i>
-																</button>
-															</td>
-														</tr>
-														<tr>
-															<td><input type="checkbox"></td>
-															<td>아라비카 커피 원두 1KG</td>
-															<td>상온</td>
-															<td>9,000원</td>
-															<td>
-																<button type="button" class="btn btn-outline-secondary btn-sm">
-																	<i class="mdi mdi-minus"></i>
-																</button>
-																&nbsp;&nbsp;1&nbsp;&nbsp;
-																<button type="button" class="btn btn-outline-secondary btn-sm">
-																	<i class="mdi mdi-plus"></i>
-																</button>
-															</td>
-															<td>9000</td>
-															<td>
-																<button type="button" class="btn btn-outline-secondary btn-md">
-																	<i class="mdi mdi-cart-plus" style="font-size: 14pt"></i>
-																</button>
-															</td>
-														</tr>
+														<c:forEach var="raw" items="${ rawData }">
+															<tr>
+																<td><input type="checkbox"></td>
+																<td>${ raw.rawName }</td>
+																<td>${ raw.rawTemp }</td>
+																<td>${ raw.rawPrice }원</td>
+																<td>
+																	<button type="button" class="btn btn-outline-secondary btn-sm">
+																		<i class="mdi mdi-minus"></i>
+																	</button>
+																	&nbsp;&nbsp;1&nbsp;&nbsp;
+																	<button type="button" class="btn btn-outline-secondary btn-sm">
+																		<i class="mdi mdi-plus"></i>
+																	</button>
+																</td>
+																<td>9000</td>
+																<td>
+																	<button type="button" class="btn btn-outline-secondary btn-md">
+																		<i class="mdi mdi-cart-plus" style="font-size: 14pt"></i>
+																	</button>
+																</td>
+															</tr>
+														</c:forEach>
 													</tbody>
 													<tfoot>
 													</tfoot>
@@ -338,6 +319,11 @@
 				
 				var deliDay = deliDate.getFullYear()+"-"+deliDate.getMonth()+"-"+deliDate.getDate();
 				$("#expectDay").text(deliDay);
+			});
+			
+			$("#lookup").on("click", function(event) {
+				
+			
 			});
 		});
 	</script>
