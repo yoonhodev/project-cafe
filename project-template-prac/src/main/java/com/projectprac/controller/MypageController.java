@@ -76,8 +76,8 @@ public class MypageController {
 	}
 	
 	@PostMapping(path = { "deleteAccount" })
-	public String delAccount() {
-		
+	public String delAccount(HttpSession session) {
+		session.removeAttribute("loginuser");
 		return "mypage/deleteComplete";
 	
 	}
