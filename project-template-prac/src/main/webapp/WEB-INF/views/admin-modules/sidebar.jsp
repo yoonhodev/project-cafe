@@ -25,7 +25,7 @@
 		</li>
 		<li class="nav-item">
 			<a class="nav-link" data-toggle="collapse" href="#raw-order" aria-expanded="false" aria-controls="raw-order">
-				<span class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
+				<span class="icon-bg"><i class="mdi mdi-cart"></i></span>
 				<span class="menu-title">주문 관리</span>
 				<i class="menu-arrow"></i>
 			</a>
