@@ -340,6 +340,7 @@
 				var date = day.split("-");
 				date[2] = parseInt(date[2]) + 3;
 				$("#expectDay").text(date);
+				alert("now");
 				
 				
 			});
