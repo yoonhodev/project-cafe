@@ -8,6 +8,8 @@ import com.projectprac.dto.MypageDto;
 @Mapper
 public interface MypageMapper {
 
+	Object integer = null;
+
 	@Select("SELECT customer_id customerId, stamp " +
 			"FROM customer " +
 			"WHERE customer_id = #{ customerId } AND passwd = #{ passwd } ")
@@ -18,10 +20,9 @@ public interface MypageMapper {
 			"WHERE customer_id = #{ customerId } AND passwd = #{ passwd } ")
 	MypageDto selectOrderByIdAndPasswd(@Param("customerId") String customerId, @Param("passwd") String passwd);
 	
-	@Select("SELECT coupon_deleted " +
+	@Select("SELECT COUNT(coupon_deleted) couponCount " +
 			"FROM modeling_cafe.coupon_make " +
 			"WHERE customer_id= #{ customerId } AND coupon_deleted=\"0\"")
-	MypageDto selectCouponByCustomerId(@Param("customerId") String customerId);
-	
+	int selectCouponByCustomerId(String customerId);
 
 }

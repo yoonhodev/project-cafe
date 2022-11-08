@@ -2,8 +2,12 @@ package com.projectprac.service;
 
 import java.util.List;
 
+import javax.xml.stream.events.Comment;
+
+import com.projectprac.dto.BoardCommentDto;
 import com.projectprac.dto.BoardDto;
 import com.projectprac.dto.StoreDto;
+import com.projectprac.mapper.BoardCommentMapper;
 import com.projectprac.mapper.BoardMapper;
 
 import lombok.Setter;
@@ -12,6 +16,9 @@ public class BoardServiceImpl implements BoardService {
 
 	@Setter
 	private BoardMapper boardMapper;
+	
+	@Setter
+	private BoardCommentMapper commentMapper;
 	
 	@Override
 	public void writeBoard(BoardDto board) {
@@ -141,9 +148,32 @@ public class BoardServiceImpl implements BoardService {
 	public void modifyEventBoard(BoardDto board) {
 		
 		boardMapper.updateEventBoard(board);
-		System.out.println("dd");
+	
 	}
 
+	@Override
+	public void writeComment(BoardCommentDto comment) {
+
+		commentMapper.insertComment(comment);
+
+		
+	}
+
+	@Override
+	public List<BoardCommentDto> findBoardCommentByBoard(int boardId) {
+		List<BoardCommentDto> comments = commentMapper.selectCommentByBoardNo(boardId);
+		
+	
+		
+		return comments;
+	}
+
+
+
+	@Override
+	public void deleteComment(int commentId) {
+		commentMapper.deleteComment(commentId);		
+	}
 
 
 

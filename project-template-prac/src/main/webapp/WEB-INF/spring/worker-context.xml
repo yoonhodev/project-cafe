@@ -12,14 +12,11 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 
-	<bean id="orderHistoryService"
-		class="com.projectprac.service.OrderHistoryServiceImpl">
-		<property name="orderHistoryMapper" ref="orderHistoryMapper" />
+	<bean id="workerService"
+		class="com.projectprac.service.WorkerServiceImpl">
+		<property name="workerMapper" ref="workerMapper" />
 	</bean>
-	<bean id="mypageService"
-		class="com.projectprac.service.MypageServiceImpl">
-		<property name="mypageMapper" ref="mypageMapper" />
-	</bean>
+
 
 </beans>
 

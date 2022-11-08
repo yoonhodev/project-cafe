@@ -2,6 +2,7 @@ package com.projectprac.service;
 
 import java.util.List;
 
+import com.projectprac.dto.BoardCommentDto;
 import com.projectprac.dto.BoardDto;
 
 
@@ -39,6 +40,16 @@ public interface BoardService {
 
 	List<BoardDto> findEventBoardByPage(int pageNo, int pageSize);
 
+	public List<BoardCommentDto> findBoardCommentByBoard(int boardId);
+
+	void writeComment(BoardCommentDto comment);
+
+	void deleteComment(int commentId);
+		
+		
+
+
+	
 	
 
 	

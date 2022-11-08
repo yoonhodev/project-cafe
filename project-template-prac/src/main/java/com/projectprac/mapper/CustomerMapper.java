@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import com.projectprac.dto.AddressDto;
 import com.projectprac.dto.CustomerDto;
 
 //5-1) Mapper interface 만들기
@@ -15,16 +16,16 @@ import com.projectprac.dto.CustomerDto;
 public interface CustomerMapper {
 
 	// 7) 코드 작성
-	@Insert("INSERT INTO customer (customer_id, passwd, phone, email, address, sex, birth, reg_date) " +
-			"VALUES (#{ customerId }, #{ passwd }, #{ phone }, #{ email }, #{ address }, #{ sex }, #{ birth }, #{ regDate }) ")
+	@Insert("INSERT INTO customer (customer_id, passwd, phone, email, sex, birth, reg_date) " +
+			"VALUES (#{ customerId }, #{ passwd }, #{ phone }, #{ email }, #{ sex }, #{ birth }, #{ regDate }) ")
 	void insertCustomer(CustomerDto customer);
 
-	@Select("SELECT customer_id customerId, passwd, phone, address, sex, email, birth, stamp, usertype " +
+	@Select("SELECT customer_id customerId, passwd, phone, sex, email, birth, stamp, usertype " +
 			"FROM customer " +
 			"WHERE customer_id = #{ customerId } AND passwd = #{ passwd } ")
 	CustomerDto selectCustomerByIdAndPasswd(@Param("customerId") String customerId, @Param("passwd") String passwd);
 
-	@Select("SELECT customer_id customerId, passwd, phone, address, sex, email, birth, stamp " +
+	@Select("SELECT customer_id customerId, passwd, phone, sex, email, birth, stamp " +
 			"FROM customer " +
 			"WHERE customer_id = #{ customerId } AND phone = #{ phone } ")
 	CustomerDto selectCustomerByIdAndPhone(@Param("customerId") String customerId, @Param("phone") String phone);
@@ -34,8 +35,12 @@ public interface CustomerMapper {
 			"WHERE customer_id = #{ customerId } ")
 	void updatePassword(@Param("customerId") String customerId, @Param("passwd")String passwd);
 
-	@Select("SELECT customer_id customerId, passwd, phone, address, sex, email, birth, stamp, usertype, reg_date regDate " +
+	@Select("SELECT customer_id customerId, passwd, phone, sex, email, birth, stamp, usertype, reg_date regDate " +
 			"FROM customer ")
 	List<CustomerDto> selectAllCustomer();
+
+	@Insert("INSERT INTO address (customer_id, post_id, address, detail_address, extra_address, main_address) " +
+			"VALUES (#{ customerId }, #{ postId }, #{ address }, #{ detailAddress }, #{ extraAddress }, 1) ")
+	void insertAddress(AddressDto addressDto);
 	
 }

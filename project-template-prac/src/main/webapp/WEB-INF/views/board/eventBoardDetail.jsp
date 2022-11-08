@@ -25,6 +25,8 @@
 
 </head>
 <body class="template-blog belle">
+
+
 <div class="pageWrapper">
 	<jsp:include page="/WEB-INF/views/modules/header.jsp"></jsp:include>
 	<br><br><br>
@@ -36,7 +38,7 @@
     	<!--Page Title-->
     	<div class="page section-header text-center mb-0">
 			<div class="page-title">
-        		<div class="wrapper"><h1 class="page-width">Blog Fullwidth</h1></div>
+        		<div class="wrapper"><h1 class="page-width">EVENT BOARD</h1></div>
       		</div>
 		</div>
         <!--End Page Title-->
@@ -53,9 +55,10 @@
                             <!-- Article Image --> 
                              <a class="article_featured-image" href="#"><img class="blur-up lazyload" data-src="resources/assets/images/blog/blog-post-3.jpg" src="resources/assets/images/blog/blog-post-3.jpg" alt="How to Wear The Folds Trend Four Ways"></a> 
                             <h2 class="h3" style="font-size: 17px"><a href="#">${ boardDetail.title }</a></h2>
-                            <ul class="publish-detail">                      
+                            <ul class="publish-detail">   
+                       	        <li><i class="icon anm anm-map-marker-al" aria-hidden="true"></i> ${ boardDetail.boardId }</li>                   
                                 <li><i class="anm anm-user-al" aria-hidden="true"></i> ADMIN</li>
-                                <li><i class="icon anm anm-clock-r"></i> <time datetime="2017-05-02"><fmt:formatDate value="${ boardDetail.regdate }" pattern="yyyy-MM-dd"/></time></li>
+                                <li><i class="icon anm anm-clock-r"></i> <fmt:formatDate value="${ boardDetail.regdate }" pattern="yyyy-MM-dd"/></li>
                                 <li>
                                     <ul class="inline-list">   
                                         <li><i class="icon anm anm-comments-l"></i> <a href="#"> 10 comments</a></li>
@@ -84,8 +87,35 @@
                 </div>
                 <!--End Main Content-->
             </div>
+            
+            <!-- write comment area -->
+            <br><br>
+            	<form id="commentform" action="write-comment.action" method="post">
+            	<input type="hidden" name="boardId" value="${ boardDetail.boardId }" />
+				<input type="hidden" name="pageNo" value="${ pageNo }" />				
+				<input type="hidden" name="customerId" value="${ loginuser.customerId }" />
+                <div class="card mb-2">
+					<div class="card-header bg-light">
+					        <i class="fa fa-comment fa"></i> REPLY
+					</div>
+					<div class="card-body">
+						<ul class="list-group list-group-flush">
+						    <li class="list-group-item">
+							<textarea class="form-control" id="comment_content" name="content" rows="3"></textarea>
+							<input type="submit" value="댓글 쓰기" id="writecomment" class="btn btn-dark mt-3" style="float: right;"></button>
+						    </li>
+						</ul>
+					</div>
+				</div>
+				</form>
+        <!-- end of write comment area -->	
+		<!-- comment list area  -->
+		<br>
+	    <table id="comment-list" style="border:solid 1px;margin:0 auto">
+		</table>
+		<!-- end of comment list area	 -->
         </div>
-        
+        </div>
     </div>
     <!--End Body Content-->
     
@@ -107,7 +137,11 @@
      <script src="resources/assets/js/popper.min.js"></script>
      <script src="resources/assets/js/lazysizes.js"></script>
      <script src="resources/assets/js/main.js"></script>
-</div>
+     <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+	 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+	
+
+
 <script type="text/javascript">
 	$(function() {
 		
@@ -127,14 +161,35 @@
 			location.href = 'editEvent?boardId=${boardDetail.boardId}&pageNo=${pageNo}';
 		});
 		
-		
-		
-		
-		
-		
-		
-	})
+		$('#comment-list').load("comment-list.action?boardId=${ boardDetail.boardId}");
 
+		// 댓글 쓰기버튼 눌렀을때	
+		})
+		
+		$('#writecomment').on('click', function(event){
+			
+			alert('댓글 등록 완료');
+				
+		});
+	
+	$('#comment-list').on('click', '.delete-comment', function(event) {
+		event.preventDefault();
+		
+		var commentId = $(this).data('comment-no'); // .data(comment-no') --> data-comment-no="value"를 조회
+		
+		const yn = confirm(commentId + "번 댓글을 삭제할까요?");
+		if (!yn) return;   // 아니오 클릭했을때
+		
+		location.href = 'delete-comment.action?commentId=' + commentId + '&boardId=${ boardDetail.boardId }&pageNo=${ pageNo }';
+		
+	});
+	
+	
+		
+	
+	
+	
+	
 </script>
 
 </body>

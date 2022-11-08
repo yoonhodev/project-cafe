@@ -101,11 +101,11 @@
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th style="height: 25px; font-size: 17px">No.</th>
-                                            <th style="height: 25px; font-size: 17px">제목</th>
-                                            <th style="height: 25px; font-size: 17px">작성자</th>
-                                            <th style="height: 25px; font-size: 17px">조회수</th>
-                                            <th style="height: 25px; font-size: 17px">작성일</th>
+                                            <th style="height: 25px; background-color:hotpink; font-size: 17px">No.</th>
+                                            <th style="height: 25px; background-color:hotpink; font-size: 17px">제목</th>
+                                            <th style="height: 25px; background-color:hotpink; font-size: 17px">작성자</th>
+                                            <th style="height: 25px; background-color:hotpink; font-size: 17px">조회수</th>
+                                            <th style="height: 25px; background-color:hotpink; font-size: 17px">작성일</th>
                                         </tr>
                                     </thead>
                                     <tbody>

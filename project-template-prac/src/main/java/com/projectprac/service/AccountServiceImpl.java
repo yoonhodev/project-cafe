@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import com.projectprac.common.Util;
+import com.projectprac.dto.AddressDto;
 import com.projectprac.dto.CustomerDto;
 import com.projectprac.mapper.CustomerMapper;
 
@@ -59,6 +60,11 @@ public class AccountServiceImpl implements AccountService {
 	public List<CustomerDto> showAllCustomer() {
 		List<CustomerDto> customers = customerMapper.selectAllCustomer();
 		return customers;
+	}
+
+	@Override
+	public void addAddress(AddressDto addressDto) {
+		customerMapper.insertAddress(addressDto);
 	}
 
 }

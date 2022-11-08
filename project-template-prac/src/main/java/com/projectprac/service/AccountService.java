@@ -2,6 +2,7 @@ package com.projectprac.service;
 
 import java.util.List;
 
+import com.projectprac.dto.AddressDto;
 import com.projectprac.dto.CustomerDto;
 
 public interface AccountService {
@@ -15,5 +16,7 @@ public interface AccountService {
 	void updatePassword(String customerId, String passwd);
 
 	List<CustomerDto> showAllCustomer();
+
+	void addAddress(AddressDto addressDto);
 	
 }

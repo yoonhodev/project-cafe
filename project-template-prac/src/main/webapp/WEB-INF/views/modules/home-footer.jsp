@@ -43,8 +43,8 @@
 						<ul>
 							<li><a href="#">Request Personal Data</a></li>
 							<li><a href="#">FAQ's</a></li>
-							<li><a href="#">Contact Us</a></li>
-							<li><a href="#">Orders and Returns</a></li>
+							<li><a href="problem.html">Contact Us</a></li>
+							<li><a href="raw-order">AdminRawOrder</a></li>
 							<li><a href="coupon">Coupon</a></li>
 						</ul>
 					</div>
