@@ -40,4 +40,5 @@
 	<import resource="spend-context.xml" />
 	<import resource="mypage-context.xml" />
 	<import resource="worker-context.xml" />
+	<import resource="raworder-context.xml" />
 </beans>

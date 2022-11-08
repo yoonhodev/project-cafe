@@ -8,9 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.projectprac.dto.RawOrderDto;
 import com.projectprac.dto.StoreDto;
 import com.projectprac.service.FixedSpendService;
-import com.projectprac.service.OrderService;
+import com.projectprac.service.RawOrderService;
 
 @Controller
 public class RawOrderController {
@@ -20,13 +21,16 @@ public class RawOrderController {
 	private FixedSpendService fixedSpendService;
 	
 	@Autowired
-	@Qualifier("orderService")
-	private OrderService orderService;
+	@Qualifier("rawOrderService")
+	private RawOrderService rawOrderService;
 	
 	@GetMapping(path = { "raw-order" })
 	public String rawOrder(Model model) {
 		
 		List<StoreDto> stores = fixedSpendService.showAllStore();
+		List<RawOrderDto> rawData = rawOrderService.showAllRaws();
+		model.addAttribute("rawData", rawData);
+		System.out.println(rawData);
 		model.addAttribute("stores", stores);
 		
 		return "raw-order/raw-order";
