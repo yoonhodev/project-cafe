@@ -49,6 +49,21 @@
 							        	<option id="store-${ store.storeId }" value="${ store.storeId }" data-storeName="${ store.storeName }">${ store.storeName }</option>
 							        </c:forEach>
 								</select>
+								<select id="selectMonth">
+									<option selected disabled hidden="">월 선택</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+									<option value="10">10</option>
+									<option value="11">11</option>
+									<option value="12">12</option>
+								</select>
 								<br><br>
 								<input type="hidden" id="StoreId11" name="storeId">
 								<input type="submit"
