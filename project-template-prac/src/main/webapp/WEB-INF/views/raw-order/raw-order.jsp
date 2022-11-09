@@ -75,34 +75,23 @@
 														<tr>
 															<td>카테고리</td>
 															<td>
-																<select>
+																<select id="bgCate">
 															    	<option selected disabled hidden="">대분류</option>
-														        	<option>커피원두</option>
-														        	<option>티</option>
-														        	<option>카페용품</option>
+															    	<c:forEach var="bigCategory" items="${ bigCategories }">
+															        	<option>${ bigCategory }</option>
+															        </c:forEach>
 																</select>
-																<select>
+																<select id="smCate">
 															    	<option selected disabled hidden="">소분류</option>
 															    	<option>전체보기</option>
-														        	<option>카페인</option>
-														        	<option>디카페인</option>
-														        	<option>티백/잎차</option>
-														        	<option>액상차</option>
-														        	<option>시럽</option>
-														        	<option>시럽 펌프</option>
-														        	<option>파우더</option>
-														        	<option>페이스트</option>
-														        	<option>휘핑/연유</option>
-														        	<option>건조과일</option>
-														        	<option>베이스/농축액</option>
-														        	<option>컵/뚜껑</option>
-														        	<option>홀더/캐리어</option>
-														        	<option>빨대/냅킨</option>
+															    	<c:forEach var="smallCate" items="${ smallCates }">
+															        	<option>${ smallCate }</option>
+															        </c:forEach>
 																</select>
 															</td>
 															<td>품목명</td>
 															<td colspan="3">
-																<input type="text">
+																<input id="itemName" type="text">
 															</td>
 														</tr>
 													</tbody>
@@ -117,55 +106,7 @@
 											</div>
 										</div>
 									</div>
-									<div class="col-lg-12 grid-margin stretch-card">
-										<div class="card">
-											<div class="card-body">
-												<button type="button" class="btn btn-inverse-success"><i class="mdi mdi-check"></i> 전체 선택</button>
-												<button type="button" class="btn btn-inverse-secondary"><i class="mdi mdi-cart-outline"></i> 장바구니 담기</button>
-												<div style="height: 10px"></div>
-												<table class="table table-striped" style="text-align: center">
-													<thead>
-														<tr>
-															<th></th>
-															<th>제품명</th>
-															<th>제품상태</th>
-															<th>단가</th>
-															<th>수량</th>
-															<th>총합</th>
-															<th>장바구니</th>
-														</tr>
-													</thead>
-													<tbody>
-														<c:forEach var="raw" items="${ rawData }">
-															<tr>
-																<td><input type="checkbox"></td>
-																<td>${ raw.rawName }</td>
-																<td>${ raw.rawTemp }</td>
-																<td>${ raw.rawPrice }원</td>
-																<td>
-																	<button type="button" class="btn btn-outline-secondary btn-sm">
-																		<i class="mdi mdi-minus"></i>
-																	</button>
-																	&nbsp;&nbsp;1&nbsp;&nbsp;
-																	<button type="button" class="btn btn-outline-secondary btn-sm">
-																		<i class="mdi mdi-plus"></i>
-																	</button>
-																</td>
-																<td>9000</td>
-																<td>
-																	<button type="button" class="btn btn-outline-secondary btn-md">
-																		<i class="mdi mdi-cart-plus" style="font-size: 14pt"></i>
-																	</button>
-																</td>
-															</tr>
-														</c:forEach>
-													</tbody>
-													<tfoot>
-													</tfoot>
-												</table>
-											</div>
-										</div>
-									</div>
+									<div class="col-lg-12 grid-margin stretch-card" id="rawOrderList"></div>
 								</div>
 							</div>
 							<div class="tab-content tab-transparent-content">
@@ -291,6 +232,7 @@
 		$(function() {
 			$(".tab-pane").hide();
 			$(".tab-pane:first").show();
+			$("#rawOrderList").load("rawOrderList");
 			
 			$(".nav-tabs li").on('click', function () {
 				$(".tab-pane").hide();
@@ -321,9 +263,64 @@
 				$("#expectDay").text(deliDay);
 			});
 			
-			$("#lookup").on("click", function(event) {
-				
+			$("#bgCate").on("change", function(event) {
+				var bgCate = $(this).val();
+				$.ajax({
+					"url": "searchSmCate",
+					"method": "get",
+					"data": 'bigCategory=' + bgCate,
+					"success": function(data, status, xhr) {
+						$("#smCate").empty();
+						$("#smCate").append("<option selected disabled hidden=''>소분류</option>");
+						$("#smCate").append("<option>전체보기</option>");
+						for(var i = 0; i < data.length; i++) {
+							$("#smCate").append("<option>" + data[i] + "</option>");
+						}
+					},
+					"error": function(xhr, status, err) {
+						console.log(status);
+						console.log(err);
+					}
+				});
+			});
 			
+			$("#lookup").on("click", function(event) {
+				var bigCategory = $("#bgCate").val();
+				var smallCategory = $("#smCate").val();
+				var rawName = $("#itemName").val();
+				var formData = 'bigCategory=' + bigCategory + '&smallCategory=' + smallCategory + '&rawName=' + rawName;
+				$.ajax({
+					"url": "lookupRaw",
+					"method": "post", 
+					"data": formData,
+					"success": function(data) {
+						if(data == "1") {
+							alert("검색어를 입력해 주세요");
+						} else if (data == "2") {
+							alert("2");
+							$("#rawOrderList").load('rawOrderList?bigCategory=' + bigCategory + '&smallCategory=' + smallCategory + '&rawName=' + rawName);
+						} else if (data == "3") {
+							alert("3");
+							$("#rawOrderList").load('rawOrderList?bigCategory=' + bigCategory + '&rawName=' + rawName);
+						} else if (data == "4") {
+							alert("4");
+							$("#rawOrderList").load('rawOrderList?bigCategory=' + bigCategory + '&smallCategory=' + smallCategory);
+						} else if (data == "5") {
+							alert("5");
+							$("#rawOrderList").load('rawOrderList?bigCategory=' + bigCategory);
+						} else if (data == "6") {
+							alert("6");
+							$("#rawOrderList").load('rawOrderList?rawName=' + rawName);
+						}
+						
+						if(data == "0") {
+							alert("err");
+						}
+					 },
+					"error": function(xhr, status, err) {
+						alert('fail : ' + status);
+					}
+				});
 			});
 		});
 	</script>

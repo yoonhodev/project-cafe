@@ -1,5 +1,6 @@
 package com.projectprac.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.projectprac.dto.RawOrderDto;
 import com.projectprac.dto.StoreDto;
@@ -28,133 +32,63 @@ public class RawOrderController {
 	public String rawOrder(Model model) {
 		
 		List<StoreDto> stores = fixedSpendService.showAllStore();
-		List<RawOrderDto> rawData = rawOrderService.showAllRaws();
-		model.addAttribute("rawData", rawData);
-		System.out.println(rawData);
 		model.addAttribute("stores", stores);
+		
+		List<String> bigCategories = rawOrderService.showBigCategory();
+		model.addAttribute("bigCategories", bigCategories);
+		
+//		List<RawOrderDto> rawData = rawOrderService.showAllRaws();
+//		model.addAttribute("rawData", rawData);
 		
 		return "raw-order/raw-order";
 	}
 	
+	@GetMapping(path = { "rawOrderList" })
+	public String rawOrderList(Model model, @RequestParam(defaultValue = "-1") String bigCategory,
+											@RequestParam(defaultValue = "-1") String smallCategory,
+											@RequestParam(defaultValue = "-1") String rawName) {
+		List<RawOrderDto> rawOrders = rawOrderService.selectRawOrder(bigCategory, smallCategory, rawName);
+		model.addAttribute("rawOrders", rawOrders);
+		
+		return "raw-order/rawOrderList";
+	}
+	
+	@PostMapping(path = { "lookupRaw" })
+	@ResponseBody
+	public String lookUp(String bigCategory, String smallCategory, @RequestParam(defaultValue = "-1") String rawName, Model model) {
+		if (bigCategory.equals("null") && rawName.equals("-1")) { // 검색어도 없고 대분류도 없을 때
+			return "1";
+		} else if (!bigCategory.equals("null") && !(smallCategory.equals("null") || smallCategory.equals("전체보기")) && !rawName.equals("-1")) { // 대분류와 소분류, 검색어가 있을 때
+			return "2";
+		} else if (!bigCategory.equals("null") && !rawName.equals("-1")) { // 대분류와 검색어가 있을 때
+			return "3";
+		} else if (!bigCategory.equals("null") && !(smallCategory.equals("null") || smallCategory.equals("전체보기"))) { // 대분류와 소분류가 있을 때
+			return "4";
+		} else if (!bigCategory.equals("null")) { // 대분류만 있을 때
+			return "5";
+		} else if (!rawName.equals("-1")) { // 검색어만 있을 때
+			return "6";
+		}
+		return "0";
+	}
+	
+	@GetMapping(path = { "searchSmCate" }, produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public List<String> smallCategory(Model model, String bigCategory) {
+		
+		List<RawOrderDto> smallCategories = rawOrderService.showSmallCategory();
+		List<String> smallCates = new ArrayList<>();
+		
+		for (RawOrderDto rawOrder : smallCategories) {
+			if (rawOrder.getBigCategory().equals(bigCategory)) {
+				smallCates.add(rawOrder.getSmallCategory());
+			}
+		}
+		
+		return smallCates;
+		
+	}
+	
+	
+	
 }
-
-//@Autowired
-//@Qualifier("couponService")
-//private CouponService couponService;
-//
-//public List<CouponMakeDto> CouponMakeList(HttpSession session) {
-//
-//	CustomerDto customer = (CustomerDto) session.getAttribute("loginuser");
-//	CouponDto coupon;
-//	List<CouponMakeDto> couponMakes = new ArrayList<>();
-//	List<CouponMakeDto> couponMakeDtos = couponService.showCouponList(customer.getCustomerId());
-//	for (CouponMakeDto couponMakeDto : couponMakeDtos) {
-//		coupon = couponService.findCouponByCouponId(couponMakeDto.getCouponId());
-//		couponMakeDto.setCouponDto(coupon);
-//		couponMakes.add(couponMakeDto);
-//	}
-//	return couponMakes;
-//
-//}
-//	private CouponService couponservice;
-
-//	@GetMapping(path = { "order" })
-//	public String order(HttpSession session, Model model) {
-//
-//		List<ProductDto> products = new ArrayList<>();
-//		List<ProductDto> productIds = (List<ProductDto>) session.getAttribute("productIds");
-//
-//		if (productIds != null) {
-//			for (ProductDto product : productIds) {
-//				product = orderService.showOrder(product.getProdId());
-//				products.add(product);
-//			}
-//		}
-//
-//		List<CouponMakeDto> couponMakeDtos = CouponMakeList(session);
-//		List<CouponMakeDto> couponMakes = new ArrayList<>();
-//		for (CouponMakeDto couponMake : couponMakeDtos) {
-//			if (!couponMake.isCouponDeleted()) {
-//				couponMakes.add(couponMake);
-//			}
-//		}
-//		session.setAttribute("products", products);
-//		model.addAttribute("couponMakes", couponMakes);
-//		return "shop/order";
-//	}
-//
-//	@PostMapping(path = { "update-order" })
-//	public String updateOrder(ProductDto product, HttpSession session) {
-//		List<ProductDto> productIds = new ArrayList<>();
-//		if (session.getAttribute("productIds") != null) {
-//			productIds = (List<ProductDto>) session.getAttribute("productIds");
-//			for (ProductDto productId : productIds) {
-//				if (productId.getProdId() == product.getProdId()) {
-//					System.out.printf("prodId : %d 중복\n", product.getProdId());
-//					return "shop/shop";
-//				}
-//			}
-//		}
-//		productIds.add(product);
-//		session.setAttribute("productIds", productIds);
-//		return "shop/shop";
-//	}
-//
-//	@GetMapping(path = { "delete-order" })
-//	public String deleteOrder(@RequestParam(defaultValue = "-1") int prodId, HttpSession session) {
-//
-//		if (prodId == -1) {
-//			return "redirect:order";
-//		}
-//
-//		List<ProductDto> productIds = (List<ProductDto>) session.getAttribute("productIds");
-//		for (ProductDto product : productIds) {
-//			if (product.getProdId() == prodId) {
-//				productIds.remove(product);
-//				session.setAttribute("productIds", productIds);
-//				return "redirect:order";
-//			}
-//		}
-//
-//		return "redirect:order";
-//
-//	}
-//
-//	@GetMapping(path = { "delete-all-order" })
-//	public String deleteAllOrder(HttpSession session) {
-//		session.removeAttribute("productIds");
-//		return "redirect:order";
-//
-//	}
-//
-//	@GetMapping(path = { "coupon-apply" })
-//	public String couponApply(@RequestParam(defaultValue = "-1") String customerId, CouponMakeDto couponmake,
-//			Model model) {
-//		List<CouponMakeDto> coupons = couponservice.showCouponList(customerId);
-//
-//		return "redirect:order";
-//
-//	}
-//
-//	@GetMapping(path = { "show-coupon" })
-//	public String showCouponForm(HttpSession session, Model model) {
-//		List<CouponMakeDto> couponMakeDtos = CouponMakeList(session);
-//		List<CouponMakeDto> couponMakes = new ArrayList<>();
-//		for (CouponMakeDto couponMake : couponMakeDtos) {
-//			if (!couponMake.isCouponDeleted()) {
-//				couponMakes.add(couponMake);
-//			}
-//		}
-//		model.addAttribute("couponMakes", couponMakes);
-//		System.out.println(couponMakes);
-//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//		Calendar cal = Calendar.getInstance();
-//		String today = sdf.format(cal.getTime());
-//		model.addAttribute("today", today);
-//
-//		return "mypage/coupon";
-//
-//	}
-//
-//	
-//}
