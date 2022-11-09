@@ -57,8 +57,8 @@
 							<th class="text-center">근무 월</th>
 							<th class="text-center">주 몇회</th>
 							<th class="text-center">시간</th>
-							<th class="text-center">시급</th>
-							<th class="text-center">월급</th>
+							<th class="text-center">시급(만)</th>
+							<th class="text-center">월급(만)</th>
 							<th class="text-center">지급 일자</th>
 <!-- 							<th class="text-center">수도세</th> -->
 <!-- 							<th class="text-center">광고비</th> -->
@@ -66,20 +66,20 @@
                         </tr>
                       </thead>
                       <tbody>
-<%--                         <c:forEach var="showSalaryList" items="${ showSalaryList }" varStatus="status"> --%>
-<!-- 						<tr class="cart__row border-bottom line1 cart-flex border-top" -->
-<!-- 							align="center"> -->
-<!-- 							<td><span></span></td> -->
-<!-- 							<td><span></span></td> -->
-<!-- 							<td><span></span></td> -->
-<%-- 							<td><span>${ showSalaryList.workWeek }</span></td> --%>
-<%-- 							<td><span>${ showSalaryList.workTime }</span></td> --%>
-<!-- 							<td><span></span></td> -->
-<!-- 							<td><span></span></td> -->
-<%-- 							<td><span>${ showSalaryList.feeDate }</span></td> --%>
+                        <c:forEach var="showSalaryList" items="${ showSalaryList }" varStatus="status">
+						<tr class="cart__row border-bottom line1 cart-flex border-top"
+							align="center">
+							<td><span>${ showSalaryList.workerName }</span></td>
+							<td><span>${ showSalaryList.workYear }</span></td>
+							<td><span>${ showSalaryList.workMonth }</span></td>
+							<td><span>${ showSalaryList.workWeek }</span></td>
+							<td><span>${ showSalaryList.workTime }</span></td>
+							<td><span>${ showSalaryList.salary }</span></td>
+							<td><span>${ showSalaryList.workWeek * showSalaryList.workTime * 4 * showSalaryList.salary  }</span></td>
+							<td><span>${ showSalaryList.feeDate }</span></td>
 										
-<!-- 						</tr>																												 -->
-<%-- 						</c:forEach>								 --%>
+						</tr>																												
+						</c:forEach>								
                       </tbody>
                     </table>
                   </div>
