@@ -84,13 +84,13 @@
 	                                        	<c:when test="${ empty loginuser }">
 	                                        		<form class="variants add addform" id="addform" action="login" method="post">
 			                                        	<input type="hidden" name="prodId" value="${ product.prodId }">			                                        	
-			                                            <button class="btn btn-addto-cart update-order" type="button" onclick="<"><a href="login">ADD TO CART</a></button>
+			                                            <button class="btn btn-addto-cart update-order" type="button"><a href="login">ADD TO CART</a></button>
 			                                        </form>
 	                                       		</c:when>
 	                                       		<c:otherwise>
-			                                        <form class="variants add addform" id="addform" action="update-order" method="post">
+			                                        <form class="variants add addform order-popup" id="addform" action="update-order" method="post">
 			                                        	<input type="hidden" name="prodId" value="${ product.prodId }">
-			                                            <button class="btn btn-addto-cart update-order" type="button">ADD TO CART</button>
+			                                            <button class="btn btn-addto-cart update-order"type="button">ADD TO CART</button>
 			                                        </form>
 	                                       	 	</c:otherwise>
                                        	 	</c:choose>
@@ -150,6 +150,40 @@
     </div>
     <!--End Body Content-->
     
+    <!-- Newsletter Popup -->
+	<div class="newsletter-wrap" id="popup-container">
+      <div id="popup-window">
+        <a class="btn closepopup"><i class="icon icon anm anm-times-l"></i></a>
+        <!-- Modal content-->
+        <div class="display-table splash-bg">
+          <div class="display-table-cell width40"><img src="/project-template-prac/resources/assets/images/cafemain.jpg" alt="Join Our Mailing List" title="Join Our Mailing List" /> </div>
+          <div class="display-table-cell width60 text-center">
+            <div class="newsletter-left">
+              <h2>상품이 장바구니에 담겼습니다.</h2>
+              <p></p>
+              <form action="#" method="post">
+                <div class="input-group">
+                 <!--  <input type="email" class="input-group__field newsletter__input" name="EMAIL" value="" placeholder="Email address" required=""> -->
+                  <span class="input-group__btn">
+                  <button type="submit" class="btn newsletter__submit" name="commit" id="subscribeBtn"> <span class="btn newsletter__submit"><a href="order" style="color:white">장바구니 바로가기</a></span> </button>
+                  </span>
+                </div>
+              </form>
+              <ul class="list--inline site-footer__social-icons social-icons">
+                <li><a class="social-icons__link" href="http://www.facebook.com" title="Facebook"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
+                <li><a class="social-icons__link" href="http://www.twitter.com" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                <li><a class="social-icons__link" href="http://www.pinterest.co.kr" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                <li><a class="social-icons__link" href="http://www.instagram.com" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                <li><a class="social-icons__link" href="http://www.youtube.com" title="YouTube"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+                <li><a class="social-icons__link" href="http://www.vimeo.com" title="Vimeo"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+	<!-- End Newsletter Popup -->
+    
     <!--Footer-->
     <jsp:include page="/WEB-INF/views/modules/footer.jsp"></jsp:include>
     <!--End Footer-->
@@ -163,21 +197,31 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 <script type="text/javascript">
-$('.update-order').on('click', function(event) {
-	var addform = $(this).parent(".addform").serialize();
-//    const formData = $('.addform').serialize(); //form 내부의 모든 입력 요소의 값을 전송가능한 문자열 형식으로 반환
-/* const formData = $('#addform').serializeArray(); */ //form 내부의 모든 입력 요소의 값을 전송가능한 객체 배열 형식으로 반환
-	$.ajax({
-		"url": "update-order",
-		"method": "post",
-		"data": addform,
-		"success": function(data, status, xhr) {
-			},
-		"error": function(xhr, status, err) {
-			
-			}
+	$('.update-order').on('click', function(event) {
+		var addform = $(this).parent(".addform").serialize();
+	//    const formData = $('.addform').serialize(); //form 내부의 모든 입력 요소의 값을 전송가능한 문자열 형식으로 반환
+	/* const formData = $('#addform').serializeArray(); */ //form 내부의 모든 입력 요소의 값을 전송가능한 객체 배열 형식으로 반환
+		$.ajax({
+			"url": "update-order",
+			"method": "post",
+			"data": addform,
+			"success": function(data, status, xhr) {
+				},
+			"error": function(xhr, status, err) {
+				
+				}
+		});
 	});
-});
+
+	$(function() {
+		$('.order-popup').on('click', function() {
+			$("#popup-container").fadeIn();
+		});
+		$('#popup-container').on('click', function() {
+	        $("#popup-container").fadeOut();
+	    });
+	});
+	
 </script>
 </body>
 
