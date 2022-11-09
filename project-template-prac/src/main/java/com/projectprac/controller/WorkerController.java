@@ -54,8 +54,8 @@ public class WorkerController {
 		
 		
 		if(workerId != -1) {
-			SalaryDto showSalaryList = workerService.showAllWorkerDtail(workerId);
-			System.out.println(showSalaryList);
+			List<SalaryDto> showSalaryList = workerService.selectSalaryList(salary);
+//			System.out.println(showSalaryList);
 			
 			model.addAttribute("showSalaryList",showSalaryList);
 		}	

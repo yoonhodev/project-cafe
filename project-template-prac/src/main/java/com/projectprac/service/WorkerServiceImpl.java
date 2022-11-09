@@ -54,7 +54,7 @@ public class WorkerServiceImpl implements WorkerService {
 		
 		List<SalaryDto> selectSalaryList = workerMapper.selectSalaryList(salary);
 		
-		return null;
+		return selectSalaryList;
 	}
 
 	

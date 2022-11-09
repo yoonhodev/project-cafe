@@ -50,17 +50,27 @@
 							        </c:forEach>
 								</select>
 								<br><br>
+							<select id=WorkYear1 name="workYear" class="WorkYear1">
+								<option selected disabled hidden="">년도 선택</option>
+								<option value="2021">2021</option>
+								<option value="2022">2022</option>
+								<option value="2023">2023</option>
+								<option value="2024">2024</option>
+								<option value="2025">2025</option>
+							</select>
+								<br><br>
 								<input type="hidden" id="StoreId11" name="storeId">
+								<input type="hidden" id="workYear11" name="workYear">	
 								<input type="submit"
 									   class="spr-button spr-button-primary button button-primary btn btn-primary"
 									   id="SelectStore"
 									   value="확인">
 							</form>
+							
 											
 						</div>
 							</div>
           			</div>
-          		
            <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
@@ -77,7 +87,7 @@
 							<th class="text-center">지점명</th>
 							<th class="text-center">근무 년도</th>
 							<th class="text-center">근무 월</th>
-							<th class="text-center">시급</th>
+							<th class="text-center">시급(만)</th>
 							<th class="text-center">연락쳐</th>
 <!-- 							<th class="text-center">수도세</th> -->
 <!-- 							<th class="text-center">광고비</th> -->
@@ -95,7 +105,7 @@
 							<td><span>${ worker.salary }</span></td>
 							<td><span>${ worker.workerPhone }</span></td>
 										
-						</tr>																												
+						</tr>																										
 						</c:forEach>								
                       </tbody>
                     </table>
@@ -198,7 +208,7 @@
 			$("#"+activeTab).fadeIn();
 		});
 		$(".StoreName1").on("change", function() {
-			var storeId = $(this).val()
+			var storeId = $(this).val();
 			
 			
 			$("#StoreId11").val(storeId);	
@@ -207,6 +217,14 @@
 			
 		});		
 
+// 		$('.WorkYear1').on("change", function() {
+// 			var workyear = $(this)val();
+			
+// 			$('#workYear').val(workyear);
+			
+// 		});
+		
+		
 	</script>
 </body>
 </html>
