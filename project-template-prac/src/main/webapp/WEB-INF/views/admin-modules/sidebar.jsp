@@ -25,14 +25,13 @@
 		</li>
 		<li class="nav-item">
 			<a class="nav-link" data-toggle="collapse" href="#raw-order" aria-expanded="false" aria-controls="raw-order">
-				<span class="icon-bg"><i class="mdi mdi-cart"></i></span>
+				<span class="icon-bg"><i class="mdi mdi-cart menu-icon"></i></span>
 				<span class="menu-title">주문 관리</span>
 				<i class="menu-arrow"></i>
 			</a>
 			<div class="collapse" id="raw-order">
 				<ul class="nav flex-column sub-menu">
 					<li class="nav-item"><a class="nav-link" href="raw-order">주문입력</a></li>
-					<li class="nav-item"><a class="nav-link" href="raw-cart">장바구니</a></li>
 					<li class="nav-item"><a class="nav-link" href="raw-history">주문내역 조회</a></li>
 				</ul>
 			</div>
