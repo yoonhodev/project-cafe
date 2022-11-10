@@ -1,8 +1,10 @@
 package com.projectprac.controller;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +16,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.projectprac.common.Util;
+import com.projectprac.dto.BoardAttachDto;
 import com.projectprac.dto.BoardCommentDto;
 import com.projectprac.dto.BoardDto;
 import com.projectprac.service.BoardService;
 import com.projectprac.ui.ThePager;
+
 
 
 @Controller
@@ -42,6 +49,32 @@ public class EventBoardController {
 	@PostMapping(path = { "writeEventBoard" })
 	public String writeEventBoard(BoardDto board) {
 	
+//		MultipartFile attach = req.getFile("attach");
+//		
+//		if (attach != null) {
+//			ServletContext application = req.getServletContext();
+//			String path = application.getRealPath("/board-attachments");
+//			String fileName = attach.getOriginalFilename();
+//			if (fileName != null && fileName.length() > 0) {
+//				String uniqueFileName = Util.makeUniqueFileName(fileName);
+//				try {
+//					attach.transferTo(new File(path, uniqueFileName));
+//					
+//					ArrayList<BoardAttachDto> attachments = new ArrayList<>();
+//					BoardAttachDto attachment = new BoardAttachDto();
+//					attachment.setUserFileName(fileName);
+//					attachment.setSavedFileName(uniqueFileName);
+//					attachments.add(attachment);
+//					board.setAttachments(attachments);
+//				
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		}
+		
+		
+		
 		boardService.writeEventBoard(board);
 		
 		return "redirect:eventBoard";

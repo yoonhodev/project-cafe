@@ -1,6 +1,7 @@
 package com.projectprac.dto;
 
 import java.util.Date;
+import java.util.List;
 
 import lombok.Data;
 
@@ -14,6 +15,8 @@ public class BoardDto {
 	private Date regdate;
 	private boolean deleted;
 	private boolean boardType;
+	
+	private List<BoardAttachDto> attachments;
 
 	
 }
