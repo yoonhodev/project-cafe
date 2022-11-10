@@ -26,7 +26,6 @@
 	</c:when>
 	<c:otherwise>
 			<div class="card-header bg-light">
-				<i class="icon anm anm-map-marker-al" aria-hidden="true"></i> ${ comment.commentId } &nbsp;&nbsp; 
 				<span class="anm anm-user-al" aria-hidden="true"> ${ comment.customerId }</span> &nbsp;&nbsp; 
 				<span class="icon anm anm-clock-r" aria-hidden="true"> <fmt:formatDate value="${ comment.regDate }" pattern="yyyy-MM-dd-hh:mm:ss" /></span> 
 				<span style='float:right; display:${ (not empty loginuser and loginuser.customerId == comment.customerId) ? "inline-block" : "none" }'>

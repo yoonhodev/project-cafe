@@ -40,38 +40,32 @@ public class EventBoardController {
 	@Qualifier("boardService")
 	private BoardService boardService;
 	
-//	@GetMapping(path = { "noticeBoard" })
-//	public String noticeBoard() {
-//		
-//		return "board/noticeBoard";
-//	}
-	
 	@PostMapping(path = { "writeEventBoard" })
-	public String writeEventBoard(BoardDto board) {
+	public String writeEventBoard(BoardDto board, MultipartHttpServletRequest req) {
 	
-//		MultipartFile attach = req.getFile("attach");
-//		
-//		if (attach != null) {
-//			ServletContext application = req.getServletContext();
-//			String path = application.getRealPath("/board-attachments");
-//			String fileName = attach.getOriginalFilename();
-//			if (fileName != null && fileName.length() > 0) {
-//				String uniqueFileName = Util.makeUniqueFileName(fileName);
-//				try {
-//					attach.transferTo(new File(path, uniqueFileName));
-//					
-//					ArrayList<BoardAttachDto> attachments = new ArrayList<>();
-//					BoardAttachDto attachment = new BoardAttachDto();
-//					attachment.setUserFileName(fileName);
-//					attachment.setSavedFileName(uniqueFileName);
-//					attachments.add(attachment);
-//					board.setAttachments(attachments);
-//				
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		}
+		MultipartFile attach = req.getFile("attachBoard");
+		
+		if (attach != null) {
+			ServletContext application = req.getServletContext();
+			String path = application.getRealPath("/resources/assets/images/cafe-out-image-folder");
+			String fileName = attach.getOriginalFilename();
+			if (fileName != null && fileName.length() > 0) {
+				String uniqueFileName = Util.makeUniqueFileName(fileName);
+				try {
+					attach.transferTo(new File(path, uniqueFileName));
+					
+					ArrayList<BoardAttachDto> attachments = new ArrayList<>();
+					BoardAttachDto attachment = new BoardAttachDto();
+					attachment.setUserFileName(fileName);
+					attachment.setSavedFileName(uniqueFileName);
+					attachments.add(attachment);
+					board.setAttachments(attachments);
+				
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
 		
 		
 		
@@ -106,24 +100,29 @@ public class EventBoardController {
 	
 	@GetMapping(path = { "/eventBoardDetail" })
 	public String showEventBoardDetail(@RequestParam(defaultValue = "-1") int boardId, 
-								  @RequestParam(defaultValue = "-1") int pageNo,
-								  HttpSession session, 
-								  Model model) {	
+									   @RequestParam(defaultValue = "-1") int pageNo,
+									   HttpSession session, 
+									   Model model) {	
 		
 		// 1. 요청 데이터 읽기 ( 전달인자로 대체 )
 		if (boardId == -1 || pageNo == -1) { // 요청 데이터가 잘못된 경우
 			return "redirect:board/eventBoard";
 		}
 		
-		BoardDto boardDetail = boardService.showBoardDetail(boardId);
+		//BoardDto boardDetail = boardService.showEventBoardDetail(boardId);
+	
 		
-		if (boardDetail == null) { // 조회되지 않은 경우 (글 번호가 잘못되었거나 또는 삭제된 글인 경우)
+		BoardDto board = boardService.findEventBoardByBoardNo(boardId);
+		
+		if (board == null) { // 조회되지 않은 경우 (글 번호가 잘못되었거나 또는 삭제된 글인 경우)
 			return "redirect:board/eventBoard";
+			
 		}
 		
 		// 3. View에서 읽을 수 있도록 데이터 전달
-		model.addAttribute("boardDetail", boardDetail);
+		model.addAttribute("boardDetail", board);
 		model.addAttribute("pageNo", pageNo);
+		System.out.println(model);
 		
 		// 4. View 또는 Controller로 이동
 		return "board/eventBoardDetail";
@@ -217,7 +216,7 @@ public class EventBoardController {
 	
 	@GetMapping(path = {"/delete-comment{commentId}"})
 	public String deleteComment(@RequestParam(defaultValue = "-1") int commentId, int boardId, int pageNo) {
-		System.out.println("컨트롤러");
+
 		boardService.deleteComment(commentId);
 		// 1. 요청 데이터 읽기 (전달인자로 대체)
 		if (commentId == -1) {

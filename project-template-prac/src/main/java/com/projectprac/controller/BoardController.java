@@ -60,7 +60,7 @@ public class BoardController {
 		model.addAttribute("pager", pager);
 		model.addAttribute("pageNo", pageNo);
 
-		System.out.println(boardCount);
+	
 		
 		// 4. View or Controller로 이동
 		return "board/noticeBoard"; 	// /WEB-INF/views/ + board/list + .jsp
@@ -75,7 +75,7 @@ public class BoardController {
 		if (boardId == -1 || pageNo == -1) { // 요청 데이터가 잘못된 경우
 			return "redirect:noticeBoard";
 		}
-		
+		System.out.println(pageNo);
 		BoardDto boardDetail = boardService.showBoardDetail(boardId);
 		
 //		if (boardDetail == null) { // 조회되지 않은 경우 (글 번호가 잘못되었거나 또는 삭제된 글인 경우)
