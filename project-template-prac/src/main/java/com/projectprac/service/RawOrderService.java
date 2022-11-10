@@ -8,12 +8,14 @@ import com.projectprac.dto.RawOrderDto;
 
 public interface RawOrderService {
 
+	List<RawOrderDto> showAllRaws();
+
 	List<String> showBigCategory();
 
 	List<RawOrderDto> showSmallCategory();
 	
 	List<RawOrderDto> selectRawOrder(String bigCategory, String smallCategory, String rawName);
 
-	List<RawOrderDto> showAllRaws();
+	RawOrderDto selectRawOrderByRawId(int rawId);
 
 }
