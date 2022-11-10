@@ -17,9 +17,9 @@ public interface WorkerMapper {
 	
 	@Select("select worker_id workerId, store_id storeId, worker_name workerName, worktime, salary, worker_phone workerPhone, work_year workYear, work_month workMonth " +
 			"from worker " +
-			"where store_id = #{storeId} " +
+			"where store_id = #{storeId} and work_year = #{workYear} and work_month = #{workMonth} " +
 			"order by work_year DESC " )
-	List<WorkerDto> selectWorkerByStoreId(int storeId);
+	List<WorkerDto> selectWorkerByStoreId(@Param("storeId") int storeId,@Param("workYear") String workYear,@Param("workMonth") String workMonth);
 
 	@Select("SELECT store_id storeId, store_name storeName, store_phone storePhone, store_addr storeAddr, store_introduce storeIntroduce, store_schedule storeSchedule, store_open storeOpen, store_image storeImage, store_uniqueimage storeUniqueimage " +
 			"FROM store ")
@@ -49,6 +49,12 @@ public interface WorkerMapper {
 			"on s.worker_id=w.worker_id " +
 			"where s.worker_id = #{workerId} " )
 	List<SalaryDto> selectSalaryList(SalaryDto salary);
+
+	
+	
+	@Select("select worker_id workerId, store_id storeId, worker_name workerName, worktime, salary, worker_phone workerPhone, work_year workYear, work_month workMonth " +
+			"from worker " )
+	List<WorkerDto> selectAllWorkers();
 
 	
 
