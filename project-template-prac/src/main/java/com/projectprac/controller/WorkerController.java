@@ -24,10 +24,15 @@ public class WorkerController {
 	private WorkerService workerService;
 	
 	@GetMapping(path = {"workerInfo"})
-	public String showWorkerInfo(@RequestParam(defaultValue = "-1" )int storeId,WorkerDto worker, Model model) {
+	public String showWorkerInfo(@RequestParam(defaultValue = "-1" )int storeId,
+								 @RequestParam(defaultValue = "-1") String workYear ,
+								 @RequestParam(defaultValue = "-1") String workMonth,
+								 WorkerDto worker, Model model) {
 		List<StoreDto> stores = workerService.showAllStores();
+		List<WorkerDto> workyears = workerService.showallWorkers();
+		
 		if(storeId != -1 ) {
-			List<WorkerDto> workers = workerService.selectWorkerByStoreId(storeId);
+			List<WorkerDto> workers = workerService.selectWorkerByStoreId(storeId, workYear,workMonth);
 //			System.out.println(workers);
 			model.addAttribute("workers", workers);
 			for (StoreDto store : stores) {
@@ -38,6 +43,7 @@ public class WorkerController {
 		}
 		
 		// fixedSpendService.showCostByStoreId();
+		model.addAttribute("workyears",workyears);
 		model.addAttribute("stores", stores);		
 		return "worker/worker-info";
 	}

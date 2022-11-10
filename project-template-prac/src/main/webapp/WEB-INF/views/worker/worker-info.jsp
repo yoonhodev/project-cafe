@@ -50,17 +50,36 @@
 							        </c:forEach>
 								</select>
 								<br><br>
-							<select id=WorkYear1 name="workYear" class="WorkYear1">
+							<select id=WorkYear1 name="WorkYear1" class="WorkYear1">
 								<option selected disabled hidden="">년도 선택</option>
+								<option value="2020">2020</option>
 								<option value="2021">2021</option>
 								<option value="2022">2022</option>
 								<option value="2023">2023</option>
 								<option value="2024">2024</option>
 								<option value="2025">2025</option>
+								<option value="2026">2026</option>
+							</select>
+							<br><br>
+							<select id=WorkMonth1 name="WorkMonth1" class="WorkMonth1">
+								<option selected disabled hidden="">월 선택</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+								<option value="11">11</option>
+								<option value="12">12</option>
 							</select>
 								<br><br>
 								<input type="hidden" id="StoreId11" name="storeId">
-								<input type="hidden" id="workYear11" name="workYear">	
+								<input type="hidden" id="WorkYear11" name="workYear">	
+								<input type="hidden" id="WorkMonth11" name="workMonth">
 								<input type="submit"
 									   class="spr-button spr-button-primary button button-primary btn btn-primary"
 									   id="SelectStore"
@@ -207,6 +226,7 @@
 			var activeTab = $(this).attr("data-name"); 
 			$("#"+activeTab).fadeIn();
 		});
+		
 		$(".StoreName1").on("change", function() {
 			var storeId = $(this).val();
 			
@@ -217,13 +237,19 @@
 			
 		});		
 
-// 		$('.WorkYear1').on("change", function() {
-// 			var workyear = $(this)val();
+		$(".WorkYear1").on("change", function() {
+			var workYear = $(this).val();
 			
-// 			$('#workYear').val(workyear);
+			$('#WorkYear11').val(workYear);
 			
-// 		});
+		});
 		
+		$(".WorkMonth1").on("change", function() {
+			var workMonth = $(this).val();
+			
+			$('#WorkMonth11').val(workMonth);
+			
+		});
 		
 	</script>
 </body>

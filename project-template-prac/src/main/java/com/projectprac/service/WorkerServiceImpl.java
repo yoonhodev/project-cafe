@@ -23,8 +23,8 @@ public class WorkerServiceImpl implements WorkerService {
 	}
 
 	@Override
-	public List<WorkerDto> selectWorkerByStoreId(int storeId) {
-		List<WorkerDto> workers = workerMapper.selectWorkerByStoreId(storeId);
+	public List<WorkerDto> selectWorkerByStoreId(int storeId, String workYear, String workMonth) {
+		List<WorkerDto> workers = workerMapper.selectWorkerByStoreId(storeId, workYear, workMonth);
 		return workers;
 	}
 
@@ -55,6 +55,14 @@ public class WorkerServiceImpl implements WorkerService {
 		List<SalaryDto> selectSalaryList = workerMapper.selectSalaryList(salary);
 		
 		return selectSalaryList;
+	}
+
+	@Override
+	public List<WorkerDto> showallWorkers() {
+		
+		List<WorkerDto> workyears = workerMapper.selectAllWorkers();
+		
+		return workyears;
 	}
 
 	
