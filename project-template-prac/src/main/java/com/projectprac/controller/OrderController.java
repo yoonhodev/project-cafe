@@ -146,18 +146,5 @@ public class OrderController {
 		return "mypage/coupon";
 
 	}
-
-//	public List<CouponMakeDto> CouponMakeList(HttpSession session) {
-//	
-//		CustomerDto customer = (CustomerDto) session.getAttribute("loginuser");
-//		CouponDto coupon;
-//		List<CouponMakeDto> couponMakes = new ArrayList<>();
-//		List<CouponMakeDto> couponMakeDtos = couponService.showCouponList(customer.getCustomerId());
-//		for (CouponMakeDto couponMakeDto : couponMakeDtos) {
-//			coupon = couponService.findCouponByCouponId(couponMakeDto.getCouponId());
-//			couponMakeDto.setCouponDto(coupon);
-//			couponMakes.add(couponMakeDto);
-//		}
-//		return couponMakes;
-//		
+		
 }

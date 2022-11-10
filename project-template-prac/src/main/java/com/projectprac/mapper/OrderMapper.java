@@ -12,7 +12,7 @@ import com.projectprac.dto.ProductDto;
 @Mapper
 public interface OrderMapper {
 
-	@Select("SELECT DISTINCT prod_id prodId, prod_category prodCategory, prod_name prodName, prod_price prodPrice, prod_des prodDes " +
+	@Select("SELECT DISTINCT prod_id prodId, prod_category prodCategory, prod_name prodName, prod_price prodPrice, prod_des prodDes, prod_img prodImg " +
 			"FROM product " +
 			"WHERE prod_id = #{ prodId } ")
 	ProductDto findProductByProdId(int prodId);
@@ -20,6 +20,10 @@ public interface OrderMapper {
 	ProductDto deleteAll(int prodId);
 
 	ProductDto delete(int prodId);
+	
+	@Select("SELECT DISTINCT prod_id prodId, prod_category prodCategory, prod_name prodName, prod_price prodPrice, prod_des prodDes, prod_img prodImg " +
+			"FROM product ")
+	List<ProductDto> findShop();
 
 
 }

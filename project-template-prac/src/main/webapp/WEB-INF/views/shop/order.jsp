@@ -122,8 +122,7 @@
 												   id="SelectCoupon"
 												   value="쿠폰 적용">
 										</div>
-									</div>
-									
+									</div>	
 								</form>
 							</div>
 							<div class="col-12 col-sm-12 col-md-4 col-lg-4 mb-4">
@@ -139,6 +138,7 @@
 												<option value="6">만나서 카드결제</option>
 												<option value="7">만나서 현금결제</option>
 										</select>
+							
 
 									<!-- <div class="actionRow">
 										<div>
@@ -165,7 +165,7 @@
 									</div>
 									<div class="row border-bottom pb-2 pt-2">
 										<span class="col-12 col-sm-6 cart__subtotal-title">배송비</span>
-										<span class="col-12 col-sm-6 text-right">Free shipping</span>
+										<span class="col-12 col-sm-6 text-right" id="shipping"></span>
 									</div>
 									<div class="row border-bottom pb-2 pt-2">
 										<span class="col-12 col-sm-6 cart__subtotal-title"><strong>총 금액</strong></span> <span
@@ -173,11 +173,11 @@
 											class="money">$1001.00</span></span>
 									</div>
 									<br>
-								<!-- 	<p class="cart_tearm">
-										<label> <input type="checkbox" name="tearm"
-											class="checkbox" value="tearm" required="">
-										</label>
-									</p> -->
+								 	<p class="cart_tearm">
+										<strong>배달</strong>&nbsp;&nbsp;<input type="radio" name="orderType" value="A" required>
+ 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<strong>포장</strong>&nbsp;&nbsp;<input type="radio" name="orderType" value="B">
+									</p> 
 									<input type="submit" name="checkout" id="cartCheckout"
 										class="btn btn--small-wide checkout"
 										value="결제" disabled="disabled">
@@ -227,26 +227,28 @@
 				$(qtyField).find(".qty").val(newVal);
 				$("#price-" + prodId).text( price );
 			});
+ 		});
 			
-			
-		/* 	$('.cart__remove').on('click', function(event) {
-				var addform = $(this).parent(".addform").serialize();
-			    const formData = $('.addform').serialize(); //form 내부의 모든 입력 요소의 값을 전송가능한 문자열 형식으로 반환
-			/* const formData = $('#addform').serializeArray(); */ //form 내부의 모든 입력 요소의 값을 전송가능한 객체 배열 형식으로 반환
-				/* alert(addform);
-				$.ajax({
-					"url": "update-order",
-					"method": "post",
-					"data": addform,
-					"success": function(data, status, xhr) {
-						},
-					"error": function(xhr, status, err) {
-						
-						}
-				}); */
-			}); 
- 		
- 		
+		$(function() {
+			$("input[name=orderType]").on("click", function(event) {
+				const checkedVal = $("input[name=orderType]:checked").val();
+				if (checkedVal == "A") {
+					$("#shipping").text("3000");
+				} else {
+					$("#shipping").text("0");
+				}
+			});
+		});
+		
+		$(function() {
+			$("#orderType").on("change", function(event) {
+				if ($("#orderType").val() == 'B') {
+					$("#shipping").text("무료");
+				}			
+			});
+		});
+		
+ 			
 	</script>
 </body>
 

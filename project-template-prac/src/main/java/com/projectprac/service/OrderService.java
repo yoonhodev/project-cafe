@@ -14,5 +14,7 @@ public interface OrderService {
 		ProductDto deleteOrder(int prodId);
 		
 		List<CouponMakeDto> showCoupon(String customerId);
-		
+
+		List<ProductDto> showMenuImg();
+
 	}

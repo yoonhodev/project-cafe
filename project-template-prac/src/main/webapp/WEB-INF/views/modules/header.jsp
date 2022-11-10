@@ -122,73 +122,48 @@
 			<div class="col-4 col-sm-3 col-md-3 col-lg-2">
 				<div class="site-cart">
 					<a href="cart" class="site-header__cart" title="Cart"> <i
-						class="icon anm anm-bag-l"></i> <span id="CartCount"
-						class="site-header__cart-count" data-cart-render="item_count">2</span>
+						class="icon anm anm-bag-l"></i>
 					</a>
 					<!--Minicart Popup-->
-					<div id="header-cart" class="block block-cart">
+				
+				<div id="header-cart" class="block block-cart">
+					<c:forEach var="product" items="${ products }" varStatus="status">
 						<ul class="mini-products-list">
 							<li class="item"><a class="product-image" href="#"> <img
-									src="/project-template-prac/resources/assets/images/product-images/cape-dress-1.jpg"
-									alt="3/4 Sleeve Kimono Dress" title="" />
+									src=${ product.prodImg } title="" />
 							</a>
 								<div class="product-details">
-									<a href="#" class="remove"><i class="anm anm-times-l"
-										aria-hidden="true"></i></a> <a href="#" class="edit-i remove"><i
+									<a href="delete-order?prodId=${ product.prodId }" class="remove"><i class="anm anm-times-l"
+										aria-hidden="true"></i></a> <a href="shop" class="edit-i remove"><i
 										class="anm anm-edit" aria-hidden="true"></i></a> <a class="pName"
-										href="cart.html">Sleeve Kimono Dress</a>
-									<div class="variant-cart">Black / XL</div>
-									<div class="wrapQtyBtn">
+										href="shop">${ product.prodName }</a>
+									<!-- <div class="variant-cart">Black / XL</div> -->
+									<%-- <div class="wrapQtyBtn">
 										<div class="qtyField">
-											<span class="label">Qty:</span> <a class="qtyBtn minus"
-												href="javascript:void(0);"><i class="fa anm anm-minus-r"
-												aria-hidden="true"></i></a> <input type="text" id="Quantity"
-												name="quantity" value="1" class="product-form__input qty">
-											<a class="qtyBtn plus" href="javascript:void(0);"><i
-												class="fa anm anm-plus-r" aria-hidden="true"></i></a>
+											<span class="label">Qty:</span>
+											<a class="qtyBtn minus" href="javascript:void(0);" data-productId="${ product.prodId }"><i class="icon icon-minus"></i></a>
+											<input class="cart__qty-input qty" type="text" name="updates[]" id="qty" value="1" pattern="[0-9]*" disabled>
+											<a class="qtyBtn plus"  href="javascript:void(0);" data-productId="${ product.prodId }"><i class="icon icon-plus"></i></a>
 										</div>
 									</div>
 									<div class="priceRow">
 										<div class="product-price">
-											<span class="money">$59.00</span>
+											<span class="money"><span id="price-${ product.prodId }">${ product.prodPrice }</span></span>
 										</div>
-									</div>
-								</div></li>
-							<li class="item"><a class="product-image" href="#"> <img
-									src="/project-template-prac/resources/assets/images/product-images/cape-dress-2.jpg"
-									alt="Elastic Waist Dress - Black / Small" title="" />
-							</a>
-								<div class="product-details">
-									<a href="#" class="remove"><i class="anm anm-times-l"
-										aria-hidden="true"></i></a> <a href="#" class="edit-i remove"><i
-										class="anm anm-edit" aria-hidden="true"></i></a> <a class="pName"
-										href="cart.html">Elastic Waist Dress</a>
-									<div class="variant-cart">Gray / XXL</div>
-									<div class="wrapQtyBtn">
-										<div class="qtyField">
-											<span class="label">Qty:</span> <a class="qtyBtn minus"
-												href="javascript:void(0);"><i class="fa anm anm-minus-r"
-												aria-hidden="true"></i></a> <input type="text" id="Quantity"
-												name="quantity" value="1" class="product-form__input qty">
-											<a class="qtyBtn plus" href="javascript:void(0);"><i
-												class="fa anm anm-plus-r" aria-hidden="true"></i></a>
-										</div>
-									</div>
-									<div class="priceRow">
-										<div class="product-price">
-											<span class="money">$99.00</span>
-										</div>
-									</div>
-								</div></li>
+									</div> --%>
+								</div>
+							</li>
 						</ul>
-						<div class="total">
+					</c:forEach>
+						<!-- <div class="total">
 							<div class="total-in">
 								<span class="label">Cart Subtotal:</span><span
 									class="product-price"><span class="money">$748.00</span></span>
-							</div>
+							</div> -->
+						<br>
 							<div class="buttonSet text-center">
-								<a href="cart.html" class="btn btn-secondary btn--small">View
-									Cart</a> <a href="checkout.html"
+								<a href="order" class="btn btn-secondary btn--small">View
+									Cart</a> <a href="#"
 									class="btn btn-secondary btn--small">Checkout</a>
 							</div>
 						</div>
@@ -232,3 +207,26 @@
 	</ul>
 </div>
 <!-- ./Mobile Menu -->
+
+<script type="text/javascript">
+	$(function() {
+		$(".qtyBtn").on("click", function() {
+			var qtyField = $(this).parent(".qtyField"),
+				oldValue = $(qtyField).find(".qty").val(),
+				newVal = 1
+			var prodId = $(this).attr("data-productId");
+			var price = $("#prodPrice-" + prodId).text();
+			
+			if ($(this).is(".plus")) {
+				newVal = parseInt(oldValue) + 1;
+			} else if (oldValue > 1) {
+				newVal = parseInt(oldValue) - 1;
+			}
+			
+			price = newVal * price;
+			$(qtyField).find(".qty").val(newVal);
+			$("#price-" + prodId).text( price );
+			});
+		});
+</script>
+	
