@@ -88,10 +88,6 @@ public interface BoardMapper {
 	BoardDto selectEventBoardByBoardNo(int boardId);
 
 	
-	
-	
-	
-	
 	@Update("UPDATE board " +
 			"SET title = #{ title }, content = #{ content } " +
 			"WHERE board_id = #{ boardId } ")	

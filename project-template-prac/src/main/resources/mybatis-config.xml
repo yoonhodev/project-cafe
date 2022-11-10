@@ -6,11 +6,10 @@
 <configuration>
 	
 	<typeAliases>
-
 		<typeAlias type="com.projectprac.dto.StoreDto" alias="StoreDto"/>
 		<typeAlias type="com.projectprac.dto.BoardDto" alias="BoardDto"/>
+		<typeAlias type="com.projectprac.dto.BoardAttachDto" alias="BoardAttachDto"/>
 		<typeAlias type="com.projectprac.dto.FixedSpendDto" alias="FixedSpendDto"/>
-		
 	</typeAliases>
 	
   <mappers>
