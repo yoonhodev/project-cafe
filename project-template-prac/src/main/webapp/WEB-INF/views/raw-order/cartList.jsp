@@ -43,7 +43,7 @@
 								<i class="mdi mdi-plus"></i>
 							</button>
 						</td>
-						<td><span id="cartprice-${ cart.rawOrderDto.rawId }">bye</span>원</td>
+						<td><span id="cartprice-${ cart.rawOrderDto.rawId }"></span>원</td>
 						<td>
 							<button type="button" class="btn btn-outline-secondary btn-md cart-pop" data-rawId="${ cart.rawOrderDto.rawId }">
 								<span>X</span>
@@ -51,27 +51,25 @@
 						</td>
 					</tr>
 				</c:forEach>
-					<tr>
-						<td colspan="4"></td>
-						<td>총합</td>
-						<td><span id="total"></span></td>
-						<td></td>
-					</tr>
 			</tbody>
 			<tfoot>
 				<tr>
-					<td colspan="5"></td>
-					<td colspan="2">
-						<button type="button" class="btn btn-inverse-success">
-							<i class="mdi mdi-check"></i> 주문하기
-						</button>&nbsp;&nbsp;&nbsp;
-						<button type="button" class="btn btn-inverse-danger all-cart-pop">
-							X&nbsp;&nbsp;주문취소
-						</button>
-					</td>
+					<td colspan="4"></td>
+					<td>총합</td>
+					<td><span id="total"></span></td>
+					<td></td>
 				</tr>
 			</tfoot>
 		</table>
+		<br>
+		<div style="text-align: right">
+			<button type="button" class="btn btn-inverse-success insert-order">
+				<i class="mdi mdi-check"></i> 주문하기
+			</button>&nbsp;&nbsp;&nbsp;
+			<button type="button" class="btn btn-inverse-danger all-cart-pop">
+				X&nbsp;&nbsp;주문취소
+			</button>
+		</div>
 	</div>
 </div>
 
@@ -82,7 +80,6 @@
 			$.ajax({
 				"url": "allCartPop",
 				"method": "get",
-				"data": "1",
 				"success": function(data) {
 					alert("주문이 취소되었습니다.")
 					$("#cartList").load("cartList");
@@ -95,8 +92,7 @@
 		
 		$(".cart-pop").on("click", function() {
 			var rawId = $(this).attr("data-rawId");
-			alert(rawId);
-	    	$.ajax({
+			$.ajax({
 				"url": "cartPop",
 				"method": "get",
 				"data": "rawId=" + rawId,
@@ -125,7 +121,6 @@
 			}
 		}
 		
-			
 		$(".btn-cart").on("click", function() {
 			var amount = $(this).parent(".cartamount"),
 				oldVal = $(amount).find(".cartcount").text(),
@@ -148,6 +143,25 @@
 			$("#cartprice-" + rawId).text(cartPrice);
 			var totalshow = total.toLocaleString('ko-KR');
 			$("#total").text(totalshow + "원");
+		});
+		
+		$(".insert-order").on("click", function() {
+			var StoreId = $("#StoreId").val();
+			var OrderDate = $("#orderDate").val();
+			
+			var formData = "storeId=" + StoreId + "&orderDate=" + OrderDate;
+			$.ajax({
+				"url": "insert-raw-order",
+				"method": "post",
+				"data": formData,
+				"success": function(data) {
+					alert("주문이 완료되었습니다.")
+					$("#cartList").load("cartList");
+				 },
+				"error": function(xhr, status, err) {
+					alert('fail : ' + status);
+				}
+			});
 		});
 	});
 </script>

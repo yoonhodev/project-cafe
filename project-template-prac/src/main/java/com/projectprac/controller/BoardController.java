@@ -1,10 +1,8 @@
 package com.projectprac.controller;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,15 +13,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.projectprac.common.Util;
-import com.projectprac.dto.BoardAttachDto;
 import com.projectprac.dto.BoardDto;
 import com.projectprac.service.BoardService;
 import com.projectprac.ui.ThePager;
-
 
 @Controller
 public class BoardController {
@@ -31,7 +24,6 @@ public class BoardController {
 	private final int PAGE_SIZE = 10; 	// 한 페이지에 표시되는 데이터 개수
 	private final int PAGER_SIZE = 5;	// 한 번에 표시할 페이지 번호 개수
 	private final String LINK_URL = "noticeBoard"; // 페이지 번호를 클릭했을 때 이동할 페이지 경로
-	
 	
 	@Autowired
 	@Qualifier("boardService")
@@ -59,8 +51,6 @@ public class BoardController {
 		model.addAttribute("boards", boards);
 		model.addAttribute("pager", pager);
 		model.addAttribute("pageNo", pageNo);
-
-	
 		
 		// 4. View or Controller로 이동
 		return "board/noticeBoard"; 	// /WEB-INF/views/ + board/list + .jsp
@@ -75,14 +65,28 @@ public class BoardController {
 		if (boardId == -1 || pageNo == -1) { // 요청 데이터가 잘못된 경우
 			return "redirect:noticeBoard";
 		}
-		System.out.println(pageNo);
+	
+		ArrayList<Integer> readList = (ArrayList<Integer>)session.getAttribute("read-list");
+		if (readList == null) {
+			readList = new ArrayList<>();
+			session.setAttribute("read-list", readList);
+		}
+		
+		if (!readList.contains(boardId)) {
+			boardService.increaseBoardReadCount(boardId);
+			readList.add(boardId);
+		}
+		
 		BoardDto boardDetail = boardService.showBoardDetail(boardId);
+		
+		int commentCount = boardService.findCommentCount(boardId);
 		
 //		if (boardDetail == null) { // 조회되지 않은 경우 (글 번호가 잘못되었거나 또는 삭제된 글인 경우)
 //			return "redirect:aaa.action";
 //		}
 		
 		// 3. View에서 읽을 수 있도록 데이터 전달
+		model.addAttribute("commentCount", commentCount);
 		model.addAttribute("boardDetail", boardDetail);
 		model.addAttribute("pageNo", pageNo);
 		

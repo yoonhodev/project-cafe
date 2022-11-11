@@ -13,7 +13,7 @@
 		</li>
 		<li class="nav-item">
 			<a class="nav-link" href="fixedSpend">
-				<span class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
+				<span class="icon-bg"><i class="mdi mdi-cash-multiple menu-icon"></i></span>
 				<span class="menu-title">고정 지출</span>
 			</a>
 		</li>

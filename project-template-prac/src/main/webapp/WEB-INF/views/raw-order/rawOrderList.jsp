@@ -138,16 +138,19 @@
 	    });
 		
 		$(".cart-push").on("click", function() {
-			var pushList = [];
+			var rawIdArray = [];
+			var countArray = [];
 			$("input[name=cbox]:checked").each(function() {
 				var rawId = $(this).val();
 				var count = $("#count-" + rawId).val();
-				pushList.push(rawId + "/" + count);
+				rawIdArray.push(rawId);
+				countArray.push(count);
 			});
+			var formData = { rawIdList : rawIdArray, countList : countArray };
 			$.ajax({
 				"url": "addCart",
 				"method": "post",
-				"data": pushList,
+				"data": formData,
 				"success": function(data) {
 					alert("장바구니에 추가하였습니다.")
 					$("#cartList").load("cartList");

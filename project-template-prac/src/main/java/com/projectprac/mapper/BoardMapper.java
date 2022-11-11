@@ -18,16 +18,6 @@ import com.projectprac.dto.BoardDto;
 @Mapper
 public interface BoardMapper {
 
-//	@Insert("INSERT INTO board (b.title, b.content, ba.worker_name workername) " +
-//			"FROM board b " +
-//			"LEFT OUTER JOIN worker ba " +
-//			"ON b.worker_id workerid = ba.worker_id workderid " +
-//			"VALUES (#{ title }, #{ content }, #{ worker })")
-//	//@Options(useGeneratedKeys = true, keyColumn = "boardno", keyProperty = "boardNo")
-//	void insertBoard(BoardDto board);
-
-	
-
 	@Insert("INSERT INTO board (title, content, board_type) " +
 			"VALUES (#{ title }, #{ content }, #{ boardType })")
 	//@Options(useGeneratedKeys = true, keyColumn = "boardno", keyProperty = "boardNo")
@@ -43,26 +33,25 @@ public interface BoardMapper {
 			"order by boardid DESC ")
 	List<BoardDto> showBoardList(BoardDto boardDto);
 	
-	@Select("select board_id boardid, worker_id workerid, title, content, regdate, deleted from board where board_id = #{ boardId }")
+	@Select("select board_id boardid, worker_id workerid, title, content, regdate, readcount, deleted from board where board_id = #{ boardId }")
 	BoardDto showBoardDetail(int boardId);
 	
-	@Select("select board_id boardid, worker_id workerid, title, content, regdate, deleted from board where board_id = #{ boardId }")
+	@Select("select board_id boardid, worker_id workerid, title, content, regdate, readcount, deleted from board where board_id = #{ boardId }")
 	BoardDto showEventBoardDetail(int boardId);
 	
-	@Select("SELECT board_id boardid, worker_id workerid, title, regdate, deleted, board_type " +
+	@Select("SELECT board_id boardid, worker_id workerid, title, regdate, deleted, readcount, board_type " +
 			"FROM board " +
 			"WHERE board_type = TRUE " +
 			"ORDER BY boardid DESC " + // 최신 글이 앞에 보이도록 조회
 			"LIMIT #{ from }, #{ count } ")
 	List<BoardDto> selectBoardByPage(@Param("from") int from, @Param("count") int count);
 	
-	@Select("SELECT board_id boardid, worker_id workerid, title, regdate, deleted, board_type " +
+	@Select("SELECT board_id boardid, worker_id workerid, title, regdate, deleted, readcount, board_type " +
 			"FROM board " +
 			"WHERE board_type = FALSE " +
 			"ORDER BY boardid DESC " + // 최신 글이 앞에 보이도록 조회
 			"LIMIT #{ from }, #{ count } ")
 	List<BoardDto> selectEventBoardByPage(@Param("from") int from, @Param("count") int count);
-
 
 	@Select("select count(*) from board where board_type = true")
 	public int selectBoardCount();
@@ -99,12 +88,12 @@ public interface BoardMapper {
 			"VALUES (#{ boardId }, #{ userFileName }, #{ savedFileName })")
 	void insertBoardAttach(BoardAttachDto attachment);
 	
-	@Select("SELECT board_id boardid, worker_id workerid, title, content, regdate, deleted " +
+	@Select("SELECT board_id boardid, worker_id workerid, title, content, regdate, readcount, deleted " +
 			"FROM board " +	
 			"WHERE board_id = #{ boardId } AND deleted = FALSE")
 	BoardDto selectBoardByBoardNo(int boardId);
 	
-	@Select("SELECT board_id boardid, worker_id workerid, title, content, regdate, deleted " +
+	@Select("SELECT board_id boardid, worker_id workerid, title, content, regdate, readcount, deleted " +
 			"FROM board " +	
 			"WHERE board_id = #{ boardId } AND deleted = FALSE")
 	BoardDto selectEventBoardByBoardNo(int boardId);
@@ -114,25 +103,21 @@ public interface BoardMapper {
 			"WHERE board_id = #{ boardId }")
 	List<BoardAttachDto> selectBoardAttachByBoardNo(int boardId);
 	
+	@Update("UPDATE board " +
+			"SET readcount = readcount + 1 " +
+			"WHERE board_id = #{ boardId } AND deleted = FALSE ")	
+	void updateBoardReadCount(int boardId);
+
+	@Select("SELECT count(*) " +
+			"FROM comment " +
+			"WHERE board_id = #{ boardId }")
+	int selectCommentCount();
+
+	@Select("SELECT count(content) " +
+			"FROM comment " +
+			"WHERE board_id = #{ boardId }")
+	int selectCommentEventCount(int boardId);
 	
-	
-	
-//	@Select("SELECT board_id boardid, worker_id workerid, title, content, regdate, deleted " +
-//			"FROM board " +	
-//			"WHERE board_id = #{ boardId } AND deleted = TRUE")
-//	@Results(id = "boardResultMap", 
-//			 value = {
-//					 @Result(column = "board_id", property = "boardId", id = true),
-//					 @Result(column = "title", property = "title"),
-//					 @Result(column = "worker_id", property = "workerId"),
-//					 @Result(column = "content", property = "content"),
-//					 @Result(column = "regdate", property = "regDate"),
-//					 @Result(column = "board_id", property = "attachments", 
-//					 		 many = @Many(select="selectBoardAttachByBoardNo")),
-//			 		 @Result(column = "board_id", property = "comments", 
-//			 		  many = @Many(select="com.demoweb.mapper.BoardCommentMapper.selectCommentByBoardNo"))
-//			})
-//	BoardDto selectEventBoardByBoardNo2(int boardId);
 
 	
 	

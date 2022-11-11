@@ -1,6 +1,5 @@
 package com.projectprac.controller;
 
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,16 +21,12 @@ import com.projectprac.common.Util;
 import com.projectprac.dto.StoreDto;
 import com.projectprac.service.StoreService;
 
-
 @Controller
 public class StoreController {
 
 	@Autowired
 	@Qualifier("storeService")
 	private StoreService storeService;
-
-	
-	
 	
 	@GetMapping(path = {"/store"})
 	
@@ -39,8 +34,6 @@ public class StoreController {
 			StoreDto storeDto ,Model model) {
 		
 		List<StoreDto> stores = storeService.selectStoreInfo(storeDto);
-		
-		
 		
 		model.addAttribute("stores", stores);
 		
@@ -53,12 +46,12 @@ public class StoreController {
 	public String showWritesStore() {
 	
 	return "store/writeStore";
+	
 	}
 	
 	@PostMapping(path = {"/writeStore"})
 	public String writeStore(StoreDto storeDto,
 							MultipartHttpServletRequest req) {
-		
 		
 		MultipartFile attach = req.getFile("attach");
 		
@@ -83,10 +76,7 @@ public class StoreController {
 			}
 		}
 		
-		
 		storeService.insertStoreIntro(storeDto);
-		
-		
 		
 		return "redirect:/store";
 		
@@ -95,9 +85,7 @@ public class StoreController {
 	@GetMapping(path = {"/{storeId}/open"})
 	public String changeToOpen(@PathVariable("storeId")int storeId ) {
 		
-		
 		storeService.changeToOpen(storeId);
-		
 		
 		return "redirect:/store";
 		
@@ -106,9 +94,7 @@ public class StoreController {
 	@GetMapping(path = {"/{storeId}/close"})
 	public String changeToClose(@PathVariable("storeId")int storeId ) {
 		
-		
 		storeService.changeToClose(storeId);
-		
 		
 		return "redirect:/store";
 		
@@ -117,10 +103,10 @@ public class StoreController {
 	@GetMapping(path = {"/{storeId}/deleted"})
 	public String deletedStoreIntro(@PathVariable("storeId")int storeId ) {
 		
-		
 		storeService.deletedStoreIntro(storeId);
 		
-		
 		return "redirect:/store";
+		
 	}
+	
 }

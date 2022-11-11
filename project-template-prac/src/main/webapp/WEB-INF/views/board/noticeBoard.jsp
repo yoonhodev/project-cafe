@@ -32,7 +32,6 @@
             <!--MainContent-->
             <div id="MainContent" class="main-content" role="main">
                 <!--Breadcrumb-->
-               
                 
                 <div id="ProductSection-product-template" class="product-template__container prstyle1 container">
                
@@ -91,14 +90,14 @@
                                             <div>
                                            
                             <div style="font-size: 15pt">
-                                <table>
+                                <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th style="height: 25px; font-size: 17px">No.</th>
-                                            <th style="height: 25px; font-size: 17px">제목</th>
-                                            <th style="height: 25px; font-size: 17px">작성자</th>
-                                            <th style="height: 25px; font-size: 17px">조회수</th>
-                                            <th style="height: 25px; font-size: 17px">작성일</th>
+                                            <th style="width:80px; font-size: 17px">No.</th>
+                                            <th style="font-size: 17px">제목</th>
+                                            <th style="width:100px; font-size: 17px">작성자</th>
+                                            <th style="width:80px; font-size: 17px">조회수</th>
+                                            <th style="width:150px; font-size: 17px">작성일</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -106,20 +105,32 @@
                                     	<c:choose>
                                         <c:when test="${ boards.deleted }">
                                         <tr>
-                                            <td style="height: 25px; font-size: 17px">${ boards.boardId }</td>
-                                            <td style="height: 25px; width: 800px; font-size: 17px">[삭제된 글입니다.]</td>
-                                            <td style="height: 25px; font-size: 17px">ADMIN</td>
-                                            <td style="height: 25px; font-size: 17px">0</td>
-                                            <td style="height: 25px; font-size: 17px"><fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/></td>
+                                            <td style="font-size: 17px">${ boards.boardId }</td>
+                                            <td style="width: 800px; font-size: 17px">[삭제된 글입니다.]</td>
+                                            <td style="font-size: 17px">ADMIN</td>
+                                            <td style="font-size: 17px">${ boards.readCount }</td>
+                                            <td style="font-size: 17px"><fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/></td>
                                         </tr>
                                         </c:when>
                                         <c:otherwise>
                               			<tr>
-                                            <td style="height: 25px; font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.boardId }</a></td>
-                                            <td style="height: 25px; font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.title }</a></td>
-                                            <td style="height: 25px; font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">ADMIN</a></td>
-                                            <td style="height: 25px; font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">0</a></td>
-                                            <td style="height: 25px; font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }"><fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/></a></td>
+                              				<c:set var="result" value="${ boards.boardId % 2}"/>
+                              				<c:choose>
+                                       		<c:when test="${ result == 1 }">
+                                            <td style="font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.boardId }</a></td>
+                                            <td style="font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.title }</a></td>
+                                            <td style="font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">ADMIN</a></td>
+                                            <td style="font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.readCount }</a></td>
+                                            <td style="font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }"><fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/></a></td>
+                                             </c:when>
+                                      	    <c:otherwise>
+                                      	    <td style="font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.boardId }</a></td>
+                                            <td style="font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.title }</a></td>
+                                            <td style="font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">ADMIN</a></td>
+                                            <td style="font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.readCount }</a></td>
+                                            <td style="font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }"><fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/></a></td>
+                                             </c:otherwise>
+                                             </c:choose>
                                         </tr>  
                                          </c:otherwise>
                                          </c:choose>
@@ -135,24 +146,12 @@
                             </div>
                         </div>
                     </div>
-                    
-                      
 											
-                                    </div>
-                                   
-                                </div>
-                                
-                            </div>
-                            
-                          
-                    
-                    <!--Related Product Slider-->
-                    
-                    <!--End Related Product Slider-->
-                    
-                    <!--Recently Product Slider-->
-                  
-                    <!--End Recently Product Slider-->
+                 </div>
+                
+             </div>
+             
+         </div>
                     </div>
                 <!--#ProductSection-product-template-->
             </div>
@@ -167,9 +166,6 @@
     <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
     <!--End Scoll Top-->
     
-    
-    
-        
      <!-- Including Jquery -->
      <script src="resources/assets/js/vendor/jquery-3.3.1.min.js"></script>
      <script src="resources/assets/js/vendor/jquery.cookie.js"></script>
@@ -184,7 +180,6 @@
      <!-- Photoswipe Gallery -->
      <script src="resources/assets/js/vendor/photoswipe.min.js"></script>
      <script src="resources/assets/js/vendor/photoswipe-ui-default.min.js"></script>
-   
 
      <script>
         $(function(){
@@ -201,7 +196,6 @@
 					$("#review_body_10508262282").focus();
 					return false;
 				}
-				
 				
 			});
         	

@@ -54,14 +54,10 @@
                              <a class="article_featured-image" href="#"><img class="blur-up lazyload" data-src="resources/assets/images/blog/blog-post-3.jpg" src="resources/assets/images/blog/blog-post-3.jpg" alt="How to Wear The Folds Trend Four Ways"></a> 
                             <h2 class="h3" style="font-size: 17px"><a href="#">${ boardDetail.title }</a></h2>
                             <ul class="publish-detail">                  
-                           	    <li><i class="icon anm anm-map-marker-al" aria-hidden="true"></i> ${ boardDetail.boardId }</li>    
-                                <li><i class="anm anm-user-al" aria-hidden="true"></i> ADMIN</li>
-                                <li><i class="icon anm anm-clock-r"></i> <time datetime="2017-05-02"><fmt:formatDate value="${ boardDetail.regdate }" pattern="yyyy-MM-dd"/></time></li>
-                                <li>
-                                    <ul class="inline-list">   
-                                        <li><i class="icon anm anm-comments-l"></i> <a href="#"> 10 comments</a></li>
-                                    </ul>
-                                </li>
+                           	    <li><i class="icon anm anm-map-marker-al" aria-hidden="true" style="color: hotpink"></i> ${ boardDetail.boardId }</li>    
+                          &nbsp;<li><i class="anm anm-user-al" aria-hidden="true" style="color: hotpink"></i> ADMIN</li>
+                          &nbsp;<li><i class="icon anm anm-clock-r" style="color: hotpink"></i> <time datetime="2017-05-02"><fmt:formatDate value="${ boardDetail.regdate }" pattern="yyyy-MM-dd"/></time></li>
+                          &nbsp;<li><i class="icon anm anm-search-l" style="color: hotpink"></i>${ boardDetail.readCount }</li>
                             </ul>
                             <br>
                             <div class="rte"> 

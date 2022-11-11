@@ -66,6 +66,7 @@ public class RawOrderController {
 	public String lookUp(Model model, String bigCategory, 
 									  String smallCategory,
 									  @RequestParam(defaultValue = "-1") String rawName) { // 상품 목록 조회 분류
+		
 		if (bigCategory.equals("null") && rawName.equals("-1")) { // 검색어도 없고 대분류도 없을 때
 			return "1";
 		} else if (!bigCategory.equals("null") && !(smallCategory.equals("null") || smallCategory.equals("전체보기"))
@@ -80,20 +81,53 @@ public class RawOrderController {
 		} else if (!rawName.equals("-1")) { // 검색어만 있을 때
 			return "6";
 		}
+		
 		return "0";
+		
 	}
 	
 	@GetMapping(path = { "rawOrderList" })
 	public String rawOrderList(Model model, @RequestParam(defaultValue = "-1") String bigCategory,
 											@RequestParam(defaultValue = "-1") String smallCategory,
 											@RequestParam(defaultValue = "-1") String rawName) { // 조건에 따른 상품 목록 조회
+		
 		List<RawOrderDto> rawOrders = rawOrderService.selectRawOrder(bigCategory, smallCategory, rawName);
 		model.addAttribute("rawOrders", rawOrders);
 		return "raw-order/rawOrderList"; // 상품 리스트 호출
+		
+	}
+	
+	int lambdaRawId;
+	@PostMapping(path = { "addCart" })
+	public String rawOrderList(HttpSession session, Model model, @RequestParam(value="rawIdList[]") List<Integer> rawIdList,
+																 @RequestParam(value="countList[]") List<Integer> countList) {
+
+		List<RawOrderCountDto> rawOrderCarts = (List<RawOrderCountDto>) session.getAttribute("rawOrderCarts");
+		if (rawOrderCarts == null) {
+			rawOrderCarts = new ArrayList<>();
+		} else {
+			for (int i = 0; i < rawIdList.size(); i++) {
+				lambdaRawId = rawIdList.get(i);
+				rawOrderCarts.removeIf(item -> item.getRawOrderDto().getRawId() == lambdaRawId);
+			}
+		}
+		
+		RawOrderDto rawOrder;
+		for (int i = 0; i < rawIdList.size(); i++) {
+			rawOrder = rawOrderService.selectRawOrderByRawId(rawIdList.get(i)); // 선택한 상품 조회
+			RawOrderCountDto rawOrderCart = new RawOrderCountDto();
+			rawOrderCart.setRawOrderDto(rawOrder);
+			rawOrderCart.setCount(countList.get(i));
+			rawOrderCarts.add(rawOrderCart);
+		}
+		
+		session.setAttribute("rawOrderCarts", rawOrderCarts);
+		return "raw-order/cartList";
+		
 	}
 	
 	@PostMapping(path = { "addCartOne" })
-	public String rawOrderList(HttpSession session, Model model, int rawId, int count) { // 상품 한개 장바구니에 임시 삽입 및 목록 조회
+	public String rawOrderOneLine(HttpSession session, Model model, int rawId, int count) { // 상품 한개 장바구니에 임시 삽입 및 목록 조회
 		
 		RawOrderDto rawOrder = rawOrderService.selectRawOrderByRawId(rawId); // 선택한 상품 조회
 		RawOrderCountDto rawOrderCart = new RawOrderCountDto();
@@ -113,7 +147,6 @@ public class RawOrderController {
 		
 		rawOrderCarts.add(rawOrderCart);
 		session.setAttribute("rawOrderCarts", rawOrderCarts);
-		
 		return "raw-order/cartList";
 		
 	}
@@ -133,9 +166,19 @@ public class RawOrderController {
 	public String popCart(HttpSession session, @RequestParam(defaultValue = "-1") String rawId) {
 		List<RawOrderCountDto> rawOrderCarts = (List<RawOrderCountDto>) session.getAttribute("rawOrderCarts");
 		rawOrderCarts.removeIf(item -> item.getRawOrderDto().getRawId() == Integer.parseInt(rawId));
-		
 		session.setAttribute("rawOrderCarts", rawOrderCarts);
 		return "raw-order/cartList";
 	}
+	
+	@PostMapping(path = { "insert-raw-order" })
+	public String insertRawOrder(HttpSession session, String storeId, String orderDate) {
+		List<RawOrderCountDto> rawOrderCounts = (List<RawOrderCountDto>) session.getAttribute("rawOrderCarts");
+		System.out.println(rawOrderCounts);
+		System.out.println(storeId);
+		System.out.println(orderDate);
+		
+		return "raw-order/cartList";
+	}
+	
 	
 }
