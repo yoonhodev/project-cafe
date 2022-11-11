@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.projectprac.dto.CouponDto;
 import com.projectprac.dto.CouponMakeDto;
@@ -91,32 +92,26 @@ public class OrderController {
 		return "shop/shop";
 	}
 
-	@GetMapping(path = { "delete-order" })
-	public String deleteOrder(@RequestParam(defaultValue = "-1") int prodId, HttpSession session) {
-
-		if (prodId == -1) {
-			return "redirect:order";
-		}
-
-		List<ProductDto> productIds = (List<ProductDto>) session.getAttribute("productIds");
-		for (ProductDto product : productIds) {
-			if (product.getProdId() == prodId) {
-				productIds.remove(product);
-				session.setAttribute("productIds", productIds);
-				return "redirect:order";
-			}
-		}
-
-		return "redirect:order";
-
-	}
-
-	@GetMapping(path = { "delete-all-order" })
-	public String deleteAllOrder(HttpSession session) {
-		session.removeAttribute("productIds");
-		return "redirect:order";
-
-	}
+//	@GetMapping(path = { "delete-order" })
+//	@ResponseBody
+//	public String deleteOrder(@RequestParam(defaultValue = "-1") int prodId, HttpSession session) {
+//
+//		if (prodId == -1) {
+//			return "redirect:order";
+//		}
+//
+//		List<ProductDto> productIds = (List<ProductDto>) session.getAttribute("productIds");
+//		for (ProductDto product : productIds) {
+//			if (product.getProdId() == prodId) {
+//				productIds.remove(product);
+//				session.setAttribute("productIds", productIds);
+//				return "redirect:order";
+//			}
+//		}
+//
+//		return "redirect:order";
+//
+//	}
 
 	@GetMapping(path = { "coupon-apply" })
 	public String couponApply(@RequestParam(defaultValue = "-1") String customerId, CouponMakeDto couponmake,
@@ -145,6 +140,36 @@ public class OrderController {
 
 		return "mypage/coupon";
 
+	}
+	@GetMapping(path = { "order-list" })
+	public String orderList(HttpSession session) {
+		
+		return "shop/order-list";
+		
+	}
+	
+	@GetMapping(path = { "delete-order" })
+	@ResponseBody
+	public String deleteOrder(HttpSession session,@RequestParam(defaultValue = "-1") String prodId) {
+		List<ProductDto> productIds = (List<ProductDto>) session.getAttribute("productIds");
+		List<ProductDto> products = (List<ProductDto>) session.getAttribute("products");
+		productIds.removeIf(item -> item.getProdId() == Integer.parseInt(prodId));
+		products.removeIf(item -> item.getProdId() == Integer.parseInt(prodId));
+		session.setAttribute("productIds", productIds);
+		session.setAttribute("products", products);
+		
+		return "shop/order-list";
+		
+	}
+	
+	@GetMapping(path = { "delete-all-order" })
+	@ResponseBody
+	public String deleteAllOrder(HttpSession session) {
+		session.removeAttribute("productIds");
+		session.removeAttribute("products");
+		System.out.println(session.getAttribute("productIds"));
+		return "success";
+		
 	}
 		
 }
