@@ -43,6 +43,7 @@
                           <div class="card-body text-center">
 			          	<h1 style="color: black;">지점명</h1><br>			          		
 						    <form action="workerInfo" method="get" id="show-worker-form">
+						    <span class="col-sm-6 col-md-4 col-lg-3"><i class="mdi mdi-sort" style="color: gray"></i></span>
 							    <select id="StoreName1" name="storeName1" class="StoreName1">
 							    	<option selected disabled hidden="">지점 선택</option>
 							      	<c:forEach var="store" items="${ stores }" varStatus="status">
@@ -50,6 +51,7 @@
 							        </c:forEach>
 								</select>
 								<br><br>
+								<span class="col-sm-6 col-md-4 col-lg-3"><i class="mdi mdi-calendar" style="color: gray"></i></span>
 							<select id=WorkYear1 name="WorkYear1" class="WorkYear1">
 								<option selected disabled hidden="">년도 선택</option>
 								<option value="2020">2020</option>
@@ -61,6 +63,7 @@
 								<option value="2026">2026</option>
 							</select>
 							<br><br>
+							<span class="col-sm-6 col-md-4 col-lg-3"><i class="mdi mdi-calendar-today" style="color: gray"></i></span>
 							<select id=WorkMonth1 name="WorkMonth1" class="WorkMonth1">
 								<option selected disabled hidden="">월 선택</option>
 								<option value="1">1</option>
@@ -115,7 +118,7 @@
                       </thead>
                       <tbody>
                         <c:forEach var="worker" items="${ workers }" varStatus="status">
-						<tr class="cart__row border-bottom line1 cart-flex border-top"
+						<tr class="cart__row border-bottom line1 cart-flex border-top table-primary"
 							align="center">
 							<td><a href="worker-infoDtail?workerId=${ worker.workerId }"><span>${ worker.workerName }</span></a></td>
 							<td><span>${ storeName11 }</span></td>
@@ -140,6 +143,7 @@
                     		<div class="card">
                           <div class="card-body text-center">
 							<h1 style="color: black;">지점명</h1>
+							<span class="col-sm-6 col-md-4 col-lg-3"><i class="mdi mdi-sort" style="color: gray"></i></span>
 						    <select id="StoreName22" class="StoreName1">
 						    	<option selected disabled hidden="">지점 선택</option>
 						      	<c:forEach var="store" items="${ stores }" varStatus="status">
@@ -160,23 +164,23 @@
                     <h4 class="card-title">직원 정보 입력</h4>                  
                     <form class="forms-sample" method="post" action="workerInfo">
                       <div class="form-group">
-                        <label>근무 년도</label>
+                        <label style="color: black;"><i class="mdi mdi-calendar-blank" style="color: gray"></i> 근무 년도</label>
                         <input type="text" name="workYear" class="form-control" id="WorkYear" placeholder="근무 년도를 입력해주세요">
                       </div>
                       <div class="form-group">
-                        <label>근무 월</label>
+                        <label style="color: black;"><i class="mdi mdi-calendar-blank" style="color: gray"></i>근무 월</label>
                         <input type="text" name="workMonth" class="form-control" id="WorkMonth" placeholder="근무 월을 입력해주세요">
                       </div>                      
                       <div class="form-group">
-                        <label>직원명</label>
+                        <label style="color: black;"><i class="mdi mdi-worker" style="color: blue"></i>직원명</label>
                         <input type="text" name="workerName" class="form-control" id="WorkerName" placeholder="직원명을 입력해주세요">
                       </div>
                        <div class="form-group">
-                        <label>급여</label>
+                        <label style="color: black;"><i class="mdi mdi-cash" style="color: green"></i>급여</label>
                         <input type="text" name="salary" class="form-control" id="Salary" placeholder="급여를 입력해주세요 (단위: 만)">
                       </div>
                       <div class="form-group">
-                        <label>직원 연락처</label>
+                        <label style="color: black;"><i class="mdi mdi-phone" style="color: blue"></i>직원 연락처</label>
                         <input type="text" name="workerPhone" class="form-control" id="WorkerPhone" placeholder="직원 연락처를 입력해주세요">
                       </div>
 
@@ -251,6 +255,27 @@
 			
 		});
 		
+		$(function() {
+			
+			$('#SelectStore').on('click', function(event) {
+				
+				if($('#StoreId11').val()=="") {
+					alert("지점을 선택해 주세요");
+					return false;
+				};
+				
+				if($('#WorkYear11').val()=="") {
+					alert("년도를 선택해 주세요");
+					return false;
+				};
+				
+				if($('#WorkMonth11').val()=="") {
+					alert("월을 선택해 주세요");
+					return false;
+				};
+				
+			});
+		});
 	</script>
 </body>
 </html>
