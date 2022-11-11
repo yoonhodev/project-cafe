@@ -38,15 +38,20 @@ public interface RawOrderMapper {
 			"WHERE big_category = #{ bigCategory } AND small_category = #{ smallCategory } ")
 	List<RawOrderDto> selectRawOrderByBigCategoryANDSmallCategory(@Param("bigCategory") String bigCategory, @Param("smallCategory") String smallCategory);
 	
-	
-	
-	
-	
-	
 	@Select("SELECT raw_id rawId, raw_name rawName, raw_price rawPrice, temperature rawTemp, big_category bigCategory, small_category smallCategory " +
 			"FROM raw " +
 			"WHERE big_category = #{ bigCategory }")
 	List<RawOrderDto> selectRawOrderByBigCategory(String bigCategory);
+
+	@Select("SELECT raw_id rawId, raw_name rawName, raw_price rawPrice, temperature rawTemp, big_category bigCategory, small_category smallCategory " +
+			"FROM raw " +
+			"WHERE raw_name LIKE CONCAT('%',#{ rawName },'%') ")
+	List<RawOrderDto> selectRawOrderByRawName(String rawName);
+
+	@Select("SELECT raw_id rawId, raw_name rawName, raw_price rawPrice, temperature rawTemp, big_category bigCategory, small_category smallCategory " +
+			"FROM raw " +
+			"WHERE raw_id = #{ rawId }")
+	RawOrderDto selectRawOrderByRawId(int rawId);
 
 
 	

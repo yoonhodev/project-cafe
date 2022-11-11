@@ -2,11 +2,9 @@ package com.projectprac.service;
 
 import java.util.List;
 
-import javax.xml.stream.events.Comment;
-
+import com.projectprac.dto.BoardAttachDto;
 import com.projectprac.dto.BoardCommentDto;
 import com.projectprac.dto.BoardDto;
-import com.projectprac.dto.StoreDto;
 import com.projectprac.mapper.BoardCommentMapper;
 import com.projectprac.mapper.BoardMapper;
 
@@ -23,24 +21,31 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void writeBoard(BoardDto board) {
 		
-		// BoardDao boardDao = new BoardDao();
-		// board.getBoardNo() --> 0
-
 		boardMapper.insertBoard(board); // insert 하면서 boardNo 자동 생성 ( 글 번호 가져오기 필요 )
-
-		// board.getBoardNo() --> 새로 만들어진 글번호
-//		if (board.getAttachments() != null) {
-//			for (BoardAttachDto attachment : board.getAttachments()) {
-//				attachment.setBoardNo(board.getBoardNo()); // 새로 만들어진 글번호를 Attach 객체에 저장
-//				boardDao.insertBoardAttach(attachment);
-			}
 	
+	}
 	
 	
 	@Override
 	public void writeEventBoard(BoardDto board) {
 
 		boardMapper.insertEventBoard(board);
+		board.getBoardId();
+		
+		System.out.println(board.getBoardId());
+		System.out.println("11111111111111");
+		if (board.getAttachments() != null) {
+			for (BoardAttachDto attachment : board.getAttachments()) {
+				attachment.setBoardId(board.getBoardId()); // 새로 만들어진 글번호를 Attach 객체에 저장
+				System.out.println(attachment.getBoardId());
+				System.out.println(board.getBoardId());
+				System.out.println("11111111111111");
+				
+				boardMapper.insertBoardAttach(attachment);
+				
+				
+			}
+		}
 		
 	}
 
@@ -63,7 +68,7 @@ public class BoardServiceImpl implements BoardService {
 
 		BoardDto boardDetail = boardMapper.showEventBoardDetail(boardId);
 		
-		return null;
+		return boardDetail;
 	}
 
 	
@@ -125,13 +130,20 @@ public class BoardServiceImpl implements BoardService {
 		
 		BoardDto board = boardMapper.selectBoardByBoardNo(boardId);
 		
+
+		
 		return board;
 	}
 	
 	@Override
-	public BoardDto findEventBoardByBoardNo(int boardId) {
+	public BoardDto findEventBoardByBoardNo(int boardId) {  /// 게시글 수정과 관련된 메소드
 		
-		BoardDto board = boardMapper.selectEventBoardByBoardNo(boardId);
+		BoardDto board = boardMapper.selectEventBoardByBoardNo(boardId);	
+		if (board != null) {
+		List<BoardAttachDto> attachments = boardMapper.selectBoardAttachByBoardNo(boardId);
+		board.setAttachments(attachments);
+		}
+		//BoardDto board = boardMapper.selectEventBoardByBoardNo(boardId);
 		
 		return board;
 	}
@@ -163,8 +175,6 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardCommentDto> findBoardCommentByBoard(int boardId) {
 		List<BoardCommentDto> comments = commentMapper.selectCommentByBoardNo(boardId);
 		
-	
-		
 		return comments;
 	}
 
@@ -183,6 +193,17 @@ public class BoardServiceImpl implements BoardService {
 		commentMapper.updateComment(comment);
 		
 	}
+
+
+
+	@Override
+	public BoardAttachDto findBoardAttachByAttachNo(int attachId) {
+		BoardAttachDto attachment = boardMapper.selectBoardAttachByAttachNo(attachId);
+		return attachment;
+	}
+
+
+
 
 
 

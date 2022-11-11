@@ -2,6 +2,7 @@ package com.projectprac.service;
 
 import java.util.List;
 
+import com.projectprac.dto.BoardAttachDto;
 import com.projectprac.dto.BoardCommentDto;
 import com.projectprac.dto.BoardDto;
 
@@ -40,6 +41,10 @@ public interface BoardService {
 
 	List<BoardDto> findEventBoardByPage(int pageNo, int pageSize);
 
+	BoardAttachDto findBoardAttachByAttachNo(int attachId);
+	
+	
+	//댓글 시작
 	public List<BoardCommentDto> findBoardCommentByBoard(int boardId);
 
 	void writeComment(BoardCommentDto comment);
@@ -47,8 +52,7 @@ public interface BoardService {
 	void deleteComment(int commentId);
 
 	void updateComment(BoardCommentDto comment);
-		
-		
+	//댓글 끝
 
 
 	
