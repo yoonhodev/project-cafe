@@ -1,7 +1,10 @@
 package com.projectprac.controller;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +15,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.projectprac.common.Util;
+import com.projectprac.dto.BoardAttachDto;
 import com.projectprac.dto.BoardDto;
 import com.projectprac.service.BoardService;
 import com.projectprac.ui.ThePager;
@@ -53,7 +60,7 @@ public class BoardController {
 		model.addAttribute("pager", pager);
 		model.addAttribute("pageNo", pageNo);
 
-		System.out.println(boardCount);
+	
 		
 		// 4. View or Controller로 이동
 		return "board/noticeBoard"; 	// /WEB-INF/views/ + board/list + .jsp
@@ -68,7 +75,7 @@ public class BoardController {
 		if (boardId == -1 || pageNo == -1) { // 요청 데이터가 잘못된 경우
 			return "redirect:noticeBoard";
 		}
-		
+		System.out.println(pageNo);
 		BoardDto boardDetail = boardService.showBoardDetail(boardId);
 		
 //		if (boardDetail == null) { // 조회되지 않은 경우 (글 번호가 잘못되었거나 또는 삭제된 글인 경우)

@@ -50,17 +50,46 @@
 							        </c:forEach>
 								</select>
 								<br><br>
+							<select id=WorkYear1 name="WorkYear1" class="WorkYear1">
+								<option selected disabled hidden="">년도 선택</option>
+								<option value="2020">2020</option>
+								<option value="2021">2021</option>
+								<option value="2022">2022</option>
+								<option value="2023">2023</option>
+								<option value="2024">2024</option>
+								<option value="2025">2025</option>
+								<option value="2026">2026</option>
+							</select>
+							<br><br>
+							<select id=WorkMonth1 name="WorkMonth1" class="WorkMonth1">
+								<option selected disabled hidden="">월 선택</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+								<option value="11">11</option>
+								<option value="12">12</option>
+							</select>
+								<br><br>
 								<input type="hidden" id="StoreId11" name="storeId">
+								<input type="hidden" id="WorkYear11" name="workYear">	
+								<input type="hidden" id="WorkMonth11" name="workMonth">
 								<input type="submit"
 									   class="spr-button spr-button-primary button button-primary btn btn-primary"
 									   id="SelectStore"
 									   value="확인">
 							</form>
+							
 											
 						</div>
 							</div>
           			</div>
-          		
            <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
@@ -77,7 +106,7 @@
 							<th class="text-center">지점명</th>
 							<th class="text-center">근무 년도</th>
 							<th class="text-center">근무 월</th>
-							<th class="text-center">시급</th>
+							<th class="text-center">시급(만)</th>
 							<th class="text-center">연락쳐</th>
 <!-- 							<th class="text-center">수도세</th> -->
 <!-- 							<th class="text-center">광고비</th> -->
@@ -95,7 +124,7 @@
 							<td><span>${ worker.salary }</span></td>
 							<td><span>${ worker.workerPhone }</span></td>
 										
-						</tr>																												
+						</tr>																										
 						</c:forEach>								
                       </tbody>
                     </table>
@@ -197,8 +226,9 @@
 			var activeTab = $(this).attr("data-name"); 
 			$("#"+activeTab).fadeIn();
 		});
+		
 		$(".StoreName1").on("change", function() {
-			var storeId = $(this).val()
+			var storeId = $(this).val();
 			
 			
 			$("#StoreId11").val(storeId);	
@@ -207,6 +237,20 @@
 			
 		});		
 
+		$(".WorkYear1").on("change", function() {
+			var workYear = $(this).val();
+			
+			$('#WorkYear11').val(workYear);
+			
+		});
+		
+		$(".WorkMonth1").on("change", function() {
+			var workMonth = $(this).val();
+			
+			$('#WorkMonth11').val(workMonth);
+			
+		});
+		
 	</script>
 </body>
 </html>

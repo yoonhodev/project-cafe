@@ -1,3 +1,7 @@
+<%@page import="com.projectprac.dto.BoardAttachDto"%>
+<%@page import="com.projectprac.dto.BoardDto"%>
+
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -7,9 +11,6 @@
 
 <c:set var="enter" value="
 " />  <!-- 엔터쳤을때 화면에서 실제 적용하게 해주는 코드  -->
-
-
-
 
 <!DOCTYPE html>
 <html class="no-js" lang="ko">
@@ -26,11 +27,9 @@
 </head>
 <body class="template-blog belle">
 
-
 <div class="pageWrapper">
 	<jsp:include page="/WEB-INF/views/modules/header.jsp"></jsp:include>
 	<br><br><br>
-    
 	<!--End Mobile Menu-->
     
     <!--Body Content-->
@@ -48,12 +47,13 @@
                 <!--Main Content-->
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
                 	<div class="custom-search">
-                        
                     </div>
                     <div class="blog--list-view blog--grid-load-more">
                         <div class="article" style="font-size: 17px"> 
                             <!-- Article Image --> 
-                             <a class="article_featured-image" href="#"><img class="blur-up lazyload" data-src="resources/assets/images/blog/blog-post-3.jpg" src="resources/assets/images/blog/blog-post-3.jpg" alt="How to Wear The Folds Trend Four Ways"></a> 
+                            <c:forEach var="attachment" items="${ boardDetail.attachments }">			
+                             <a class="article_featured-image" href="#"><img src="/project-template-prac/resources/assets/images/cafe-out-image-folder/${attachment.savedFileName}" alt="${attachment.savedFileName}"></a> 
+                             </c:forEach>
                             <h2 class="h3" style="font-size: 17px"><a href="#">${ boardDetail.title }</a></h2>
                             <ul class="publish-detail">   
                        	        <li><i class="icon anm anm-map-marker-al" aria-hidden="true"></i> ${ boardDetail.boardId }</li>                   
@@ -64,16 +64,6 @@
                                         <li><i class="icon anm anm-comments-l"></i> <a href="#"> 10 comments</a></li>
                                     </ul>
                                 </li>
-                                <li>
-                                	첨부파일
-                                   <c:forEach var="attachment" items="${ board.attachments }">
-					               <a href="download.action?attachNo=${ attachment.attachNo }" style="text-decoration: none">
-					                  ${ attachment.userFileName }
-					               </a>
-					             
-			                <br>
-			            </c:forEach>
-                                </li>
                             </ul>
                             <br>
                             <div class="rte"> 
@@ -82,8 +72,13 @@
 " />
 								   ${ fn:replace(boardDetail.content, enter, "<br>") }</p>
                             </div>
-                            
+                                   <c:forEach var="attachment" items="${ boardDetail.attachments }">
+                                   <hr>
+                                   <i class="icon anm anm-envelope-l"></i>
+			                 		<span>[${ attachment.userFileName }]</span>
+					     	       </c:forEach>
                       	    </div>
+                      	    
                         <div class="loadmore-post">	
                             <a></a>
                           	<c:if test="${ loginuser.userType }">
@@ -118,6 +113,7 @@
 					</div>
 				</div>
 				</form>
+				
         <!-- end of write comment area -->	
 		<!-- comment list area  -->
 		<br>
@@ -149,8 +145,6 @@
      <script src="resources/assets/js/main.js"></script>
      <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 	 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-	
-
 
 <script type="text/javascript">
 	$(function() {
@@ -173,15 +167,21 @@
 		
 		$('#comment-list').load("comment-list.action?boardId=${ boardDetail.boardId}");
 
-
-		
+		// 댓글 작성 버튼 눌렀을때
 		$('#writecomment').on('click', function(event){
-				if($("#comment_content").val()==""){
-					alert("댓글을 써주세요.");
-					$("#comment_content").focus();
-					return false;
-				}
-				alert('댓글 등록 완료');
+			if($("#comment_content").val()==""){
+				alert("댓글을 작성해주세요.");
+				$("#comment_content").focus();
+				return false;
+			}
+				
+			let signIn = "${ loginuser.customerId }";
+    		if (signIn == ""){
+    			alert("댓글은 로그인 후 작성하실 수 있습니다.");
+    			event.preventDefault();
+    			location.href = "login";
+    		} else {
+    		}
 		});
 	
 	$('#comment-list').on('click', '.delete-comment', function(event) {
@@ -189,7 +189,7 @@
 		
 		var commentId = $(this).data('comment-no'); // .data(comment-no') --> data-comment-no="value"를 조회
 		
-		const yn = confirm(commentId + "번 댓글을 삭제할까요?");
+		const yn = confirm("댓글을 삭제할까요?");
 		if (!yn) return;   // 아니오 클릭했을때
 		
 		location.href = 'delete-comment.action?commentId=' + commentId + '&boardId=${ boardDetail.boardId }&pageNo=${ pageNo }';
@@ -198,6 +198,7 @@
 	
 	var currentEditCommentId = null;
 	
+	// 댓글 수정 버튼 눌렀을 때 
 	$('#comment-list').on('click', '.edit-comment', function(event){
 		event.preventDefault();
 		
@@ -270,9 +271,6 @@
 		
 	});
 	});
-	
-	
-	
 	
 </script>
 

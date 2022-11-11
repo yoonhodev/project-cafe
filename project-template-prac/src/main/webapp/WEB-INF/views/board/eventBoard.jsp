@@ -61,7 +61,7 @@
 													});
 												</script>
 
-                                                <form method="post" action="writeEventBoard" id="new-review-form" class="new-review-form" >
+                                                <form method="post" action="writeEventBoard" id="new-review-form" class="new-review-form" enctype="multipart/form-data">
                                                 	<input type="hidden" name="boardType" value="false">
                                                     <h3 class="spr-form-title">Write notice</h3>
                                                     <fieldset class="spr-form-contact">
@@ -75,7 +75,7 @@
                                                       <div class="spr-form-review-body">
                                                         <label class="spr-form-label" for="review_body_10508262282">첨부파일<span class="spr-form-review-body-charactersremaining"></span></label>
                                                         <div class="spr-form-input">
-                                                          <input type="file" name="attach" id="review_body_10508262282">
+                                                          <input type="file" name="attachBoard" accept="image/gif, image/jpeg, image/png, image/jpg" id="review_body_10508262282" multiple>
                                                         </div>
                                                       </div>
                                                       
@@ -138,11 +138,11 @@
                             </div>
                         </div>
                     </div>
-                                    </div>
-                                   
-                                </div>
-                                
-                            </div>
+                  </div>
+                 
+              </div>
+              
+          </div>
                     <!--Related Product Slider-->
                     
                     <!--End Related Product Slider-->

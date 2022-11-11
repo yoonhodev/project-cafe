@@ -9,31 +9,37 @@
 	<dependencies>
 
 		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.14.0</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>5.3.23</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>5.3.23</version>
 		</dependency>
-		
+
 		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-aop</artifactId>
-		    <version>5.3.23</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>5.3.23</version>
 		</dependency>
 
 		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-aspects</artifactId>
-		    <version>5.3.23</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aspects</artifactId>
+			<version>5.3.23</version>
 		</dependency>
-		
+
 		<!-- beginning of servlet and jsp -->
-		
+
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
@@ -53,68 +59,66 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-		
+
 		<!-- end of servlet and jsp -->
 
 		<!-- database library -->
-		
+
 		<dependency>
-		    <groupId>mysql</groupId>
-		    <artifactId>mysql-connector-java</artifactId>
-		    <version>8.0.30</version>
-		</dependency>
-		
-		<dependency>
-		    <groupId>org.apache.commons</groupId>
-		    <artifactId>commons-dbcp2</artifactId>
-		    <version>2.9.0</version>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.30</version>
 		</dependency>
 
 		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-jdbc</artifactId>
-		    <version>5.3.23</version>
-		</dependency>
-
-		
-		
-		<dependency>
-		    <groupId>org.mybatis</groupId>
-		    <artifactId>mybatis</artifactId>
-		    <version>3.5.11</version>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-dbcp2</artifactId>
+			<version>2.9.0</version>
 		</dependency>
 
 		<dependency>
-		    <groupId>org.mybatis</groupId>
-		    <artifactId>mybatis-spring</artifactId>
-		    <version>2.0.7</version>
-		</dependency>		
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>5.3.23</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.5.11</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>2.0.7</version>
+		</dependency>
 		<!-- end of database libraray -->
 
 		<!-- file upload library-->
-			
+
 		<dependency>
-		    <groupId>commons-fileupload</groupId>
-		    <artifactId>commons-fileupload</artifactId>
-		    <version>1.4</version>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.4</version>
 		</dependency>
 
 		<dependency>
-		    <groupId>commons-io</groupId>
-		    <artifactId>commons-io</artifactId>
-		    <version>2.11.0</version>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.11.0</version>
 		</dependency>
 
 		<!-- end of file upload library-->
 		<!-- validation of library -->
 		<dependency>
-		    <groupId>org.hibernate.validator</groupId>
-		    <artifactId>hibernate-validator</artifactId>
-		    <version>6.2.5.Final</version>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>6.2.5.Final</version>
 		</dependency>
 
-		
-		
+
 		<!-- end of validation library- -->
 
 		<dependency>

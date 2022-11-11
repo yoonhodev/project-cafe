@@ -10,7 +10,7 @@ public interface WorkerService {
 
 	
 
-	List<WorkerDto> selectWorkerByStoreId(int storeId);
+	List<WorkerDto> selectWorkerByStoreId(int storeId, String workYear, String workMonth);
 
 	List<StoreDto> showAllStores();
 
@@ -21,6 +21,8 @@ public interface WorkerService {
 	void insertWorkerDetail(SalaryDto salary);
 
 	List<SalaryDto> selectSalaryList(SalaryDto salary);
+
+	List<WorkerDto> showallWorkers();
 
 	
 
