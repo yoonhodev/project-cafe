@@ -43,6 +43,7 @@
                           <div class="card-body text-center">
 			          	<h1 style="color: black;">지점명</h1><br>
 						    <form action="fixedSpend" method="get" id="show-cost-form">
+						    <span class="col-sm-6 col-md-4 col-lg-3"><i class="mdi mdi-sort" style="color: gray"></i></span>
 							    <select id="StoreName" name="storeName" class="StoreName">
 							    	<option selected disabled hidden="">지점 선택</option>
 							      	<c:forEach var="store" items="${ stores }" varStatus="status">
@@ -50,7 +51,7 @@
 							        </c:forEach>
 								</select>
 								<br><br>
-								<input type="hidden" id="StoreId1" name="storeId">
+								<input type="hidden" id="StoreId1" name="storeId">								
 								<input type="submit"
 									   class="spr-button spr-button-primary button button-primary btn btn-primary"
 									   id="SelectStore"
@@ -107,6 +108,7 @@
                     		<div class="card">
                           <div class="card-body text-center">
 							<h1 style="color: black;">지점명</h1>
+							<span class="col-sm-6 col-md-4 col-lg-3"><i class="mdi mdi-sort" style="color: gray"></i></span>
 						    <select id="StoreName2" class="StoreName">
 						    	<option selected disabled hidden="">지점 선택</option>
 						      	<c:forEach var="store" items="${ stores }" varStatus="status">
@@ -127,31 +129,31 @@
                     <h4 class="card-title">고정 지출 입력</h4>
                     <form class="forms-sample" method="post" action="fixedSpend">
                       <div class="form-group">
-                        <label>월</label>
+                        <label style="color: black;"><i class="mdi mdi-calendar-blank" style="color: gray"></i>월</label>
                         <input type="date" name="month" class="form-control" id="Month" placeholder="월을 입력해주세요">
                       </div>
                       <div class="form-group">
-                        <label>임대료</label>
+                        <label style="color: black;"><i class="mdi mdi-cash" style="color: green"></i>임대료</label>
                         <input type="text" name="monthPay" class="form-control" id="MonthPay" placeholder="임대료를 입력해주세요 (단위: 만)">
                       </div>
                        <div class="form-group">
-                        <label>관리비용</label>
+                        <label style="color: black;"><i class="mdi mdi-cash" style="color: green"></i>관리비용</label>
                         <input type="text" name="managePay" class="form-control" id="ManagePay" placeholder="관리비를 입력해주세요 (단위: 만)">
                       </div>
                       <div class="form-group">
-                        <label>전기세</label>
+                        <label style="color: black;"><i class="mdi mdi-cash" style="color: green"></i>전기세</label>
                         <input type="text" name="elecPay" class="form-control" id="ElecPay" placeholder="전기세를 입력해주세요 (단위: 만)">
                       </div>
                       <div class="form-group">
-                        <label>수도세</label>
+                        <label style="color: black;"><i class="mdi mdi-cash" style="color: green"></i>수도세</label>
                         <input type="text" name="waterPay" class="form-control" id="WaterPay" placeholder="수도세를 입력해주세요 (단위: 만)">
                       </div>
                       <div class="form-group">
-                        <label>광고비용</label>
+                        <label style="color: black;"><i class="mdi mdi-cash" style="color: green"></i>광고비용</label>
                         <input type="text" name="adPay" class="form-control" id="AdPay" placeholder="광고비를 입력해주세요 (단위: 만)">
                       </div>
                       <div class="form-group">
-                        <label>배달대행비용</label>
+                        <label style="color: black;"><i class="mdi mdi-cash" style="color: green"></i>배달대행비용</label>
                         <input type="text" name="deliPay" class="form-control" id="DeliPay" placeholder="배달대행비를 입력해주세요 (단위: 만)">
                       </div>
                       <input type="hidden" id="StoreId2" name="storeId">
@@ -208,6 +210,25 @@
 			
 		});
 
+		$(function() {
+			
+			$('#SelectStore').on('click', function(event) {
+				
+				if($('#StoreId1').val()=="") {
+					alert("지점을 선택해 주세요");
+					return false;
+				}
+				
+				
+			});
+			
+			
+			
+			
+			
+			
+		});
+		
 		
 		
 	</script>

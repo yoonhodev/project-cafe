@@ -14,10 +14,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Common-css -->
 <jsp:include page="/WEB-INF/views/modules/common-css.jsp"></jsp:include>
-
+<link rel="stylesheet" href="project-template-prac/resources/admin-assets/vendors/mdi/materialdesignicons.min.css">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@500&display=swap');
-	
+@import url("project-template-prac/resources/admin-assets/vendors/mdi/materialdesignicons.min.css");	
 	.Korean-font-style {
 		font-family: 'Hahmlet';
 	}
@@ -62,7 +62,7 @@
                             
                             <a class="article_featured-image" ><img class="blur-up lazyload article_featured-image" src="/project-template-prac/resources/assets/images/cafe-out-image-folder/${ store.storeUniqueimage }" alt="이미지 로드 실패"></a>                          
                             
-                            <h2 class="h3"  >${ store.storeName }</h2>
+                            <h2 class="h3"  >${ store.storeName }</h2> <span class="col-sm-6 col-md-4 col-lg-3"><i class="mdi mdi-sort" style="color: black"></i></span>
                             <ul class="publish-detail">                      
                                 <li><i class="anm anm-user-al" aria-hidden="true"></i>${store.storePhone}</li>
                                 <li><i class="icon anm anm-clock-r"></i>${ store.storeSchedule }</li>
