@@ -54,16 +54,13 @@
                             <c:forEach var="attachment" items="${ boardDetail.attachments }">			
                              <a class="article_featured-image" href="#"><img src="/project-template-prac/resources/assets/images/cafe-out-image-folder/${attachment.savedFileName}" alt="${attachment.savedFileName}"></a> 
                              </c:forEach>
-                            <h2 class="h3" style="font-size: 17px"><a href="#">${ boardDetail.title }</a></h2>
+                            <h2 class="rte" style="font-size: 20px;"><a href="#"><strong>${ boardDetail.title }</strong></a></h2>
                             <ul class="publish-detail">   
-                       	        <li><i class="icon anm anm-map-marker-al" aria-hidden="true"></i> ${ boardDetail.boardId }</li>                   
-                                <li><i class="anm anm-user-al" aria-hidden="true"></i> ADMIN</li>
-                                <li><i class="icon anm anm-clock-r"></i> <fmt:formatDate value="${ boardDetail.regdate }" pattern="yyyy-MM-dd"/></li>
-                                <li>
-                                    <ul class="inline-list">   
-                                        <li><i class="icon anm anm-comments-l"></i> <a href="#"> 10 comments</a></li>
-                                    </ul>
-                                </li>
+                       	         <li><i class="icon anm anm-map-marker-al" aria-hidden="true" style="color: hotpink"></i> ${ boardDetail.boardId }</li>                   
+                          &nbsp; <li><i class="anm anm-user-al" aria-hidden="true" style="color: hotpink"></i> ADMIN</li>
+                          &nbsp; <li><i class="icon anm anm-clock-r" style="color: hotpink"></i> <fmt:formatDate value="${ boardDetail.regdate }" pattern="yyyy-MM-dd"/></li>
+                          &nbsp; <li><i class="icon anm anm-search-l" style="color: hotpink"></i> ${ boardDetail.readCount }</li>
+                          &nbsp; <li><i class="icon anm anm-comments-l" style="color: hotpink"></i> ${ commentEventCount }</li>
                             </ul>
                             <br>
                             <div class="rte"> 
@@ -74,8 +71,10 @@
                             </div>
                                    <c:forEach var="attachment" items="${ boardDetail.attachments }">
                                    <hr>
+                                   <a href="download.action?attachId=${ attachment.attachId }">
                                    <i class="icon anm anm-envelope-l"></i>
 			                 		<span>[${ attachment.userFileName }]</span>
+			                 		</a>
 					     	       </c:forEach>
                       	    </div>
                       	    
@@ -182,6 +181,7 @@
     			location.href = "login";
     		} else {
     		}
+    		alert('댓글이 작성 되었습니다.')
 		});
 	
 	$('#comment-list').on('click', '.delete-comment', function(event) {

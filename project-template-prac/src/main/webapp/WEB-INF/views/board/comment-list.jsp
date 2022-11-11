@@ -13,16 +13,16 @@
 	<div id="comment-view-area-${ comment.commentId }">
 	<c:choose>
 	<c:when test="${ comment.deleted }">
-			<div class="card-header bg-light">
-				<i class="icon anm anm-map-marker-al" aria-hidden="true"></i> ${ comment.commentId } &nbsp;&nbsp; 
-			</div>
-			<div>
-				<ul class="list-group list-group-flush">
-					<li class="list-group-item"><span>댓글이 삭제 되었습니다.</span>
-				
-					</li>
-				</ul>
-			</div>
+		<div class="card-header bg-light">
+			<i class="icon anm anm-map-marker-al" aria-hidden="true"></i> ${ comment.commentId } &nbsp;&nbsp; 
+		</div>
+		<div>
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item"><span>댓글이 삭제 되었습니다.</span>
+			
+				</li>
+			</ul>
+		</div>
 	</c:when>
 	<c:otherwise>
 			<div class="card-header bg-light">
@@ -63,6 +63,5 @@
 				</ul>
 			</div>
 			</div>
-	
 	
 </c:forEach>

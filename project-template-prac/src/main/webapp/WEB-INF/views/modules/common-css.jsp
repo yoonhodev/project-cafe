@@ -15,3 +15,5 @@
 	href="/project-template-prac/resources/assets/css/style.css">
 <link rel="stylesheet"
 	href="/project-template-prac/resources/assets/css/responsive.css">
+<link rel="stylesheet"
+	href="/project-template-prac/resources/assets/css/materialdesignicons.min.css">

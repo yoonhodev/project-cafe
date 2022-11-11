@@ -14,10 +14,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Common-css -->
 <jsp:include page="/WEB-INF/views/modules/common-css.jsp"></jsp:include>
-
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@500&display=swap');
-	
+
 	.Korean-font-style {
 		font-family: 'Hahmlet';
 	}
@@ -56,7 +55,6 @@
                   			<c:forEach var="store" items="${ stores }">
 							<c:choose>
 							<c:when test="${ store.deleted }">
-							<h2>폐업</h2>
 							</c:when>
 							<c:otherwise>
                             <!-- Article Image --> 

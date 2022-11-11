@@ -96,7 +96,7 @@
                                            	</div>
                                             <div>
                             <div style="font-size: 15pt">
-                                <table>
+                                <table class="table table-striped">
                                     <thead>
                                         <tr>
                                             <th style="height: 25px; background-color:hotpink; font-size: 17px">No.</th>
@@ -111,20 +111,20 @@
                                     	<c:choose>
                                         <c:when test="${ boards.deleted }">
                                         <tr>
-                                            <td style="height: 25px; font-size: 17px">${ boards.boardId }</td>
-                                            <td style="height: 25px; width: 800px; font-size: 17px">[삭제된 글입니다.]</td>
-                                            <td style="height: 25px; font-size: 17px">ADMIN</td>
-                                            <td style="height: 25px; font-size: 17px">0</td>
-                                            <td style="height: 25px; font-size: 17px"><fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/></td>
+                                            <td style="height: 25px; width:80px; font-size: 17px">${ boards.boardId }</td>
+                                            <td style="height: 25px; font-size: 17px">[삭제된 글입니다.]</td>
+                                            <td style="height: 25px; width:100px; font-size: 17px">ADMIN</td>
+                                            <td style="height: 25px; width:80px; font-size: 17px">${ boards.readCount }</td>
+                                            <td style="height: 25px; width:150px;font-size: 17px"><fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/></td>
                                         </tr>
                                         </c:when>
                                         <c:otherwise>
                               			<tr>
-                                            <td style="height: 25px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.boardId }</a></td>
+                                            <td style="height: 25px; width:80px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.boardId }</a></td>
                                             <td style="height: 25px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.title }</a></td>
-                                            <td style="height: 25px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">ADMIN</a></td>
-                                            <td style="height: 25px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">0</a></td>
-                                            <td style="height: 25px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }"><fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/></a></td>
+                                            <td style="height: 25px; width:100px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">ADMIN</a></td>
+                                            <td style="height: 25px; width:80px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.readCount }</a></td>
+                                            <td style="height: 25px; width:150px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }"><fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/></a></td>
                                         </tr>  
                                          </c:otherwise>
                                          </c:choose>
@@ -135,14 +135,35 @@
                                 <div style="text-align: center; background-color: white">
 	                                            <span style="background-color: white">${ pager }</span>
 								</div>
+								
+                                   
+<!--                                    <form action="freeList" method="post"> -->
+<!-- 	                                   	<div class="search-wrap"> -->
+<!-- 	                                   		<button type="submit" class="btn btn-info search-btn">검색</button> -->
+<!-- 	                                   		<input type="text" class="form-control search-input" name="searchName"> -->
+<!-- 	                                   		<select class="form-control search-select" name="searchType"> -->
+<!-- 	                                   			<option value="title">제목</option> -->
+<!-- 	                                   			<option value="content">내용</option> -->
+<!-- 	                                   			<option value="titcon">제목+내용</option> -->
+<!-- 	                                   		</select> -->
+	                                   	
+	                                   	
+<!-- 	                                   	</div>  -->
+                                   	                                      
+<!--                                    </form> -->
+                          
                             </div>
+                            
                         </div>
+                        
                     </div>
+                    
                   </div>
                  
               </div>
               
           </div>
+          
                     <!--Related Product Slider-->
                     
                     <!--End Related Product Slider-->
@@ -156,7 +177,7 @@
             <!--MainContent-->
         </div>
     	<!--End Body Content-->
-    
+							
     <!--Footer-->
    <jsp:include page="/WEB-INF/views/modules/footer.jsp"></jsp:include>
     <!--End Footer-->
