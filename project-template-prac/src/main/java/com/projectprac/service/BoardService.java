@@ -54,6 +54,12 @@ public interface BoardService {
 	void updateComment(BoardCommentDto comment);
 	//댓글 끝
 
+	void increaseBoardReadCount(int boardId);
+
+	int findCommentCount(int boardId);
+
+	int findEventCommentCount(int boardId);
+
 
 	
 	

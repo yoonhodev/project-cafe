@@ -14,9 +14,11 @@ public class BoardDto {
 	private String content;
 	private Date regdate;
 	private boolean deleted;
+	private int readCount;
 	private boolean boardType;
 	
 	private List<BoardAttachDto> attachments;
 
+	
 	
 }

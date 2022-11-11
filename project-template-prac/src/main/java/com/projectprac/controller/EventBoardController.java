@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.View;
 
 import com.projectprac.common.Util;
 import com.projectprac.dto.BoardAttachDto;
@@ -25,6 +26,7 @@ import com.projectprac.dto.BoardCommentDto;
 import com.projectprac.dto.BoardDto;
 import com.projectprac.service.BoardService;
 import com.projectprac.ui.ThePager;
+import com.projectprac.view.DownloadView;
 
 
 
@@ -34,7 +36,6 @@ public class EventBoardController {
 	private final int PAGE_SIZE = 10; 	// 한 페이지에 표시되는 데이터 개수
 	private final int PAGER_SIZE = 5;	// 한 번에 표시할 페이지 번호 개수
 	private final String LINK_URL = "eventBoard"; // 페이지 번호를 클릭했을 때 이동할 페이지 경로
-	
 	
 	@Autowired
 	@Qualifier("boardService")
@@ -67,8 +68,6 @@ public class EventBoardController {
 			}
 		}
 		
-		
-		
 		boardService.writeEventBoard(board);
 		
 		return "redirect:eventBoard";
@@ -89,14 +88,9 @@ public class EventBoardController {
 		model.addAttribute("pager", pager);
 		model.addAttribute("pageNo", pageNo);
 
-		
 		// 4. View or Controller로 이동
 		return "board/eventBoard"; 	// /WEB-INF/views/ + board/list + .jsp
 	}
-	
-
-	
-	
 	
 	@GetMapping(path = { "/eventBoardDetail" })
 	public String showEventBoardDetail(@RequestParam(defaultValue = "-1") int boardId, 
@@ -109,10 +103,23 @@ public class EventBoardController {
 			return "redirect:board/eventBoard";
 		}
 		
+		ArrayList<Integer> readList = (ArrayList<Integer>)session.getAttribute("read-list");
+		if (readList == null) {
+			readList = new ArrayList<>();
+			session.setAttribute("read-list", readList);
+		}
+		
+		if (!readList.contains(boardId)) {
+			boardService.increaseBoardReadCount(boardId);
+			readList.add(boardId);
+		}
 		//BoardDto boardDetail = boardService.showEventBoardDetail(boardId);
 	
 		
 		BoardDto board = boardService.findEventBoardByBoardNo(boardId);
+		
+		int commentEventCount = boardService.findEventCommentCount(boardId);
+	
 		
 		if (board == null) { // 조회되지 않은 경우 (글 번호가 잘못되었거나 또는 삭제된 글인 경우)
 			return "redirect:board/eventBoard";
@@ -120,9 +127,9 @@ public class EventBoardController {
 		}
 		
 		// 3. View에서 읽을 수 있도록 데이터 전달
+		model.addAttribute("commentEventCount", commentEventCount);
 		model.addAttribute("boardDetail", board);
 		model.addAttribute("pageNo", pageNo);
-		System.out.println(model);
 		
 		// 4. View 또는 Controller로 이동
 		return "board/eventBoardDetail";
@@ -189,7 +196,6 @@ public class EventBoardController {
 
 	}
 	
-	
 	@PostMapping(path = {"/write-comment.action"})
 	public String writeComment(BoardCommentDto commentDto, int pageNo, int boardId) {
 		// 1. 요청 데이터 읽기 ( 전달인자로 대체 )
@@ -223,9 +229,6 @@ public class EventBoardController {
 			return "fail"; // @ResponseBody 떼매 "fail" 문자열을 응답
 		}
 		
-		// 2. 데이터 처리
-		
-		
 		return "redirect:/eventBoardDetail?boardId=" + boardId + "&pageNo=" + pageNo;		
 		//return "redirect:/eventBoard?pageNo=" + pageNo;
 		//return "success"; // @ResponseBody 떼매 >> 안됨 (WEB-INF/views/ + success + .jsp)
@@ -240,10 +243,24 @@ public class EventBoardController {
 		return "success";
 	}
 	
-	
-	
-	
-	
-	
+	@GetMapping(path = {"/download.action" })
+	public View download(@RequestParam(defaultValue = "-1")int attachId, Model model) {
+		
+		if (attachId == -1) {
+			model.addAttribute("error_type", "download");
+			model.addAttribute("message", "첨부파일 번호가 없습니다.");
+			
+		}
+		
+		BoardAttachDto attachment = boardService.findBoardAttachByAttachNo(attachId);
+		
+		// View에게 전달할 데이터 저장
+		model.addAttribute("attachment", attachment);
+		
+		DownloadView view = new DownloadView();
+			
+		return view;
+		
+	}
 	
 }

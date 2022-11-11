@@ -37,12 +37,8 @@ public class BoardServiceImpl implements BoardService {
 		if (board.getAttachments() != null) {
 			for (BoardAttachDto attachment : board.getAttachments()) {
 				attachment.setBoardId(board.getBoardId()); // 새로 만들어진 글번호를 Attach 객체에 저장
-				System.out.println(attachment.getBoardId());
-				System.out.println(board.getBoardId());
-				System.out.println("11111111111111");
 				
 				boardMapper.insertBoardAttach(attachment);
-				
 				
 			}
 		}
@@ -94,23 +90,23 @@ public class BoardServiceImpl implements BoardService {
 		
 	}
 
-
 	@Override
 	public int findBoardCount() {
 		
 		int boardCount = boardMapper.selectBoardCount();
+		
 		return boardCount;
 	
 	}
+	
 	@Override
 	public int findEventBoardCount() {
 		
 		int boardCount = boardMapper.selectEventBoardCount();
+		
 		return boardCount;
 		
 	}
-
-
 	
 	public void deleteBoard(int boardId) {
 		
@@ -130,24 +126,21 @@ public class BoardServiceImpl implements BoardService {
 		
 		BoardDto board = boardMapper.selectBoardByBoardNo(boardId);
 		
-
-		
 		return board;
 	}
 	
 	@Override
 	public BoardDto findEventBoardByBoardNo(int boardId) {  /// 게시글 수정과 관련된 메소드
 		
-		BoardDto board = boardMapper.selectEventBoardByBoardNo(boardId);	
+		BoardDto board = boardMapper.selectEventBoardByBoardNo(boardId);
+		
 		if (board != null) {
 		List<BoardAttachDto> attachments = boardMapper.selectBoardAttachByBoardNo(boardId);
 		board.setAttachments(attachments);
 		}
-		//BoardDto board = boardMapper.selectEventBoardByBoardNo(boardId);
 		
 		return board;
 	}
-
 
 	@Override
 	public void modifyBoard(BoardDto board) {
@@ -167,25 +160,24 @@ public class BoardServiceImpl implements BoardService {
 	public void writeComment(BoardCommentDto comment) {
 
 		commentMapper.insertComment(comment);
-
 		
 	}
 
 	@Override
 	public List<BoardCommentDto> findBoardCommentByBoard(int boardId) {
+		
 		List<BoardCommentDto> comments = commentMapper.selectCommentByBoardNo(boardId);
 		
 		return comments;
+		
 	}
-
-
 
 	@Override
 	public void deleteComment(int commentId) {
+		
 		commentMapper.deleteComment(commentId);		
+		
 	}
-
-
 
 	@Override
 	public void updateComment(BoardCommentDto comment) {
@@ -194,12 +186,37 @@ public class BoardServiceImpl implements BoardService {
 		
 	}
 
-
-
 	@Override
 	public BoardAttachDto findBoardAttachByAttachNo(int attachId) {
+		
 		BoardAttachDto attachment = boardMapper.selectBoardAttachByAttachNo(attachId);
+		
 		return attachment;
+		
+	}
+
+	@Override
+	public void increaseBoardReadCount(int boardId) {
+
+		boardMapper.updateBoardReadCount(boardId);
+		
+	}
+
+	@Override
+	public int findCommentCount(int boardId) {
+		int commentCount = boardMapper.selectCommentCount();
+		
+		return commentCount;
+		
+	}
+
+	@Override
+	public int findEventCommentCount(int boardId) {
+		
+		int commentEventCount = boardMapper.selectCommentEventCount(boardId);
+		
+		return commentEventCount;
+		
 	}
 
 
