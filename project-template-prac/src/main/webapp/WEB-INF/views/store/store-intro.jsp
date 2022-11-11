@@ -56,7 +56,6 @@
                   			<c:forEach var="store" items="${ stores }">
 							<c:choose>
 							<c:when test="${ store.deleted }">
-							<h2>폐업</h2>
 							</c:when>
 							<c:otherwise>
                             <!-- Article Image --> 
