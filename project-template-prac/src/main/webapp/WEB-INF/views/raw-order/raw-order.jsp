@@ -156,6 +156,13 @@
 			var timeOff = new Date().getTimezoneOffset()*60000;
 			var today = new Date(now_utc-timeOff).toISOString().split("T")[0];
 			$("#orderDate").attr('min',today);
+			$("#orderDate").val(today);
+			var date = today.split("-");
+			var orderDate = new Date(date);
+			var deliDate = new Date(date);
+			deliDate.setDate(orderDate.getDate()+3);
+			var deliDay = deliDate.getFullYear()+"-"+deliDate.getMonth()+"-"+deliDate.getDate();
+			$("#expectDay").text(deliDay);
 			
 			$("#orderDate").on("change", function(event) {
 				var day = $(this).val();
@@ -193,32 +200,36 @@
 				var smallCategory = $("#smCate").val();
 				var rawName = $("#itemName").val();
 				var formData = 'bigCategory=' + bigCategory + '&smallCategory=' + smallCategory + '&rawName=' + rawName;
-				$.ajax({
-					"url": "lookupRaw",
-					"method": "post", 
-					"data": formData,
-					"success": function(data) {
-						if(data == "1") {
-							alert("검색어를 입력해 주세요");
-						} else if (data == "2") {
-							$("#rawOrderList").load('rawOrderList?bigCategory=' + bigCategory + '&smallCategory=' + smallCategory + '&rawName=' + rawName);
-						} else if (data == "3") {
-							$("#rawOrderList").load('rawOrderList?bigCategory=' + bigCategory + '&rawName=' + rawName);
-						} else if (data == "4") {
-							$("#rawOrderList").load('rawOrderList?bigCategory=' + bigCategory + '&smallCategory=' + smallCategory);
-						} else if (data == "5") {
-							$("#rawOrderList").load('rawOrderList?bigCategory=' + bigCategory);
-						} else if (data == "6") {
-							$("#rawOrderList").load('rawOrderList?rawName=' + rawName);
+				if ($("#StoreName").val() == "") {
+					alert("지점을 선택해 주세요");
+				} else {
+					$.ajax({
+						"url": "lookupRaw",
+						"method": "post", 
+						"data": formData,
+						"success": function(data) {
+							if(data == "1") {
+								alert("검색어를 입력해 주세요");
+							} else if (data == "2") {
+								$("#rawOrderList").load('rawOrderList?bigCategory=' + bigCategory + '&smallCategory=' + smallCategory + '&rawName=' + rawName);
+							} else if (data == "3") {
+								$("#rawOrderList").load('rawOrderList?bigCategory=' + bigCategory + '&rawName=' + rawName);
+							} else if (data == "4") {
+								$("#rawOrderList").load('rawOrderList?bigCategory=' + bigCategory + '&smallCategory=' + smallCategory);
+							} else if (data == "5") {
+								$("#rawOrderList").load('rawOrderList?bigCategory=' + bigCategory);
+							} else if (data == "6") {
+								$("#rawOrderList").load('rawOrderList?rawName=' + rawName);
+							}
+							if(data == "0") {
+								alert("error");
+							}
+						 },
+						"error": function(xhr, status, err) {
+							alert('fail : ' + status);
 						}
-						if(data == "0") {
-							alert("error");
-						}
-					 },
-					"error": function(xhr, status, err) {
-						alert('fail : ' + status);
-					}
-				});
+					});
+				}
 			});
 		});
 	</script>
