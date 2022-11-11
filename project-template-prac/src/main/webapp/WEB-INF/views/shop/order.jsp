@@ -239,16 +239,7 @@
 				}
 			});
 		});
-		
-		$(function() {
-			$("#orderType").on("change", function(event) {
-				if ($("#orderType").val() == 'B') {
-					$("#shipping").text("무료");
-				}			
-			});
-		});
-		
- 			
+	
 	</script>
 </body>
 
