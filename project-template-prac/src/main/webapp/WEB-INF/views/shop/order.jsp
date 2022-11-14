@@ -50,20 +50,11 @@
 								<h5>쿠폰</h5>
 								<form action="applycoupon" method="get" id="apply-coupon">
 									<select id="couponName" name="couponId" class="form-group couponName">
-										<option selected value="none">쿠폰 없음</option>
+										<option selected value="0">쿠폰 없음</option>
 											<c:forEach var="couponMake" items="${ couponMakes }" varStatus="status">
-												<option id="coupon-option" value="${ couponMake.couponDto.couponName }">${ couponMake.couponDto.couponName }</option>
+												<option id="coupon-option" value="${ couponMake.couponDto.couponRate }">${ couponMake.couponDto.couponName }</option>
 											</c:forEach>
 										</select>
-
-									<div class="actionRow">
-										<div>
-											<input type="hidden" id="couponMakeId1" name="couponId">
-											<input type="submit" class="btn btn-secondary btn--small"
-												   id="SelectCoupon"
-												   value="쿠폰 적용">
-										</div>
-									</div>	
 								</form>
 							</div>
 							<div class="col-12 col-sm-12 col-md-4 col-lg-4 mb-4">
@@ -71,13 +62,13 @@
 								<form action="#" method="post">
 									<select id="couponName" name="couponId" class="form-group couponName">
 										<option selected value="none" disabled>결제 수단을 선택해주세요.</option>	
-												<option value="1">신용/체크카드</option>
-												<option value="2">휴대폰결제</option>
-												<option value="3">네이버페이</option>
-												<option value="4">카카오페이</option>
-												<option value="5">토스페이</option>
-												<option value="6">만나서 카드결제</option>
-												<option value="7">만나서 현금결제</option>
+												<option value="cardPay">신용/체크카드</option>
+												<option value="phonePay">휴대폰결제</option>
+												<option value="naverPay">네이버페이</option>
+												<option value="kakaoPay">카카오페이</option>
+												<option value="tossPay">토스페이</option>
+												<option value="meetcardPay">만나서 카드결제</option>
+												<option value="meetcashPay">만나서 현금결제</option>
 										</select>
 							
 
@@ -94,28 +85,29 @@
 								<div class="solid-border">
 									<div class="row border-bottom pb-2">
 										<span class="col-12 col-sm-6 cart__subtotal-title">음료 금액</span>
-										<span class="col-12 col-sm-6 text-right"><span
-											class="money"><span id="price-${ product.prodId }">${ product.prodPrice }</span></span></span>
+										<span class="col-12 col-sm-6 text-right">
+										<span class="money">
+											<span id="drink-total"></span>
+										</span>
+										</span>
 									</div>
 									<div class="row border-bottom pb-2 pt-2">
 										<span class="col-12 col-sm-6 cart__subtotal-title">쿠폰 할인</span>
-											<c:forEach var="couponMake" items="${ couponMakes }" varStatus="status">
-												<span class="col-12 col-sm-6 text-right">${ couponMake.couponDto.couponRate }</span>	
-											</c:forEach>
+												<span class="col-12 col-sm-6 text-right" id="total-coupon">0 원</span>	
+											
 									
 									</div>
 									<div class="row border-bottom pb-2 pt-2">
 										<span class="col-12 col-sm-6 cart__subtotal-title">배송비</span>
-										<span class="col-12 col-sm-6 text-right" id="shipping"></span>
+										<span class="col-12 col-sm-6 text-right" id="shipping">+ 3000 원</span>
 									</div>
 									<div class="row border-bottom pb-2 pt-2">
-										<span class="col-12 col-sm-6 cart__subtotal-title"><strong>총 금액</strong></span> <span
-											class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span
-											class="money">$1001.00</span></span>
+										<span class="col-12 col-sm-6 cart__subtotal-title"><strong>총 금액</strong></span>
+										<span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="final-total"></span></span>
 									</div>
 									<br>
 								 	<p class="cart_tearm">
-										<strong>배달</strong>&nbsp;&nbsp;<input type="radio" name="orderType" value="A" required>
+										<strong>배달</strong>&nbsp;&nbsp;<input type="radio" name="orderType" value="A" checked>
  										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										<strong>포장</strong>&nbsp;&nbsp;<input type="radio" name="orderType" value="B">
 									</p> 
@@ -152,7 +144,7 @@
 	<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 	<script type="text/javascript">
 		$(function() {
- 			$('#order-list').load('order-list');
+ 			$('#order-list').load('order-list', orderListLoadCompletionHandler);
  			
 /* 			$(".qtyBtn").on("click", function() {
 				var qtyField = $(this).parent(".qtyField"),
@@ -173,18 +165,22 @@
 			});
 			 */
 			
+			
 			$("input[name=orderType]").on("click", function(event) {
+				var delipay = 0;
 				const checkedVal = $("input[name=orderType]:checked").val();
 				if (checkedVal == "A") {
-					$("#shipping").text("+ 3000");
+					delipay = 3000;
+					$("#shipping").text("+ " + delipay + " 원");
 				} else {
-					$("#shipping").text("0");
+					$("#shipping").text(delipay + " 원");
 				}
+				
+				orderListLoadCompletionHandler();
 			});
 			
 				$("#order-list").on("click", '.qtyBtn', function() {
-					var qtyField = $(this).parent(".qtyField"), oldValue = $(
-							qtyField).find(".qty").val(), newVal = 1
+					var qtyField = $(this).parent(".qtyField"), oldValue = $(qtyField).find(".qty").val(), newVal = 1
 					var prodId = $(this).attr("data-productId");
 					var price = $("#prodPrice-" + prodId).text();
 
@@ -195,10 +191,9 @@
 					}
 
 					price = newVal * price;
-					price = parseInt(price).toLocaleString('ko-KR');
 					$(qtyField).find(".qty").val(newVal);
 					$("#price-" + prodId).text(price);
-					price = parseInt(price).toLocaleString('ko-KR');
+					orderListLoadCompletionHandler();
 				});
 
 
@@ -208,7 +203,7 @@
 					"url" : "delete-all-order",
 					"method" : "get",
 					"success" : function(data, status, xhr) {
-						$('#order-list').load('order-list');
+						$('#order-list').load('order-list', orderListLoadCompletionHandler);
 					},
 					"error" : function(xhr, status, err) {
 						alert('fail');
@@ -225,14 +220,52 @@
 					"method" : "get",
 					"data" : "prodId=" + prodId,
 					"success" : function(data, status, xhr) {
-						$('#order-list').load('order-list');
+						$('#order-list').load('order-list', orderListLoadCompletionHandler);
 						},
 					"error" : function(xhr, status, err) {
 						alert('fail');
 					}  
 				});
 			});
+		 	
+		 	function orderListLoadCompletionHandler() {
+			 	var drinktotal = 0;
+				/* for (var i=0; i<50; i++) {
+					console.log($("#price-" + i).text());
+					if ($("#price-" + i).text() != "") {
+						var drinkPrice = $("#price-" + i).text();
+						drinktotal = parseInt(drinktotal) + parseInt(drinkPrice);
+						$("#drink-total").text(drinktotal);
+						console.log(drinktotal);
+					}
+				} */
+				$('#order-list span.product-price-sum').each(function(idx, span) {
+					const priceSum = parseInt($(span).text());
+					
+					drinktotal += priceSum;
+				});
+				
+				var finaltotal = drinktotal + parseInt($('#total-coupon').text().replace(' ', '')) + parseInt($('#shipping').text().replace(' ', '')) ;
+				finaltotal = finaltotal.toLocaleString('ko-KR');
+				
+				$('#drink-total').text(drinktotal + " 원");
+				
+				$('.final-total').text(finaltotal + " 원")
+				
+		 	}
+		 	
+		 	$("#couponName").on("change", function(event) {
+		 		var couponRate = 0;
+		 		
+		 		couponRate = $("#couponName option:selected").val();
+		 		
+	 			$('#total-coupon').text("- " + couponRate + " 원" );
+	 			
+	 			orderListLoadCompletionHandler()
+			});
+		 	
 		});
+		
 	</script>
 </body>
 </html>
