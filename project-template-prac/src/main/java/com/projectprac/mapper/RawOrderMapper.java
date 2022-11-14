@@ -2,6 +2,7 @@ package com.projectprac.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -52,6 +53,18 @@ public interface RawOrderMapper {
 			"FROM raw " +
 			"WHERE raw_id = #{ rawId }")
 	RawOrderDto selectRawOrderByRawId(int rawId);
+
+	@Insert("INSERT INTO order_raw (store_id, raw_order_date) " +
+			"VALUES (#{ storeId }, #{ orderDate }) ")
+	void insertOrder(@Param("storeId") String storeId, @Param("orderDate") String orderDate);
+
+	@Select("SELECT MAX(order_raw_id) " +
+			"FROM order_raw ")
+	int selectLastOrderId();
+
+	@Insert("INSERT INTO order_raw_detail (order_raw_id, raw_id, amount) " +
+			"VALUES (#{ orderId }, #{ rawId }, #{ count }) ")
+	void insertOrderDetail(@Param("orderId") int orderId, @Param("rawId") int rawId, @Param("count") int count);
 
 
 	

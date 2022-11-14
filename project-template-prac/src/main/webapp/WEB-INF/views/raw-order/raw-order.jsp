@@ -34,19 +34,16 @@
 						<div class="col-md-12">
 							<div class="d-sm-flex justify-content-between align-items-center transaparent-tab-border {">
 								<ul class="nav nav-tabs tab-transparent" role="tablist">
-									<li class="nav-item" data-tab="InsertOrder">
-										<a class="nav-link active" id="insert-tab" data-toggle="tab" href="#InsertOrder" role="tab" aria-selected="true">주문입력</a>
+									<li class="nav-item" data-tab="SelectOrder">
+										<a class="nav-link active" id="select-tab" data-toggle="tab" href="#SelectOrder" role="tab" aria-selected="true">주문입력</a>
 									</li>
-									<li class="nav-item" data-tab="cartOrder">
-										<a class="nav-link" id="cart-tab" data-toggle="tab" href="#cartOrder" role="tab" aria-selected="false">장바구니</a>
-									</li>
-									<li class="nav-item" data-tab="selectOrder">
-										<a class="nav-link" id="select-tab" data-toggle="tab" href="#selectOrder" role="tab" aria-selected="false">주문내역</a>
+									<li class="nav-item" data-tab="CartOrder">
+										<a class="nav-link" id="cart-tab" data-toggle="tab" href="#CartOrder" role="tab" aria-selected="false">장바구니</a>
 									</li>
 								</ul>
 							</div>
 							<div class="tab-content tab-transparent-content">
-								<div class="tab-pane" id="InsertOrder" role="tabpanel" aria-labelledby="select-insert-tab">
+								<div class="tab-pane" id="SelectOrder" role="tabpanel" aria-labelledby="select-insert-tab">
 									<div class="col-lg-12 grid-margin stretch-card">
 										<div class="card">
 											<div class="card-body">
@@ -67,8 +64,6 @@
 															<th>
 																<input type="date" id="orderDate">
 															</th>
-															<th>배송예상일</th>
-															<th width="120px"><span id="expectDay"></span></th>
 														</tr>
 													</thead>
 													<tbody style="background-color: #d5dee8">
@@ -90,7 +85,7 @@
 																</select>
 															</td>
 															<td>품목명</td>
-															<td colspan="3">
+															<td>
 																<input id="itemName" type="text">
 															</td>
 														</tr>
@@ -107,12 +102,12 @@
 										</div>
 									</div>
 									<div class="col-lg-12 grid-margin stretch-card" id="rawOrderList"></div>
-									<div class="col-lg-12 grid-margin stretch-card" id="cartList"></div>
 									
 								</div>
 							</div>
 							<div class="tab-content tab-transparent-content">
-								<div class="tab-pane" id="selectOrder" role="tabpanel" aria-labelledby="business-tab">
+								<div class="tab-pane" id="CartOrder" role="tabpanel" aria-labelledby="business-tab">
+									<div class="col-lg-12 grid-margin stretch-card" id="cartList"></div>
 									
 								</div>
 							</div>
@@ -157,22 +152,6 @@
 			var today = new Date(now_utc-timeOff).toISOString().split("T")[0];
 			$("#orderDate").attr('min',today);
 			$("#orderDate").val(today);
-			var date = today.split("-");
-			var orderDate = new Date(date);
-			var deliDate = new Date(date);
-			deliDate.setDate(orderDate.getDate()+3);
-			var deliDay = deliDate.getFullYear()+"-"+deliDate.getMonth()+"-"+deliDate.getDate();
-			$("#expectDay").text(deliDay);
-			
-			$("#orderDate").on("change", function(event) {
-				var day = $(this).val();
-				var date = day.split("-");
-				var orderDate = new Date(date);
-				var deliDate = new Date(date);
-				deliDate.setDate(orderDate.getDate()+3);
-				var deliDay = deliDate.getFullYear()+"-"+deliDate.getMonth()+"-"+deliDate.getDate();
-				$("#expectDay").text(deliDay);
-			});
 			
 			$("#bgCate").on("change", function(event) {
 				var bgCate = $(this).val();

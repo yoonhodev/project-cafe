@@ -171,13 +171,42 @@ public class RawOrderController {
 	}
 	
 	@PostMapping(path = { "insert-raw-order" })
-	public String insertRawOrder(HttpSession session, String storeId, String orderDate) {
+	@ResponseBody
+	public String insertRawOrder(HttpSession session, String storeId, String orderDate, @RequestParam(value="rawIdList[]") List<Integer> rawIdList,
+			 																			@RequestParam(value="countList[]") List<Integer> countList) {
+	
 		List<RawOrderCountDto> rawOrderCounts = (List<RawOrderCountDto>) session.getAttribute("rawOrderCarts");
-		System.out.println(rawOrderCounts);
-		System.out.println(storeId);
-		System.out.println(orderDate);
 		
-		return "raw-order/cartList";
+		if (rawOrderCounts == null) {
+			return "1";
+		} else {
+			for (int i = 0; i < rawIdList.size(); i++) {
+				lambdaRawId = rawIdList.get(i);
+				rawOrderCounts.removeIf(item -> item.getRawOrderDto().getRawId() == lambdaRawId);
+			}
+		}
+		
+		RawOrderDto rawOrder;
+		for (int i = 0; i < rawIdList.size(); i++) {
+			rawOrder = rawOrderService.selectRawOrderByRawId(rawIdList.get(i)); // 선택한 상품 조회
+			RawOrderCountDto rawOrderCart = new RawOrderCountDto();
+			rawOrderCart.setRawOrderDto(rawOrder);
+			rawOrderCart.setCount(countList.get(i));
+			rawOrderCounts.add(rawOrderCart);
+		}
+		
+		session.setAttribute("rawOrderCarts", rawOrderCounts);
+		
+		rawOrderService.insertOrder(storeId, orderDate);
+		int orderId = rawOrderService.selectLastOrderId();
+		
+		for (RawOrderCountDto rawOrderCount : rawOrderCounts) {
+			rawOrderService.insertOrderDetail(orderId, rawOrderCount.getRawOrderDto().getRawId(), rawOrderCount.getCount());
+		}
+		
+		session.removeAttribute("rawOrderCarts");
+		return "2";
+		
 	}
 	
 	
