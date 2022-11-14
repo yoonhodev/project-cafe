@@ -60,4 +60,20 @@ public class RawOrderServiceImpl implements RawOrderService {
 		return rawOrder;
 	}
 
+	@Override
+	public void insertOrder(String storeId, String orderDate) {
+		rawOrderMapper.insertOrder(storeId, orderDate);
+	}
+
+	@Override
+	public int selectLastOrderId() {
+		int lastOrderId = rawOrderMapper.selectLastOrderId();
+		return lastOrderId;
+	}
+
+	@Override
+	public void insertOrderDetail(int orderId, int rawId, int count) {
+		rawOrderMapper.insertOrderDetail(orderId, rawId, count);
+	}
+
 }
