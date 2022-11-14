@@ -24,5 +24,6 @@ public class CustomerDto {
 
 	private String regDate;
 //	private boolean active;
+	private boolean deleted;
 	
 }

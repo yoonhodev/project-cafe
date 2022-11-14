@@ -193,7 +193,7 @@
 				<li><a href="eventBoard" class="site-nav">EVENT</a></li>
 				
 			</ul></li>
-		<li class="lvl1 parent megamenu"><a href="store">지점 소개
+		<li class="lvl1 parent megamenu"><a href="store">BRANCH OFFICE
 				<i class="anm anm-plus-l"></i>
 		</a>
 			<ul>
