@@ -42,4 +42,6 @@
 	<import resource="worker-context.xml" />
 	<import resource="raworder-context.xml" />
 	<import resource="accountcontrol-context.xml" />
+	<import resource="kiosk-context.xml" />
+	
 </beans>

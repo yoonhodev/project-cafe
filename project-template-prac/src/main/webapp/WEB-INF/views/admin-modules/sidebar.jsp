@@ -49,7 +49,7 @@
 			</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="kiosk">
+			<a class="nav-link" href="kioskMain">
 				<span class="icon-bg"><i class="mdi mdi-table-large menu-icon"></i></span>
 				<span class="menu-title">KIOSK</span>
 			</a>

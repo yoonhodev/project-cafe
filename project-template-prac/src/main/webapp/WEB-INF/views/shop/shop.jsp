@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html class="no-js" lang="ko">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>COFFEE &ndash; Belle Multipurpose Bootstrap 4 Template</title>
+<title>COFFEE &ndash; HIHIHIHIHIHI</title>
 <meta name="description" content="description">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -25,6 +26,7 @@
     <!--End Header-->		<!--End Top Header-->
     
     <!--Body Content-->
+    <fmt:formatNumber value="${ product.prodPrice }" pattern="#,###"/>
     <div id="page-content">
     	<!--Collection Banner-->
     	<div class="collection-header">
