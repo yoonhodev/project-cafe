@@ -10,7 +10,6 @@
 	<!-- 6-2) 의존성 주입 -->
 	<bean id="kioskService" class="com.projectprac.service.KioskServiceImpl">
 		<property name="kioskMapper" ref="kioskMapper"/>
-	
 	</bean>
  
 

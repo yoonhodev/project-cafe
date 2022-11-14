@@ -20,15 +20,17 @@ public class KioskController {
 	@Qualifier("kioskService")
 	private KioskService kioskService;
 	
-
+	
 	
 	@GetMapping(path = { "/kioskMain" })
 	public String kiosk(HttpSession session) { //Model --> jsp로 데이터 전달할때 씀
 		
-		List<ProductDto> products = kioskService.showMenuImg();
-		
+		List<ProductDto> products = kioskService.showKioskMenuImg();
+		List<ProductDto> products2 = kioskService.showKioskMenuImg2();
 
 		session.setAttribute("productViews", products);
+		session.setAttribute("productViews2", products2);
+		
 		return "kiosk/kioskMain";
 	}
 	

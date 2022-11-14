@@ -8,6 +8,8 @@ public interface KioskService {
 
 
 
-	List<ProductDto> showMenuImg();
+	List<ProductDto> showKioskMenuImg();
+
+	List<ProductDto> showKioskMenuImg2();
 
 }
