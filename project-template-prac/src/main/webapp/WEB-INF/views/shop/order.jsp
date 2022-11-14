@@ -176,7 +176,7 @@
 			$("input[name=orderType]").on("click", function(event) {
 				const checkedVal = $("input[name=orderType]:checked").val();
 				if (checkedVal == "A") {
-					$("#shipping").text("+3000");
+					$("#shipping").text("+ 3000");
 				} else {
 					$("#shipping").text("0");
 				}
@@ -195,8 +195,10 @@
 					}
 
 					price = newVal * price;
+					price = parseInt(price).toLocaleString('ko-KR');
 					$(qtyField).find(".qty").val(newVal);
 					$("#price-" + prodId).text(price);
+					price = parseInt(price).toLocaleString('ko-KR');
 				});
 
 
