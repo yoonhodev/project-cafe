@@ -209,5 +209,10 @@ public class RawOrderController {
 		
 	}
 	
+	@GetMapping(path = { "rawOrderedList" })
+	public String rawOrderedList() {
+		return "raw-order/raw-orderedList";
+	}
+	
 	
 }
