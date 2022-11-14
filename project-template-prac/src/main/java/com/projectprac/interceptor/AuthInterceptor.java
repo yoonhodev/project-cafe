@@ -28,7 +28,8 @@ public class AuthInterceptor implements HandlerInterceptor {
 				uri.contains("/fixedSpend")	||
 				uri.contains("/admin")		||
 				uri.contains("/workerInfo")	||
-				uri.contains("/worker-infoDtail"))  	{ // 로그인한 사용자만 볼 수 있는 요청
+				uri.contains("/worker-infoDtail")||
+				uri.contains("/accountControl"))  	{ // 로그인한 사용자만 볼 수 있는 요청
 			
 				resp.sendRedirect("/project-template-prac/login");
 				return false; // 예정된 컨트롤러 호출을 취소
@@ -40,7 +41,8 @@ public class AuthInterceptor implements HandlerInterceptor {
 				uri.contains("/fixedSpend")	||
 				uri.contains("/admin")		||
 				uri.contains("/workerInfo")	||
-				uri.contains("/worker-infoDtail")) 	{ // 로그인한 사용자만 볼 수 있는 요청
+				uri.contains("/worker-infoDtail")||
+				uri.contains("/accountControl")) 	{ // 로그인한 사용자만 볼 수 있는 요청
 			
 				resp.sendRedirect("/project-template-prac/home");
 				return false; // 예정된 컨트롤러 호출을 취소
