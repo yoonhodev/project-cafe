@@ -69,14 +69,11 @@
 	                                    <!-- start product image -->
 	                                    <div class="product-image">
 	                                        <!-- start product image -->
-	                                        <a href="#">
 	                                            <!-- image -->
 	                                            <img class="primary blur-up lazyload" src="${ product.prodImg }" alt="image" title="product">
 	                                            <!-- End image -->
 	                                            <!-- Hover image -->
 	                                            <img class="hover blur-up lazyload" src="${ product.prodImg }" alt="image" title="product">
-	                                            <!-- End hover image -->
-	                                        </a>
 	                                        <!-- end product image -->
 	    
 	                                        <!-- Start product button -->
