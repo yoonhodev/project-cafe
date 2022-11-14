@@ -2,8 +2,6 @@ package com.projectprac.service;
 
 import java.util.List;
 
-import com.projectprac.dto.CouponMakeDto;
-import com.projectprac.dto.ProductDto;
 import com.projectprac.dto.RawOrderDto;
 
 public interface RawOrderService {
@@ -17,5 +15,11 @@ public interface RawOrderService {
 	List<RawOrderDto> selectRawOrder(String bigCategory, String smallCategory, String rawName);
 
 	RawOrderDto selectRawOrderByRawId(int rawId);
+
+	void insertOrder(String storeId, String orderDate);
+
+	int selectLastOrderId();
+
+	void insertOrderDetail(int orderId, int rawId, int count);
 
 }

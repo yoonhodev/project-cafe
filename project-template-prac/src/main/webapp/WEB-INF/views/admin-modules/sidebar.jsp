@@ -32,7 +32,7 @@
 			<div class="collapse" id="raw-order">
 				<ul class="nav flex-column sub-menu">
 					<li class="nav-item"><a class="nav-link" href="raw-order">주문입력</a></li>
-					<li class="nav-item"><a class="nav-link" href="raw-history">주문내역 조회</a></li>
+					<li class="nav-item"><a class="nav-link" href="rawOrderedList">주문내역 조회</a></li>
 				</ul>
 			</div>
 		</li>

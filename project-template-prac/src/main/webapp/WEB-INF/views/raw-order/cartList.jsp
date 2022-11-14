@@ -54,7 +54,7 @@
 			</tbody>
 			<tfoot>
 				<tr>
-					<td colspan="4"></td>
+					<td colspan="4" style="color: lightgray;">배송에는 최대 3일이 소요됩니다</td>
 					<td>총합</td>
 					<td><span id="total"></span></td>
 					<td></td>
@@ -148,20 +148,35 @@
 		$(".insert-order").on("click", function() {
 			var StoreId = $("#StoreId").val();
 			var OrderDate = $("#orderDate").val();
-			
-			var formData = "storeId=" + StoreId + "&orderDate=" + OrderDate;
-			$.ajax({
-				"url": "insert-raw-order",
-				"method": "post",
-				"data": formData,
-				"success": function(data) {
-					alert("주문이 완료되었습니다.")
-					$("#cartList").load("cartList");
-				 },
-				"error": function(xhr, status, err) {
-					alert('fail : ' + status);
-				}
+			var rawIdArray = [];
+			var countArray = [];
+			$(".cartcount").each(function() {
+				var rawId = $(this).attr("data-rawId");
+				var count = $("#cartcount-" + rawId).val();
+				rawIdArray.push(rawId);
+				countArray.push(count);
 			});
+			var formData = { rawIdList : rawIdArray, countList : countArray, storeId : StoreId, orderDate : OrderDate };
+			// var formData = "storeId=" + StoreId + "&orderDate=" + OrderDate + "&countData=" + countData;
+			
+			if(confirm("주문 하시겠습니까?") == true) {
+				$.ajax({
+					"url": "insert-raw-order",
+					"method": "post",
+					"data": formData,
+					"success": function(data) {
+						if(data == "1") {
+							alert("장바구니에 담긴 상품이 없습니다")
+						} else {
+							alert("주문이 완료되었습니다.")
+							$("#cartList").load("cartList");
+						}
+					 },
+					"error": function(xhr, status, err) {
+						alert('fail : ' + status);
+					}
+				});
+			}
 		});
 	});
 </script>
