@@ -193,7 +193,7 @@
 				<li><a href="eventBoard" class="site-nav">EVENT</a></li>
 				
 			</ul></li>
-		<li class="lvl1 parent megamenu"><a href="store">지점 소개
+		<li class="lvl1 parent megamenu"><a href="store">BRANCH OFFICE
 				<i class="anm anm-plus-l"></i>
 		</a>
 			<ul>
@@ -207,26 +207,3 @@
 	</ul>
 </div>
 <!-- ./Mobile Menu -->
-
-<script type="text/javascript">
-	$(function() {
-		$(".qtyBtn").on("click", function() {
-			var qtyField = $(this).parent(".qtyField"),
-				oldValue = $(qtyField).find(".qty").val(),
-				newVal = 1
-			var prodId = $(this).attr("data-productId");
-			var price = $("#prodPrice-" + prodId).text();
-			
-			if ($(this).is(".plus")) {
-				newVal = parseInt(oldValue) + 1;
-			} else if (oldValue > 1) {
-				newVal = parseInt(oldValue) - 1;
-			}
-			
-			price = newVal * price;
-			$(qtyField).find(".qty").val(newVal);
-			$("#price-" + prodId).text( price );
-			});
-		});
-</script>
-	

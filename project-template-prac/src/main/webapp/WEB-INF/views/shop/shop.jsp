@@ -69,14 +69,11 @@
 	                                    <!-- start product image -->
 	                                    <div class="product-image">
 	                                        <!-- start product image -->
-	                                        <a href="#">
 	                                            <!-- image -->
 	                                            <img class="primary blur-up lazyload" src="${ product.prodImg }" alt="image" title="product">
 	                                            <!-- End image -->
 	                                            <!-- Hover image -->
 	                                            <img class="hover blur-up lazyload" src="${ product.prodImg }" alt="image" title="product">
-	                                            <!-- End hover image -->
-	                                        </a>
 	                                        <!-- end product image -->
 	    
 	                                        <!-- Start product button -->
@@ -84,13 +81,13 @@
 	                                        	<c:when test="${ empty loginuser }">
 	                                        		<form class="variants add addform" id="addform" action="login" method="post">
 			                                        	<input type="hidden" name="prodId" value="${ product.prodId }">			                                        	
-			                                            <button class="btn btn-addto-cart update-order" type="button"><a href="login">ADD TO CART</a></button>
+			                                            <a href="login" class="btn btn-addto-cart update-order" style="color:white" type="button">ADD TO CART</a>
 			                                        </form>
 	                                       		</c:when>
 	                                       		<c:otherwise>
 			                                        <form class="variants add addform order-popup" id="addform" action="update-order" method="post">
 			                                        	<input type="hidden" name="prodId" value="${ product.prodId }">
-			                                            <button class="btn btn-addto-cart update-order"type="button">ADD TO CART</button>
+			                                            <a class="btn btn-addto-cart update-order" style="color:white" type="button">ADD TO CART</a>
 			                                        </form>
 	                                       	 	</c:otherwise>
                                        	 	</c:choose>
@@ -165,7 +162,7 @@
                 <div class="input-group">
                  <!--  <input type="email" class="input-group__field newsletter__input" name="EMAIL" value="" placeholder="Email address" required=""> -->
                   <span class="input-group__btn">
-                  <button type="submit" class="btn newsletter__submit" name="commit" id="subscribeBtn"> <span class="btn newsletter__submit"><a href="order" style="color:white">장바구니 바로가기</a></span> </button>
+               		<a href="order" class="btn newsletter__submit" style="color:white">장바구니 바로가기</a>
                   </span>
                 </div>
               </form>
@@ -224,6 +221,4 @@
 	
 </script>
 </body>
-
-<!-- belle/shop-grid-3.html   11 Nov 2019 12:39:06 GMT -->
 </html>

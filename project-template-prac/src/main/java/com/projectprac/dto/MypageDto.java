@@ -2,6 +2,13 @@ package com.projectprac.dto;
 
 import java.sql.Date;
 
+import javax.validation.constraints.Email;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import lombok.Data;
+
+@Data
 public class MypageDto {
 	
 	private String customerId;
@@ -13,6 +20,13 @@ public class MypageDto {
 	private String order_type;
 	private Date order_date;
 	private int coupon_deleted;
+	private String phone;
+	private boolean sex;
+	@Email
+	private String email;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private String birth;
+	
 	
 
 }
