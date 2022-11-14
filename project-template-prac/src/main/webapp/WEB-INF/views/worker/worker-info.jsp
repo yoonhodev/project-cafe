@@ -102,7 +102,7 @@
                   	</h4>
                   	
                     
-                    <table class="table table-bordered">
+                    <table class="table table-striped">
                       <thead>
                         <tr>
 							<th class="text-center">직원명</th>
@@ -118,7 +118,7 @@
                       </thead>
                       <tbody>
                         <c:forEach var="worker" items="${ workers }" varStatus="status">
-						<tr class="cart__row border-bottom line1 cart-flex border-top table-primary"
+						<tr class="cart__row border-bottom line1 cart-flex border-top"
 							align="center">
 							<td><a href="worker-infoDtail?workerId=${ worker.workerId }"><span>${ worker.workerName }</span></a></td>
 							<td><span>${ storeName11 }</span></td>
