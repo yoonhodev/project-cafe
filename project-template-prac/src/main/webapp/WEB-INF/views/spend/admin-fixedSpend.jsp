@@ -67,7 +67,7 @@
                   <div class="card-body">
                   	<h4 class="card-title"><span id="boardTitle" >${ storeName10 }</span></h4>
                     
-                    <table class="table table-bordered">
+                    <table class="table table-striped">
                       <thead>
                         <tr>
 							<th class="text-center">날짜</th>
