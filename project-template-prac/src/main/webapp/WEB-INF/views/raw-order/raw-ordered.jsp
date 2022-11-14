@@ -45,51 +45,39 @@
 							<div class="tab-content tab-transparent-content">
 								<div class="tab-pane" id="SelectOrder" role="tabpanel" aria-labelledby="select-insert-tab">
 									<div class="col-lg-12 grid-margin stretch-card">
-										<div class="card">
+										<div style="width: 600px; margin: 0 auto; background-color: white;">
 											<div class="card-body">
-												<table class="table">
-													<thead style="background-color: #d5dee8">
-														<tr>
-															<th>지점명</th>
-															<th>
-																<input list="storeList" name="StoreName" class="StoreName" id="StoreName" placeholder="지점 선택">
-																<datalist id="storeList">
-																	<c:forEach var="store" items="${ stores }" varStatus="status">
-																		<option value="${ store.storeName }/${ store.storeId }"></option>
-																	</c:forEach>
-																</datalist>
-																<input type="hidden" id="StoreId" name="storeId">
-															</th>
-															<th>주문일</th>
-															<th>
-																<input type="date" id="orderDate">
-															</th>
-														</tr>
-													</thead>
-													<tbody style="background-color: #d5dee8">
-														<tr>
-															<td>카테고리</td>
-															<td>
-																<select id="bgCate">
-															    	<option selected disabled hidden="">대분류</option>
-															    	<c:forEach var="bigCategory" items="${ bigCategories }">
-															        	<option>${ bigCategory }</option>
-															        </c:forEach>
-																</select>
-																<select id="smCate">
-															    	<option selected disabled hidden="">소분류</option>
-															    	<option>전체보기</option>
-															    	<c:forEach var="smallCate" items="${ smallCates }">
-															        	<option>${ smallCate }</option>
-															        </c:forEach>
-																</select>
-															</td>
-															<td>품목명</td>
-															<td>
-																<input id="itemName" type="text">
-															</td>
-														</tr>
-													</tbody>
+												<div style="text-align: center; background-color: #d5dee8; color: black;">
+													<div style="padding: 20px"><span>지점명&nbsp;&nbsp;&nbsp;&nbsp;</span>
+														<input list="storeList" name="StoreName" class="StoreName" id="StoreName" placeholder="지점 선택">
+														<datalist id="storeList">
+															<c:forEach var="store" items="${ stores }" varStatus="status">
+																<option value="${ store.storeName }/${ store.storeId }"></option>
+															</c:forEach>
+														</datalist>
+														<input type="hidden" id="StoreId" name="storeId">
+													</div>
+													<div style="padding: 20px">
+														<select id="bgCate" style="text-align-last: center; vertical-align: middle">
+													    	<option selected disabled hidden="">연도 선택</option>
+													    	<c:forEach var="bigCategory" items="${ bigCategories }">
+													        	<option>${ bigCategory }</option>
+													        </c:forEach>
+													        <c:forEach var="i" begin="2015" end="2023">
+													        	<option>${i}</option>
+															</c:forEach>
+														</select>&nbsp;&nbsp;
+														년&nbsp;&nbsp;&nbsp;&nbsp;
+														<select id="smCate" style="text-align-last: center; vertical-align: middle">
+													    	<option selected disabled hidden="">월 선택</option>
+													        <c:forEach var="i" begin="1" end="12">
+													        	<option>${i}</option>
+															</c:forEach>
+														</select>&nbsp;&nbsp;
+														월
+													</div>
+												</div>
+												<table class="table table-bordered" style="text-align: center">
 													<tfoot>
 														<tr>
 															<td colspan="6" align="center">
@@ -101,7 +89,7 @@
 											</div>
 										</div>
 									</div>
-									<div class="col-lg-12 grid-margin stretch-card" id="rawOrderList"></div>
+									<div class="col-lg-12 grid-margin stretch-card" id="rawOrderedList"></div>
 									
 								</div>
 							</div>
@@ -130,16 +118,8 @@
 	<jsp:include page="/WEB-INF/views/admin-modules/admin-common-js.jsp"></jsp:include>
 	<script type="text/javascript">
 		$(function() {
-			$(".tab-pane").hide();
-			$(".tab-pane:first").show();
-			$("#rawOrderList").load("rawOrderList");
-			$("#cartList").load("cartList");
-			
-			$(".nav-tabs li").on('click', function () {
-				$(".tab-pane").hide();
-				var activeTab = $(this).attr("data-tab"); 
-				$("#"+activeTab).fadeIn();
-			});
+			$(".tab-pane").show();
+			$("#rawOrderedList").load('rawOrderedList);
 			
 			$(".StoreName").on("change", function() {
 				var storeId = $(this).val();
@@ -147,32 +127,38 @@
 				$("#StoreId").val(storeId[1]);
 			});
 			
-			var now_utc = Date.now();
-			var timeOff = new Date().getTimezoneOffset()*60000;
-			var today = new Date(now_utc-timeOff).toISOString().split("T")[0];
-			$("#orderDate").attr('min',today);
-			$("#orderDate").val(today);
-			
-			$("#bgCate").on("change", function(event) {
-				var bgCate = $(this).val();
-				$.ajax({
-					"url": "searchSmCate",
-					"method": "get",
-					"data": 'bigCategory=' + bgCate,
-					"success": function(data, status, xhr) {
-						$("#smCate").empty();
-						$("#smCate").append("<option selected disabled hidden=''>소분류</option>");
-						$("#smCate").append("<option>전체보기</option>");
-						for(var i = 0; i < data.length; i++) {
-							$("#smCate").append("<option>" + data[i] + "</option>");
-						}
-					},
-					"error": function(xhr, status, err) {
-						console.log(status);
-						console.log(err);
-					}
-				});
+			$(".nav-tabs li").on('click', function () {
+				$(".tab-pane").hide();
+				var activeTab = $(this).attr("data-tab"); 
+				$("#"+activeTab).fadeIn();
 			});
+			
+// 			var now_utc = Date.now();
+// 			var timeOff = new Date().getTimezoneOffset()*60000;
+// 			var today = new Date(now_utc-timeOff).toISOString().split("T")[0];
+// 			$("#orderDate").attr('min',today);
+// 			$("#orderDate").val(today);
+			
+// 			$("#bgCate").on("change", function(event) {
+// 				var bgCate = $(this).val();
+// 				$.ajax({
+// 					"url": "searchSmCate",
+// 					"method": "get",
+// 					"data": 'bigCategory=' + bgCate,
+// 					"success": function(data, status, xhr) {
+// 						$("#smCate").empty();
+// 						$("#smCate").append("<option selected disabled hidden=''>소분류</option>");
+// 						$("#smCate").append("<option>전체보기</option>");
+// 						for(var i = 0; i < data.length; i++) {
+// 							$("#smCate").append("<option>" + data[i] + "</option>");
+// 						}
+// 					},
+// 					"error": function(xhr, status, err) {
+// 						console.log(status);
+// 						console.log(err);
+// 					}
+// 				});
+// 			});
 			
 			$("#lookup").on("click", function(event) {
 				var bigCategory = $("#bgCate").val();

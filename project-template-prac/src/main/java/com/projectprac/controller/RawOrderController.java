@@ -209,9 +209,20 @@ public class RawOrderController {
 		
 	}
 	
+	@GetMapping(path = { "rawOrdered" })
+	public String rawOrderedList(Model model) {
+		
+		List<StoreDto> stores = fixedSpendService.showAllStore(); // 지점 목록 조회
+		model.addAttribute("stores", stores);
+		
+		return "raw-order/raw-ordered";
+	}
+	
 	@GetMapping(path = { "rawOrderedList" })
-	public String rawOrderedList() {
-		return "raw-order/raw-orderedList";
+	public String rawOrderList() { // 조건에 따른 상품 목록 조회
+		
+		return "raw-order/rawOrderedList"; // 상품 리스트 호출
+		
 	}
 	
 	
