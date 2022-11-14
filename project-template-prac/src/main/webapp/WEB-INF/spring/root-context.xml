@@ -41,4 +41,5 @@
 	<import resource="mypage-context.xml" />
 	<import resource="worker-context.xml" />
 	<import resource="raworder-context.xml" />
+	<import resource="accountcontrol-context.xml" />
 </beans>
