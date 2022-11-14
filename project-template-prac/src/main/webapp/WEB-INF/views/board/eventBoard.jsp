@@ -96,7 +96,7 @@
                                            	</div>
                                             <div>
                             <div style="font-size: 15pt">
-                                <table class="table table-striped">
+                                <table class="table table-striped" style="height:55px">
                                     <thead>
                                         <tr>
                                             <th style="height: 25px; background-color:hotpink; font-size: 17px">No.</th>

@@ -49,6 +49,12 @@
 			</a>
 		</li>
 		<li class="nav-item">
+			<a class="nav-link" href="kiosk">
+				<span class="icon-bg"><i class="mdi mdi-table-large menu-icon"></i></span>
+				<span class="menu-title">KIOSK</span>
+			</a>
+		</li>
+		<li class="nav-item">
 			<a class="nav-link" href="home">
 				<span class="icon-bg"><i class="mdi mdi-lock menu-icon"></i></span>
 				<span class="menu-title">User Pages</span>
