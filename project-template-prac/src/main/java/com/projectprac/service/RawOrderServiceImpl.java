@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.projectprac.dto.RawOrderDto;
+import com.projectprac.dto.RawOrderHistoryDto;
 import com.projectprac.mapper.RawOrderMapper;
 
 import lombok.Setter;
@@ -74,6 +75,31 @@ public class RawOrderServiceImpl implements RawOrderService {
 	@Override
 	public void insertOrderDetail(int orderId, int rawId, int count) {
 		rawOrderMapper.insertOrderDetail(orderId, rawId, count);
+	}
+
+	@Override
+	public List<RawOrderHistoryDto> showRawOrdered(String storeId, String year, String month) {
+		
+		List<RawOrderHistoryDto> history;
+		if (!storeId.equals("-1") && !year.equals("-1") && !month.equals("-1")) { // 지점번호와 연도, 월이 있을 때
+			String orderDate = year + "-" + month;
+			history = rawOrderMapper.selectOrderRawByStoreIdANDYearANDMonth(storeId, orderDate);
+		} else if (!storeId.equals("-1") && !year.equals("-1")) { // 지점번호와 연도만 있을 때
+			String orderDate = year; 
+			history = rawOrderMapper.selectOrderRawByStoreIDANDYEAR(storeId, orderDate);
+		} else if (!year.equals("-1") && !month.equals("-1")) { // 연도와 월만 있을 때
+			String orderDate = year + "-" + month;
+			history = rawOrderMapper.selectOrderRawByOrderDate(orderDate);
+		} else if (!storeId.equals("-1")) { // 대분류만 있을 때
+			history = rawOrderMapper.selectOrderRawByStoreId(storeId);
+		} else if (!year.equals("-1")) { // 검색어만 있을 때
+			String orderDate = year;
+			history = rawOrderMapper.selectOrderRawByOrderDate(orderDate);
+		} else {
+			history = new ArrayList<>();
+		}
+		return history;
+		
 	}
 
 }

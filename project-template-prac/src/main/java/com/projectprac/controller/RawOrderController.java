@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.projectprac.dto.RawOrderCountDto;
 import com.projectprac.dto.RawOrderDto;
+import com.projectprac.dto.RawOrderHistoryDetailDto;
+import com.projectprac.dto.RawOrderHistoryDto;
 import com.projectprac.dto.StoreDto;
 import com.projectprac.service.FixedSpendService;
 import com.projectprac.service.RawOrderService;
@@ -225,5 +227,24 @@ public class RawOrderController {
 		
 	}
 	
+	@PostMapping(path = { "lookupRawOrdered" })
+	public String showRawOredered(@RequestParam(value="-1") String storeId,
+								  @RequestParam(value="-1") String year,
+								  @RequestParam(value="-1") String month) {
+		
+		List<RawOrderHistoryDto> histories = rawOrderService.showRawOrdered(storeId, year, month);
+		List<RawOrderHistoryDetailDto> details = new ArrayList<>();
+		for (RawOrderHistoryDto history : histories) {
+			// history.setHistoryDtos(rawOrderService.showOrderedDetail(history.getOrderRawId()));
+		}
+		
+		// RawOrderHistoryDetailDto 
+		for (RawOrderHistoryDetailDto detail : details) {
+			 rawOrderService.selectRawOrderByRawId(detail.getRawId());
+		}
+		
+		
+		return "";
+	}
 	
 }

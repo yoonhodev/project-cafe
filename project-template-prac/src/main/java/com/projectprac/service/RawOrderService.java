@@ -3,6 +3,7 @@ package com.projectprac.service;
 import java.util.List;
 
 import com.projectprac.dto.RawOrderDto;
+import com.projectprac.dto.RawOrderHistoryDto;
 
 public interface RawOrderService {
 
@@ -21,5 +22,7 @@ public interface RawOrderService {
 	int selectLastOrderId();
 
 	void insertOrderDetail(int orderId, int rawId, int count);
+
+	List<RawOrderHistoryDto> showRawOrdered(String storeId, String year, String month);
 
 }
