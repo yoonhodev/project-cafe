@@ -28,7 +28,7 @@
               <h3 class="page-title"> 사용자 정보 </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">사용자 정보</a></li>
+                  <li class="breadcrumb-item"><a href="accountControl">사용자 정보</a></li>
                   <li class="breadcrumb-item active" aria-current="page">유저 정보</li>
                 </ol>
               </nav>
