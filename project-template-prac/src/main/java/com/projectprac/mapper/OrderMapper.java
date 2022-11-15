@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import com.projectprac.dto.AddressDto;
 import com.projectprac.dto.CouponMakeDto;
 import com.projectprac.dto.ProductDto;
 
@@ -25,5 +26,9 @@ public interface OrderMapper {
 			"FROM product ")
 	List<ProductDto> findShop();
 
+	@Select("SELECT address, detail_address detailAddress " +
+			"FROM address " +
+			"WHERE customer_id = #{ customerId }" )
+	AddressDto selectAddress(String customerId);
 
 }

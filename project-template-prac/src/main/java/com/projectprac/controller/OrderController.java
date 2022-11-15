@@ -16,11 +16,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.projectprac.dto.AddressDto;
 import com.projectprac.dto.CouponDto;
 import com.projectprac.dto.CouponMakeDto;
 import com.projectprac.dto.CustomerDto;
 import com.projectprac.dto.ProductDto;
+import com.projectprac.dto.StoreDto;
 import com.projectprac.service.CouponService;
+import com.projectprac.service.FixedSpendService;
 import com.projectprac.service.OrderService;
 
 @Controller
@@ -29,6 +32,10 @@ public class OrderController {
 	@Autowired
 	@Qualifier("couponService")
 	private CouponService couponService;
+	
+	@Autowired
+	@Qualifier("fixedspendService")
+	private FixedSpendService fixedSpendService;
 
 	public List<CouponMakeDto> CouponMakeList(HttpSession session) {
 
@@ -70,6 +77,17 @@ public class OrderController {
 				couponMakes.add(couponMake);
 			}
 		}
+		
+		List<StoreDto> stores = fixedSpendService.showAllStore(); // 지점 목록 조회
+		model.addAttribute("stores", stores);
+		
+//		CustomerDto customer = (CustomerDto) session.getAttribute("loginuser");
+//		System.out.println(customer);
+//		AddressDto addressDto = orderService.showAddress(customer.getCustomerId());
+//		System.out.println(addressDto);
+//		String address = addressDto.getAddress() + addressDto.getDetailAddress();
+//		model.addAttribute("address", address);
+		
 		session.setAttribute("products", products);
 		model.addAttribute("couponMakes", couponMakes);
 		return "shop/order";
@@ -91,27 +109,6 @@ public class OrderController {
 		session.setAttribute("productIds", productIds);
 		return "shop/shop";
 	}
-
-//	@GetMapping(path = { "delete-order" })
-//	@ResponseBody
-//	public String deleteOrder(@RequestParam(defaultValue = "-1") int prodId, HttpSession session) {
-//
-//		if (prodId == -1) {
-//			return "redirect:order";
-//		}
-//
-//		List<ProductDto> productIds = (List<ProductDto>) session.getAttribute("productIds");
-//		for (ProductDto product : productIds) {
-//			if (product.getProdId() == prodId) {
-//				productIds.remove(product);
-//				session.setAttribute("productIds", productIds);
-//				return "redirect:order";
-//			}
-//		}
-//
-//		return "redirect:order";
-//
-//	}
 
 	@GetMapping(path = { "coupon-apply" })
 	public String couponApply(@RequestParam(defaultValue = "-1") String customerId, CouponMakeDto couponmake,

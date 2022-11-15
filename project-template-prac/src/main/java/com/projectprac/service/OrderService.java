@@ -2,6 +2,7 @@ package com.projectprac.service;
 
 import java.util.List;
 
+import com.projectprac.dto.AddressDto;
 import com.projectprac.dto.CouponMakeDto;
 import com.projectprac.dto.ProductDto;
 
@@ -16,5 +17,7 @@ public interface OrderService {
 		List<CouponMakeDto> showCoupon(String customerId);
 
 		List<ProductDto> showMenuImg();
+
+		AddressDto showAddress(String customerId);
 
 	}

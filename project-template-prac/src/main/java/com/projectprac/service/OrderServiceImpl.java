@@ -2,6 +2,7 @@ package com.projectprac.service;
 
 import java.util.List;
 
+import com.projectprac.dto.AddressDto;
 import com.projectprac.dto.CouponMakeDto;
 import com.projectprac.dto.ProductDto;
 import com.projectprac.mapper.CouponMapper;
@@ -45,6 +46,13 @@ public class OrderServiceImpl implements OrderService  {
 	public List<ProductDto> showMenuImg() {
 		List<ProductDto> products = orderMapper.findShop();
 		return products;
+	}
+
+	@Override
+	public AddressDto showAddress(String customerId) {
+		System.out.println(customerId);
+		AddressDto address = orderMapper.selectAddress(customerId);
+		return address;
 	}
 
 }
