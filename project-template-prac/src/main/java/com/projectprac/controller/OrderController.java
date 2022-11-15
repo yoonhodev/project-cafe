@@ -81,12 +81,18 @@ public class OrderController {
 		List<StoreDto> stores = fixedSpendService.showAllStore(); // 지점 목록 조회
 		model.addAttribute("stores", stores);
 		
-//		CustomerDto customer = (CustomerDto) session.getAttribute("loginuser");
-//		System.out.println(customer);
-//		AddressDto addressDto = orderService.showAddress(customer.getCustomerId());
-//		System.out.println(addressDto);
-//		String address = addressDto.getAddress() + addressDto.getDetailAddress();
-//		model.addAttribute("address", address);
+		CustomerDto customer = (CustomerDto) session.getAttribute("loginuser");
+		System.out.println(customer);
+		
+		AddressDto addressDto = orderService.showAddress(customer.getCustomerId());
+		System.out.println(addressDto);
+		String address;
+		if (addressDto == null) {
+			address = "기존에 등록된 주소가 없습니다.";
+		} else {
+			address = addressDto.getAddress() + addressDto.getDetailAddress();
+		}
+		model.addAttribute("address", address);
 		
 		session.setAttribute("products", products);
 		model.addAttribute("couponMakes", couponMakes);

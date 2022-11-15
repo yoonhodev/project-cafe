@@ -86,7 +86,7 @@
 								<form>
 									<div class="form-group" id="new-addr-form">
 										<div class="input-group">
-											<input class="form-control" type="text" name="customerId" placeholder="주소를 입력하세요">
+											<input class="form-control" type="text" name="customerId" value="${ address }" disabled="disabled">
 										</div>
 										<span id="idcheck"></span>
 										<input type="hidden" id="idchk" name="idchk">

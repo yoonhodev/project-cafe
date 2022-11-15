@@ -50,7 +50,6 @@ public class OrderServiceImpl implements OrderService  {
 
 	@Override
 	public AddressDto showAddress(String customerId) {
-		System.out.println(customerId);
 		AddressDto address = orderMapper.selectAddress(customerId);
 		return address;
 	}
