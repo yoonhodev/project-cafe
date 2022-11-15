@@ -12,4 +12,6 @@ public interface KioskService {
 
 	List<ProductDto> showKioskMenuImg2();
 
+	
+
 }

@@ -24,6 +24,16 @@
         <div class="main-panel">
           <div class="content-wrapper">
           
+           <div class="page-header">      
+           <h3 class="page-title"> 직원 </h3>        
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb" >
+                  <li class="breadcrumb-item"><a href="workerInfo">직원</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">직원 정보</li>
+                </ol>
+              </nav>
+            </div>
+          
                    <div class="d-sm-flex justify-content-between align-items-center transaparent-tab-border {">
                   <ul class="nav nav-tabs tab-transparent">
                     <li class="nav-item" data-name="store-worker">
@@ -35,61 +45,66 @@
                   </ul>
                 </div>
           
+          
+          
            <div class="tab-content tab-transparent-content">
  				<div class="tab-pane" id="store-worker">
                     <div class="row">
-                    	<div class="col-xl-3 col-lg-6 col-sm-6 grid-margin stretch-card">
-                    		<div class="card">
-                          <div class="card-body text-center">
-			          	<h1 style="color: black;">지점명</h1><br>			          		
-						    <form action="workerInfo" method="get" id="show-worker-form">
-						    <span class="col-sm-6 col-md-4 col-lg-3"><i class="mdi mdi-sort" style="color: gray"></i></span>
-							    <select id="StoreName1" name="storeName1" class="StoreName1">
-							    	<option selected disabled hidden="">지점 선택</option>
-							      	<c:forEach var="store" items="${ stores }" varStatus="status">
-							        	<option id="store-${ store.storeId }" value="${ store.storeId }" data-storeName="${ store.storeName }">${ store.storeName }</option>
-							        </c:forEach>
-								</select>
-								<br><br>
-								<span class="col-sm-6 col-md-4 col-lg-3"><i class="mdi mdi-calendar" style="color: gray"></i></span>
-							<select id=WorkYear1 name="WorkYear1" class="WorkYear1">
-								<option selected disabled hidden="">년도 선택</option>
-								<option value="2020">2020</option>
-								<option value="2021">2021</option>
-								<option value="2022">2022</option>
-								<option value="2023">2023</option>
-								<option value="2024">2024</option>
-								<option value="2025">2025</option>
-								<option value="2026">2026</option>
-							</select>
-							<br><br>
-							<span class="col-sm-6 col-md-4 col-lg-3"><i class="mdi mdi-calendar-today" style="color: gray"></i></span>
-							<select id=WorkMonth1 name="WorkMonth1" class="WorkMonth1">
-								<option selected disabled hidden="">월 선택</option>
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-								<option value="4">4</option>
-								<option value="5">5</option>
-								<option value="6">6</option>
-								<option value="7">7</option>
-								<option value="8">8</option>
-								<option value="9">9</option>
-								<option value="10">10</option>
-								<option value="11">11</option>
-								<option value="12">12</option>
-							</select>
-								<br><br>
-								<input type="hidden" id="StoreId11" name="storeId">
-								<input type="hidden" id="WorkYear11" name="workYear">	
-								<input type="hidden" id="WorkMonth11" name="workMonth">
-								<input type="submit"
-									   class="spr-button spr-button-primary button button-primary btn btn-primary"
-									   id="SelectStore"
-									   value="확인">
-							</form>
-							
-											
+                    	<div class="col-lg-12 grid-margin stretch-card">
+                    	<div class="card">
+                          <div class="card-body">
+                          <form action="workerInfo" method="get" id="show-worker-form">
+                          	<table class="table">
+                          		<thead style="background-color: #d5dee8">
+                          			<tr>
+                          				<th>                        				 
+											    <span class="col-sm-6 col-md-4 col-lg-3"><b>지점명</b></span>
+												    <select id="StoreName1" name="storeName1" class="StoreName1">
+												    	<option selected disabled hidden="">지점 선택</option>
+												      	<c:forEach var="store" items="${ stores }" varStatus="status">
+												        	<option id="store-${ store.storeId }" value="${ store.storeId }" data-storeName="${ store.storeName }">${ store.storeName }</option>
+												        </c:forEach>
+													</select>
+                          				</th>                          				
+                          				<th>
+												<span class="col-sm-6 col-md-4 col-lg-3"><b>년도</b></span>
+												<select id=WorkYear1 name="WorkYear1" class="WorkYear1">
+													<option selected disabled hidden="">년도 선택</option>
+													<c:forEach var="i" begin="2015" end="2023">
+													        	<option>${i}</option>
+													</c:forEach>
+												</select>
+                          				
+                          				</th>
+                          				<th>
+											<span class="col-sm-6 col-md-4 col-lg-3"><b>월</b></span>
+												<select id=WorkMonth1 name="WorkMonth1" class="WorkMonth1">
+													<option selected disabled hidden="">월 선택</option>
+													<c:forEach var="i" begin="1" end="12">
+													        	<option>${i}</option>
+													</c:forEach>
+												</select>
+                          				</th>
+                          			</tr>                          		
+                          		</thead>
+                          		<tbody>
+                          		<tr>
+                          		<td colspan="6" align="center">
+									<input type="hidden" id="StoreId11" name="storeId">
+										<input type="hidden" id="WorkYear11" name="workYear">	
+										<input type="hidden" id="WorkMonth11" name="workMonth">
+										<input type="submit"
+											   class="btn btn-outline-secondary btn-fw btn-rounded"
+											   id="SelectStore"
+											   value="확인">
+									
+                          		</td>
+                          		</tr>
+                          		</tbody>
+                          	
+                          	
+                          	</table>
+                          </form>											
 						</div>
 							</div>
           			</div>
@@ -138,29 +153,20 @@
           	</div>
           
           <div class="tab-pane" id="cost-input">
-                    <div class="row">
-                    	<div class="col-xl-3 col-lg-6 col-sm-6 grid-margin stretch-card">
-                    		<div class="card">
-                          <div class="card-body text-center">
-							<h1 style="color: black;">지점명</h1>
+                   
+						
+						<div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">  
+                  	<h3 style="color: black;">지점명</h3>
 							<span class="col-sm-6 col-md-4 col-lg-3"><i class="mdi mdi-sort" style="color: gray"></i></span>
 						    <select id="StoreName22" class="StoreName1">
 						    	<option selected disabled hidden="">지점 선택</option>
 						      	<c:forEach var="store" items="${ stores }" varStatus="status">
 						        	<option value="${ store.storeId }">${ store.storeName }</option>
 						        </c:forEach>
-							</select>	
-		 
-
-
-						  </div>
-							</div>
-							
-						</div>
-						
-						<div class="col-12 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">                  
+							</select>	  
+							<hr>              
                     <h4 class="card-title">직원 정보 입력</h4>                  
                     <form class="forms-sample" method="post" action="workerInfo">
                       <div class="form-group">
@@ -188,7 +194,7 @@
                   
                       <input type="submit"
 							   class="btn btn-primary mr-2"
-							   value="확인" />
+							   value="입력" />
                       </form>
                   </div>
                 </div>
