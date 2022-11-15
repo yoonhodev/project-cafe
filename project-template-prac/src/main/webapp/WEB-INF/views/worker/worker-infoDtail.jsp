@@ -24,10 +24,20 @@
         <div class="main-panel">
           <div class="content-wrapper">
           
+           <div class="page-header">      
+           <h3 class="page-title"> 직원 </h3>        
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb" >
+                  <li class="breadcrumb-item"><a href="workerInfo">직원</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">직원 세부사항</li>
+                </ol>
+              </nav>
+            </div>
+          
                    <div class="d-sm-flex justify-content-between align-items-center transaparent-tab-border {">
                   <ul class="nav nav-tabs tab-transparent">
                     <li class="nav-item" data-name="worker-detail">
-                      <a class="nav-link active"data-toggle="tab"  role="tab">지점별 직원</a>
+                      <a class="nav-link active"data-toggle="tab"  role="tab">직원 정보</a>
                     </li>
                     <li class="nav-item" data-name="salary-input">
                       <a class="nav-link"data-toggle="tab"  role="tab" >직원 정보 입력</a>
