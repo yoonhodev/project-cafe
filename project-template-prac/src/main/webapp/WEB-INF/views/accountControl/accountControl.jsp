@@ -34,9 +34,9 @@
               </nav>
             </div>
             <div class="row">
-              <div class="col-lg-6 grid-margin stretch-card" >
+              <div class="col-lg-12 grid-margin stretch-card" >
                 <div class="card" >
-                  <div class="card-body" style="width:40cm ;background-color: white;">
+                  <div class="card-body">.
                     <h4 class="card-title">유저 정보</h4> 
                     <form action="searchCustomerId" method="get" id="searchCustomer">
                     <h5>
@@ -50,10 +50,10 @@
                    <input type="submit" value="검색" id="searchCustomerId" class="search_customerId btn btn-info">                
                     </h5>       
                     </form> 
-                    <table class="table table-hover">                    
+                    <table class="table table-hover" id="SortTableWithJs">                    
                       <thead>
                         <tr align="center">
-                          <th >유저 아이디</th>
+                          <th style="cursor: pointer;" onclick="sortTable(0)">유저 아이디</th>
                           <th>유저 연락처</th>
                           <th>E-mail</th>
                           <th>생년월일</th>
@@ -229,41 +229,71 @@
 							
 		});	
 		
+		
+		
+		
 	});
 	
+
 	
-	
-	
+function sortTable(n) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("SortTableWithJs");
+  switching = true;
+  //Set the sorting direction to ascending:
+  dir = "asc"; 
+  /*Make a loop that will continue until
+  no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = 1; i < (rows.length - 1); i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      /*check if the two rows should switch place,
+      based on the direction, asc or desc:*/
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch= true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      //Each time a switch is done, increase this count by 1:
+      switchcount ++;      
+    } else {
+      /*If no switching has been done AND the direction is "asc",
+      set the direction to "desc" and run the while loop again.*/
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+}
 	</script>
 	
   </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

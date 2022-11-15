@@ -5,26 +5,17 @@
 
 <div class="card">
 	<div class="card-body">
-		<button type="button" class="btn btn-inverse-success select-all">
-			<i class="mdi mdi-check"></i> 전체 선택
-		</button>
-		<button type="button" class="btn btn-inverse-danger unselect-all">
-			<i class="mdi mdi-check"></i> 전체 해제
-		</button>
-		<button type="button" class="btn btn-inverse-secondary cart-push">
-			<i class="mdi mdi-cart-outline"></i> 장바구니 담기
-		</button>
-		<div style="height: 10px"></div>
 		<table class="table table-striped" style="text-align: center">
 			<thead>
 				<tr>
-					<th>&nbsp;</th>
+					<th>연도</th>
+					<th>월</th>
+					
 					<th>제품명</th>
 					<th>제품상태</th>
 					<th>단가</th>
 					<th>수량</th>
 					<th>합계</th>
-					<th>장바구니</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -36,7 +27,6 @@
 				<c:forEach var="raw" items="${ rawOrders }">
 					
 					<tr>
-						<td><input type="checkbox" name="cbox" class="checkBox" id="chk-${ raw.rawId }" value="${ raw.rawId }"></td>
 						<td>${ raw.rawName }</td>
 						<td>${ raw.rawTemp }</td>
 						<td>

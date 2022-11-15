@@ -119,7 +119,7 @@
 	<script type="text/javascript">
 		$(function() {
 			$(".tab-pane").show();
-			$("#rawOrderedList").load('rawOrderedList);
+			$("#rawOrderedList").load('rawOrderedList');
 			
 			$(".StoreName").on("change", function() {
 				var storeId = $(this).val();
