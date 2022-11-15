@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import com.projectprac.dto.RawOrderDto;
+import com.projectprac.dto.RawOrderHistoryDto;
 
 @Mapper
 public interface RawOrderMapper {
@@ -65,6 +66,28 @@ public interface RawOrderMapper {
 	@Insert("INSERT INTO order_raw_detail (order_raw_id, raw_id, amount) " +
 			"VALUES (#{ orderId }, #{ rawId }, #{ count }) ")
 	void insertOrderDetail(@Param("orderId") int orderId, @Param("rawId") int rawId, @Param("count") int count);
+
+	@Select("SELECT order_raw_id orderRawId, store_id storeId, raw_order_date rawOrderDate " +
+			"FROM order_raw " +
+			"WHERE store_id = #{ storeId } AND raw_order_date LIKE CONCAT('%',#{ orderDate },'%') ")
+	List<RawOrderHistoryDto> selectOrderRawByStoreIdANDYearANDMonth(@Param("storeId") String storeId, @Param("orderDate") String orderDate);
+
+	@Select("SELECT order_raw_id orderRawId, store_id storeId, raw_order_date rawOrderDate " +
+			"FROM order_raw " +
+			"WHERE store_id = #{ storeId } AND raw_order_date LIKE CONCAT('%',#{ orderDate },'%') ")
+	List<RawOrderHistoryDto> selectOrderRawByStoreIDANDYEAR(@Param("storeId") String storeId, @Param("orderDate") String orderDate);
+
+	@Select("SELECT order_raw_id orderRawId, store_id storeId, raw_order_date rawOrderDate " +
+			"FROM order_raw " +
+			"WHERE raw_order_date LIKE CONCAT('%',#{ orderDate },'%') ")
+	List<RawOrderHistoryDto> selectOrderRawByOrderDate(String orderDate);
+
+	@Select("SELECT order_raw_id orderRawId, store_id storeId, raw_order_date rawOrderDate " +
+			"FROM order_raw " +
+			"WHERE store_id = #{ storeId } ")
+	List<RawOrderHistoryDto> selectOrderRawByStoreId(String storeId);
+	
+	
 
 
 	

@@ -131,7 +131,7 @@
 	<script type="text/javascript">
 		$(function() {
 			$(".tab-pane").hide();
-			$(".tab-pane:first").show();
+			$(".tab-pane:first").fadeIn();
 			$("#rawOrderList").load("rawOrderList");
 			$("#cartList").load("cartList");
 			

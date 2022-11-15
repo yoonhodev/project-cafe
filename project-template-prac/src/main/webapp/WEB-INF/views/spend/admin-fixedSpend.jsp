@@ -24,6 +24,16 @@
         <div class="main-panel">
           <div class="content-wrapper">
           
+          <div class="page-header">      
+           <h3 class="page-title"> 고정 지출 </h3>        
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb" >
+                  <li class="breadcrumb-item"><a href="fixedSpend">고정 지출</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">월별 고정 지출</li>
+                </ol>
+              </nav>
+            </div>
+          
                    <div class="d-sm-flex justify-content-between align-items-center transaparent-tab-border {">
                   <ul class="nav nav-tabs tab-transparent">
                     <li class="nav-item" data-name="monthly-cost">
@@ -38,10 +48,11 @@
            <div class="tab-content tab-transparent-content">
  				<div class="tab-pane" id="monthly-cost">
                     <div class="row">
-                    	<div class="col-xl-3 col-lg-6 col-sm-6 grid-margin stretch-card">
-                    		<div class="card">
-                          <div class="card-body text-center">
-			          	<h1 style="color: black;">지점명</h1><br>
+          			
+           <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                  	<h2 style="color: black;">지점명</h2><br>
 						    <form action="fixedSpend" method="get" id="show-cost-form">
 						    <span class="col-sm-6 col-md-4 col-lg-3"><i class="mdi mdi-sort" style="color: gray"></i></span>
 							    <select id="StoreName" name="storeName" class="StoreName">
@@ -53,18 +64,11 @@
 								<br><br>
 								<input type="hidden" id="StoreId1" name="storeId">								
 								<input type="submit"
-									   class="spr-button spr-button-primary button button-primary btn btn-primary"
+									   class="btn btn-outline-secondary btn-fw btn-rounded"
 									   id="SelectStore"
 									   value="확인">
 							</form>
-												
-						</div>
-							</div>
-          			</div>
-          			
-           <div class="col-lg-12 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
+                  <hr>
                   	<h4 class="card-title"><span id="boardTitle" >${ storeName10 }</span></h4>
                     
                     <table class="table table-striped">
