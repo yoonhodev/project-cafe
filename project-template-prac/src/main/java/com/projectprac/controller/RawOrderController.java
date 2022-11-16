@@ -233,16 +233,16 @@ public class RawOrderController {
 								  @RequestParam(value="-1") String month) {
 		
 		List<RawOrderHistoryDto> histories = rawOrderService.showRawOrdered(storeId, year, month);
+		List<RawOrderHistoryDto> historyDtos;
 		List<RawOrderHistoryDetailDto> details = new ArrayList<>();
 		for (RawOrderHistoryDto history : histories) {
-			// history.setHistoryDtos(rawOrderService.showOrderedDetail(history.getOrderRawId()));
+			history.setHistoryDtos(rawOrderService.showOrderedDetail(history.getOrderRawId()));
 		}
 		
 		// RawOrderHistoryDetailDto 
 		for (RawOrderHistoryDetailDto detail : details) {
 			 rawOrderService.selectRawOrderByRawId(detail.getRawId());
 		}
-		
 		
 		return "";
 	}

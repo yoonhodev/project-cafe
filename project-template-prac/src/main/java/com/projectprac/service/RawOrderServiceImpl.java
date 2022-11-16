@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.projectprac.dto.RawOrderDto;
+import com.projectprac.dto.RawOrderHistoryDetailDto;
 import com.projectprac.dto.RawOrderHistoryDto;
 import com.projectprac.mapper.RawOrderMapper;
 
@@ -81,25 +82,38 @@ public class RawOrderServiceImpl implements RawOrderService {
 	public List<RawOrderHistoryDto> showRawOrdered(String storeId, String year, String month) {
 		
 		List<RawOrderHistoryDto> history;
+		String orderDate;
 		if (!storeId.equals("-1") && !year.equals("-1") && !month.equals("-1")) { // 지점번호와 연도, 월이 있을 때
-			String orderDate = year + "-" + month;
-			history = rawOrderMapper.selectOrderRawByStoreIdANDYearANDMonth(storeId, orderDate);
+			orderDate = year + "-" + month;
+			history = rawOrderMapper.selectOrderRawByStoreIdAndOrderDate(storeId, orderDate);
 		} else if (!storeId.equals("-1") && !year.equals("-1")) { // 지점번호와 연도만 있을 때
-			String orderDate = year; 
-			history = rawOrderMapper.selectOrderRawByStoreIDANDYEAR(storeId, orderDate);
+			orderDate = year; 
+			history = rawOrderMapper.selectOrderRawByStoreIdAndOrderDate(storeId, orderDate);
 		} else if (!year.equals("-1") && !month.equals("-1")) { // 연도와 월만 있을 때
-			String orderDate = year + "-" + month;
+			orderDate = year + "-" + month;
 			history = rawOrderMapper.selectOrderRawByOrderDate(orderDate);
-		} else if (!storeId.equals("-1")) { // 대분류만 있을 때
+		} else if (!storeId.equals("-1") && !month.equals("-1")) { // 지점번호와 월만 있을 때
+			orderDate = "-" + month + "-";
+			history = rawOrderMapper.selectOrderRawByStoreIdAndOrderDate(storeId, orderDate);
+		} else if (!storeId.equals("-1")) { // 지점번호만 있을 때
 			history = rawOrderMapper.selectOrderRawByStoreId(storeId);
-		} else if (!year.equals("-1")) { // 검색어만 있을 때
-			String orderDate = year;
+		} else if (!year.equals("-1")) { // 연도만 있을 때
+			orderDate = year;
+			history = rawOrderMapper.selectOrderRawByOrderDate(orderDate);
+		} else if (!month.equals("-1")) { // 월만 있을 때
+			orderDate = "-" + month + "-";
 			history = rawOrderMapper.selectOrderRawByOrderDate(orderDate);
 		} else {
 			history = new ArrayList<>();
 		}
 		return history;
 		
+	}
+
+	@Override
+	public List<RawOrderHistoryDetailDto> showOrderedDetail(int orderRawId) {
+		List<RawOrderHistoryDetailDto> details = new ArrayList<>(); // 수정 요망
+		return details;
 	}
 
 }

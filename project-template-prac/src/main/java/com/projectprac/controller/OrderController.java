@@ -90,7 +90,7 @@ public class OrderController {
 		if (addressDto == null) {
 			address = "기존에 등록된 주소가 없습니다.";
 		} else {
-			address = addressDto.getAddress() + addressDto.getDetailAddress();
+			address = addressDto.getAddress() + " " + addressDto.getDetailAddress();
 		}
 		model.addAttribute("address", address);
 		
