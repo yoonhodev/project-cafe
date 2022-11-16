@@ -43,5 +43,5 @@
 	<import resource="raworder-context.xml" />
 	<import resource="accountcontrol-context.xml" />
 	<import resource="kiosk-context.xml" />
-	
+	<import resource="admincheckorder-context.xml" />
 </beans>

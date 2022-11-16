@@ -9,8 +9,13 @@ public class RawOrderHistoryDto {
 
 	private int orderRawId;
 	private int storeId;
+	private String storeName;
 	private String rawOrderDate;
 	
-	private List<RawOrderHistoryDetailDto> historyDtos;
+	private String productName;
+	private int size;
+	private int total;
+
+	private List<RawOrderHistoryDetailDto> historyDetailDtos;
 	
 }

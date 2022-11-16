@@ -10,6 +10,6 @@ public class RawOrderHistoryDetailDto {
 	private int rawId;
 	private int amount;
 	
-	private RawOrderDto rawOrder;
+	private RawOrderDto rawOrderDto;
 	
 }
