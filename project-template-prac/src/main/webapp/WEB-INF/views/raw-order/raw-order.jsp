@@ -102,13 +102,11 @@
 										</div>
 									</div>
 									<div class="col-lg-12 grid-margin stretch-card" id="rawOrderList"></div>
-									
 								</div>
 							</div>
 							<div class="tab-content tab-transparent-content">
 								<div class="tab-pane" id="CartOrder" role="tabpanel" aria-labelledby="business-tab">
 									<div class="col-lg-12 grid-margin stretch-card" id="cartList"></div>
-									
 								</div>
 							</div>
 						</div>

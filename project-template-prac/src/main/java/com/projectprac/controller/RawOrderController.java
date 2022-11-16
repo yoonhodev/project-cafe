@@ -18,6 +18,7 @@ import com.projectprac.dto.RawOrderCountDto;
 import com.projectprac.dto.RawOrderDto;
 import com.projectprac.dto.RawOrderHistoryDetailDto;
 import com.projectprac.dto.RawOrderHistoryDto;
+import com.projectprac.dto.RawOrderedShowDto;
 import com.projectprac.dto.StoreDto;
 import com.projectprac.service.FixedSpendService;
 import com.projectprac.service.RawOrderService;
@@ -228,23 +229,37 @@ public class RawOrderController {
 	}
 	
 	@PostMapping(path = { "lookupRawOrdered" })
-	public String showRawOredered(@RequestParam(value="-1") String storeId,
-								  @RequestParam(value="-1") String year,
-								  @RequestParam(value="-1") String month) {
+	@ResponseBody
+	public String showRawOredered(HttpSession session, Model model, @RequestParam(defaultValue = "-1") String storeId,
+								  @RequestParam(defaultValue = "-1") String year,
+								  @RequestParam(defaultValue = "-1") String month) {
 		
 		List<RawOrderHistoryDto> histories = rawOrderService.showRawOrdered(storeId, year, month);
-		List<RawOrderHistoryDto> historyDtos;
-		List<RawOrderHistoryDetailDto> details = new ArrayList<>();
-		for (RawOrderHistoryDto history : histories) {
-			history.setHistoryDtos(rawOrderService.showOrderedDetail(history.getOrderRawId()));
+		List<RawOrderHistoryDto> historyDtos = new ArrayList<>();
+		
+		for (RawOrderHistoryDto historyDto : histories) {
+			List<RawOrderHistoryDetailDto> details = rawOrderService.showOrderedDetail(historyDto.getOrderRawId());
+			List<RawOrderHistoryDetailDto> historyDetails = new ArrayList<>();
+			for (RawOrderHistoryDetailDto detail : details) {
+				detail.setRawOrderDto(rawOrderService.selectRawOrderByRawId(detail.getRawId()));
+				historyDetails.add(detail);
+			}
+			historyDto.setProductName(historyDetails.get(0).getRawOrderDto().getRawName());
+			historyDto.setStoreName(rawOrderService.selectStoreNameByStoreId(historyDto.getStoreId()));
+			historyDto.setSize(historyDetails.size()-1);
+			int total = 0;
+			for (RawOrderHistoryDetailDto raw : historyDetails) {
+				total = total + (raw.getRawOrderDto().getRawPrice() * raw.getAmount());
+				
+			}
+			historyDto.setTotal(total);
+			historyDto.setHistoryDetailDtos(historyDetails);
+			historyDtos.add(historyDto);
 		}
 		
-		// RawOrderHistoryDetailDto 
-		for (RawOrderHistoryDetailDto detail : details) {
-			 rawOrderService.selectRawOrderByRawId(detail.getRawId());
-		}
-		
-		return "";
+		System.out.println(historyDtos);
+		session.setAttribute("rawOrderHistories", historyDtos);
+		return "0";
 	}
 	
 }

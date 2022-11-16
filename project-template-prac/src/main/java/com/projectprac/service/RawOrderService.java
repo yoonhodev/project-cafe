@@ -28,4 +28,6 @@ public interface RawOrderService {
 
 	List<RawOrderHistoryDetailDto> showOrderedDetail(int orderRawId);
 
+	String selectStoreNameByStoreId(int storeId);
+
 }

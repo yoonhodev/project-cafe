@@ -41,7 +41,7 @@
 							</div>
 							<div class="tab-content tab-transparent-content">
 								<div class="tab-pane" id="SelectOrder" role="tabpanel" aria-labelledby="select-insert-tab">
-									<div class="col-lg-12 grid-margin stretch-card" id="rawOrderedList">
+									<div class="col-lg-12 grid-margin stretch-card">
 										<div class="card">
 											<div class="card-body">
 												<h1 class="card-title" style="font-size: 16pt; background-color: #d5dee8; margin: 0; padding: 20px;">주문내역</h1>
@@ -75,30 +75,9 @@
 														<button id="lookup" type="button" class="btn btn-secondary">조회</button>
 													</div>
 												</div>
-												<br>
-												<table class="table table-striped" style="text-align: center">
-													<thead>
-														<tr>
-															<th>날짜</th>
-															<th>제품명단</th>
-															<th>합계</th>
-															<th>지점</th>
-														</tr>
-													</thead>
-													<tbody>
-														<c:if test='${ rawOrders eq "[]" }'>
-															<tr>
-																<td colspan="4">조회된 상품이 없습니다.</td>
-															</tr>
-														</c:if>
-														<tr>
-															<td>date</td>
-															<td>list</td>
-															<td>sum</td>
-															<td>store</td>
-														</tr>
-													</tbody>
-												</table>
+												<br><br>
+												<div id="rawOrderedList">
+												</div>
 											</div>
 										</div>
 									</div>									
@@ -124,7 +103,7 @@
 	<script type="text/javascript">
 		$(function() {
 			$(".tab-pane").fadeIn();
-			// $("#rawOrderedList").load('rawOrderedList');
+			$("#rawOrderedList").load('rawOrderedList');
 			
 			$(".StoreName").on("change", function(event) {
 				var storeId = $(this).val();
@@ -132,42 +111,29 @@
 				$("#StoreId").val(storeId[1]);
 			});
 			
-// 			$("#lookup").on("click", function(event) {
-// 				var storeId = $("#StoreId").val();
-// 				var year = $("#year").val();
-// 				var month = $("#month").val();
-// 				var formData = 'storeId=' + storeId + '&year=' + year + '&month=' + month;
-// 				if ($("#StoreName").val() == "") {
-// 					alert("지점을 선택해 주세요");
-// 				} else {
-// 					$.ajax({
-// 						"url": "lookupRawOrdered",
-// 						"method": "post",
-// 						"data": formData,
-// 						"success": function(data, status, xhr) {
-// 							if(data == "1") {
-// 								alert("검색어를 입력해 주세요");
-// 							} else if (data == "2") {
-// 								$("#rawOrderList").load('rawOrderList?bigCategory=' + bigCategory + '&smallCategory=' + smallCategory + '&rawName=' + rawName);
-// 							} else if (data == "3") {
-// 								$("#rawOrderList").load('rawOrderList?bigCategory=' + bigCategory + '&rawName=' + rawName);
-// 							} else if (data == "4") {
-// 								$("#rawOrderList").load('rawOrderList?bigCategory=' + bigCategory + '&smallCategory=' + smallCategory);
-// 							} else if (data == "5") {
-// 								$("#rawOrderList").load('rawOrderList?bigCategory=' + bigCategory);
-// 							} else if (data == "6") {
-// 								$("#rawOrderList").load('rawOrderList?rawName=' + rawName);
-// 							}
-// 							if(data == "0") {
-// 								alert("error");
-// 							}
-// 						 },
-// 						"error": function(xhr, status, err) {
-// 							alert('fail : ' + status);
-// 						}
-// 					});
-// 				}
-// 			});
+			$("#lookup").on("click", function(event) {
+				var storeId = $("#StoreId").val();
+				var year = $("#year").val();
+				var month = $("#month").val();
+				var formData = 'storeId=' + storeId + '&year=' + year + '&month=' + month;
+				if (storeId == [] && year == null && month == null) {
+					alert("검색조건을 입력해 주세요");
+				} else {
+					$.ajax({
+						"url": "lookupRawOrdered",
+						"method": "post",
+						"data": formData,
+						"success": function(data, status, xhr) {
+							if(data == "0") {
+								$("#rawOrderedList").load('rawOrderedList');
+							}
+						 },
+						"error": function(xhr, status, err) {
+							alert('fail : ' + status);
+						}
+					});
+				}
+			});
 		});
 	</script>
 </body>

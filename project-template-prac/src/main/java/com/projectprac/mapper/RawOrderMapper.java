@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import com.projectprac.dto.RawOrderDto;
+import com.projectprac.dto.RawOrderHistoryDetailDto;
 import com.projectprac.dto.RawOrderHistoryDto;
 
 @Mapper
@@ -81,6 +82,16 @@ public interface RawOrderMapper {
 			"FROM order_raw " +
 			"WHERE store_id = #{ storeId } ")
 	List<RawOrderHistoryDto> selectOrderRawByStoreId(String storeId);
+
+	@Select("SELECT raw_detail_id rawDetailId, order_raw_id orderRawId, raw_id rawId, amount " +
+			"FROM order_raw_detail " +
+			"WHERE order_raw_id = #{ orderRawId } ")
+	List<RawOrderHistoryDetailDto> selectOrderRawDetailByOrderRawId(int orderRawId);
+
+	@Select("SELECT store_name storeName " +
+			"FROM store " +
+			"WHERE store_id = #{ storeId } ")
+	String selectStoreNameByStoreId(int storeId);
 	
 	
 

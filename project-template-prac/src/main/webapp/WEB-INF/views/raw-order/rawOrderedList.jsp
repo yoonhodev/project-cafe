@@ -3,152 +3,142 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<div class="card">
-	<div class="card-body">
-		<table class="table table-striped" style="text-align: center">
-			<thead>
-				<tr>
-					<th>연도</th>
-					<th>월</th>
-					
-					<th>제품명</th>
-					<th>제품상태</th>
-					<th>단가</th>
-					<th>수량</th>
-					<th>합계</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:if test='${ rawOrders eq "[]" }'>
-					<tr>
-						<td colspan="7">조회된 상품이 없습니다.</td>
-					</tr>
-				</c:if>
-				<c:forEach var="raw" items="${ rawOrders }">
-					
-					<tr>
-						<td>${ raw.rawName }</td>
-						<td>${ raw.rawTemp }</td>
-						<td>
-							<span id="rawPriceShow-${ raw.rawId }">${ raw.rawPrice }</span>원
-							<input type="hidden" id="rawPrice-${ raw.rawId }" value="${ raw.rawPrice }">
-						</td>
-						<td class="amount">
-							<button type="button" class="btn btn-outline-secondary btn-sm minus">
-								<i class="mdi mdi-minus"></i>
-							</button>&nbsp;&nbsp;
-							<span class="count" data-rawId="${ raw.rawId }">1</span>&nbsp;&nbsp;
-							<input type="hidden" id="count-${ raw.rawId }" value="1">
-							<button type="button" class="btn btn-outline-secondary btn-sm plus">
-								<i class="mdi mdi-plus"></i>
-							</button>
-						</td>
-						<td><span id="price-${ raw.rawId }">${ raw.rawPrice }</span>원</td>
-						<td>
-							<button type="button" class="btn btn-outline-secondary btn-md addcartone" data-rawId="${ raw.rawId }">
-								<i class="mdi mdi-cart-plus" style="font-size: 14pt"></i>
-							</button>
-						</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-			<tfoot>
-			</tfoot>
-		</table>
-	</div>
-</div>
+<table class="table table-striped" style="text-align: center">
+	<thead>
+		<tr>
+			<th>날짜</th>
+			<th colspan="2">제품명단</th>
+			<th>합계</th>
+			<th>지점</th>
+		</tr>
+	</thead>
+	<tbody>
+		<c:if test='${ rawOrderHistories eq "[]" or rawOrderHistories eq null }'>
+			<tr>
+				<td colspan="5">조회된 상품이 없습니다.</td>
+			</tr>
+		</c:if>
+		<c:forEach var="raw" items="${ rawOrderHistories }">
+			<tr class="order_open">
+				<td>${ raw.rawOrderDate }</td>
+				<td style="text-align: right; padding-right: 0; width: 200px">${ raw.productName }</td>
+				<td style="text-align: left; padding-left: 5px"> 외 ${ raw.size } 개</td>
+				<td>${ raw.total }</td>
+				<td>${ raw.storeName }</td>
+			</tr>
+			<tr class="order_detail">
+				<td></td>
+				<td colspan="3" style="background-color: lightgray">
+					<c:forEach var="detail" items="${ raw.historyDetailDtos }">
+						<div>
+							${ detail.rawOrderDto.rawName }
+							${ detail.rawOrderDto.rawPrice }
+							${ detail.amount }
+						</div>
+					</c:forEach>
+				</td>
+				<td></td>
+			</tr>
+		</c:forEach>
+	</tbody>
+</table>
 
 <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 <script type="text/javascript">
 	$(function() {
-		$(".unselect-all").hide();
+		$(".order_detail").hide();
+		$(".order_open").on('click', function() {
+			$(".order_detail").show();
+		});
 		
-		for (var i=0; i<50; i++) {
-			var rawPrice = $("#rawPriceShow-" + i).text();
-			rawPrice = parseInt(rawPrice).toLocaleString('ko-KR');
-			$("#rawPriceShow-" + i).text(rawPrice);
-			$("#price-" + i).text(rawPrice);
-		}
+// 		$(".unselect-all").hide();
 		
-		$(".btn-sm").on("click", function() {
-			var amount = $(this).parent(".amount"),
-				oldValue = $(amount).find(".count").text(),
-				newVal = 1
-			var rawId = $(amount).find(".count").attr("data-rawId");
-			var price = $("#rawPrice-" + rawId).val();
+// 		for (var i=0; i<50; i++) {
+// 			var rawPrice = $("#rawPriceShow-" + i).text();
+// 			rawPrice = parseInt(rawPrice).toLocaleString('ko-KR');
+// 			$("#rawPriceShow-" + i).text(rawPrice);
+// 			$("#price-" + i).text(rawPrice);
+// 		}
+		
+// 		$(".btn-sm").on("click", function() {
+// 			var amount = $(this).parent(".amount"),
+// 				oldValue = $(amount).find(".count").text(),
+// 				newVal = 1
+// 			var rawId = $(amount).find(".count").attr("data-rawId");
+// 			var price = $("#rawPrice-" + rawId).val();
 			
-			if ($(this).is(".plus")) {
-				newVal = parseInt(oldValue) + 1;
-			} else if (oldValue > 1) {
-				newVal = parseInt(oldValue) - 1;
-			}
+// 			if ($(this).is(".plus")) {
+// 				newVal = parseInt(oldValue) + 1;
+// 			} else if (oldValue > 1) {
+// 				newVal = parseInt(oldValue) - 1;
+// 			}
 			
-			price = newVal * price;
-			$(amount).find(".count").text(newVal);
-			$("#count-" + rawId).val(newVal);
-			$("#price-" + rawId).text(parseInt(price).toLocaleString('ko-KR'));
-		});
+// 			price = newVal * price;
+// 			$(amount).find(".count").text(newVal);
+// 			$("#count-" + rawId).val(newVal);
+// 			$("#price-" + rawId).text(parseInt(price).toLocaleString('ko-KR'));
+// 		});
 		
-		$(".select-all").on("click", function() {
-			$("input[name=cbox]").prop("checked", true);
-			$(".select-all").hide();
-			$(".unselect-all").show();
+// 		$(".select-all").on("click", function() {
+// 			$("input[name=cbox]").prop("checked", true);
+// 			$(".select-all").hide();
+// 			$(".unselect-all").show();
 			
-		});
+// 		});
 		
-		$(".unselect-all").on("click", function() {
-			$("input[name=cbox]").prop("checked", false);
-			$(".select-all").show();
-			$(".unselect-all").hide();
-		});
+// 		$(".unselect-all").on("click", function() {
+// 			$("input[name=cbox]").prop("checked", false);
+// 			$(".select-all").show();
+// 			$(".unselect-all").hide();
+// 		});
 		
-		$(".checkBox").on("click", function() {
-			if ($(this).prop("checked") == false) {
-				$(".select-all").show();
-				$(".unselect-all").hide();
-			}
-		});
+// 		$(".checkBox").on("click", function() {
+// 			if ($(this).prop("checked") == false) {
+// 				$(".select-all").show();
+// 				$(".unselect-all").hide();
+// 			}
+// 		});
 		
-		$(".addcartone").on("click", function() {
-	    	var rawId = $(this).attr("data-rawId");
-	    	var count = $("#count-" + rawId).val();
-	    	var formData = 'rawId=' + rawId + '&count=' + count;
-			$.ajax({
-				"url": "addCartOne",
-				"method": "post",
-				"data": formData,
-				"success": function(data) {
-					alert("장바구니에 추가하였습니다.")
-					$("#cartList").load("cartList");
-				 },
-				"error": function(xhr, status, err) {
-					alert('fail : ' + status);
-				}
-			});
-	    });
+// 		$(".addcartone").on("click", function() {
+// 	    	var rawId = $(this).attr("data-rawId");
+// 	    	var count = $("#count-" + rawId).val();
+// 	    	var formData = 'rawId=' + rawId + '&count=' + count;
+// 			$.ajax({
+// 				"url": "addCartOne",
+// 				"method": "post",
+// 				"data": formData,
+// 				"success": function(data) {
+// 					alert("장바구니에 추가하였습니다.")
+// 					$("#cartList").load("cartList");
+// 				 },
+// 				"error": function(xhr, status, err) {
+// 					alert('fail : ' + status);
+// 				}
+// 			});
+// 	    });
 		
-		$(".cart-push").on("click", function() {
-			var rawIdArray = [];
-			var countArray = [];
-			$("input[name=cbox]:checked").each(function() {
-				var rawId = $(this).val();
-				var count = $("#count-" + rawId).val();
-				rawIdArray.push(rawId);
-				countArray.push(count);
-			});
-			var formData = { rawIdList : rawIdArray, countList : countArray };
-			$.ajax({
-				"url": "addCart",
-				"method": "post",
-				"data": formData,
-				"success": function(data) {
-					alert("장바구니에 추가하였습니다.")
-					$("#cartList").load("cartList");
-				 },
-				"error": function(xhr, status, err) {
-					alert('fail : ' + status);
-				}
-			});
-		});
+// 		$(".cart-push").on("click", function() {
+// 			var rawIdArray = [];
+// 			var countArray = [];
+// 			$("input[name=cbox]:checked").each(function() {
+// 				var rawId = $(this).val();
+// 				var count = $("#count-" + rawId).val();
+// 				rawIdArray.push(rawId);
+// 				countArray.push(count);
+// 			});
+// 			var formData = { rawIdList : rawIdArray, countList : countArray };
+// 			$.ajax({
+// 				"url": "addCart",
+// 				"method": "post",
+// 				"data": formData,
+// 				"success": function(data) {
+// 					alert("장바구니에 추가하였습니다.")
+// 					$("#cartList").load("cartList");
+// 				 },
+// 				"error": function(xhr, status, err) {
+// 					alert('fail : ' + status);
+// 				}
+// 			});
+// 		});
 	});
 </script>
