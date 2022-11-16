@@ -37,9 +37,9 @@
 			</div>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="pages/charts/chartjs.html">
+			<a class="nav-link" href="admincheckorder">
 				<span class="icon-bg"><i class="mdi mdi-chart-bar menu-icon"></i></span>
-				<span class="menu-title">Charts</span>
+				<span class="menu-title">주문 내역 확인</span>
 			</a>
 		</li>
 		<li class="nav-item">
