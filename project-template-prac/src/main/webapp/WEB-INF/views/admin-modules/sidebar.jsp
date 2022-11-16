@@ -35,17 +35,16 @@
 					<li class="nav-item"><a class="nav-link" href="rawOrdered">주문내역 조회</a></li>
 				</ul>
 			</div>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="admincheckorder">
-				<span class="icon-bg"><i class="mdi mdi-chart-bar menu-icon"></i></span>
-				<span class="menu-title">주문 내역 확인</span>
-			</a>
-		</li>
+		</li>		
 		<li class="nav-item">
 			<a class="nav-link" href="accountControl">
 				<span class="icon-bg"><i class="mdi mdi-table-large menu-icon"></i></span>
 				<span class="menu-title">유저 계정 관리</span>
+			</a>
+		<li class="nav-item">
+			<a class="nav-link" href="admincheckorder">
+				<span class="icon-bg"><i class="mdi mdi-chart-bar menu-icon"></i></span>
+				<span class="menu-title">주문 내역 확인</span>
 			</a>
 		</li>
 		<li class="nav-item">

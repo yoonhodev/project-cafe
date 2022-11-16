@@ -4,7 +4,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
-<html lang="kr">
+<html lang="en">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -37,8 +37,8 @@
           
                    <div class="d-sm-flex justify-content-between align-items-center transaparent-tab-border {">
                   <ul class="nav nav-tabs tab-transparent">
-                    <li class="nav-item" data-name="store-worker">
-                      <a class="nav-link active"data-toggle="tab"  role="tab">지점별 주문 내역</a>
+                    <li class="nav-item">
+                      <a class="nav-link active">지점별 주문 내역</a>
                     </li>
                   </ul>
                 </div>
@@ -63,34 +63,22 @@
 												        	<option id="store-${ store.storeId }" value="${ store.storeId }" data-storeName="${ store.storeName }">${ store.storeName }</option>
 												        </c:forEach>
 													</select>
-                          				</th>                          				
+                          				</th>     
+                          				                    				
                           				<th>
-												<span class="col-sm-6 col-md-4 col-lg-3"><b>년도</b></span>
-												<select id=WorkYear1 name="WorkYear1" class="WorkYear1">
-													<option selected disabled hidden="">년도 선택</option>
-													<c:forEach var="i" begin="2015" end="2023">
-													        	<option>${i}</option>
-													</c:forEach>
-												</select>
+												<span class="col-sm-6 col-md-4 col-lg-3"><b>기간 조회</b></span>
+												시작 날짜 : <input type="date" class="datepicker" id="strtDate"/> &nbsp;~ &nbsp;종료 날짜 : <input class="datepicker" id="endDate" type="date"/>
                           				
                           				</th>
-                          				<th>
-											<span class="col-sm-6 col-md-4 col-lg-3"><b>월</b></span>
-												<select id=WorkMonth1 name="WorkMonth1" class="WorkMonth1">
-													<option selected disabled hidden="">월 선택</option>
-													<c:forEach var="i" begin="1" end="12">
-													        	<option>${i}</option>
-													</c:forEach>
-												</select>
-                          				</th>
+
                           			</tr>                          		
                           		</thead>
                           		<tbody>
                           		<tr>
                           		<td colspan="6" align="center">
 									<input type="hidden" id="StoreId11" name="storeId">
-										<input type="hidden" id="WorkYear11" name="workYear">	
-										<input type="hidden" id="WorkMonth11" name="workMonth">
+<!-- 										<input type="hidden" id="WorkYear11" name="workYear">	 -->
+<!-- 										<input type="hidden" id="WorkMonth11" name="workMonth"> -->
 										<input type="submit"
 											   class="btn btn-outline-secondary btn-fw btn-rounded"
 											   id="SelectStore"
@@ -118,12 +106,14 @@
                     <table class="table table-striped">
                       <thead>
                         <tr>
-							<th class="text-center">직원명</th>
+							<th class="text-center">사용자 ID</th>
 							<th class="text-center">지점명</th>
-							<th class="text-center">근무 년도</th>
-							<th class="text-center">근무 월</th>
-							<th class="text-center">시급(만)</th>
-							<th class="text-center">연락쳐</th>
+							<th class="text-center">주문 금액</th>
+							<th class="text-center">주문 종류</th>
+							<th class="text-center">주문 상태 (버튼으로 바꿀수 있게 설정)</th>
+							<th class="text-center">주문 날짜</th>
+							<th class="text-center">제품</th>
+							<th class="text-center">수량</th>
 <!-- 							<th class="text-center">수도세</th> -->
 <!-- 							<th class="text-center">광고비</th> -->
 <!-- 							<th class="text-center">배달비</th> -->
@@ -135,9 +125,12 @@
 							align="center">
 							<td><a href="worker-infoDtail?workerId=${ worker.workerId }"><span>${ worker.workerName }</span></a></td>
 							<td><span>${ storeName11 }</span></td>
+							<td><span>${ storeName11 }</span></td>
 							<td><span>${ worker.workYear }</span></td>
 							<td><span>${ worker.workMonth }</span></td>
 							<td><span>${ worker.salary }</span></td>
+							<td><span>${ worker.workerPhone }</span></td>
+							<td><span>${ worker.workerPhone }</span></td>
 							<td><span>${ worker.workerPhone }</span></td>
 										
 						</tr>																										
@@ -215,20 +208,44 @@
 					return false;
 				};
 				
-				if($('#WorkYear11').val()=="") {
-					alert("년도를 선택해 주세요");
-					return false;
-				};
+// 				if($('#WorkYear11').val()=="") {
+// 					alert("년도를 선택해 주세요");
+// 					return false;
+// 				};
 				
-				if($('#WorkMonth11').val()=="") {
-					alert("월을 선택해 주세요");
-					return false;
-				};
+// 				if($('#WorkMonth11').val()=="") {
+// 					alert("월을 선택해 주세요");
+// 					return false;
+// 				};
 				
 			});
 		});
+		
+		$(function() {
+			$('.datepicker').datepicker({dateFormat: 'tt-mm-dd'});
+			
+			alert('.datepicker')
+		})
+		
+
+			
+		
+				
+		
+		
+		
+		
+		
 	</script>
 </body>
 </html>
+
+
+
+
+
+
+
+
 
 
