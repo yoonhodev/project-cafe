@@ -65,7 +65,7 @@
 										</c:forEach>
 									</select>
 								</form>
-									<h6>결제수단</h6>
+									<h5>결제수단</h5>
 								<select id="couponName" name="couponId" class="form-group couponName">
 										<option selected value="none" disabled>결제 수단을 선택해주세요.</option>	
 												<option value="cardPay">신용/체크카드</option>
