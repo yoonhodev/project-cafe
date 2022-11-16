@@ -86,6 +86,9 @@
 									</div>
 									</div>
 									<br><br>
+									<input class="form-group" type="text" name="customerId" value="${ loginuser.customerId }"
+													   id="CustomerId" style="display:none;">
+									<input type="text" name="deleted" value="0" id="deleted" style="display:none;">
 									<div class="row">
 									<div class="text-center col-12 col-sm-12 col-md-12 col-lg-12">
 										<input type="submit" class="btn mb-3" value="회원 탈퇴">
@@ -126,7 +129,9 @@
 				
 				
 				var textcheck = $("#textCheck").val();
-	 			if (textcheck != "회원 탈퇴에 동의합니다") {
+	 			if (textcheck == "회원 탈퇴에 동의합니다") {
+	 				$("#deleted").value("1");
+	 			} else {
 	 				alert("회원 탈퇴 동의 텍스트가 일치하지 않습니다");
 	 				break;
 	 			}
