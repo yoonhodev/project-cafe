@@ -2,7 +2,9 @@ package com.projectprac.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import com.projectprac.dto.AddressDto;
@@ -29,4 +31,7 @@ public interface OrderMapper {
 			"WHERE customer_id = #{ customerId }" )
 	AddressDto selectAddress(String customerId);
 	
+	@Insert("INSERT INTO modeling_cafe.order (store_id, customer_id, order_pay, order_type) " +
+			"VALUES (#{ storeId }, #{ customerId }, #{ orderPay }, #{ orderType })" )
+	void insertOrder(@Param("storeId")int storeId, @Param("customerId")String customerId, @Param("orderPay")String orderPay, @Param("orderType")String orderType);
 }

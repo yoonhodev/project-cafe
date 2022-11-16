@@ -61,13 +61,13 @@
 									<select id="selectStore" name="selectStore" class="form-group selectStore">
 										<option selected value="0">지점 선택</option>
 										<c:forEach var="stores" items="${ stores }" varStatus="status">
-											<option id="order-select-store" value="${ stores.storeName }">${ stores.storeName }</option>
+											<option id="order-select-store" value="${ stores.storeId }">${ stores.storeName }</option>
 										</c:forEach>
 									</select>
 								</form>
 									<h5>결제수단</h5>
-								<select id="couponName" name="couponId" class="form-group couponName">
-										<option selected value="none" disabled>결제 수단을 선택해주세요.</option>	
+								<select id="orderPay" class="form-group couponName">
+										<option id="orderPay" selected value="none" disabled>결제 수단을 선택해주세요.</option>	
 												<option value="cardPay">신용/체크카드</option>
 												<option value="phonePay">휴대폰결제</option>
 												<option value="naverPay">네이버페이</option>
@@ -78,13 +78,13 @@
 								</select>
 							</div>
 							<div class="col-12 col-sm-12 col-md-4 col-lg-4 mb-4">
-								<div style="padding: 0 0 12px 0;">
+								<div style="padding: 0 0 12px 0;" id="addr-radio">
 										&nbsp;&nbsp;&nbsp;&nbsp;${ loginuser.customerId }님 배송지&nbsp;&nbsp;<input type="radio" name="addressType" value="addrA" checked>
  										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										신규 배송지&nbsp;&nbsp;<input type="radio" name="addressType" value="addrB">
 									</div>
 								<form>
-									<div class="form-group" id="new-addr-form">
+									<div class="form-group" id="new-addr-form"> <!-- new-addr-form = 기존 배송지, basic-addr-form = 신규 배송지 -->
 										<div class="input-group">
 											<input class="form-control" type="text" name="customerId" value="${ address }" disabled="disabled">
 										</div>
@@ -147,15 +147,8 @@
  										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										<strong>포장</strong>&nbsp;&nbsp;<input type="radio" name="orderType" value="B">
 									</p> 
-									<input type="submit" name="checkout" id="cartCheckout"
-										class="btn btn--small-wide checkout"
-										value="결제" disabled="disabled">
-									<!-- <div class="paymnet-img">
-										<img src="#" alt="Payment">
-									</div>
-									<p>
-										<a href="#;">Checkout with Multiple Addresses</a>
-									</p>  -->
+									<button type="button" name="checkout" id="orderCheckout"
+										class="btn btn--small-wide checkout">결제</button>
 								</div>
 							</div>
 						</div>
@@ -191,8 +184,13 @@
 				if (checkedVal == "A") {
 					delipay = 3000;
 					$("#shipping").text("+ " + delipay + " 원");
+					$('#new-addr-form').show();
+					$('#addr-radio').show();
 				} else {
 					$("#shipping").text(delipay + " 원");
+					$('#basic-addr-form').hide();
+					$('#new-addr-form').hide();
+					$('#addr-radio').hide();
 				}
 				
 				orderListLoadCompletionHandler();
@@ -295,6 +293,34 @@
 				
 				orderListLoadCompletionHandler();
 			});
+		 	
+		 	$('#orderCheckout').on('click', function(event) {
+		 		var orderPay = $("#orderPay option:selected").val();
+		 		var orderType = $("input[name=orderType]:checked").val();
+		 		var storeId = $("#selectStore option:selected").val();
+		 		var formData = { storeId : storeId, orderPay : orderPay, orderType : orderType };
+		 		
+				if (orderType == "A") {
+					orderType = '배달'
+				} else {
+					orderType = '포장'
+				}
+				if(confirm("주문 하시겠습니까?") == true) {
+					$.ajax({
+						"url": "insert-order",
+						"method": "post",
+						"data": formData,
+						"success": function(data) {
+							alert('success');
+						 },
+						"error": function(xhr, status, err) {
+							alert('fail');
+						}
+					});
+				}
+		 	});
+		 	
+		 	
 		});
 		
 	</script>
