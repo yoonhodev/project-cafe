@@ -70,12 +70,7 @@ public interface RawOrderMapper {
 	@Select("SELECT order_raw_id orderRawId, store_id storeId, raw_order_date rawOrderDate " +
 			"FROM order_raw " +
 			"WHERE store_id = #{ storeId } AND raw_order_date LIKE CONCAT('%',#{ orderDate },'%') ")
-	List<RawOrderHistoryDto> selectOrderRawByStoreIdANDYearANDMonth(@Param("storeId") String storeId, @Param("orderDate") String orderDate);
-
-	@Select("SELECT order_raw_id orderRawId, store_id storeId, raw_order_date rawOrderDate " +
-			"FROM order_raw " +
-			"WHERE store_id = #{ storeId } AND raw_order_date LIKE CONCAT('%',#{ orderDate },'%') ")
-	List<RawOrderHistoryDto> selectOrderRawByStoreIDANDYEAR(@Param("storeId") String storeId, @Param("orderDate") String orderDate);
+	List<RawOrderHistoryDto> selectOrderRawByStoreIdAndOrderDate(@Param("storeId") String storeId, @Param("orderDate") String orderDate);
 
 	@Select("SELECT order_raw_id orderRawId, store_id storeId, raw_order_date rawOrderDate " +
 			"FROM order_raw " +
