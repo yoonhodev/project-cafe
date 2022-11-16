@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.projectprac.dto.AddressDto;
 import com.projectprac.dto.CouponMakeDto;
+import com.projectprac.dto.OrderDto;
 import com.projectprac.dto.ProductDto;
 
 public interface OrderService {
@@ -19,5 +20,7 @@ public interface OrderService {
 		List<ProductDto> showMenuImg();
 
 		AddressDto showAddress(String customerId);
+
+		void insertOrder(int storeId, String customerId, String orderPay, String orderType);
 
 	}

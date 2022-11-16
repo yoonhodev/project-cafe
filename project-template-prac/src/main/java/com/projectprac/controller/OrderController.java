@@ -20,6 +20,7 @@ import com.projectprac.dto.AddressDto;
 import com.projectprac.dto.CouponDto;
 import com.projectprac.dto.CouponMakeDto;
 import com.projectprac.dto.CustomerDto;
+import com.projectprac.dto.OrderDto;
 import com.projectprac.dto.ProductDto;
 import com.projectprac.dto.StoreDto;
 import com.projectprac.service.CouponService;
@@ -82,10 +83,8 @@ public class OrderController {
 		model.addAttribute("stores", stores);
 		
 		CustomerDto customer = (CustomerDto) session.getAttribute("loginuser");
-		System.out.println(customer);
 		
 		AddressDto addressDto = orderService.showAddress(customer.getCustomerId());
-		System.out.println(addressDto);
 		String address;
 		if (addressDto == null) {
 			address = "기존에 등록된 주소가 없습니다.";
@@ -106,7 +105,6 @@ public class OrderController {
 			productIds = (List<ProductDto>) session.getAttribute("productIds");
 			for (ProductDto productId : productIds) {
 				if (productId.getProdId() == product.getProdId()) {
-					System.out.printf("prodId : %d 중복\n", product.getProdId());
 					return "shop/shop";
 				}
 			}
@@ -135,7 +133,6 @@ public class OrderController {
 			}
 		}
 		model.addAttribute("couponMakes", couponMakes);
-		System.out.println(couponMakes);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Calendar cal = Calendar.getInstance();
 		String today = sdf.format(cal.getTime());
@@ -170,9 +167,16 @@ public class OrderController {
 	public String deleteAllOrder(HttpSession session) {
 		session.removeAttribute("productIds");
 		session.removeAttribute("products");
-		System.out.println(session.getAttribute("productIds"));
 		return "success";
 		
+	}
+	
+	@PostMapping(path = { "insert-order" })
+	public String payment(HttpSession session, int storeId, String orderPay, String orderType) {
+		CustomerDto customer = (CustomerDto) session.getAttribute("loginuser");
+		System.out.println(storeId);
+		orderService.insertOrder(storeId, customer.getCustomerId(), orderPay, orderType);
+		return "mypage/mypage";
 	}
 		
 }

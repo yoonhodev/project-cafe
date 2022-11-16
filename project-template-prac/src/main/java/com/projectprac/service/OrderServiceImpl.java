@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.projectprac.dto.AddressDto;
 import com.projectprac.dto.CouponMakeDto;
+import com.projectprac.dto.OrderDto;
 import com.projectprac.dto.ProductDto;
 import com.projectprac.mapper.CouponMapper;
 import com.projectprac.mapper.OrderMapper;
@@ -54,4 +55,9 @@ public class OrderServiceImpl implements OrderService  {
 		return address;
 	}
 
+	@Override
+	public void insertOrder(int storeId, String customerId, String orderPay, String orderType) {
+		orderMapper.insertOrder(storeId, customerId, orderPay, orderType);
+	}
+	
 }
