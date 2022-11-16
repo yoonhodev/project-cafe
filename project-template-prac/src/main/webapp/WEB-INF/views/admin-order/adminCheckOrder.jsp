@@ -67,7 +67,7 @@
                           				                    				
                           				<th>
 												<span class="col-sm-6 col-md-4 col-lg-3"><b>기간 조회</b></span>
-												시작 날짜 : <input type="date" class="datepicker" id="strtDate"/> &nbsp;~ &nbsp;종료 날짜 : <input class="datepicker" id="endDate" type="date"/>
+												시작 날짜 : <input type="date" name="startDate" data-startDate="" class="datepicker" id="strtDate"/> &nbsp;~ &nbsp;종료 날짜 : <input name="endDate" class="datepicker" id="endDate" type="date"/>
                           				
                           				</th>
 
@@ -180,7 +180,7 @@
 			
 			
 			$("#StoreId11").val(storeId);	
-			$("#StoreId22").val(storeId);
+			
 			
 			
 		});		
