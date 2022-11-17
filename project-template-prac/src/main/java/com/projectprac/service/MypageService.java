@@ -21,6 +21,10 @@ public interface MypageService {
 
 	void deleteAccount(MypageDto mypageDto);
 
+	AddressDto selectAddressbyCustomerId(String customerId);
+	
+
+
 	
 
 	
