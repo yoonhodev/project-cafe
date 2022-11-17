@@ -128,24 +128,6 @@
 												   value="${ loginuser.email }" id="Email" required>
 										</div>
 									</div>
-									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
-										<div class="form-group">
-											<label>성별</label><br>
-											<div>&nbsp;
-												&nbsp;&nbsp;남&nbsp;&nbsp;
-												<input type="radio" name="sex" value="1" id="sex_man" required>
-												&nbsp;&nbsp;&nbsp;&nbsp;
-												&nbsp;&nbsp;여&nbsp;&nbsp;
-												<input type="radio" name="sex" value="0" id="sex_woman">
-											</div>
-										</div>
-									</div>
-									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
-										<div class="form-group">
-											<label for="Birth">생년월일</label>
-											<input type="date" name="birth" placeholder="${ loginuser.birth }" id="Birth" required>
-										</div>
-									</div>
 								</div>
 								<br> <br>
 								<div class="row">
