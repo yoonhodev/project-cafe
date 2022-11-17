@@ -56,6 +56,8 @@ public class KioskController {
 				}
 			}
 		}
+		
+		System.out.println("1111");
 		productIds.add(product);
 		session.setAttribute("productIds", productIds);
 		return "kiosk/kioskMain";

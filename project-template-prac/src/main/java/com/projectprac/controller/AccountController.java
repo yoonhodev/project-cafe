@@ -96,8 +96,8 @@ public class AccountController {
 		// 1. 요청 데이터 읽기 ( 전달인자 사용으로 대체 )
 		// 2. 요청 처리
 		CustomerDto customer = accountService.findCustomerByIdAndPasswd(customerId, passwd); // 회원 정보 조회(아이디, 비밀번호)
-
-		if (customer != null) {
+		
+		if (customer != null && !customer.isDeleted()) {
 			session.setAttribute("loginuser", customer);
 		} else {
 			model.addAttribute("loginfail", customerId);
