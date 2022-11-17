@@ -311,7 +311,7 @@
 						"method": "post",
 						"data": formData,
 						"success": function(data) {
-							alert('success');
+							alert('다 됐지롱~');
 						 },
 						"error": function(xhr, status, err) {
 							alert('fail');
