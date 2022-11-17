@@ -24,20 +24,38 @@ public class MypageServiceImpl implements MypageService {
 		return CouponCount;
 	}
 	
-
-//	@Override
-//	public MypageDto editAccount(String customerId, String passwd, String phone, String email, String sex, String birth) {
-//
-//		MypageDto editAccount = mypageMapper.editAccount(customerId, passwd, phone, email, sex, birth);
-//		return editAccount;
-//
-//	}
-
+	@Override
+	public void selectAddressByCustomerId(AddressDto addressDto) {
+		String address = addressDto.getCustomerId();
+		System.out.println(address);
+	}
 
 	@Override
-	public AddressDto editAddress(String postId, String address, String detailAddress, String extraAddress) {
-		AddressDto editAddress = mypageMapper.editAddress(postId, address, detailAddress, extraAddress);
-		return editAddress;
+	public void editAddress(AddressDto addressDto) {
+				
+		String addressId = addressDto.getAddressId();
+		addressDto.setAddressId(addressId);
+		
+		String customerId = addressDto.getCustomerId();
+		addressDto.setCustomerId(customerId);
+		
+		String postId = addressDto.getPostId();
+		addressDto.setPostId(postId);
+		
+		String address = addressDto.getAddress();
+		addressDto.setAddress(address);
+		
+		String detailAddress = addressDto.getDetailAddress();
+		addressDto.setDetailAddress(detailAddress);
+		
+		String extraAddress = addressDto.getExtraAddress();
+		addressDto.setExtraAddress(extraAddress);
+		
+		boolean mainAddress = addressDto.isMainAddress();
+		addressDto.setMainAddress(mainAddress);
+		
+		
+		mypageMapper.editAddress(addressDto);
 	}
 
 
@@ -66,27 +84,11 @@ public class MypageServiceImpl implements MypageService {
 		
 	}
 
-
 	@Override
-	public void editAddress(AddressDto addressDto) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public MypageDto editAccount(String customerId, String passwd, String phone, String email, String sex,
-			String birth) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
-	public AddressDto selectAddressByCustomerId(String customerId) {
-		AddressDto address = mypageMapper.selectAddressByCustomerId(customerId);
-		System.out.println(address);
-		return address;
+	public void deleteAccount(MypageDto mypageDto) {
+		String customerId = mypageDto.getCustomerId();
+		mypageDto.setCustomerId(customerId);
+		mypageMapper.deleteAccount(mypageDto);
 	}
 	
 	

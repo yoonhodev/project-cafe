@@ -43,12 +43,15 @@ public interface MypageMapper {
 	
 
 	@Update("UPDATE address " +
-			"SET post_id = #{ postId }, address = #{ address }, detail_address = #{ detailAddress }, extra_address = #{ extraAddress }) " +
+			"SET post_id = #{ postId }, address = #{ address }, detail_address = #{ detailAddress }, extra_address = #{ extraAddress } " +
 			"WHERE customer_id = #{ customerId } ")
-	AddressDto editAddress(@Param("postId") String postId, @Param("address") String address, @Param("detailAddress") String detailAddress, @Param("extraAddress") String extraAddress);
-
+	void editAddress(AddressDto addressDto);
+			
 	
-	
+	@Update("UPDATE customer " +
+			"SET deleted = 1 " +
+			"WHERE customer_id = #{ customerId } ")
+	void deleteAccount(MypageDto mypageDto);
 	
 
 	

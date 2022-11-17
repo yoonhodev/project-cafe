@@ -136,10 +136,10 @@
 											<label>성별</label><br>
 											<div>&nbsp;
 												&nbsp;&nbsp;남&nbsp;&nbsp;
-												<input type="radio" name="sex" placeholder="" id="Sex" required>
+												<input type="radio" name="sex" value="1" id="sex_man" required>
 												&nbsp;&nbsp;&nbsp;&nbsp;
 												&nbsp;&nbsp;여&nbsp;&nbsp;
-												<input type="radio" name="sex" placeholder="" id="Sex">
+												<input type="radio" name="sex" value="0" id="sex_woman">
 											</div>
 										</div>
 									</div>
@@ -208,6 +208,18 @@
 				}
 
 				pageContext.forward("editComplete");
+			}
+			
+			$(document).ready(function sex_check() {
+				if ( ${ loginuser.sex } == 1) {
+					$('input:radio[id=sex_man]').is("checked");
+					$('input:radio[id=sex_woman]').is("unchecked");
+				} else {
+					$('input:radio[id=sex_man]').is("unchecked");
+					$('input:radio[id=sex_woman]').is("checked");
+				})
+				
+				
 			}
 		</script>
 		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

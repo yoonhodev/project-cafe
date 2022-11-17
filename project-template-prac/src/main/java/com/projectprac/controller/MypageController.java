@@ -1,6 +1,7 @@
 package com.projectprac.controller;
 
 import java.util.Date;
+import java.util.List;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -16,9 +17,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.projectprac.dto.AddressDto;
+import com.projectprac.dto.BoardDto;
 import com.projectprac.dto.CustomerDto;
 import com.projectprac.dto.MypageDto;
 import com.projectprac.service.MypageService;
+import com.projectprac.ui.ThePager;
 
 @Controller
 public class MypageController {
@@ -45,14 +48,15 @@ public class MypageController {
 	}
 	
 	@GetMapping(path = { "editAccount" })
-	public String editAccount(String customerId, HttpSession session, Model model) {
+	public String editAccount(String customerId, String postId, String address, String detailAddress, String extraAddress, HttpSession session, Model model) {
 		
-//		CustomerDto customer = (CustomerDto) session.getAttribute("loginuser");
-//		AddressDto address = mypageService.selectAddressByCustomerId(customer.getCustomerId());
-//		System.out.println(address);
-//		String accountAddress = address.getCustomerId();
+//		MypageDto AddressS = MypageService.selectAddressByCustomerId(address, customerId);
 //		
-//		model.addAttribute("postid", accountAddress);
+//		model.addAttribute("postId", AddressS.getPostId());
+//		model.addAttribute("address", address);
+//		model.addAttribute("detailAddress", detailAddress);
+//		model.addAttribute("extraAddress", extraAddress);
+		
 		
 		return "mypage/editAccount";
 	}
@@ -113,7 +117,10 @@ public class MypageController {
 	}
 	
 	@PostMapping(path = { "deleteAccount" })
-	public String delAccount(HttpSession session) {
+	public String delAccount(MypageDto mypageDto, HttpSession session) {
+		mypageService.deleteAccount(mypageDto);
+		System.out.println(mypageDto);
+		
 		session.removeAttribute("loginuser");
 		return "mypage/deleteComplete";
 	
