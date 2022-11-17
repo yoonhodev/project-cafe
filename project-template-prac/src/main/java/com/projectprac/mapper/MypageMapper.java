@@ -1,6 +1,7 @@
 package com.projectprac.mapper;
 
 import java.sql.Date;
+import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -52,6 +53,13 @@ public interface MypageMapper {
 			"SET deleted = 1 " +
 			"WHERE customer_id = #{ customerId } ")
 	void deleteAccount(MypageDto mypageDto);
+
+	
+	
+	@Select("SELECT address_id addressId, customer_id customerId, post_id postid, address, detail_address detailAddress, extra_address extraAddress, main_address mainAddress " +
+			"FROM address " +
+			"WHERE customer_id = #{ customerId } ")	
+	AddressDto selectAddressByCustomerId22(String customerId);
 	
 
 	
