@@ -18,10 +18,8 @@ public interface OrderHistoryMapper {
 	@Select("SELECT order_id, store_id, customer_id, order_pay, order_date " +
 			"FROM order " +
 			"ORDER BY order_id DESC " +
-			"LIMIT #{ from },#{ count }")
-	List<OrderHistoryDto> selectOrderHistoryByPage(@Param("from")int from, @Param("count")int count);
-		
-
-	int selectBoardCount();
+			"WHERE customer_id = #{ customerId } ")
+	OrderHistoryDto selectOrderHistoryByCustomerId(String customerId);
+	
 	
 }

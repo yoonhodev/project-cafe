@@ -53,12 +53,6 @@ public class MypageController {
 		
 		AddressDto addressDto = mypageService.selectAddressbyCustomerId(customerId);
 		
-//		MypageDto AddressS = MypageService.selectAddressByCustomerId(address, customerId);
-//		
-//		model.addAttribute("postId", AddressS.getPostId());
-//		model.addAttribute("address", address);
-//		model.addAttribute("detailAddress", detailAddress);
-//		model.addAttribute("extraAddress", extraAddress);
 		System.out.println(customerId);
 		System.out.println(addressDto);
 		

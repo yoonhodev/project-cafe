@@ -52,22 +52,22 @@
 						</tr>
 					</thead>
 						<tbody>
-							<c:forEach var="orderHistory" items="${ orderHistory }" >
+							<c:forEach var="orderHistory" items="${ orderHistroyDto }" >
                               	<tr class="cart__row border-bottom line1 cart-flex border-top" align="center">
                                   <td height="200px">
-                                      <span>${ orderHistory.order_id }</span>
+                                      <span>${ orderHistroyDto.order_id }</span>
                                   </td>
                                   <td>
-                                      <span>${ orderHistory.store_id }</span>
+                                      <span>${ orderHistroyDto.store_id }</span>
                                   </td>
                                   <td>
-                                      <span>${ orderHistory.prod_id } * ${ orderHistory.amount }</span>
+                                      <span>${ orderHistroyDto.prod_id } * ${ orderHistroyDto.amount }</span>
                                   </td>
                                   <td>
-                                      <span>${ orderHistory.order_pay }</span>
+                                      <span>${ orderHistroyDto.order_pay }</span>
                                   </td>
                                   <td>
-                                      <span>${ orderHistory.order_date }</span>
+                                      <span>${ orderHistroyDto.order_date }</span>
                                   </td>
                               	</tr>
                              </c:forEach>
@@ -79,8 +79,6 @@
 				
 				                              	
 				<br><br>
-                              	
-				${ pager }
         	
         	
         	</div>
