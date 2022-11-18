@@ -29,7 +29,6 @@ public class OrderHistoryController {
 	@Qualifier("orderHistoryService")
 	private OrderHistoryService orderHistoryService;
 	
-	
 	@GetMapping(path = { "/orderHistory.action" })
 	public String showOrderList(@RequestParam(defaultValue = "1") int pageNo, Model model) {
 		// 1. 요청 데이터 읽기 ( 전달인자로 대체 )
@@ -68,16 +67,12 @@ public class OrderHistoryController {
 		
 		OrderHistoryDto orderHistory = orderHistoryService.findOrderHistoryByOrderHistoryNo(orderHistoryNo);
 		
-		if (orderHistory == null) { // 조회되지 않은 경우 (글 번호가 잘못되었거나 또는 삭제된 글인 경우)
-			return "redirect:orderHistory.action";
-		}
-		
 		// 3. View에서 읽을 수 있도록 데이터 전달
 		model.addAttribute("orderHistory", orderHistory);
 		model.addAttribute("pageNo", pageNo);		
 		
 		// 4. View 또는 Controller로 이동
-		return "mypage/orderHistoryDetail";
+		return "mypage/orderHistory";
 	}
 }
 
