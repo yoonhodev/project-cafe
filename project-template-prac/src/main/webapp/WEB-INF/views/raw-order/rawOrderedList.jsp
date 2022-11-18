@@ -3,7 +3,7 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<table class="table table-striped" style="text-align: center">
+<table class="table" style="text-align: center">
 	<thead>
 		<tr>
 			<th>날짜</th>
@@ -18,26 +18,30 @@
 				<td colspan="5">조회된 상품이 없습니다.</td>
 			</tr>
 		</c:if>
-		<c:forEach var="raw" items="${ rawOrderHistories }">
-			<tr class="order_open">
+		<c:forEach var="raw" items="${ rawOrderHistories }" varStatus="status">
+			<tr class="order_open" data-orderRawId="${ raw.orderRawId }">
 				<td>${ raw.rawOrderDate }</td>
 				<td style="text-align: right; padding-right: 0; width: 200px">${ raw.productName }</td>
 				<td style="text-align: left; padding-left: 5px"> 외 ${ raw.size } 개</td>
-				<td>${ raw.total }</td>
+				<td><span class="number-${ status.count }">${ raw.total }</span>원</td>
 				<td>${ raw.storeName }</td>
 			</tr>
-			<tr class="order_detail">
-				<td></td>
-				<td colspan="3" style="background-color: lightgray">
-					<c:forEach var="detail" items="${ raw.historyDetailDtos }">
-						<div>
-							${ detail.rawOrderDto.rawName }
-							${ detail.rawOrderDto.rawPrice }
-							${ detail.amount }
-						</div>
+			<tr class="order_detail" id="${ raw.orderRawId }">
+				<td colspan="5">
+					
+					<table style="margin: 0 auto; padding: 5px;">
+					<c:forEach var="detail" items="${ raw.historyDetailDtos }" varStatus="stat">
+						
+							<tr style="background-color: #F0FFFF">
+								<td style="border: none">${ detail.rawOrderDto.rawName }</td>
+								<td style="border: none"><span class="Number-${ status.count }-${ stat.count }">${ detail.rawOrderDto.rawPrice }</span>원</td>
+								<td style="border: none">${ detail.amount }개</td>
+							</tr>
+						
 					</c:forEach>
+					</table>
+					
 				</td>
-				<td></td>
 			</tr>
 		</c:forEach>
 	</tbody>
@@ -47,98 +51,41 @@
 <script type="text/javascript">
 	$(function() {
 		$(".order_detail").hide();
-		$(".order_open").on('click', function() {
-			$(".order_detail").show();
+		$(".order_open").on("click", function() {
+			var orderRawId = $(this).attr("data-orderRawId");
+			if ($("#" + orderRawId).hasClass("on")) {
+				$("#" + orderRawId).removeClass("on");
+				$("#" + orderRawId).fadeOut();
+			} else {
+				$("#" + orderRawId).addClass("on");
+				$("#" + orderRawId).fadeIn();
+			}
 		});
 		
-// 		$(".unselect-all").hide();
+		for (var i=0; i<100; i++) {
+			if ($(".number-" + i).text() != "") {
+				var price = $(".number-" + i).text();
+				var newPrice = parseInt(price).toLocaleString('ko-KR');
+				$(".number-" + i).text(newPrice);
+				for (var j=0; j<100; j++) {
+					var price = $(".Number-" + i + "-" + j).text();
+					var newPrice = parseInt(price).toLocaleString('ko-KR');
+					$(".Number-" + i + "-" + j).text(newPrice);
+				}
+			}
+		}
 		
-// 		for (var i=0; i<50; i++) {
-// 			var rawPrice = $("#rawPriceShow-" + i).text();
+		
+// 		if ($("#cartPriceShow-" + i).text() != "") {
+// 			var rawPrice = $("#cartPriceShow-" + i).text();
+// 			var newPrice = $("#cartcount-" + i).val() * rawPrice;
+// 			total = parseInt(total) + parseInt(newPrice);
 // 			rawPrice = parseInt(rawPrice).toLocaleString('ko-KR');
-// 			$("#rawPriceShow-" + i).text(rawPrice);
-// 			$("#price-" + i).text(rawPrice);
+// 			newPrice = parseInt(newPrice).toLocaleString('ko-KR');
+// 			$("#cartPriceShow-" + i).text(rawPrice);
+// 			$("#cartprice-" + i).text(newPrice);
+// 			var totalshow = total.toLocaleString('ko-KR');
+// 			$("#total").text(totalshow + "원");
 // 		}
-		
-// 		$(".btn-sm").on("click", function() {
-// 			var amount = $(this).parent(".amount"),
-// 				oldValue = $(amount).find(".count").text(),
-// 				newVal = 1
-// 			var rawId = $(amount).find(".count").attr("data-rawId");
-// 			var price = $("#rawPrice-" + rawId).val();
-			
-// 			if ($(this).is(".plus")) {
-// 				newVal = parseInt(oldValue) + 1;
-// 			} else if (oldValue > 1) {
-// 				newVal = parseInt(oldValue) - 1;
-// 			}
-			
-// 			price = newVal * price;
-// 			$(amount).find(".count").text(newVal);
-// 			$("#count-" + rawId).val(newVal);
-// 			$("#price-" + rawId).text(parseInt(price).toLocaleString('ko-KR'));
-// 		});
-		
-// 		$(".select-all").on("click", function() {
-// 			$("input[name=cbox]").prop("checked", true);
-// 			$(".select-all").hide();
-// 			$(".unselect-all").show();
-			
-// 		});
-		
-// 		$(".unselect-all").on("click", function() {
-// 			$("input[name=cbox]").prop("checked", false);
-// 			$(".select-all").show();
-// 			$(".unselect-all").hide();
-// 		});
-		
-// 		$(".checkBox").on("click", function() {
-// 			if ($(this).prop("checked") == false) {
-// 				$(".select-all").show();
-// 				$(".unselect-all").hide();
-// 			}
-// 		});
-		
-// 		$(".addcartone").on("click", function() {
-// 	    	var rawId = $(this).attr("data-rawId");
-// 	    	var count = $("#count-" + rawId).val();
-// 	    	var formData = 'rawId=' + rawId + '&count=' + count;
-// 			$.ajax({
-// 				"url": "addCartOne",
-// 				"method": "post",
-// 				"data": formData,
-// 				"success": function(data) {
-// 					alert("장바구니에 추가하였습니다.")
-// 					$("#cartList").load("cartList");
-// 				 },
-// 				"error": function(xhr, status, err) {
-// 					alert('fail : ' + status);
-// 				}
-// 			});
-// 	    });
-		
-// 		$(".cart-push").on("click", function() {
-// 			var rawIdArray = [];
-// 			var countArray = [];
-// 			$("input[name=cbox]:checked").each(function() {
-// 				var rawId = $(this).val();
-// 				var count = $("#count-" + rawId).val();
-// 				rawIdArray.push(rawId);
-// 				countArray.push(count);
-// 			});
-// 			var formData = { rawIdList : rawIdArray, countList : countArray };
-// 			$.ajax({
-// 				"url": "addCart",
-// 				"method": "post",
-// 				"data": formData,
-// 				"success": function(data) {
-// 					alert("장바구니에 추가하였습니다.")
-// 					$("#cartList").load("cartList");
-// 				 },
-// 				"error": function(xhr, status, err) {
-// 					alert('fail : ' + status);
-// 				}
-// 			});
-// 		});
 	});
 </script>

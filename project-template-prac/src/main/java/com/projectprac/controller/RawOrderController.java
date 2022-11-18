@@ -18,7 +18,6 @@ import com.projectprac.dto.RawOrderCountDto;
 import com.projectprac.dto.RawOrderDto;
 import com.projectprac.dto.RawOrderHistoryDetailDto;
 import com.projectprac.dto.RawOrderHistoryDto;
-import com.projectprac.dto.RawOrderedShowDto;
 import com.projectprac.dto.StoreDto;
 import com.projectprac.service.FixedSpendService;
 import com.projectprac.service.RawOrderService;
@@ -222,7 +221,10 @@ public class RawOrderController {
 	}
 	
 	@GetMapping(path = { "rawOrderedList" })
-	public String rawOrderList() { // 조건에 따른 상품 목록 조회
+	public String rawOrderList(HttpSession session, Model model) { // 조건에 따른 상품 목록 조회
+		List<RawOrderHistoryDto> histories = (List<RawOrderHistoryDto>) session.getAttribute("rawOrderHistories");
+		model.addAttribute("rawOrderHistories", histories);
+		session.removeAttribute("rawOrderHistories");
 		
 		return "raw-order/rawOrderedList"; // 상품 리스트 호출
 		
@@ -233,7 +235,6 @@ public class RawOrderController {
 	public String showRawOredered(HttpSession session, Model model, @RequestParam(defaultValue = "-1") String storeId,
 								  @RequestParam(defaultValue = "-1") String year,
 								  @RequestParam(defaultValue = "-1") String month) {
-		
 		List<RawOrderHistoryDto> histories = rawOrderService.showRawOrdered(storeId, year, month);
 		List<RawOrderHistoryDto> historyDtos = new ArrayList<>();
 		
@@ -257,7 +258,6 @@ public class RawOrderController {
 			historyDtos.add(historyDto);
 		}
 		
-		System.out.println(historyDtos);
 		session.setAttribute("rawOrderHistories", historyDtos);
 		return "0";
 	}
