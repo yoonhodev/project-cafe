@@ -107,6 +107,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <!--리스트 출력 시작 --> 
                                     	<c:forEach var="boards" items="${ boards }">
                                     	<c:choose>
                                         <c:when test="${ boards.deleted }">
@@ -129,9 +130,44 @@
                                          </c:otherwise>
                                          </c:choose>
 										</c:forEach>
+										<!--리스트 출력 시작 --> 
+										
+										 <!--검색된 리스트 출력 시작 --> 
+                                    	<c:forEach var="searchedBoard" items="${ searchedBoard }">
+                                    	<c:choose>
+                                        <c:when test="${ searchedBoard.deleted }">
+                                        <tr>
+                                            <td style="height: 25px; width:80px; font-size: 17px">${ searchedBoard.boardId }</td>
+                                            <td style="height: 25px; font-size: 17px">[삭제된 글입니다.]</td>
+                                            <td style="height: 25px; width:100px; font-size: 17px">ADMIN</td>
+                                            <td style="height: 25px; width:80px; font-size: 17px">${ searchedBoard.readCount }</td>
+                                            <td style="height: 25px; width:150px;font-size: 17px"><fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/></td>
+                                        </tr>
+                                        </c:when>
+                                        <c:otherwise>
+                              			<tr>
+                                            <td style="height: 25px; width:80px; font-size: 17px"><a href="eventBoardDetail?boardId=${ searchedBoard.boardId }&pageNo=${ pageNo }">${ searchedBoard.boardId }</a></td>
+                                            <td style="height: 25px; font-size: 17px"><a href="eventBoardDetail?boardId=${ searchedBoard.boardId }&pageNo=${ pageNo }">${ searchedBoard.title }</a></td>
+                                            <td style="height: 25px; width:100px; font-size: 17px"><a href="eventBoardDetail?boardId=${ searchedBoard.boardId }&pageNo=${ pageNo }">ADMIN</a></td>
+                                            <td style="height: 25px; width:80px; font-size: 17px"><a href="eventBoardDetail?boardId=${ searchedBoard.boardId }&pageNo=${ pageNo }">${ searchedBoard.readCount }</a></td>
+                                            <td style="height: 25px; width:150px; font-size: 17px"><a href="eventBoardDetail?boardId=${ searchedBoard.boardId }&pageNo=${ pageNo }"><fmt:formatDate value="${ searchedBoard.regdate }" pattern="yyyy-MM-dd"/></a></td>
+                                        </tr>  
+                                         </c:otherwise>
+                                         </c:choose>
+										</c:forEach>
+										<!--검색된 리스트 출력 시작 --> 
                                     </tbody>
                                 </table>
                                 <br>
+                                
+                                <div>
+                                	<input name="keyword" id="keyword" type="text" placeholder="검색어를 입력해 주세요.">
+                                
+                                </div>
+                                <button id="search-btn">검색하기</button>
+                                
+                                
+                                
                                 <div style="text-align: center; background-color: white">
 	                                            <span style="background-color: white">${ pager }</span>
 								</div>
@@ -260,6 +296,12 @@
                 var lightBox = new PhotoSwipe($pswp, PhotoSwipeUI_Default, items, options);
                 lightBox.init();
             });
+            
+            $('#search-btn').on('click', function(event) {
+    			var text = $("#keyword").val();
+    			
+    			location.href = 'searchedEventBoard?keyword=' + text;
+    		});
         });
         </script>
     </div>

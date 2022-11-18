@@ -45,12 +45,6 @@ public class BoardServiceImpl implements BoardService {
 		
 	}
 
-	public List<BoardDto> showBoardList(BoardDto boardDto) {
-		
-		List<BoardDto> boards = boardMapper.showBoardList(boardDto);
-		
-		return boards;
-	}
 	
 	public BoardDto showBoardDetail(int boardId) {
 		
@@ -89,6 +83,19 @@ public class BoardServiceImpl implements BoardService {
 		return boards;
 		
 	}
+	
+	@Override
+	public List<BoardDto> findSearchedEventBoardByPage(String keyword, int pageNo, int pageSize) {
+		
+		int from = (pageNo - 1) * pageSize;
+		int count = pageSize;
+		System.out.println(keyword);
+		List<BoardDto> searchedBoard = boardMapper.selectSerchedEventBoardByPage(from, count, keyword);
+		
+		return searchedBoard;
+	}
+
+
 
 	@Override
 	public int findBoardCount() {
@@ -128,6 +135,8 @@ public class BoardServiceImpl implements BoardService {
 		
 		return board;
 	}
+	
+	
 	
 	@Override
 	public BoardDto findEventBoardByBoardNo(int boardId) {  /// 게시글 수정과 관련된 메소드
@@ -220,6 +229,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 
+	
 
 
 

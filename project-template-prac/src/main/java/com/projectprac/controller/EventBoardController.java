@@ -92,6 +92,26 @@ public class EventBoardController {
 		return "board/eventBoard"; 	// /WEB-INF/views/ + board/list + .jsp
 	}
 	
+	@GetMapping(path = { "searchedEventBoard" })
+	public String searchedShowEventBoardList(@RequestParam(defaultValue = "1")int pageNo,
+			@RequestParam(value = "keyword")String keyword,
+										     Model model) {
+		// 1. 요청 데이터 읽기 ( 전달인자로 대체 )
+		// 2. 데이터 처리 ( 데이터 조회 )		
+		System.out.println(keyword);
+		List<BoardDto> searchedBoard = boardService.findSearchedEventBoardByPage(keyword, pageNo, PAGE_SIZE);
+		System.out.println(searchedBoard);
+		int boardCount = boardService.findEventBoardCount();
+		ThePager pager = new ThePager(boardCount, pageNo, PAGE_SIZE, PAGER_SIZE, LINK_URL);
+		// 3. View에서 읽을 수 있도록 데이터 저장
+		model.addAttribute("boards", searchedBoard);
+		model.addAttribute("pager", pager);
+		model.addAttribute("pageNo", pageNo);
+
+		// 4. View or Controller로 이동
+		return "board/eventBoard"; 	// /WEB-INF/views/ + board/list + .jsp
+	}
+	
 	@GetMapping(path = { "/eventBoardDetail" })
 	public String showEventBoardDetail(@RequestParam(defaultValue = "-1") int boardId, 
 									   @RequestParam(defaultValue = "-1") int pageNo,
