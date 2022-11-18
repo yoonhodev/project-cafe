@@ -90,7 +90,7 @@
 				<table style="width:300px;">
 					<tr>
 						<td style="text-align: center;">
-							<a href="editAccount">
+							<a href="editAccount?customerId=${loginuser.customerId}">
 							개인정보 변경
 							</a>
 						</td>

@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.projectprac.dto.AddressDto;
 import com.projectprac.dto.BoardDto;
@@ -50,13 +51,18 @@ public class MypageController {
 	@GetMapping(path = { "editAccount" })
 	public String editAccount(String customerId, String postId, String address, String detailAddress, String extraAddress, HttpSession session, Model model) {
 		
+		AddressDto addressDto = mypageService.selectAddressbyCustomerId(customerId);
+		
 //		MypageDto AddressS = MypageService.selectAddressByCustomerId(address, customerId);
 //		
 //		model.addAttribute("postId", AddressS.getPostId());
 //		model.addAttribute("address", address);
 //		model.addAttribute("detailAddress", detailAddress);
 //		model.addAttribute("extraAddress", extraAddress);
+		System.out.println(customerId);
+		System.out.println(addressDto);
 		
+		model.addAttribute("addressDto",addressDto);
 		
 		return "mypage/editAccount";
 	}
@@ -88,9 +94,13 @@ public class MypageController {
 		return "mypage/favoriteStore";
 	}
 	
+	
 	@PostMapping(path = { "editAccount" })
 	public String editAccount(@Valid MypageDto mypageDto, BindingResult br,String idchk, String passwdchk, Model model,
-						   AddressDto addressDto) throws ParseException { // @Valid에 의해 검출된 오류 정보가 저장된 객체
+						   AddressDto addressDto, @RequestParam(defaultValue = "-1") String customerId) throws ParseException { // @Valid에 의해 검출된 오류 정보가 저장된 객체
+		
+		
+		
 		
 		if (br.hasErrors()) {
 			System.out.println("유효성 검사 오류 발생");

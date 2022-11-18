@@ -15,16 +15,11 @@
    <jsp:include page="/WEB-INF/views/admin-modules/admin-common-css.jsp"></jsp:include>
   <style type="text/css">
   .wrap{padding:10px;}
-
-.btn_open{font-weight:bold; margin:5px; padding:4px 6px;}
-.pop_wrap{position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,.5); font-size:0; text-align:center;}
-.pop_wrap:after{display:inline-block; height:100%; vertical-align:middle; content:'';}
-.pop_wrap .pop_inner{display:inline-block; padding:20px 30px; background:#fff; width:800px; vertical-align:middle; font-size:15px;}
-  
-  
-  
+  .btn_open{font-weight:bold; margin:5px; padding:4px 6px;}
+  .pop_wrap{position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,.5); font-size:0; text-align:center;}
+  .pop_wrap:after{display:inline-block; height:100%; vertical-align:middle; content:'';}
+  .pop_wrap .pop_inner{display:inline-block; padding:20px 30px; background:#fff; width:800px; vertical-align:middle; font-size:15px;}
   </style>
-  
   
   </head>
   <body>
@@ -75,10 +70,10 @@
                       <div class="col-xl-3 col-lg-6 col-sm-6 grid-margin stretch-card"  style="height:300px">
                         <div class="card">
                         <form class="variants add addform order-popup" id="addform" action="update-kiosk-order" method="post">
-                        <a href="#pop_info_1" class="btn_open" style="color:white" type="button">
-                        <img src="${ product.prodImg }" width="250px" alt="image" title="product" style="margin:auto">
-                         </a>
-                         </form>
+	                        <a href="#pop_info_1" class="btn_open" style="color:white" type="button">
+	                        <img src="${ product.prodImg }" width="250px" alt="image" title="product" style="margin:auto">
+	                         </a>
+                        </form>
                          
                           <div class="text-center">
                             <h3 style="color:black">${ product.prodName }</h3>
