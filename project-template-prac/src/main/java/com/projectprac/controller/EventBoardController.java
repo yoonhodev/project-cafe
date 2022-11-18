@@ -98,7 +98,7 @@ public class EventBoardController {
 										     Model model) {
 		// 1. 요청 데이터 읽기 ( 전달인자로 대체 )
 		// 2. 데이터 처리 ( 데이터 조회 )		
-		System.out.println(keyword);
+		
 		List<BoardDto> searchedBoard = boardService.findSearchedEventBoardByPage(keyword, pageNo, PAGE_SIZE);
 		System.out.println(searchedBoard);
 		int boardCount = boardService.findEventBoardCount();

@@ -89,7 +89,7 @@ public class BoardServiceImpl implements BoardService {
 		
 		int from = (pageNo - 1) * pageSize;
 		int count = pageSize;
-		System.out.println(keyword);
+		
 		List<BoardDto> searchedBoard = boardMapper.selectSerchedEventBoardByPage(from, count, keyword);
 		
 		return searchedBoard;

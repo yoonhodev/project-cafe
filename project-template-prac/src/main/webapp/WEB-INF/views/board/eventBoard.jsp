@@ -159,16 +159,11 @@
                                     </tbody>
                                 </table>
                                 <br>
-                                
                                 <div>
                                 	<input name="keyword" id="keyword" type="text" placeholder="검색어를 입력해 주세요.">
-                                
-                                </div>
-                                <button id="search-btn">검색하기</button>
-                                
-                                
-                                
-                                <div style="text-align: center; background-color: white">
+	                                </div>
+	                               	 <button id="search-btn">검색하기</button>
+	                                <div style="text-align: center; background-color: white">
 	                                            <span style="background-color: white">${ pager }</span>
 								</div>
 								
@@ -298,8 +293,13 @@
             });
             
             $('#search-btn').on('click', function(event) {
-    			var text = $("#keyword").val();
-    			
+            	var text = $("#keyword").val();
+            	
+            	if($("#keyword").val()==""){
+					alert("검색어를 입력해 주세요.");
+					$("#keyword").focus();
+					return false;
+				}
     			location.href = 'searchedEventBoard?keyword=' + text;
     		});
         });
