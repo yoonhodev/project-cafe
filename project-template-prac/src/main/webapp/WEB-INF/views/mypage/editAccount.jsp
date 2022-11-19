@@ -39,10 +39,7 @@
 	            </div>
         	</div>
 		
-		<%
-			
-		
-		%>
+
 		
 		<div class="editAccount-wrapper" style="text-align: center;">
 			
@@ -102,17 +99,17 @@
 											<label for="Address">주소</label>
 											<div  style="line-height: 80%">
 												<div class="input-group">
-													<input style="width: 80px" class="form-control" name="postId" type="text" id="sample2_postcode" placeholder="우편번호" required>
+													<input style="width: 80px" class="form-control" name="postId" value="${ addressDto.postId }" type="text" id="sample2_postcode" required>
 													<div style="width: 20px"></div>
 													<input class="btn" style="width: px" class="form-control" type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기">
 													<div style="width: 100px"></div><div style="width: 100px"></div>
 													<div style="width: 100px"></div><div style="width: 100px"></div>
 												</div><br>
-												<input class="form-control" name="address" type="text" id="sample2_address" <%-- value="${ loginuser.address }" --%> required><br>
+												<input class="form-control" name="address" type="text" id="sample2_address" value="${ addressDto.address }" required><br>
 												<div class="input-group">
-													<input class="form-control" name="detailAddress" type="text" id="sample2_detailAddress" <%-- value="${ loginuser.detailAddress }" --%>>
+													<input class="form-control" name="detailAddress" type="text" id="sample2_detailAddress" value="${ addressDto.detailAddress }" >
 													&nbsp;&nbsp;&nbsp;&nbsp;
-													<input class="form-control" name="extraAddress" type="text" id="sample2_extraAddress" <%-- value="${ loginuser.extraAddress }" --%>>
+													<input class="form-control" name="extraAddress" type="text" id="sample2_extraAddress"  value="${ addressDto.extraAddress }">
 													<!-- <input class="form-group" type="text" name="addressId" value=""
 													   id="addressId" style="display:none;"> -->
 												</div>
@@ -129,24 +126,6 @@
 											<label for="Email">이메일</label>
 											<input type="email" name="email"
 												   value="${ loginuser.email }" id="Email" required>
-										</div>
-									</div>
-									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
-										<div class="form-group">
-											<label>성별</label><br>
-											<div>&nbsp;
-												&nbsp;&nbsp;남&nbsp;&nbsp;
-												<input type="radio" name="sex" value="1" id="sex_man" required>
-												&nbsp;&nbsp;&nbsp;&nbsp;
-												&nbsp;&nbsp;여&nbsp;&nbsp;
-												<input type="radio" name="sex" value="0" id="sex_woman">
-											</div>
-										</div>
-									</div>
-									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
-										<div class="form-group">
-											<label for="Birth">생년월일</label>
-											<input type="date" name="birth" placeholder="${ loginuser.birth }" id="Birth" required>
 										</div>
 									</div>
 								</div>
@@ -191,35 +170,37 @@
 		<jsp:include page="/WEB-INF/views/modules/common-js.jsp"></jsp:include>
 		<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 		<script type="text/javascript">
-			function check_newpw() {
-				if ($("#Password").val() != $("#PasswordCheck").val())  {
-					$("#check").text("새 비밀번호가 일치하지 않습니다.");
-					$("#check").css("color", "red");
-				} else {
-					$("#check").text("새 비밀번호가 일치합니다.")
-					$("#check").css("color", "blue");
-				}
-			}
-			
-			function check_oldpw() {
-				if ($("#oldPassword").val() != passwd ) {
-					alert("기존 비밀번호가 일치하지 않습니다");
-					break;
-				}
+		
+			$(function() {
+				$("#PasswordCheck").on("change", function(event) {
+					if ($("#Password").val() != $("#PasswordCheck").val())  {
+						$("#check").text("새 비밀번호가 일치하지 않습니다.");
+						$("#check").css("color", "red");
+					} else {
+						$("#check").text("새 비밀번호가 일치합니다.")
+						$("#check").css("color", "blue");
+					}
+				});
 
-				pageContext.forward("editComplete");
-			}
+				$("#btn mb-3").on("click", function() {
+					if ($("#oldPassword").val() != passwd ) {
+						alert("기존 비밀번호가 일치하지 않습니다");
+						break;
+					}
+					pageContext.forward("editComplete");
+				});
+				
+				
+				$(document).ready(function sex_check() {
+					if ( ${ loginuser.sex } == 1) {
+						$('input:radio[id=sex_man]').is("checked");
+						$('input:radio[id=sex_woman]').is("unchecked");
+					} else {
+						$('input:radio[id=sex_man]').is("unchecked");
+						$('input:radio[id=sex_woman]').is("checked");
+					}
+				});
 			
-			$(document).ready(function sex_check() {
-				if ( ${ loginuser.sex } == 1) {
-					$('input:radio[id=sex_man]').is("checked");
-					$('input:radio[id=sex_woman]').is("unchecked");
-				} else {
-					$('input:radio[id=sex_man]').is("unchecked");
-					$('input:radio[id=sex_woman]').is("checked");
-				})
-				
-				
 			}
 		</script>
 		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

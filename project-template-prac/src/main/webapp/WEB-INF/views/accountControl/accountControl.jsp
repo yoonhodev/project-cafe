@@ -207,7 +207,7 @@
 			
 			location.href = customerId + '/changeAdmin';
 			
-			alert(customerId + "를 관리자 계정으로 변경 했습니다")
+			alert(customerId + "님을 관리자 계정으로 변경 했습니다")
 		});
 		
 		$(".change_to_user").on('click', function(event) {
@@ -217,7 +217,7 @@
 			
 			location.href = customerId + '/changeUser';
 			
-			alert(customerId + "를 일반 계정으로 변경 했습니다")
+			alert(customerId + "님을 일반 계정으로 변경 했습니다")
 		});
 		
 		$('#searchCustomerId').on('click', function(event) {

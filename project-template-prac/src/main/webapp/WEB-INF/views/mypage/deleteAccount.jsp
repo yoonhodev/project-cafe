@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html>
@@ -72,7 +71,7 @@
 									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
 										<div class="form-group">
 											<br>
-											<label for="Password">아래 텍스트를 입력해 주십시오</label>
+											<label for="textchecks">아래 텍스트를 입력해 주십시오</label>
 											<br>
 											<span style="font-weight:bold;">회원 탈퇴에 동의합니다</span>
 										</div>
@@ -80,7 +79,7 @@
 									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
 										<div class="form-group">
 											<input type="text" name="textchk"
-												   placeholder="회원 탈퇴에 동의합니다" id="textCheck">
+												   placeholder="회원 탈퇴에 동의합니다" id="textCheck" required>
 											<span id="check"></span>										
 										</div>
 									</div>
@@ -116,9 +115,25 @@
 			
 			
 			
-			<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
-			<script type="text/javascript">
+		<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+		<script type="text/javascript">	
 		$(function() {
+			$("#textCheck").on("change", function(event) {
+				if ($("#textCheck").val() != "회원 탈퇴에 동의합니다") {
+					$("#check").text("회원 탈퇴 동의 텍스트가 일치하지 않습니다");
+					$("#check").css("color", "red");
+					$("#deleted").val("0");
+				} else {
+					$("#check").text("회원 탈퇴 동의 텍스트가 일치합니다");
+					$("#check").css("color", "blue");
+					$("#deleted").val("1");
+				}
+			});
+			$('#textCheck').on("change", function(event) {
+				$("#check").text("");
+			});
+			
+			
 			
 			$("#btn mb-3").on("click", function() {
 	 			
@@ -127,19 +142,13 @@
 					break;
 				}
 				
-				
-				var textcheck = $("#textCheck").val();
-	 			if (textcheck == "회원 탈퇴에 동의합니다") {
-	 				$("#deleted").value("1");
-	 			} else {
-	 				alert("회원 탈퇴 동의 텍스트가 일치하지 않습니다");
-	 				break;
-	 			}
-	 			
 	 			pageContext.forward("deleteComplete");
 
-	 		});		
+	 		});
+			
+			
+			
 		}
-
+		</script>
 </body>
 </html>

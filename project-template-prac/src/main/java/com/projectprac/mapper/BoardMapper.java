@@ -28,11 +28,6 @@ public interface BoardMapper {
 	@Options(useGeneratedKeys = true, keyColumn = "board_id", keyProperty = "boardId")  // 다른 컬럼 자동증가값 가져올땐 << 문구 삽입 해야함
 	void insertEventBoard(BoardDto board);
 
-	@Select("select board_id boardid, worker_id workerid, title, content, regdate, deleted " +
-			"from board " +
-			"order by boardid DESC ")
-	List<BoardDto> showBoardList(BoardDto boardDto);
-	
 	@Select("select board_id boardid, worker_id workerid, title, content, regdate, readcount, deleted from board where board_id = #{ boardId }")
 	BoardDto showBoardDetail(int boardId);
 	
@@ -52,6 +47,13 @@ public interface BoardMapper {
 			"ORDER BY boardid DESC " + // 최신 글이 앞에 보이도록 조회
 			"LIMIT #{ from }, #{ count } ")
 	List<BoardDto> selectEventBoardByPage(@Param("from") int from, @Param("count") int count);
+	
+	@Select("SELECT board_id boardid, worker_id workerid, title, regdate, deleted, readcount, board_type " +
+			"FROM board " +
+			"WHERE deleted = FALSE and title LIKE CONCAT('%',#{ keyword },'%') " +
+			"ORDER BY boardid DESC ")
+	List<BoardDto> selectSerchedEventBoardByPage(@Param("from") int from, @Param("count") int count, @Param("keyword") String keyword);
+	
 
 	@Select("select count(*) from board where board_type = true")
 	public int selectBoardCount();
@@ -117,7 +119,8 @@ public interface BoardMapper {
 			"FROM comment " +
 			"WHERE board_id = #{ boardId }")
 	int selectCommentEventCount(int boardId);
-	
+
+
 
 	
 	

@@ -3,6 +3,7 @@ package com.projectprac.service;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
@@ -89,6 +90,14 @@ public class MypageServiceImpl implements MypageService {
 		String customerId = mypageDto.getCustomerId();
 		mypageDto.setCustomerId(customerId);
 		mypageMapper.deleteAccount(mypageDto);
+	}
+
+	@Override
+	public AddressDto selectAddressbyCustomerId(String customerId) {
+		
+	AddressDto address = mypageMapper.selectAddressByCustomerId22(customerId);
+		
+		return address;
 	}
 	
 	

@@ -13,7 +13,7 @@ public interface BoardService {
 	
 	void writeEventBoard(BoardDto board);
 	
-	List<BoardDto> showBoardList(BoardDto boardDto);
+
 	
 	BoardDto showBoardDetail(int boardId);
 	
@@ -59,6 +59,8 @@ public interface BoardService {
 	int findCommentCount(int boardId);
 
 	int findEventCommentCount(int boardId);
+
+	List<BoardDto> findSearchedEventBoardByPage(String keyword, int pageNo, int pAGE_SIZE);
 
 
 	
