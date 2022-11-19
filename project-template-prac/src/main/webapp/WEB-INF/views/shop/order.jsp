@@ -298,7 +298,15 @@
 		 		var orderPay = $("#orderPay option:selected").val();
 		 		var orderType = $("input[name=orderType]:checked").val();
 		 		var storeId = $("#selectStore option:selected").val();
-		 		var formData = { storeId : storeId, orderPay : orderPay, orderType : orderType };
+		 		var prodIdArray = [];
+		 		var amountArray = [];
+		 		$('#productSpan').each(function() {
+		 			var prodId = $(this).attr("price-prodId");
+		 			var amount = $('#amount').val();
+		 			prodIdArray.push(prodId);
+		 			amountArray.push(amount);
+		 		});
+		 		var formData = { prodIdList : prodIdArray, amountList : amountArray, storeId : storeId, orderPay : orderPay, orderType : orderType };
 		 		
 				if (orderType == "A") {
 					orderType = '배달'
@@ -311,7 +319,7 @@
 						"method": "post",
 						"data": formData,
 						"success": function(data) {
-							alert('다 됐지롱~');
+							alert('success');
 						 },
 						"error": function(xhr, status, err) {
 							alert('fail');

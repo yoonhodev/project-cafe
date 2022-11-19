@@ -33,13 +33,13 @@
                                         <div class="cart__qty text-center">
                                             <div class="qtyField">
                                                 <a class="qtyBtn minus" href="javascript:void(0);" data-productId="${ product.prodId }"><i class="icon icon-minus"></i></a>
-                                                <input class="cart__qty-input qty" type="text" name="updates[]" id="qty" value="1" pattern="[0-9]*" disabled>
+                                                <input class="cart__qty-input qty" id="amount" type="text" name="updates[]" id="qty" value="1" pattern="[0-9]*" disabled>
                                                 <a class="qtyBtn plus"  href="javascript:void(0);" data-productId="${ product.prodId }"><i class="icon icon-plus"></i></a>
                                             </div>
                                         </div>
                                     </td>
                                     <td class="text-right small--hide cart-price">
-                                        <div><span class="product-price-sum" id="price-${ product.prodId }">${ product.prodPrice }</span></div>
+                                        <div><span class="product-price-sum productSpan" id="price-${ product.prodId }">${ product.prodPrice }</span></div>
                                     </td>
                                     <td class="text-center small--hide"><button type="button" data-prodId="${ product.prodId }" class="btn btn--secondary cart__remove delete-order" title="Remove tem"><i class="icon icon anm anm-times-l"></i></button></td>
                                 </tr>
