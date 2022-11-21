@@ -107,6 +107,7 @@
                       <thead>
                         <tr>
 							<th class="text-center">사용자 ID</th>
+							<th class="text-center">주문 번호</th>
 							<th class="text-center">지점명</th>
 							<th class="text-center">주문 금액</th>
 							<th class="text-center">주문 종류</th>
@@ -124,19 +125,28 @@
 						<tr class="cart__row border-bottom line1 cart-flex border-top"
 							align="center">
 							<td><span>${ order.customerId }</span></td>
+							<td><span>${ order.orderId }</span></td>
 							<td><span>${ storeName11 }</span></td>
-							<td><span>총금액</span></td>
+							<td><span>${ order.prodPrice * order.amount }원</span></td>
 							<td><span>${ order.orderType }</span></td>
 							<td><span>${ order.orderStat }</span></td>
 							<td><span>${ order.orderDate }</span></td>
-							<td><span>${ order.prodName }</span></td>
+							<td><span>${  order.prodName }</span></td>
 							<td><span>${ order.amount }</span></td>
-<!-- 							<td><span></span></td> -->
-										
-						</tr>																										
-						</c:forEach>								
+							</tr>																										
+						</c:forEach>										
                       </tbody>
                     </table>
+                   			
+<!-- 							<td><a class="btnForShowAndHide"><span>주문 상세</span></a></td> -->
+<!-- 							<td class="showAndHideOrderDetails" style="display: none;"> -->
+<%-- 							${ order.prodName } --%>
+<%-- 							${ order.amount } --%>
+<!-- 							</td> -->
+
+<!-- 							<td><span></span></td> -->
+										
+						
                   </div>
                 </div>
               </div>          			
@@ -185,12 +195,23 @@
 			
 		});		
 
+		$(".btnForShowAndHide").on('click', function() {
+			
+			
+			$(".showAndHideOrderDetails").show();
+			
+			
+		});
+		
+		
+		
 		$(".WorkYear1").on("change", function() {
 			var workYear = $(this).val();
 			
 			$('#WorkYear11').val(workYear);
 			
 		});
+		
 		
 		$(".WorkMonth1").on("change", function() {
 			var workMonth = $(this).val();
