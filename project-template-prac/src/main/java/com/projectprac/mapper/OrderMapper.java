@@ -40,7 +40,7 @@ public interface OrderMapper {
 			"FROM modeling_cafe.order" )
 	int selectMaxOrderId();
 
-	@Insert("INSERT INTO modeling_cafe.order_detail " +
-			"VALUES (#{ orderId }, #{ prodId }, #{ amount }" )
+	@Insert("INSERT INTO modeling_cafe.order_detail (order_id, prod_id, amount) " +
+			"VALUES (#{ orderId }, #{ prodId }, #{ amount })" )
 	void insertDetailOrder(@Param("orderId")int orderId, @Param("prodId")int prodId, @Param("amount")int amount);
 }

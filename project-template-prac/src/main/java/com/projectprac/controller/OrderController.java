@@ -172,22 +172,20 @@ public class OrderController {
 		
 	}
 	
-	int fixedProdId;
 	@PostMapping(path = { "insert-order" })
+	@ResponseBody
 	public String payment(HttpSession session, int storeId, String orderPay, String orderType,
 						  @RequestParam(value=("prodIdList[]"))List<Integer> prodIdList,
 			              @RequestParam(value=("amountList[]"))List<Integer> amountList) {
 		CustomerDto customer = (CustomerDto) session.getAttribute("loginuser");
 		orderService.insertOrder(storeId, customer.getCustomerId(), orderPay, orderType);
 		int orderId = orderService.selectMaxOrderId();
-		List<ProductDto> productIdCounts = (List<ProductDto>) session.getAttribute("productIds");
-		if (productIdCounts != null) {
-			return "";
-		} else {
-			for (int i = 0; i < prodIdList.size(); i++) {
-				fixedProdId = prodIdList.get(i);
-				productIdCounts.removeIf(item -> item.getProdId() == fixedProdId);
-			}
+		
+		for(int i = 0; i < prodIdList.size(); i++) {
+			int prodId = prodIdList.get(i);
+			int amount = amountList.get(i);
+			orderService.insertDetailOrder(orderId, prodId, amount);
+			
 		}
 		
 		return "mypage/mypage";
