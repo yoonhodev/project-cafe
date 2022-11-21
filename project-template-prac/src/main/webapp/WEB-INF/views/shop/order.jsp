@@ -58,7 +58,7 @@
 								</form>
 									<h5>지점</h5>
 								<form action="selectstore" method="get" id="orderselectstore">
-									<select id="selectStore" name="selectStore" class="form-group selectStore">
+									<select id="selectStore" class="form-group selectStore">
 										<option selected value="0" disabled>지점 선택</option>
 										<c:forEach var="stores" items="${ stores }" varStatus="status">
 											<option id="order-select-store" value="${ stores.storeId }">${ stores.storeName }</option>
@@ -313,12 +313,11 @@
 				} else {
 					orderType = '포장'
 				}
+				if($("#orderPay option:selected").val() == "0" || $("#selectStore option:selected").val() == "0") {
+					alert('결제 수단 및 지점 선택 부탁드립니다.')
+					return;
+				} else {
 				if(confirm("주문 하시겠습니까?") == true) {
-					if($("#orderPay option:selected").val() == "0") {
-						console.log(1)
-						alert('1');
-						return;
-					} else {
 						$.ajax({
 							"url": "insert-order",
 							"method": "post",
@@ -333,7 +332,7 @@
 				}
 			}
 				
-	 	});
+ 	});
 		 		 	
 	});
 		
