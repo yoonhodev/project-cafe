@@ -16,6 +16,6 @@ public class OrderDto {
 	private String orderStat;
 	private Date orderDate;
 	
-	private List<OrderDetailDto> orderDtos;
+	private List<OrderDetailDto> orderDetailDtos;
 	
 }
