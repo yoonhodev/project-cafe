@@ -66,8 +66,8 @@
                           				</th>     
                           				                    				
                           				<th>
-												<span class="col-sm-6 col-md-4 col-lg-3"><b>기간 조회</b></span>
-												시작 날짜 : <input type="date" name="startDate" data-startDate="" class="datepicker" id="strtDate"/> &nbsp;~ &nbsp;종료 날짜 : <input name="endDate" class="datepicker" id="endDate" type="date"/>
+<!-- 												<span class="col-sm-6 col-md-4 col-lg-3"><b>기간 조회</b></span> -->
+<!-- 												시작 날짜 : <input type="date" name="strtDate" data-startDate="" class="datepicker" id="strtDate"/> &nbsp;~ &nbsp;종료 날짜 : <input name="endDate" class="datepicker" id="endDate" type="date"/> -->
                           				
                           				</th>
 
@@ -77,8 +77,8 @@
                           		<tr>
                           		<td colspan="6" align="center">
 									<input type="hidden" id="StoreId11" name="storeId">
-<!-- 										<input type="hidden" id="WorkYear11" name="workYear">	 -->
-<!-- 										<input type="hidden" id="WorkMonth11" name="workMonth"> -->
+<!-- 										<input type="hidden" id="startDate" name="strtDate">	 -->
+<!-- 										<input type="hidden" id="startDate" name="endDate"> -->
 										<input type="submit"
 											   class="btn btn-outline-secondary btn-fw btn-rounded"
 											   id="SelectStore"
@@ -120,18 +120,18 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <c:forEach var="worker" items="${ workers }" varStatus="status">
+                        <c:forEach var="order" items="${ orders }" varStatus="status">
 						<tr class="cart__row border-bottom line1 cart-flex border-top"
 							align="center">
-							<td><a href="worker-infoDtail?workerId=${ worker.workerId }"><span>${ worker.workerName }</span></a></td>
+							<td><span>${ order.customerId }</span></td>
 							<td><span>${ storeName11 }</span></td>
-							<td><span>${ storeName11 }</span></td>
-							<td><span>${ worker.workYear }</span></td>
-							<td><span>${ worker.workMonth }</span></td>
-							<td><span>${ worker.salary }</span></td>
-							<td><span>${ worker.workerPhone }</span></td>
-							<td><span>${ worker.workerPhone }</span></td>
-							<td><span>${ worker.workerPhone }</span></td>
+							<td><span>총금액</span></td>
+							<td><span>${ order.orderType }</span></td>
+							<td><span>${ order.orderStat }</span></td>
+							<td><span>${ order.orderDate }</span></td>
+							<td><span>${ order.prodName }</span></td>
+							<td><span>${ order.amount }</span></td>
+<!-- 							<td><span></span></td> -->
 										
 						</tr>																										
 						</c:forEach>								
