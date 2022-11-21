@@ -52,8 +52,9 @@ public class AccountController {
 	// 회원가입) 회원 정보 저장
 	@PostMapping(path = { "register" })
 	public String register(@Valid CustomerDto customer, BindingResult br, String idchk, String passwdchk, Model model,
-						   AddressDto addressDto) { // @Valid에 의해 검출된 오류 정보가 저장된 객체
+						   AddressDto addressDto, String regi_sex) { // @Valid에 의해 검출된 오류 정보가 저장된 객체
 		
+		System.out.println(customer);
 		if (br.hasErrors()) {
 			System.out.println("유효성 검사 오류 발생");
 			return "redirect:register";
@@ -71,6 +72,12 @@ public class AccountController {
 			model.addAttribute("msg", "비밀번호를 확인해 주세요");
 			model.addAttribute("url", "register");
 			return "modules/alert";
+		}
+		
+		if (regi_sex.equals("A")) {
+			customer.setSex(true);
+		} else if (regi_sex.equals("B")) {
+			customer.setSex(false);
 		}
 		
 		// 2. 요청 처리
