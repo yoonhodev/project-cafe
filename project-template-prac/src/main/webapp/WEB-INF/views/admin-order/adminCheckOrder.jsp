@@ -124,15 +124,23 @@
                         <c:forEach var="order" items="${ orders }" varStatus="status">
 						<tr class="cart__row border-bottom line1 cart-flex border-top"
 							align="center">
+							
 							<td><span>${ order.customerId }</span></td>
 							<td><span>${ order.orderId }</span></td>
 							<td><span>${ storeName11 }</span></td>
 							<td><span>${ order.prodPrice * order.amount }원</span></td>
-							<td><span>${ order.orderType }</span></td>
+							<c:if test="${ order.orderType eq 'A' }">
+							<td><span>배달</span></td>
+							</c:if>
+							<c:if test="${ order.orderType eq 'B' }">
+							<td><span>포장</span></td>
+							</c:if>
 							<td><span>${ order.orderStat }</span></td>
-							<td><span>${ order.orderDate }</span></td>
-							<td><span>${  order.prodName }</span></td>
+							<td><span>${ order.orderDate }</span></td>	
+<%-- 							<c:if test="${ order.orderId == order.orderId }"><td><span><c:out value=" ${ order.prodName }"></c:out></span></td></c:if>						 --%>
+							<td><span><c:out value=" ${ order.prodName }"></c:out></span></td>
 							<td><span>${ order.amount }</span></td>
+							
 							</tr>																										
 						</c:forEach>										
                       </tbody>
