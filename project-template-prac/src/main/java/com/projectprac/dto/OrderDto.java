@@ -1,6 +1,5 @@
 package com.projectprac.dto;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -21,4 +20,7 @@ public class OrderDto {
 	private String prodName;
 	private int amount;
 	private int prodPrice;
+	
+	private int total;
+	private String storeName;
 }
