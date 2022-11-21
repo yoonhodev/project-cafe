@@ -15,19 +15,11 @@ import com.projectprac.dto.OrderHistoryDto;
 @Mapper
 public interface OrderHistoryMapper {
 
-	@Insert("INSERT INTO order_id orderId, store_id storeId, customer_id customerId, order_pay orderPay, order_date orderDate ) " +
-			"VALUES (#{ orderId }, #{ storeId }, #{ customerId }, #{ orderPay }, #{ orderDate })")
-	@Options(useGeneratedKeys = true, keyColumn = "orderHistoryno", keyProperty = "orderHistoryNo")
-
-	void insertOrderHistory(OrderHistoryDto orderHistory);
-	
 	@Select("SELECT order_id, store_id, customer_id, order_pay, order_date " +
 			"FROM order " +
 			"ORDER BY order_id DESC " +
-			"LIMIT #{ from },#{ count }")
-	List<OrderHistoryDto> selectOrderHistoryByPage(@Param("from")int from, @Param("count")int count);
-		
-
-	int selectBoardCount();
+			"WHERE customer_id = #{ customerId } ")
+	OrderHistoryDto selectOrderHistoryByCustomerId(String customerId);
+	
 	
 }

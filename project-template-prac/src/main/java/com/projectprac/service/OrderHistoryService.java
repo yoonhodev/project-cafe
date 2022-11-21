@@ -6,11 +6,11 @@ import com.projectprac.dto.OrderHistoryDto;
 
 public interface OrderHistoryService {
 
-	List<OrderHistoryDto> findOrderHistoryByPage(int pageNo, int page_size);
-
-	int findOrderHistoryCount();
-
-	OrderHistoryDto findOrderHistoryByOrderHistoryNo(int orderHistoryNo);
+	void selectOrderHistoryByCustomerId(OrderHistoryDto orderHistoryDto);
+	
+	OrderHistoryDto selectOrderHistoryByCustomerId(String customerId);
+	
+	
 
 
 }
