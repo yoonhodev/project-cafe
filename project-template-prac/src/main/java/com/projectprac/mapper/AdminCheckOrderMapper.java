@@ -24,7 +24,8 @@ public interface AdminCheckOrderMapper {
 			"on o.order_id=od.order_id " +
 			"left outer join product p " + 
 			"on p.prod_id=od.prod_id " +
-			"where o.store_id = #{storeId}" )
+			"where o.store_id = #{storeId} " +
+			"order by o.order_id DESC " )
 	List<OrderDto> selectOrderListByStoreId(@Param("storeId") int storeId);
 
 }
