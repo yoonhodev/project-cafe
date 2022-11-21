@@ -40,7 +40,7 @@
         	</div>
         	
         	<div>
-        	
+        		
      			<table>
 					<thead class="cart__row cart__header">
 						<tr>
