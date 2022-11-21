@@ -1,5 +1,8 @@
 package com.projectprac.service;
 
+import java.util.List;
+
+import com.projectprac.dto.OrderDto;
 import com.projectprac.dto.OrderHistoryDto;
 import com.projectprac.mapper.OrderHistoryMapper;
 
@@ -12,22 +15,10 @@ public class OrderHistoryServiceImpl implements OrderHistoryService {
 	private OrderHistoryMapper OrderHistoryMapper;
 
 	@Override
-	public OrderHistoryDto selectOrderHistoryByCustomerId(String customerId) {
+	public List<OrderDto> selectOrderHistoryByCustomerId(String customerId) {
 
-		OrderHistoryDto orderHistoryDto = OrderHistoryMapper.selectOrderHistoryByCustomerId(customerId);
-		return orderHistoryDto;
+		List<OrderDto> orders = OrderHistoryMapper.selectOrderHistoryByCustomerId(customerId);
+		return orders;
 	}
-
-	@Override
-	public void selectOrderHistoryByCustomerId(OrderHistoryDto orderHistoryDto) {
-		
-		String orderHistory = orderHistoryDto.getCustomerId();
-		System.out.println(orderHistory);
-		
-	}
-
-	
-	
-	
 
 }
