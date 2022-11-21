@@ -19,11 +19,11 @@
 								<c:set var="quantity" value="1" />
 								<tr class="cart__row border-bottom line1 cart-flex border-top">
                                     <td class="cart__image-wrapper cart-flex-item text-center">
-                                        <a href="#">${ status.count }</a>
+                                        ${ status.count }
                                     </td>
                                     <td class="cart__meta small--text-left cart-flex-item text-center">
                                         <div class="list-view-item__title">
-                                            <a href="#">${ product.prodName }</a>
+                                            ${ product.prodName }
                                         </div>
                                     </td>
                                     <td class="cart__price-wrapper cart-flex-item">
@@ -31,10 +31,10 @@
                                     </td>
                                     <td class="cart__update-wrapper cart-flex-item text-right">
                                         <div class="cart__qty text-center">
-                                            <div class="qtyField">
-                                                <a class="qtyBtn minus" href="javascript:void(0);" data-productId="${ product.prodId }"><i class="icon icon-minus"></i></a>
-                                                <input class="cart__qty-input qty" type="text" name="updates[]" id="qty" value="1" pattern="[0-9]*" disabled>
-                                                <a class="qtyBtn plus"  href="javascript:void(0);" data-productId="${ product.prodId }"><i class="icon icon-plus"></i></a>
+                                            <div class="qtyField" id="prodField">
+                                                <a class="qtyBtn minus" data-productId="${ product.prodId }"><i class="icon icon-minus"></i></a>
+                                                <input class="cart__qty-input qty" id="amount-${ product.prodId }" type="text" name="updates[]" id="qty" value="1" pattern="[0-9]*" disabled>
+                                                <a class="qtyBtn plus" data-productId="${ product.prodId }"><i class="icon icon-plus"></i></a>
                                             </div>
                                         </div>
                                     </td>
