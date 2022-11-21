@@ -98,6 +98,8 @@
 						</div>
 					</div>
 				</div>
+			</div>
+		</div>
 					
 		<!--End Body Content-->
 
@@ -112,21 +114,18 @@
 		<!-- Common-js -->
 		<jsp:include page="/WEB-INF/views/modules/common-js.jsp"></jsp:include>
 	</div>
-			
-			
-			
 		<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 		<script type="text/javascript">	
 		$(function() {
 			$("#textCheck").on("change", function(event) {
-				if ($("#textCheck").val() != "회원 탈퇴에 동의합니다") {
-					$("#check").text("회원 탈퇴 동의 텍스트가 일치하지 않습니다");
-					$("#check").css("color", "red");
-					$("#deleted").val("0");
-				} else {
+				if ($("#textCheck").val("회원 탈퇴에 동의합니다")) {
 					$("#check").text("회원 탈퇴 동의 텍스트가 일치합니다");
 					$("#check").css("color", "blue");
 					$("#deleted").val("1");
+				} else {
+					$("#check").text("회원 탈퇴 동의 텍스트가 일치하지 않습니다");
+					$("#check").css("color", "red");
+					$("#deleted").val("0");
 				}
 			});
 			$('#textCheck').on("change", function(event) {
@@ -145,9 +144,6 @@
 	 			pageContext.forward("deleteComplete");
 
 	 		});
-			
-			
-			
 		}
 		</script>
 </body>
