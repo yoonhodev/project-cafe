@@ -67,14 +67,14 @@
 								</form>
 									<h5>결제수단</h5>
 								<select id="orderPay" class="form-group">
-										<option id="orderPay" selected value="0" disabled>결제 수단을 선택해주세요.</option>	
+										<option selected value="0" disabled>결제 수단을 선택해주세요.</option>	
 												<option value="cardPay">신용/체크카드</option>
 												<option value="phonePay">휴대폰결제</option>
 												<option value="naverPay">네이버페이</option>
 												<option value="kakaoPay">카카오페이</option>
 												<option value="tossPay">토스페이</option>
 												<option value="meetCardPay">만나서 카드결제</option>
-												<option value="meetC ashPay">만나서 현금결제</option>
+												<option value="meetCashPay">만나서 현금결제</option>
 								</select>
 							</div>
 							<div class="col-12 col-sm-12 col-md-4 col-lg-4 mb-4">
@@ -314,20 +314,22 @@
 					orderType = '포장'
 				}
 				if(confirm("주문 하시겠습니까?") == true) {
-					if($("#orderPay").eq('0')) {
+					if($("#orderPay option:selected").val() == "0") {
+						console.log(1)
 						alert('1');
+						return;
 					} else {
-					$.ajax({
-						"url": "insert-order",
-						"method": "post",
-						"data": formData,
-						"success": function(data) {
-							alert('success');
-						 },
-						"error": function(xhr, status, err) {
-							alert('fail');
-						}
-					});
+						$.ajax({
+							"url": "insert-order",
+							"method": "post",
+							"data": formData,
+							"success": function(data) {
+								alert('success');
+							 },
+							"error": function(xhr, status, err) {
+								alert('fail');
+							}
+						});
 				}
 			}
 				
