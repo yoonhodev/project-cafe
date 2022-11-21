@@ -68,9 +68,7 @@
 				<table style="border:1px; width:300px;">
 					<tr>
 						<td style="text-align: center;">
-							<a href="editAccount">
 							스탬프 <span>${ loginuser.stamp }</span>개
-							</a>
 						</td>
 						<td style="text-align: center;">
 							<a href="coupon">
@@ -111,7 +109,7 @@
 						</td>
 					</tr>
 				</table>
-			
+				<input type="hidden" value="${ customer.customerId }" id="customerId">
 			</div>
 			
 			<br><br>

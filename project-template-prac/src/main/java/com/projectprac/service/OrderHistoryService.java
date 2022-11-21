@@ -2,13 +2,11 @@ package com.projectprac.service;
 
 import java.util.List;
 
-import com.projectprac.dto.OrderHistoryDto;
+import com.projectprac.dto.OrderDto;
 
 public interface OrderHistoryService {
 
-	void selectOrderHistoryByCustomerId(OrderHistoryDto orderHistoryDto);
-	
-	OrderHistoryDto selectOrderHistoryByCustomerId(String customerId);
+	List<OrderDto> selectOrderHistoryByCustomerId(String customerId);
 	
 	
 

@@ -66,8 +66,8 @@
                           				</th>     
                           				                    				
                           				<th>
-												<span class="col-sm-6 col-md-4 col-lg-3"><b>기간 조회</b></span>
-												시작 날짜 : <input type="date" name="startDate" data-startDate="" class="datepicker" id="strtDate"/> &nbsp;~ &nbsp;종료 날짜 : <input name="endDate" class="datepicker" id="endDate" type="date"/>
+<!-- 												<span class="col-sm-6 col-md-4 col-lg-3"><b>기간 조회</b></span> -->
+<!-- 												시작 날짜 : <input type="date" name="strtDate" data-startDate="" class="datepicker" id="strtDate"/> &nbsp;~ &nbsp;종료 날짜 : <input name="endDate" class="datepicker" id="endDate" type="date"/> -->
                           				
                           				</th>
 
@@ -77,8 +77,8 @@
                           		<tr>
                           		<td colspan="6" align="center">
 									<input type="hidden" id="StoreId11" name="storeId">
-<!-- 										<input type="hidden" id="WorkYear11" name="workYear">	 -->
-<!-- 										<input type="hidden" id="WorkMonth11" name="workMonth"> -->
+<!-- 										<input type="hidden" id="startDate" name="strtDate">	 -->
+<!-- 										<input type="hidden" id="startDate" name="endDate"> -->
 										<input type="submit"
 											   class="btn btn-outline-secondary btn-fw btn-rounded"
 											   id="SelectStore"
@@ -107,6 +107,7 @@
                       <thead>
                         <tr>
 							<th class="text-center">사용자 ID</th>
+							<th class="text-center">주문 번호</th>
 							<th class="text-center">지점명</th>
 							<th class="text-center">주문 금액</th>
 							<th class="text-center">주문 종류</th>
@@ -120,23 +121,32 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <c:forEach var="worker" items="${ workers }" varStatus="status">
+                        <c:forEach var="order" items="${ orders }" varStatus="status">
 						<tr class="cart__row border-bottom line1 cart-flex border-top"
 							align="center">
-							<td><a href="worker-infoDtail?workerId=${ worker.workerId }"><span>${ worker.workerName }</span></a></td>
+							<td><span>${ order.customerId }</span></td>
+							<td><span>${ order.orderId }</span></td>
 							<td><span>${ storeName11 }</span></td>
-							<td><span>${ storeName11 }</span></td>
-							<td><span>${ worker.workYear }</span></td>
-							<td><span>${ worker.workMonth }</span></td>
-							<td><span>${ worker.salary }</span></td>
-							<td><span>${ worker.workerPhone }</span></td>
-							<td><span>${ worker.workerPhone }</span></td>
-							<td><span>${ worker.workerPhone }</span></td>
-										
-						</tr>																										
-						</c:forEach>								
+							<td><span>${ order.prodPrice * order.amount }원</span></td>
+							<td><span>${ order.orderType }</span></td>
+							<td><span>${ order.orderStat }</span></td>
+							<td><span>${ order.orderDate }</span></td>
+							<td><span>${  order.prodName }</span></td>
+							<td><span>${ order.amount }</span></td>
+							</tr>																										
+						</c:forEach>										
                       </tbody>
                     </table>
+                   			
+<!-- 							<td><a class="btnForShowAndHide"><span>주문 상세</span></a></td> -->
+<!-- 							<td class="showAndHideOrderDetails" style="display: none;"> -->
+<%-- 							${ order.prodName } --%>
+<%-- 							${ order.amount } --%>
+<!-- 							</td> -->
+
+<!-- 							<td><span></span></td> -->
+										
+						
                   </div>
                 </div>
               </div>          			
@@ -185,12 +195,23 @@
 			
 		});		
 
+		$(".btnForShowAndHide").on('click', function() {
+			
+			
+			$(".showAndHideOrderDetails").show();
+			
+			
+		});
+		
+		
+		
 		$(".WorkYear1").on("change", function() {
 			var workYear = $(this).val();
 			
 			$('#WorkYear11').val(workYear);
 			
 		});
+		
 		
 		$(".WorkMonth1").on("change", function() {
 			var workMonth = $(this).val();

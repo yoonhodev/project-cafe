@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.projectprac.dto.OrderDto;
 import com.projectprac.dto.StoreDto;
 import com.projectprac.service.AdminCheckOrderService;
 
@@ -21,14 +22,14 @@ public class AdminCheckOrderController {
 	
 	
 	@GetMapping(path = {"admincheckorder"})
-	public String adminCheckorder(@RequestParam(defaultValue = "-1" )int storeId, Model model) {
+	public String adminCheckorder(@RequestParam(defaultValue = "-1" )int storeId,Model model) {
 		
-		List<StoreDto> stores = admincheckorderService.showAllStores();
+		List<StoreDto> stores = admincheckorderService.showAllStores();// storeId 조회 해서 storename 가져오기
 		
-		if(storeId != -1 ) {
-//			List<WorkerDto> workers = admincheckorderService.selectOrderListByStoreId(storeId);
-//			System.out.println(workers);
-//			model.addAttribute("workers", workers);
+		if(storeId != -1) {
+			List<OrderDto> orders = admincheckorderService.selectOrderListByStoreId(storeId);
+			System.out.println(orders);
+			model.addAttribute("orders", orders);
 			for (StoreDto store : stores) {
 				if (store.getStoreId() == storeId) {
 					model.addAttribute("storeName11", store.getStoreName());
