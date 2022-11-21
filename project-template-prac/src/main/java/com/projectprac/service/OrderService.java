@@ -23,4 +23,8 @@ public interface OrderService {
 
 		void insertOrder(int storeId, String customerId, String orderPay, String orderType);
 
+		int selectMaxOrderId();
+
+		void insertDetailOrder(int orderId, int prodId, int amount);
+
 	}
