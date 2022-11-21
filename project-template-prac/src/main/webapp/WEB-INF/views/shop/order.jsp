@@ -58,23 +58,23 @@
 								</form>
 									<h5>지점</h5>
 								<form action="selectstore" method="get" id="orderselectstore">
-									<select id="selectStore" name="selectStore" class="form-group selectStore">
-										<option selected value="0">지점 선택</option>
+									<select id="selectStore" class="form-group selectStore">
+										<option selected value="0" disabled>지점 선택</option>
 										<c:forEach var="stores" items="${ stores }" varStatus="status">
 											<option id="order-select-store" value="${ stores.storeId }">${ stores.storeName }</option>
 										</c:forEach>
 									</select>
 								</form>
 									<h5>결제수단</h5>
-								<select id="orderPay" class="form-group couponName">
-										<option id="orderPay" selected value="none" disabled>결제 수단을 선택해주세요.</option>	
+								<select id="orderPay" class="form-group">
+										<option selected value="0" disabled>결제 수단을 선택해주세요.</option>	
 												<option value="cardPay">신용/체크카드</option>
 												<option value="phonePay">휴대폰결제</option>
 												<option value="naverPay">네이버페이</option>
 												<option value="kakaoPay">카카오페이</option>
 												<option value="tossPay">토스페이</option>
-												<option value="meetcardPay">만나서 카드결제</option>
-												<option value="meetcashPay">만나서 현금결제</option>
+												<option value="meetCardPay">만나서 카드결제</option>
+												<option value="meetCashPay">만나서 현금결제</option>
 								</select>
 							</div>
 							<div class="col-12 col-sm-12 col-md-4 col-lg-4 mb-4">
@@ -148,7 +148,7 @@
 										<strong>포장</strong>&nbsp;&nbsp;<input type="radio" name="orderType" value="B">
 									</p> 
 									<button type="button" name="checkout" id="orderCheckout"
-										class="btn btn--small-wide checkout">결제</button>
+										class="btn btn--small-wide checkout insert-order">결제</button>
 								</div>
 							</div>
 						</div>
@@ -298,30 +298,43 @@
 		 		var orderPay = $("#orderPay option:selected").val();
 		 		var orderType = $("input[name=orderType]:checked").val();
 		 		var storeId = $("#selectStore option:selected").val();
-		 		var formData = { storeId : storeId, orderPay : orderPay, orderType : orderType };
+		 		var prodIdArray = [];
+		 		var amountArray = [];
+		 		$('.qtyField').each(function() {
+		 			var prodId = $(this).find(".qtyBtn").attr("data-productId");
+		 			var amount = $('#amount-' + prodId).val();
+		 			prodIdArray.push(prodId);
+		 			amountArray.push(amount);
+		 		});
+		 		var formData = { prodIdList : prodIdArray, amountList : amountArray, storeId : storeId, orderPay : orderPay, orderType : orderType };
 		 		
 				if (orderType == "A") {
 					orderType = '배달'
 				} else {
 					orderType = '포장'
 				}
+				if($("#orderPay option:selected").val() == "0" || $("#selectStore option:selected").val() == "0") {
+					alert('결제 수단 및 지점 선택 부탁드립니다.')
+					return;
+				} else {
 				if(confirm("주문 하시겠습니까?") == true) {
-					$.ajax({
-						"url": "insert-order",
-						"method": "post",
-						"data": formData,
-						"success": function(data) {
-							alert('success');
-						 },
-						"error": function(xhr, status, err) {
-							alert('fail');
-						}
-					});
+						$.ajax({
+							"url": "insert-order",
+							"method": "post",
+							"data": formData,
+							"success": function(data) {
+								alert('success');
+							 },
+							"error": function(xhr, status, err) {
+								alert('fail');
+							}
+						});
 				}
-		 	});
-		 	
-		 	
-		});
+			}
+				
+ 	});
+		 		 	
+	});
 		
 	</script>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

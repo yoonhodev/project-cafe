@@ -40,7 +40,7 @@
         	</div>
         	
         	<div>
-        	
+        		
      			<table>
 					<thead class="cart__row cart__header">
 						<tr>
@@ -52,22 +52,27 @@
 						</tr>
 					</thead>
 						<tbody>
-							<c:forEach var="orderHistory" items="${ orderHistroyDto }" >
+							<c:forEach var="order" items="${ orders }" >
                               	<tr class="cart__row border-bottom line1 cart-flex border-top" align="center">
                                   <td height="200px">
-                                      <span>${ orderHistroyDto.order_id }</span>
+                                      <span>${ order.orderId }</span>
                                   </td>
                                   <td>
-                                      <span>${ orderHistroyDto.store_id }</span>
+                                      <span>${ order.storeName }</span>
                                   </td>
                                   <td>
-                                      <span>${ orderHistroyDto.prod_id } * ${ orderHistroyDto.amount }</span>
+									<c:forEach var="detail" items="${ order.orderDetailDtos }">
+										<div><span>${ detail.productDto.prodName }</span>
+										<span>${ detail.productDto.prodPrice }</span>
+										<span>${ detail.amount }</span>
+										</div>
+									</c:forEach>
                                   </td>
                                   <td>
-                                      <span>${ orderHistroyDto.order_pay }</span>
+                                      <span>${ order.total }</span>
                                   </td>
                                   <td>
-                                      <span>${ orderHistroyDto.order_date }</span>
+                                      <span>${ order.orderDate }</span>
                                   </td>
                               	</tr>
                              </c:forEach>

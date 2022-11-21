@@ -76,11 +76,11 @@ public class MypageController {
 		return "mypage/deleteComplete";
 	}
 	
-	@GetMapping(path = { "orderHistory" })
-	public String orderHistory() {
-		
-		return "mypage/orderHistory";
-	}
+//	@GetMapping(path = { "orderHistory" })
+//	public String orderHistory() {
+//		
+//		return "mypage/orderHistory";
+//	}
 	
 	@GetMapping(path = { "favoriteStore" })
 	public String favoriteStore() {

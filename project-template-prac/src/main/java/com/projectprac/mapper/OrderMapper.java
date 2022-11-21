@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import com.projectprac.dto.AddressDto;
+import com.projectprac.dto.OrderDto;
 import com.projectprac.dto.ProductDto;
 
 @Mapper
@@ -34,4 +35,12 @@ public interface OrderMapper {
 	@Insert("INSERT INTO modeling_cafe.order (store_id, customer_id, order_pay, order_type) " +
 			"VALUES (#{ storeId }, #{ customerId }, #{ orderPay }, #{ orderType })" )
 	void insertOrder(@Param("storeId")int storeId, @Param("customerId")String customerId, @Param("orderPay")String orderPay, @Param("orderType")String orderType);
+
+	@Select("SELECT MAX(order_id) " +
+			"FROM modeling_cafe.order" )
+	int selectMaxOrderId();
+
+	@Insert("INSERT INTO modeling_cafe.order_detail (order_id, prod_id, amount) " +
+			"VALUES (#{ orderId }, #{ prodId }, #{ amount })" )
+	void insertDetailOrder(@Param("orderId")int orderId, @Param("prodId")int prodId, @Param("amount")int amount);
 }

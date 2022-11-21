@@ -1,6 +1,7 @@
 package com.projectprac.dto;
 
 import java.util.Date;
+import java.util.List;
 
 import lombok.Data;
 
@@ -15,4 +16,11 @@ public class OrderDto {
 	private String orderStat;
 	private Date orderDate;
 	
+	private List<OrderDetailDto> orderDetailDtos;
+	private String prodName;
+	private int amount;
+	private int prodPrice;
+	
+	private int total;
+	private String storeName;
 }
