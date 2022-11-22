@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 
 <!DOCTYPE html>
 <html class="no-js" lang="ko">
@@ -49,6 +50,7 @@
 							<th class="text-center">주문내용</th>
 							<th class="text-center">주문금액</th>
 							<th class="text-center">주문일자</th>
+							<th class="text-center">주소</th>
 						</tr>
 					</thead>
 						<tbody>
@@ -73,7 +75,10 @@
                                       <span>￦${ order.total }</span>
                                   </td>
                                   <td>
-                                      <span>${ order.orderDate }</span>
+                                      <span><fmt:formatDate value="${order.orderDate}" pattern="yyyy-MM-dd"/></span>
+                                  </td>
+                                  <td>
+                                  	<span>${ order.address }</span>
                                   </td>
                               	</tr>
                              </c:forEach>

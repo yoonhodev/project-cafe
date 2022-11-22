@@ -12,7 +12,7 @@ import com.projectprac.dto.ProductDto;
 @Mapper
 public interface OrderHistoryMapper {
 
-	@Select("SELECT order_id orderId, store_id storeId, customer_id customerId, order_pay orderPay, order_type orderType, order_stat orderStat, order_date orderDate " +
+	@Select("SELECT order_id orderId, store_id storeId, customer_id customerId, order_pay orderPay, order_type orderType, order_stat orderStat, order_date orderDate, address " +
 			"FROM modeling_cafe.order " +
 			"WHERE customer_id = #{ customerId } " +
 			"ORDER BY order_id DESC")
