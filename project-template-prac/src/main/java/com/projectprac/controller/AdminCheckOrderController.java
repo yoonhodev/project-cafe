@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.projectprac.dto.OrderDto;
@@ -28,7 +29,6 @@ public class AdminCheckOrderController {
 		
 		if(storeId != -1) {
 			List<OrderDto> orders = admincheckorderService.selectOrderListByStoreId(storeId);
-			System.out.println(orders);
 			model.addAttribute("orders", orders);
 			for (StoreDto store : stores) {
 				if (store.getStoreId() == storeId) {
@@ -37,12 +37,34 @@ public class AdminCheckOrderController {
 			}
 		}
 		
-		
-		
 		model.addAttribute("stores", stores);
 		
 		return "admin-order/adminCheckOrder";
 	}
 	
+	
+	@GetMapping(path = {"/{orderId}/changeToDeilvering"})
+	public String changeTodeilvering(@PathVariable("orderId") int orderId, int storeId) {
+	
+		admincheckorderService.changeToDeilvering(orderId);
+		
+		return "redirect:/admincheckorder?storeName1=" + storeId + "&storeId=" + storeId;
+	}
+	
+	@GetMapping(path = {"/{orderId}/changeToDeilvery"})
+	public String changeTodeilvery(@PathVariable("orderId") int orderId, int storeId) {
+	
+		admincheckorderService.changeToDeilvery(orderId);
+		
+		return "redirect:/admincheckorder?storeName1=" + storeId + "&storeId=" + storeId;
+	}
+	
+	@GetMapping(path = {"/{orderId}/changeToGetProd"})
+	public String changeToGetProd(@PathVariable("orderId") int orderId, int storeId) {
+	
+		admincheckorderService.changeToGetProd(orderId);
+		
+		return "redirect:/admincheckorder?storeName1=" + storeId + "&storeId=" + storeId;
+	}
 	
 }

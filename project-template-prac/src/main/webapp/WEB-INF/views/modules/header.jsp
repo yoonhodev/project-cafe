@@ -30,7 +30,7 @@
 					<li><a href="#">${ loginuser.customerId }님</a></li>	
 					
 					<c:if test="${ loginuser.userType eq 'true' }">
-					<li><a href="admin">관리자페이지</a></li>
+					<li><a href="admin1">관리자페이지</a></li>
 					</c:if>
 					<c:if test="${ loginuser.userType eq 'false'}">		
 					<li><a href="mypage">마이페이지</a></li>

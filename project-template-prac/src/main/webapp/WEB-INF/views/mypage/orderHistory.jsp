@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+
 
 <!DOCTYPE html>
 <html class="no-js" lang="ko">
@@ -49,25 +51,74 @@
 							<th class="text-center">주문내용</th>
 							<th class="text-center">주문금액</th>
 							<th class="text-center">주문일자</th>
+							<th class="text-center">주문종류</th>
+							<th class="text-center">주문상태</th>
+							<th class="text-center">주소</th>
 						</tr>
 					</thead>
 						<tbody>
-							<c:forEach var="orderHistory" items="${ orderHistroyDto }" >
+							<c:forEach var="order" items="${ orders }" >
                               	<tr class="cart__row border-bottom line1 cart-flex border-top" align="center">
                                   <td height="200px">
-                                      <span>${ orderHistroyDto.order_id }</span>
+                                      <span>${ order.orderId }</span>
                                   </td>
                                   <td>
-                                      <span>${ orderHistroyDto.store_id }</span>
+                                      <span>${ order.storeName }</span>
                                   </td>
                                   <td>
-                                      <span>${ orderHistroyDto.prod_id } * ${ orderHistroyDto.amount }</span>
+									<c:forEach var="detail" items="${ order.orderDetailDtos }">
+										<div>
+										<span>${ detail.productDto.prodName } </span>
+										<span>￦${ detail.productDto.prodPrice }</span>
+										<span> * ${ detail.amount }</span>
+										</div>
+									</c:forEach>
+									<c:if test="${ order.orderType eq 'A' }">
+										<span>배달비 ￦3000</span>
+									</c:if>
                                   </td>
                                   <td>
-                                      <span>${ orderHistroyDto.order_pay }</span>
+                                      <span>￦${ order.total }</span>
                                   </td>
                                   <td>
-                                      <span>${ orderHistroyDto.order_date }</span>
+                                      <span><fmt:formatDate value="${order.orderDate}" pattern="yyyy-MM-dd"/></span>
+                                  </td>
+                                  <td>
+                                  <c:choose>
+                                  	<c:when test = "${ order.orderType eq 'A'}">
+                                  		<span>배달</span>
+                                  	</c:when>
+                                  	<c:when test = "${ order.orderType eq 'B'}">
+                                  		<span>포장</span>
+                                  	</c:when>
+                                  	
+                                  	<c:otherwise>
+                                  		<span></span>
+                                  	</c:otherwise>
+                                  </c:choose>
+                                  </td>
+                                  <td>
+                                  <c:choose>
+                                  	<c:when test = "${ order.orderStat eq '0'}">
+                                  		<span>만드는중</span>
+                                  	</c:when>
+                                  	<c:when test = "${ order.orderStat eq '2'}">
+                                  		<span>배달중</span>
+                                  	</c:when>
+                                  	<c:when test = "${ order.orderStat eq '3'}">
+                                  		<span>배달완료</span>
+                                  	</c:when>
+                                  	<c:when test = "${ order.orderStat eq '4'}">
+                                  		<span>수령완료</span>
+                                  	</c:when>
+<%--                                   	<c:when  test = "${ order.orderType eq 'B'}">
+                                  		<span>포장</span>
+                                  	</c:when> --%>
+                                  	
+                                  	<c:otherwise>
+                                  		<span></span>
+                                  	</c:otherwise>
+                                  </c:choose>
                                   </td>
                               	</tr>
                              </c:forEach>
