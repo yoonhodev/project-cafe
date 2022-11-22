@@ -62,14 +62,15 @@
                                   </td>
                                   <td>
 									<c:forEach var="detail" items="${ order.orderDetailDtos }">
-										<div><span>${ detail.productDto.prodName }</span>
-										<span>${ detail.productDto.prodPrice }</span>
-										<span>${ detail.amount }</span>
+										<div>
+										<span>${ detail.productDto.prodName } </span>
+										<span>￦${ detail.productDto.prodPrice }</span>
+										<span> * ${ detail.amount }</span>
 										</div>
 									</c:forEach>
                                   </td>
                                   <td>
-                                      <span>${ order.total }</span>
+                                      <span>￦${ order.total }</span>
                                   </td>
                                   <td>
                                       <span>${ order.orderDate }</span>

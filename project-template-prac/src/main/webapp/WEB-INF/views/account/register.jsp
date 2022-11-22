@@ -120,10 +120,10 @@
 											<label>성별</label><br>
 											<div>&nbsp;
 												&nbsp;&nbsp;남&nbsp;&nbsp;
-												<input type="radio" name="sex" placeholder="" id="Sex" required>
+												<input type="radio" name="regi_sex" placeholder="" id="Sex" value="A" required>
 												&nbsp;&nbsp;&nbsp;&nbsp;
 												&nbsp;&nbsp;여&nbsp;&nbsp;
-												<input type="radio" name="sex" placeholder="" id="Sex">
+												<input type="radio" name="regi_sex" placeholder="" id="Sex" value="B">
 											</div>
 										</div>
 									</div>
