@@ -103,7 +103,7 @@
                   	</h4>
                   	
                     
-                    <table class="table table-striped">
+                    <table class="table table-hover">
                       <thead>
                         <tr>
 							<th class="text-center">사용자 ID</th>
@@ -114,7 +114,7 @@
 							<th class="text-center">주문 상태 (버튼으로 바꿀수 있게 설정)</th>
 							<th class="text-center">주문 날짜</th>
 							<th class="text-center">제품</th>
-							<th class="text-center">수량</th>
+							<!-- <th class="text-center">수량</th> -->
 <!-- 							<th class="text-center">수도세</th> -->
 <!-- 							<th class="text-center">광고비</th> -->
 <!-- 							<th class="text-center">배달비</th> -->
@@ -128,7 +128,12 @@
 							<td><span>${ order.customerId }</span></td>
 							<td><span>${ order.orderId }</span></td>
 							<td><span>${ storeName11 }</span></td>
-							<td><span>${ order.prodPrice * order.amount }원</span></td>
+							<c:set var="total_amount" value="0" />
+							<c:forEach var="orderDetail" items="${ order.orderDetailDtos }">
+								<c:set var="total_amount" value="${ total_amount + (orderDetail.productDto.prodPrice * orderDetail.amount) }" />
+							</c:forEach>
+							<%-- <td><span>${ order.orderDetailDtos[0].productDto.prodPrice * order.orderDetailDtos[0].amount }원</span></td> --%>
+							<td><span>${ total_amount }원</span></td>
 							<c:if test="${ order.orderType eq 'A' }">
 							<td><span>배달</span></td>
 							</c:if>
@@ -138,8 +143,20 @@
 							<td><span>${ order.orderStat }</span></td>
 							<td><span>${ order.orderDate }</span></td>	
 <%-- 							<c:if test="${ order.orderId == order.orderId }"><td><span><c:out value=" ${ order.prodName }"></c:out></span></td></c:if>						 --%>
-							<td><span><c:out value=" ${ order.prodName }"></c:out></span></td>
-							<td><span>${ order.amount }</span></td>
+<%-- 							<td><span><c:out value=" ${ order.orderDetailDtos[0].productDto.prodName }"></c:out></span></td>
+							<td><span>${ order.orderDetailDtos[0].amount }</span></td> --%>
+							<td>
+								<table class="table">
+								<tbody>
+								<c:forEach var="orderDetail" items="${ order.orderDetailDtos }">
+									<tr>
+									<td><span><c:out value=" ${ orderDetail.productDto.prodName }"></c:out></span></td>
+									<td><span>${ orderDetail.amount }</span></td>
+									</tr>
+								</c:forEach>
+								</tbody>
+								</table>
+							</td>
 							
 							</tr>																										
 						</c:forEach>										

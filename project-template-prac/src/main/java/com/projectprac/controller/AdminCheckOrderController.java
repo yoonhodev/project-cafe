@@ -37,8 +37,6 @@ public class AdminCheckOrderController {
 			}
 		}
 		
-		
-		
 		model.addAttribute("stores", stores);
 		
 		return "admin-order/adminCheckOrder";
