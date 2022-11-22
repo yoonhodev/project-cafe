@@ -89,6 +89,10 @@ public class MypageServiceImpl implements MypageService {
 	public void deleteAccount(MypageDto mypageDto) {
 		String customerId = mypageDto.getCustomerId();
 		mypageDto.setCustomerId(customerId);
+
+		String passwd = Util.getHashedString(mypageDto.getPasswd(), "SHA-256");
+		mypageDto.setPasswd(passwd);
+		
 		mypageMapper.deleteAccount(mypageDto);
 	}
 
@@ -99,8 +103,5 @@ public class MypageServiceImpl implements MypageService {
 		
 		return address;
 	}
-	
-	
-	
 
 }

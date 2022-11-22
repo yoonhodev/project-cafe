@@ -41,9 +41,7 @@
 		
 		
 		<div class="mypage-wrapper" style="text-align: center;">
-		
-		<!-- 로그인 여부 확인하고 로그인 안되어 있으면 로그인 페이지로 사출 -->
-		
+
 			<div class="mypage_logobox" style="display: inline-block;">
 				<img src="https://via.placeholder.com/300.png?text=Logo" width="300px" height="300px">
 			</div>
@@ -117,6 +115,7 @@
 			<br><br>
 		
 		</div>
+	</div>
 		
 		
 		

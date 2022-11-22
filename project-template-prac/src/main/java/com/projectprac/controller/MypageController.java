@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.projectprac.common.Util;
 import com.projectprac.dto.AddressDto;
 import com.projectprac.dto.BoardDto;
 import com.projectprac.dto.CustomerDto;
@@ -71,40 +72,66 @@ public class MypageController {
 		return "mypage/deleteAccount";
 	}
 	
+	
 	@GetMapping(path = { "deleteComplete" })
 	public String deleteComplete() {
 		return "mypage/deleteComplete";
 	}
 	
-//	@GetMapping(path = { "orderHistory" })
-//	public String orderHistory() {
-//		
-//		return "mypage/orderHistory";
-//	}
 	
-	@GetMapping(path = { "favoriteStore" })
-	public String favoriteStore() {
+	@PostMapping(path = { "deleteAccount" })
+	public String deleteAccount(String passwd, String textchk, MypageDto mypageDto, HttpSession session, Model model) {
 		
-		return "mypage/favoriteStore";
+		CustomerDto customer = (CustomerDto) session.getAttribute("loginuser");
+		passwd = Util.getHashedString(passwd, "SHA-256");
+		
+		if (!customer.getPasswd().equals(passwd)) { // 비밀번호 확인 체크
+			model.addAttribute("msg", "비밀번호를 확인해 주세요");
+			model.addAttribute("url", "deleteAccount");
+			return "modules/alert";
+		}
+		
+		
+		if (!textchk.equals("회원 탈퇴에 동의합니다")) {
+			
+			model.addAttribute("msg", "회원 탈퇴 동의 텍스트가 일치하지 않습니다");
+			model.addAttribute("url", "deleteAccount");
+			return "modules/alert";
+		}
+
+		session.removeAttribute("loginuser");
+		mypageService.deleteAccount(mypageDto);
+		return "mypage/deleteComplete";
+
+		
 	}
+
 	
 	
 	@PostMapping(path = { "editAccount" })
-	public String editAccount(@Valid MypageDto mypageDto, BindingResult br,String idchk, String passwdchk, Model model,
-						   AddressDto addressDto, @RequestParam(defaultValue = "-1") String customerId) throws ParseException { // @Valid에 의해 검출된 오류 정보가 저장된 객체
+	public String editAccount(@Valid MypageDto mypageDto, BindingResult br, String oldpasswd, String passwd, String passwdchk, Model model,
+						   AddressDto addressDto, @RequestParam(defaultValue = "-1") String customerId, HttpSession session) throws ParseException { // @Valid에 의해 검출된 오류 정보가 저장된 객체
 		
-		
-		
+		CustomerDto customer = (CustomerDto) session.getAttribute("loginuser");
+		oldpasswd = Util.getHashedString(oldpasswd, "SHA-256");
 		
 		if (br.hasErrors()) {
 			System.out.println("유효성 검사 오류 발생");
 			return "redirect:editAccount";
-		}
+		} else
 		
 		// 1. 요청 데이터 읽기 -> DTO에 저장 : 전달인자 사용으로 대체
-		if (!mypageDto.getPasswd().equals(passwdchk)) { // 비밀번호 확인 체크
+		if (!customer.getPasswd().equals(oldpasswd)) { // 비밀번호 확인 체크
 			model.addAttribute("msg", "비밀번호를 확인해 주세요");
 			model.addAttribute("url", "editAccount");
+
+			return "modules/alert";
+		}
+		
+		if (!passwd.equals(passwdchk)) { // 비밀번호 확인 체크
+			model.addAttribute("msg", "새 비밀번호가 일치하지 않습니다");
+			model.addAttribute("url", "editAccount");
+
 			return "modules/alert";
 		}
 		
@@ -120,13 +147,10 @@ public class MypageController {
 	
 	}
 	
-	@PostMapping(path = { "deleteAccount" })
-	public String delAccount(MypageDto mypageDto, HttpSession session) {
-		mypageService.deleteAccount(mypageDto);
-		System.out.println(mypageDto);
-		
-		session.removeAttribute("loginuser");
-		return "mypage/deleteComplete";
 	
+	@GetMapping(path = { "mypage/alert" })
+	public String alert() {
+		
+		return "mypage/alert";
 	}
 }

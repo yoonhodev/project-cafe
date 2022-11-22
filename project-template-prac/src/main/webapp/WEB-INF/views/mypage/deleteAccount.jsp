@@ -118,7 +118,7 @@
 		<script type="text/javascript">	
 		$(function() {
 			$("#textCheck").on("change", function(event) {
-				if ($("#textCheck").val("회원 탈퇴에 동의합니다")) {
+				if ($("#textCheck").val.equals("회원 탈퇴에 동의합니다")) {
 					$("#check").text("회원 탈퇴 동의 텍스트가 일치합니다");
 					$("#check").css("color", "blue");
 					$("#deleted").val("1");
