@@ -73,6 +73,9 @@
 										<span> * ${ detail.amount }</span>
 										</div>
 									</c:forEach>
+									<c:if test="${ order.orderType eq 'A' }">
+										<span>배달비 ￦3000</span>
+									</c:if>
                                   </td>
                                   <td>
                                       <span>￦${ order.total }</span>
@@ -108,6 +111,9 @@
                                   	<c:when test = "${ order.orderStat eq '4'}">
                                   		<span>수령완료</span>
                                   	</c:when>
+<%--                                   	<c:when  test = "${ order.orderType eq 'B'}">
+                                  		<span>포장</span>
+                                  	</c:when> --%>
                                   	
                                   	<c:otherwise>
                                   		<span></span>
