@@ -43,7 +43,7 @@
 		<div class="mypage-wrapper" style="text-align: center;">
 
 			<div class="mypage_logobox" style="display: inline-block;">
-				<img src="/project-template-prac/src/main/webapp/resources/assets/images/mypage-temp-image/coffee_logo_temp.png" width="400px" height="400px">
+				<img src="/project-template-prac/resources/assets/images/mypage-temp-image/coffee_logo_temp.png" width="400px" height="400px" />
 			</div>
 			
 			
