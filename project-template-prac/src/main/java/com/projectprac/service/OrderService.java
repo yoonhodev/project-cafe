@@ -21,10 +21,14 @@ public interface OrderService {
 
 		AddressDto showAddress(String customerId);
 
-		void insertOrder(int storeId, String customerId, String orderPay, String orderType);
+		void insertOrder(int storeId, String customerId, String orderPay, String orderType, String address);
 
 		int selectMaxOrderId();
 
 		void insertDetailOrder(int orderId, int prodId, int amount);
+
+		List<ProductDto> showIceMenu(String prodCategory);
+
+		List<ProductDto> showHotMenu(String prodCategory);
 
 	}

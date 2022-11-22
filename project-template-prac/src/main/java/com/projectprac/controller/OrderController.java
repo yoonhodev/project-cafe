@@ -142,6 +142,7 @@ public class OrderController {
 		return "mypage/coupon";
 
 	}
+	
 	@GetMapping(path = { "order-list" })
 	public String orderList(HttpSession session) {
 		
@@ -174,11 +175,11 @@ public class OrderController {
 	
 	@PostMapping(path = { "insert-order" })
 	@ResponseBody
-	public String payment(HttpSession session, int storeId, String orderPay, String orderType,
+	public String payment(HttpSession session, int storeId, String orderPay, String orderType, String address,
 						  @RequestParam(value=("prodIdList[]"))List<Integer> prodIdList,
 			              @RequestParam(value=("amountList[]"))List<Integer> amountList) {
 		CustomerDto customer = (CustomerDto) session.getAttribute("loginuser");
-		orderService.insertOrder(storeId, customer.getCustomerId(), orderPay, orderType);
+		orderService.insertOrder(storeId, customer.getCustomerId(), orderPay, orderType, address);
 		int orderId = orderService.selectMaxOrderId();
 		
 		for(int i = 0; i < prodIdList.size(); i++) {
@@ -187,8 +188,10 @@ public class OrderController {
 			orderService.insertDetailOrder(orderId, prodId, amount);
 			
 		}
+		session.removeAttribute("productIds");
+		session.removeAttribute("products");
 		
-		return "mypage/mypage";
+		return "mypage/orderHistory";
 	}
 		
 }
