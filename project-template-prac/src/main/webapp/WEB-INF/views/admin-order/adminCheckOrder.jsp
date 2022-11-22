@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -113,7 +113,8 @@
 							<th class="text-center">주문 종류</th>
 							<th class="text-center">주문 상태 (버튼으로 바꿀수 있게 설정)</th>
 							<th class="text-center">주문 날짜</th>
-							<th class="text-center">제품</th>
+							<th class="text-center">제품 / 수량</th>
+							<th class="text-center">주소</th>
 							<!-- <th class="text-center">수량</th> -->
 <!-- 							<th class="text-center">수도세</th> -->
 <!-- 							<th class="text-center">광고비</th> -->
@@ -141,7 +142,8 @@
 							<td><span>포장</span></td>
 							</c:if>
 							<td><span>${ order.orderStat }</span></td>
-							<td><span>${ order.orderDate }</span></td>	
+							<fmt:formatDate var="resultRegDt" value="${order.orderDate}" pattern="yyyy-MM-dd"/>
+							<td><span>${ resultRegDt }</span></td>	
 <%-- 							<c:if test="${ order.orderId == order.orderId }"><td><span><c:out value=" ${ order.prodName }"></c:out></span></td></c:if>						 --%>
 <%-- 							<td><span><c:out value=" ${ order.orderDetailDtos[0].productDto.prodName }"></c:out></span></td>
 							<td><span>${ order.orderDetailDtos[0].amount }</span></td> --%>
@@ -157,7 +159,7 @@
 								</tbody>
 								</table>
 							</td>
-							
+							<td><span>${ order.address }</span></td>
 							</tr>																										
 						</c:forEach>										
                       </tbody>

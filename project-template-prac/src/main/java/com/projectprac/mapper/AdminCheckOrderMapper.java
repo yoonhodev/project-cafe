@@ -32,7 +32,7 @@ public interface AdminCheckOrderMapper {
 //			"order by o.order_id DESC " )
 //	List<OrderDto> selectOrderListByStoreId(@Param("storeId") int storeId);
 	
-	@Select("select o.order_id, o.store_id, o.customer_id, o.order_type, o.order_stat, o.order_date " +
+	@Select("select o.order_id, o.store_id, o.customer_id, o.order_type, o.order_stat, o.order_date, o.address " +
 			"from modeling_cafe.order o " +
 			"where o.store_id = #{storeId} " +
 			"order by o.order_id DESC " )
@@ -45,6 +45,7 @@ public interface AdminCheckOrderMapper {
 			@Result(column = "order_type", property = "orderType"),
 			@Result(column = "order_stat", property = "orderStat"),
 			@Result(column = "order_date", property = "orderDate"),
+			@Result(column = "address", property = "address"),
 			@Result(column = "order_id", property = "orderDetailDtos", many = @Many(select = "selectOrderDetailListByOrderId"))
 		}
 	)

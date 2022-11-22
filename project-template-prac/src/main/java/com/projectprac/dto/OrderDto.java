@@ -15,6 +15,7 @@ public class OrderDto {
 	private String orderType;
 	private String orderStat;
 	private Date orderDate;
+	private String address;
 	
 	private List<OrderDetailDto> orderDetailDtos;
 	
