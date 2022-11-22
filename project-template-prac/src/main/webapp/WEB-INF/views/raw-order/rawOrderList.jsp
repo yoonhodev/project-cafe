@@ -37,19 +37,19 @@
 					
 					<tr>
 						<td><input type="checkbox" name="cbox" class="checkBox" id="chk-${ raw.rawId }" value="${ raw.rawId }"></td>
-						<td>${ raw.rawName }</td>
+						<td style="max-width: 170px; overflow: hidden; text-overflow: ellipsis">${ raw.rawName }</td>
 						<td>${ raw.rawTemp }</td>
 						<td>
 							<span id="rawPriceShow-${ raw.rawId }">${ raw.rawPrice }</span>원
 							<input type="hidden" id="rawPrice-${ raw.rawId }" value="${ raw.rawPrice }">
 						</td>
 						<td class="amount">
-							<button type="button" class="btn btn-outline-secondary btn-sm minus">
+							<button type="button" class="btn btn-outline-secondary minus" style="padding: 5px">
 								<i class="mdi mdi-minus"></i>
 							</button>&nbsp;&nbsp;
 							<span class="count" data-rawId="${ raw.rawId }">1</span>&nbsp;&nbsp;
 							<input type="hidden" id="count-${ raw.rawId }" value="1">
-							<button type="button" class="btn btn-outline-secondary btn-sm plus">
+							<button type="button" class="btn btn-outline-secondary plus" style="padding: 5px">
 								<i class="mdi mdi-plus"></i>
 							</button>
 						</td>
