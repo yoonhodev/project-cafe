@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>COFFEE &ndash; HIHIHIHIHIHI</title>
+<title>MENU &ndash; BELLE Coffee</title>
 <meta name="description" content="description">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -48,8 +48,8 @@
                             <div class="widget-title"><h2>Categories</h2></div>
                             <div class="widget-content">
                                 <ul class="sidebar_categories">
-                                    <li class="level1 sub-level"><a href="hot-shop" class="site-nav">HOT</a></li>
-                                    <li class="level1 sub-level"><a href="ice-shop" class="site-nav">ICE</a></li>
+                                    <li class="level1 sub-level"><a href="ice-shop;" class="site-nav">HOT</a></li>
+                                    <li class="level1 sub-level"><a href="#;" class="site-nav">ICE</a></li>
                             </div>
                         </div>
                         <!--Categories-->
@@ -61,6 +61,7 @@
                 <div class="col-12 col-sm-12 col-md-9 col-lg-9 main-col">
                 	<div class="category-description">
                     	<h3>Drinks</h3>
+                
                     </div>
                     <hr>
                 	<div class="productList">

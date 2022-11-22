@@ -25,5 +25,30 @@ public class ShopController {
 		session.setAttribute("productViews", products);
 		return "shop/shop";
 		
-		}		
 	}
+	
+	@GetMapping(path = { "productList" })
+	public String productList() {
+		
+		return "shop/productList";
+	}
+	
+	
+	@GetMapping(path = { "ice-shop" })
+	public String iceShop(HttpSession session, String prodCategory) {
+		List<ProductDto> iceProducts = orderservice.showIceMenu(prodCategory);
+		
+		session.setAttribute("iceProducts", iceProducts);
+		
+		return "shop/ice-shop";
+	}
+	
+	@GetMapping(path = { "hot-shop" })
+	public String hotShop(HttpSession session, String prodCategory) {
+		List<ProductDto> hotProducts = orderservice.showHotMenu(prodCategory);
+		
+		session.setAttribute("hotProducts", hotProducts);
+		
+		return "shop/hot-shop";
+	}
+}

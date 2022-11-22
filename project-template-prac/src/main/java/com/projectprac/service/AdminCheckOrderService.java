@@ -11,4 +11,10 @@ public interface AdminCheckOrderService {
 
 	List<OrderDto> selectOrderListByStoreId(int storeId);
 
+	void changeToDeilvering(int orderId);
+
+	void changeToDeilvery(int orderId);
+
+	void changeToGetProd(int orderId);
+
 }

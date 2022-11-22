@@ -15,11 +15,9 @@ public class OrderDto {
 	private String orderType;
 	private String orderStat;
 	private Date orderDate;
+	private String address;
 	
 	private List<OrderDetailDto> orderDetailDtos;
-	private String prodName;
-	private int amount;
-	private int prodPrice;
 	
 	private int total;
 	private String storeName;

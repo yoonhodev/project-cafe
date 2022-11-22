@@ -27,6 +27,25 @@ public class AdminCheckOrderServiceImpl implements AdminCheckOrderService {
 		
 		return orders;
 	}
+
+	@Override
+	public void changeToDeilvering(int orderId) {
+		
+		adminCheckOrderMapper.updateToDeilvering(orderId);
+		
+	}
+
+	@Override
+	public void changeToDeilvery(int orderId) {
+		adminCheckOrderMapper.updateToDeilvery(orderId);
+		
+	}
+
+	@Override
+	public void changeToGetProd(int orderId) {
+		adminCheckOrderMapper.updateToGetProd(orderId);
+		
+	}
 	
 	
 }
