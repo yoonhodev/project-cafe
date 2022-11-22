@@ -156,10 +156,10 @@
 		$(function() {
 			$("#PasswordCheck").on("change", function(event) {
 				if ($("#Password").val() != $("#PasswordCheck").val()) {
-					$("#pwcheck").text("비밀번호가 일치하지 않습니다.");
+					$("#pwcheck").text("새 비밀번호가 일치하지 않습니다.");
 					$("#pwcheck").css("color", "red");
 				} else {
-					$("#pwcheck").text("비밀번호가 일치합니다.");
+					$("#pwcheck").text("새 비밀번호가 일치합니다.");
 					$("#pwcheck").css("color", "blue");
 				}
 			});

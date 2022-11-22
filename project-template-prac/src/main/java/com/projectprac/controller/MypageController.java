@@ -94,7 +94,7 @@ public class MypageController {
 		
 		if (!textchk.equals("회원 탈퇴에 동의합니다")) {
 			
-			model.addAttribute("msg", "회원 탈퇴 동의 텍스트가 일치하지 않습니다");
+			model.addAttribute("msg", "인증 텍스트가 일치하지 않습니다");
 			model.addAttribute("url", "deleteAccount");
 			return "modules/alert";
 		}
