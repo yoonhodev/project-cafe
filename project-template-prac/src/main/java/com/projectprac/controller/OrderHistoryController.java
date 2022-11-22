@@ -40,6 +40,9 @@ public class OrderHistoryController {
 				ProductDto product = orderHistoryService.selectProductByProductId(detail.getProdId());
 				detail.setProductDto(product);
 				total = total + (detail.getProductDto().getProdPrice() * detail.getAmount());
+				if(order.getOrderType().equals("A")) {
+					total = total + 3000;
+				}
 			}
 			
 			order.setStoreName(orderHistoryService.selectStoreNameByStoreId(order.getStoreId()));
