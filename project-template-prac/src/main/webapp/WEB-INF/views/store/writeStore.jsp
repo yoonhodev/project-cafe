@@ -82,7 +82,7 @@
                                                 
                                                       <div class="spr-form-review-title">
                                                         <label class="spr-form-label" for="review_title_10508262282" >지점 외관(사진)</label>
-                                                        <input style="border: none" class="spr-form-input spr-form-input-text " id="review_title_10508262282" type="file" name="attach" accept="image/png, image/gif, image/jpeg, image/jpg" value="" >
+                                                        <input style="border: none" class="spr-form-input spr-form-input-text" id="review_title_10508262282" type="file" name="attach" accept="image/png, image/gif, image/jpeg, image/jpg" value="" >
                                                       </div>
                                                 
                                            			 <div class="spr-form-contact-name">
