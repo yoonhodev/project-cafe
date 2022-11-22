@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.projectprac.dto.OrderDetailDto;
 import com.projectprac.dto.OrderDto;
@@ -67,5 +68,23 @@ public interface AdminCheckOrderMapper {
 		}
 	)
 	List<OrderDetailDto> selectOrderDetailListByOrderId(@Param("orderId") int orderId);
+
+
+	@Update("update modeling_cafe.order " +
+			"set order_stat = 2 " + 
+			"where order_id = #{orderId} " )
+	void updateToDeilvering(int orderId);
+
+
+	@Update("update modeling_cafe.order " +
+			"set order_stat = 3 " + 
+			"where order_id = #{orderId} " )
+	void updateToDeilvery(int orderId);
+
+
+	@Update("update modeling_cafe.order " +
+			"set order_stat = 1 " + 
+			"where order_id = #{orderId} " )
+	void updateToGetProd(int orderId);
 
 }
