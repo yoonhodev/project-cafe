@@ -79,7 +79,7 @@
 									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
 										<div class="form-group">
 											<input type="text" name="textchk"
-												   placeholder="회원 탈퇴에 동의합니다" id="textCheck" required>
+												   placeholder="회원 탈퇴에 동의합니다" id="textCheck" required >
 											<span id="check"></span>										
 										</div>
 									</div>
