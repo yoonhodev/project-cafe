@@ -38,9 +38,9 @@
 									<div class="container">
 										<div class="wrap-caption left">
 											<h2 class="h1 mega-title slideshow__title">CHECK OUR MENU</h2>
-											<span class="mega-subtitle slideshow__subtitle">
-												Order now!</span>
-											<a href="shop"><span class="btn">MENU</span></a>
+											<div class="mega-subtitle" style="color: white; font-size: 14pt; margin-bottom: 20px">
+												Order now!</div>
+											<a href="shop" style="color: white; background-color: black; padding: 8px 15px">MENU</a>
 										</div>
 									</div>
 								</div>

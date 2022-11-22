@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>COFFEE &ndash; HIHIHIHIHIHI</title>
+<title>MENU &ndash; BELLE Coffee</title>
 <meta name="description" content="description">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -48,8 +48,9 @@
                             <div class="widget-title"><h2>Categories</h2></div>
                             <div class="widget-content">
                                 <ul class="sidebar_categories">
-                                    <li class="level1 sub-level"><a href="hot-shop" class="site-nav">HOT</a></li>
-                                    <li class="level1 sub-level"><a href="ice-shop" class="site-nav">ICE</a></li>
+                                     <li class="level1 sub-level"><a href="hot-shop" type="button" class="site-nav">HOT</a></li>
+                                     <li class="level1 sub-level"><a href="ice-shop" type="button" class="site-nav">ICE</a></li>
+                                </ul>
                             </div>
                         </div>
                         <!--Categories-->
@@ -61,34 +62,35 @@
                 <div class="col-12 col-sm-12 col-md-9 col-lg-9 main-col">
                 	<div class="category-description">
                     	<h3>Drinks</h3>
+                
                     </div>
                     <hr>
                 	<div class="productList">
                         <div class="grid-products grid--view-items">
                             <div class="row">
-	                            <c:forEach var="product" items="${ productViews }">
+	                            <c:forEach var="hotProduct" items="${ hotProducts }">
 	                                <div class="col-6 col-sm-6 col-md-4 col-lg-4 item">
 	                                    <!-- start product image -->
 	                                    <div class="product-image">
 	                                        <!-- start product image -->
 	                                            <!-- image -->
-	                                            <img class="primary blur-up lazyload" src="${ product.prodImg }" alt="image" title="product">
+	                                            <img class="primary blur-up lazyload" src="${ hotProduct.prodImg }" alt="image" title="product">
 	                                            <!-- End image -->
 	                                            <!-- Hover image -->
-	                                            <img class="hover blur-up lazyload" src="${ product.prodImg }" alt="image" title="product">
+	                                            <img class="hover blur-up lazyload" src="${ hotProduct.prodImg }" alt="image" title="product">
 	                                        <!-- end product image -->
 	    
 	                                        <!-- Start product button -->
 	                                        <c:choose>
 	                                        	<c:when test="${ empty loginuser }">
 	                                        		<form class="variants add addform" id="addform" action="login" method="post">
-			                                        	<input type="hidden" name="prodId" value="${ product.prodId }">			                                        	
+			                                        	<input type="hidden" name="prodId" value="${ hotProduct.prodId }">			                                        	
 			                                            <a href="login" class="btn btn-addto-cart update-order" style="color:white" type="button">ADD TO CART</a>
 			                                        </form>
 	                                       		</c:when>
 	                                       		<c:otherwise>
 			                                        <form class="variants add addform order-popup" id="addform" action="update-order" method="post">
-			                                        	<input type="hidden" name="prodId" value="${ product.prodId }">
+			                                        	<input type="hidden" name="prodId" value="${ hotProduct.prodId }">
 			                                            <a class="btn btn-addto-cart update-order" style="color:white" type="button">ADD TO CART</a>
 			                                        </form>
 	                                       	 	</c:otherwise>
@@ -117,13 +119,13 @@
 	                                    <div class="product-details text-center">
 	                                        <!-- product name -->
 	                                        <div class="product-name">
-	                                            <a href="#">${ product.prodName }</a>
+	                                            <a href="#">${ hotProduct.prodName }</a>
 	                                        </div>
 	                                        <!-- End product name -->
 	                                        <!-- product price -->
 	                                        <div class="product-price">
 	                                            <!-- <span class="old-price">₩ 2000</span> -->
-	                                            <span class="price">₩&nbsp;${ product.prodPrice }</span>
+	                                            <span class="price">₩&nbsp;${ hotProduct.prodPrice }</span>
 	                                        </div>
 	                                        <!-- End product price -->
 	                                    </div>
