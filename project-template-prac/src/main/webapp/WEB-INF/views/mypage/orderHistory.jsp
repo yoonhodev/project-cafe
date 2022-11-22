@@ -4,6 +4,7 @@
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 
+
 <!DOCTYPE html>
 <html class="no-js" lang="ko">
 <head>
@@ -50,6 +51,8 @@
 							<th class="text-center">주문내용</th>
 							<th class="text-center">주문금액</th>
 							<th class="text-center">주문일자</th>
+							<th class="text-center">주문종류</th>
+							<th class="text-center">주문상태</th>
 							<th class="text-center">주소</th>
 						</tr>
 					</thead>
@@ -78,7 +81,38 @@
                                       <span><fmt:formatDate value="${order.orderDate}" pattern="yyyy-MM-dd"/></span>
                                   </td>
                                   <td>
-                                  	<span>${ order.address }</span>
+                                  <c:choose>
+                                  	<c:when test = "${ order.orderType eq 'A'}">
+                                  		<span>배달</span>
+                                  	</c:when>
+                                  	<c:when test = "${ order.orderType eq 'B'}">
+                                  		<span>포장</span>
+                                  	</c:when>
+                                  	
+                                  	<c:otherwise>
+                                  		<span></span>
+                                  	</c:otherwise>
+                                  </c:choose>
+                                  </td>
+                                  <td>
+                                  <c:choose>
+                                  	<c:when test = "${ order.orderStat eq '0'}">
+                                  		<span>만드는중</span>
+                                  	</c:when>
+                                  	<c:when test = "${ order.orderStat eq '2'}">
+                                  		<span>배달중</span>
+                                  	</c:when>
+                                  	<c:when test = "${ order.orderStat eq '3'}">
+                                  		<span>배달완료</span>
+                                  	</c:when>
+                                  	<c:when test = "${ order.orderStat eq '4'}">
+                                  		<span>수령완료</span>
+                                  	</c:when>
+                                  	
+                                  	<c:otherwise>
+                                  		<span></span>
+                                  	</c:otherwise>
+                                  </c:choose>
                                   </td>
                               	</tr>
                              </c:forEach>
