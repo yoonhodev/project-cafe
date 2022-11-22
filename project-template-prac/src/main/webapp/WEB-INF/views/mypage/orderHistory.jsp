@@ -108,7 +108,7 @@
                                   	<c:when test = "${ order.orderStat eq '3'}">
                                   		<span>배달완료</span>
                                   	</c:when>
-                                  	<c:when test = "${ order.orderStat eq '4'}">
+                                  	<c:when test = "${ order.orderStat eq '1'}">
                                   		<span>수령완료</span>
                                   	</c:when>
 <%--                                   	<c:when  test = "${ order.orderType eq 'B'}">
