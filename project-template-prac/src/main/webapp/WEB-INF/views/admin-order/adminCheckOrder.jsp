@@ -256,9 +256,7 @@
 				
 				var orderId = $(this).attr('data-order');
 				var storeId = $(this).attr('data-storeId');
-				
-				alert(orderId)
-				alert(storeId)
+
 				location.href = orderId + '/changeToDeilvery?storeName1=' + storeId  + '&storeId=' + storeId;
 				
 			});
@@ -267,9 +265,7 @@
 				
 				var orderId = $(this).attr('data-order');
 				var storeId = $(this).attr('data-storeId');
-				
-				alert(orderId)
-				alert(storeId)
+
 				location.href = orderId + '/changeToGetProd?storeName1=' + storeId  + '&storeId=' + storeId;
 				
 			});
