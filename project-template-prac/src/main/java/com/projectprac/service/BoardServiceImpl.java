@@ -32,8 +32,6 @@ public class BoardServiceImpl implements BoardService {
 		boardMapper.insertEventBoard(board);
 		board.getBoardId();
 		
-		System.out.println(board.getBoardId());
-		System.out.println("11111111111111");
 		if (board.getAttachments() != null) {
 			for (BoardAttachDto attachment : board.getAttachments()) {
 				attachment.setBoardId(board.getBoardId()); // 새로 만들어진 글번호를 Attach 객체에 저장
