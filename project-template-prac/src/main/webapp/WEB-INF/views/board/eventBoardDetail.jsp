@@ -17,19 +17,29 @@
 
 <!-- belle/blog-fullwidth.html   11 Nov 2019 12:46:09 GMT -->
 <head>
+	
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <title>Event Board</title>
 <meta name="description" content="description">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jsp:include page="/WEB-INF/views/modules/common-css.jsp"></jsp:include>
-
+<style>
+@font-face {
+    font-family: 'neon';
+    src: url('../fonts/TmonMonsori.ttf') format('truetype');
+}
+body, h1, h2 {
+	font-family: 'neon';
+}
+	
+</style>
 </head>
 <body class="template-blog belle">
 
 <div class="pageWrapper">
 	<jsp:include page="/WEB-INF/views/modules/header.jsp"></jsp:include>
-	<br><br><br>
+	<br><br><br><br>
 	<!--End Mobile Menu-->
     
     <!--Body Content-->
@@ -54,7 +64,7 @@
                             <c:forEach var="attachment" items="${ boardDetail.attachments }">			
                              <a class="article_featured-image" href="#"><img src="/project-template-prac/resources/assets/images/cafe-out-image-folder/${attachment.savedFileName}" alt="${attachment.savedFileName}"></a> 
                              </c:forEach>
-                            <h2 class="rte" style="font-size: 20px;"><a href="#"><strong>${ boardDetail.title }</strong></a></h2>
+                            <h2 class="rte" style="font-size: 20px;"><strong>${ boardDetail.title }</strong></h2>
                             <ul class="publish-detail">   
                           &nbsp; <li><i class="anm anm-user-al" aria-hidden="true" style="color: hotpink"></i> ADMIN</li>
                           &nbsp; <li><i class="icon anm anm-clock-r" style="color: hotpink"></i> <fmt:formatDate value="${ boardDetail.regdate }" pattern="yyyy-MM-dd"/></li>

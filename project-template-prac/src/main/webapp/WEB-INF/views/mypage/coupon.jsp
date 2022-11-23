@@ -31,12 +31,13 @@
 		}
 		
 		@font-face {
-    font-family: 'neon';
-    src: url('../fonts/TmonMonsori.ttf') format('truetype');
+		    font-family: 'neon';
+		    src: url('../fonts/TmonMonsori.ttf') format('truetype');
 		}
-		body {
+		body, h1, table tr th {
 			font-family: 'neon';
 		}
+		
 	</style>
 </head>
 <body class="page-template belle">
@@ -89,13 +90,13 @@
 						<form action="deletecoupon" method="post" id="deleteCouponForm">
 							<table class="table">
 								<thead>
-									<tr>
-										<th class="text-center">번호</th>
-										<th class="text-center">쿠폰이름</th>
-										<th class="text-center">쿠폰내용</th>
-										<th class="text-center">쿠폰발행일</th>
-										<th class="text-center">쿠폰만료일</th>
-										<th class="text-center">삭제</th>
+									<tr style="background-color: #efefef;">
+										<th style="border: 0px" class="text-center">번호</th>
+										<th style="border: 0px" class="text-center">쿠폰이름</th>
+										<th style="border: 0px" class="text-center">쿠폰내용</th>
+										<th style="border: 0px" class="text-center">쿠폰발행일</th>
+										<th style="border: 0px" class="text-center">쿠폰만료일</th>
+										<th style="border: 0px" class="text-center">삭제</th>
 									</tr>
 								</thead>
 								<tbody>

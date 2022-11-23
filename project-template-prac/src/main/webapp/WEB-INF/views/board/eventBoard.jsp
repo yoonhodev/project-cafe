@@ -9,6 +9,16 @@
 <!-- belle/short-description.html   11 Nov 2019 12:43:10 GMT -->
 <head>
 
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Event Board</title>
+<meta name="description" content="description">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<jsp:include page="/WEB-INF/views/modules/common-css.jsp"></jsp:include>
+
 <style type="text/css">
 .filebox .upload-name {
     display: inline-block;
@@ -41,17 +51,15 @@
     border: 0;
 }
 
+@font-face {
+    font-family: 'neon';
+    src: url('../fonts/TmonMonsori.ttf') format('truetype');
+}
+
+body, h1, table tr th {
+	font-family: 'neon';
+}
 </style>
-
-
-
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Event Board</title>
-<meta name="description" content="description">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<jsp:include page="/WEB-INF/views/modules/common-css.jsp"></jsp:include>
-
 </head>
 <body class="template-product belle">
 
