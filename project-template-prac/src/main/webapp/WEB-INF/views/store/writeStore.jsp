@@ -17,8 +17,17 @@
 
 <!-- Common-css -->
 <jsp:include page="/WEB-INF/views/modules/common-css.jsp"></jsp:include>
-<style type="text/css">
+<style>
 
+
+@font-face {
+    font-family: 'neon';
+    src: url('../fonts/TmonMonsori.ttf') format('truetype');
+}
+body {
+	font-family: 'neon';
+}
+	
 
 
 </style>

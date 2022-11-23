@@ -13,6 +13,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Common-css -->
 <jsp:include page="/WEB-INF/views/modules/common-css.jsp"></jsp:include>
+<style>
+@font-face {
+    font-family: 'neon';
+    src: url('../fonts/TmonMonsori.ttf') format('truetype');
+}
+body {
+	font-family: 'neon';
+}
+	
+</style>
 </head>
 <body class="page-template belle">
 <body>
