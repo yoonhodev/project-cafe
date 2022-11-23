@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.projectprac.dto.ProductDto;
@@ -19,10 +20,11 @@ public class ShopController {
 	private OrderService orderservice;
 
 	@GetMapping(path = { "shop" })
-	public String shop(HttpSession session) {
+	public String shop(HttpSession session, Model model) {
 		List<ProductDto> products = orderservice.showMenuImg();
 
-		session.setAttribute("productViews", products);
+		model.addAttribute("productViews", products);
+		// session.setAttribute("productViews", products);
 		return "shop/shop";
 		
 	}
