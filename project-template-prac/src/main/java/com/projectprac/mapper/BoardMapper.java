@@ -50,8 +50,9 @@ public interface BoardMapper {
 	
 	@Select("SELECT board_id boardid, worker_id workerid, title, regdate, deleted, readcount, board_type " +
 			"FROM board " +
-			"WHERE deleted = FALSE and title LIKE CONCAT('%',#{ keyword },'%') " +
-			"ORDER BY boardid DESC ")
+			"WHERE deleted = FALSE and board_type = FALSE and title LIKE CONCAT('%',#{ keyword },'%') " +
+			"ORDER BY boardid DESC " + 
+			"LIMIT #{ from }, #{ count } ")
 	List<BoardDto> selectSerchedEventBoardByPage(@Param("from") int from, @Param("count") int count, @Param("keyword") String keyword);
 	
 
@@ -61,6 +62,10 @@ public interface BoardMapper {
 	@Select("select count(*) from board where board_type = false")
 	public int selectEventBoardCount();
 
+	@Select("select count(*) from board where board_type = false and deleted = false and title Like CONCAT ('%',#{ keyword },'%') ")
+	int selectSerchedEventBoardCount(String keyword);
+	
+	
 	@Update("UPDATE board " +
 			"SET deleted = TRUE " +
 			"WHERE board_id = #{ boardId }") // ? : 나중에 채워질 영역 표시)
@@ -119,6 +124,7 @@ public interface BoardMapper {
 			"FROM comment " +
 			"WHERE board_id = #{ boardId }")
 	int selectCommentEventCount(int boardId);
+
 
 
 

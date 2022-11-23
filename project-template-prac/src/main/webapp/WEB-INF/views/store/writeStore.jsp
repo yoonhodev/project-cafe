@@ -17,9 +17,46 @@
 
 <!-- Common-css -->
 <jsp:include page="/WEB-INF/views/modules/common-css.jsp"></jsp:include>
-<style type="text/css">
+<style>
 
 
+@font-face {
+    font-family: 'neon';
+    src: url('../fonts/TmonMonsori.ttf') format('truetype');
+}
+body {
+	font-family: 'neon';
+}
+	
+	.filebox1 .upload-name {
+    display: inline-block;
+    height: 40px;
+    padding: 0 10px;
+    vertical-align: middle;
+    border: 1px solid #dddddd;
+    width: 78%;
+    color: #999999;
+}
+	
+ 	.filebox1 label { 
+     display: inline-block; 
+     padding: 10px 20px; 
+     color: #fff; 
+     vertical-align: middle; 
+     background-color: #black; 
+     cursor: pointer; 
+     height: 40px;  
+     margin-top: 8px;
+ } 
+	
+.filebox1 input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
 
 </style>
 </head>
@@ -80,8 +117,13 @@
                                                       <div class="spr-form-contact-name">
                                                         <label class="spr-form-label" for="review_title_10508262282" >지점 외관(사진)</label>
                                                         <br>
-                                                        <input style="display: none;" class="btn btn-primary" id="input-file" type="file" name="attach" accept="image/png, image/gif, image/jpeg, image/jpg" value="파일 선택" >
-                                                      	<label class="btn btn-primary" for="input-file">파일 선택</label>
+                                                        
+                                                        
+                                                        <div class="filebox1">
+													    <input class="upload-name" value="첨부파일" placeholder="첨부파일">
+													    <label for="file1" class="btn btn-primary" >파일찾기</label> 
+													    <input style="" class="btn btn-primary upload-name" id="file1" type="file" name="attach" accept="image/png, image/gif, image/jpeg, image/jpg" value="파일 선택" >
+														</div>
                                                       </div>
                                                 
                                            			 <div class="spr-form-contact-name">
@@ -126,7 +168,12 @@
     
 	<!-- Common-js -->
 		<jsp:include page="/WEB-INF/views/modules/common-js.jsp"></jsp:include>
-    
+    	<script type="text/javascript">
+    	$("#file1").on('change',function(){
+    		  var fileName = $("#file1").val();
+    		  $(".upload-name").val(fileName);
+    		});
+    	</script>
     	
     
     </div>
