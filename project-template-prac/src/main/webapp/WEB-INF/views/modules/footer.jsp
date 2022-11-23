@@ -12,19 +12,14 @@
 					<div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
 						<h4 class="h4">Quick Menu</h4>
 						<ul>
-							<li><a href="#">Hot Coffees</a></li>
-							<li><a href="#">Hot Teas</a></li>
-							<li><a href="#">Cold Coffees</a></li>
-							<li><a href="#">Cold Tea</a></li>
-<!-- 							<li><a href="#">Sale</a></li> -->
+							<li><a href="hot-shop">Hot</a></li>
+							<li><a href="ice-shop">Ice</a></li>
 						</ul>
 					</div>
 					<div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
 						<h4 class="h4">Informations</h4>
 						<ul>
 							<li><a href="store">Our Store</a></li>
-<!-- 							<li><a href="#">Careers</a></li> -->
-<!-- 							<li><a href="#">Privacy policy</a></li> -->
 							<li><a href="order">My Cart</a></li>
 							<li><a href="mypage">My Account</a></li>
 						</ul>

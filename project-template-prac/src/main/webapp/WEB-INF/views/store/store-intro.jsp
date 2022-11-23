@@ -20,6 +20,7 @@
 	.Korean-font-style {
 		font-family: 'Hahmlet';
 	}
+
 	
 </style>
 
@@ -63,25 +64,22 @@
                             
                             <h2 class="h3"  >${ store.storeName }</h2>
                             <ul class="publish-detail">                      
-                                <li><i class="anm anm-user-al" aria-hidden="true"></i>${store.storePhone}</li>
-                                <li><i class="icon anm anm-clock-r"></i>${ store.storeSchedule }</li>
+                                <li style=""><i class="anm anm-user-al" aria-hidden="true"></i>${store.storePhone}</li>                            
+                                <li style="display: inline;"><i class="icon anm anm-clock-r"></i>${ store.storeSchedule }</li>
                                 <li>
                                 <c:choose>
-                                <c:when test="${ store.storeOpen }">
-                               		 <ul class="inline-list">                                          
-                                        <li><i class="icon anm anm-comments-l"></i> <a style="color: green;">OPEN</a></li>                                        
+                                <c:when test="${ store.storeOpen }">                               		                                           
+                                        <li style="display: inline;"><a style="color: green;">OPEN</a></li>
+                                        <br>
                                         <c:if test="${ loginuser.userType }">
                                         <input type="button" class="change_to_close btn" id="close-${ store.storeId }"   value="close" data-storeId="${ store.storeId }" />
-                                        </c:if>
-                                    </ul>
+                                        </c:if>                                                                           
                                 </c:when>
-                                <c:otherwise>
-                                <ul class="inline-list">   
-                                        <li><i class="icon anm anm-comments-l"></i> <a style="color: red;">CLOSE</a></li>
+                                <c:otherwise>  
+                                        <li style="display: inline;"><a style="color: red;">CLOSE</a></li>
                                         <c:if test="${ loginuser.userType }">
                                         <input type="button" class="change_to_open btn" id="open-${ store.storeId }"   value="open" data-storeId="${ store.storeId }" />
                                         </c:if>
-                                    </ul>
                                 </c:otherwise>
                                 </c:choose>
                                 </li>
