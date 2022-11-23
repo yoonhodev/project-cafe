@@ -16,6 +16,8 @@
 
 <!-- belle/blog-fullwidth.html   11 Nov 2019 12:46:09 GMT -->
 <head>
+
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <title>Notice Board</title>
@@ -23,11 +25,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jsp:include page="/WEB-INF/views/modules/common-css.jsp"></jsp:include>
 
+<style>
+@font-face {
+    font-family: 'neon';
+    src: url('../fonts/TmonMonsori.ttf') format('truetype');
+}
+body, h1, h2 {
+	font-family: 'neon';
+}
+
+.neon-font {
+	font-family: 'neon';
+}
+</style>
 </head>
-<body class="template-blog belle">
-<div class="pageWrapper">
+<body class="template-blog belle neon-font">
+<div class="pageWrapper neon-font">
 	<jsp:include page="/WEB-INF/views/modules/header.jsp"></jsp:include>
-	<br><br><br>
+	<br><br><br><br>
     
 	<!--End Mobile Menu-->
     
@@ -52,7 +67,7 @@
                         <div class="article" style="font-size: 17px"> 
                             <!-- Article Image --> 
                              <a class="article_featured-image" href="#"><img class="blur-up lazyload" data-src="resources/assets/images/blog/blog-post-3.jpg" src="resources/assets/images/blog/blog-post-3.jpg" alt="How to Wear The Folds Trend Four Ways"></a> 
-                            <h2 class="h3" style="font-size: 17px"><a href="#">${ boardDetail.title }</a></h2>
+                            <h2 class="h3" style="font-size: 17px">${ boardDetail.title }</h2>
                             <ul class="publish-detail">                  
                           &nbsp;<li><i class="anm anm-user-al" aria-hidden="true" style="color: hotpink"></i> ADMIN</li>
                           &nbsp;<li><i class="icon anm anm-clock-r" style="color: hotpink"></i> <time datetime="2017-05-02"><fmt:formatDate value="${ boardDetail.regdate }" pattern="yyyy-MM-dd"/></time></li>
@@ -105,6 +120,7 @@
      <script src="resources/assets/js/popper.min.js"></script>
      <script src="resources/assets/js/lazysizes.js"></script>
      <script src="resources/assets/js/main.js"></script>
+</div>
 </div>
 <script type="text/javascript">
 	$(function() {

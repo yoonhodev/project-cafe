@@ -9,13 +9,23 @@
 <!-- belle/short-description.html   11 Nov 2019 12:43:10 GMT -->
 <head>
 
+
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <title>Notice Board</title>
 <meta name="description" content="description">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jsp:include page="/WEB-INF/views/modules/common-css.jsp"></jsp:include>
-
+<style>
+@font-face {
+    font-family: 'neon';
+    src: url('../fonts/TmonMonsori.ttf') format('truetype');
+}
+body, h1, table tr th {
+	font-family: 'neon';
+}
+</style>
 </head>
 <body class="template-product belle">
 
@@ -114,11 +124,11 @@
                                         </c:when>
                                         <c:otherwise>
                               			<tr>
-                                            <td style="height: 70px; vertical-align: middle; width:80px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.boardId }</a></td>
-                                            <td style="height: 70px; vertical-align: middle; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.title }</a></td>
-                                            <td style="height: 25px; vertical-align: middle; width:100px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">ADMIN</a></td>
-                                            <td style="height: 25px; vertical-align: middle; width:80px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.readCount }</a></td>
-                                            <td style="height: 25px; vertical-align: middle;  width:150px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }"><fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/></a></td>
+                                            <td style="height: 70px; vertical-align: middle; width:80px; font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.boardId }</a></td>
+                                            <td style="height: 70px; vertical-align: middle; font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.title }</a></td>
+                                            <td style="height: 25px; vertical-align: middle; width:100px; font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">ADMIN</a></td>
+                                            <td style="height: 25px; vertical-align: middle; width:80px; font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.readCount }</a></td>
+                                            <td style="height: 25px; vertical-align: middle;  width:150px; font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }"><fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/></a></td>
                                         </tr>  
                                          </c:otherwise>
                                          </c:choose>
