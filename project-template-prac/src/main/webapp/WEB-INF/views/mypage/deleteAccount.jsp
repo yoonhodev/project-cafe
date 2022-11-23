@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html>
@@ -36,7 +35,7 @@
 	        <!--End Page Title-->
 		    <div class="bredcrumbWrap" style="text-align: left;">
 	            <div class="container breadcrumbs">
-	                <a href="index.html" title="Back to the home page">홈</a><span aria-hidden="true">›</span><a href="mypage" title="Back to the Mypage">마이 페이지</a><span aria-hidden="true">›</span><span>회원 탈퇴</span>
+	                <a href="home" title="Back to the home page">홈</a><span aria-hidden="true">›</span><a href="mypage" title="Back to the Mypage">마이 페이지</a><span aria-hidden="true">›</span><span>회원 탈퇴</span>
 	            </div>
         	</div>
 		
@@ -72,7 +71,7 @@
 									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
 										<div class="form-group">
 											<br>
-											<label for="Password">아래 텍스트를 입력해 주십시오</label>
+											<label for="textchecks">아래 텍스트를 입력해 주십시오</label>
 											<br>
 											<span style="font-weight:bold;">회원 탈퇴에 동의합니다</span>
 										</div>
@@ -80,15 +79,14 @@
 									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
 										<div class="form-group">
 											<input type="text" name="textchk"
-												   placeholder="회원 탈퇴에 동의합니다" id="textCheck">
-											<span id="check"></span>										
+												   placeholder="회원 탈퇴에 동의합니다" id="textCheck" required>
+											<span id="txcheck"></span>										
 										</div>
 									</div>
 									</div>
 									<br><br>
 									<input class="form-group" type="text" name="customerId" value="${ loginuser.customerId }"
 													   id="CustomerId" style="display:none;">
-									<input type="text" name="deleted" value="0" id="deleted" style="display:none;">
 									<div class="row">
 									<div class="text-center col-12 col-sm-12 col-md-12 col-lg-12">
 										<input type="submit" class="btn mb-3" value="회원 탈퇴">
@@ -99,6 +97,8 @@
 						</div>
 					</div>
 				</div>
+			</div>
+		</div>
 					
 		<!--End Body Content-->
 
@@ -113,33 +113,22 @@
 		<!-- Common-js -->
 		<jsp:include page="/WEB-INF/views/modules/common-js.jsp"></jsp:include>
 	</div>
-			
-			
-			
-			<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
-			<script type="text/javascript">
+	<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+	<script type="text/javascript">	
 		$(function() {
-			
-			$("#btn mb-3").on("click", function() {
-	 			
-				if ($("#Password").val() != passwd ) {
-					alert("비밀번호가 일치하지 않습니다");
-					break;
+			$("#textCheck").on("change", function(event) {
+				if ($("#textCheck").val() == "회원 탈퇴에 동의합니다") {
+					$("#txcheck").text("인증 텍스트가 일치합니다");
+					$("#txcheck").css("color", "blue");
+				} else {
+					$("#txcheck").text("인증 텍스트가 일치하지 않습니다");
+					$("#txcheck").css("color", "red");
 				}
-				
-				
-				var textcheck = $("#textCheck").val();
-	 			if (textcheck == "회원 탈퇴에 동의합니다") {
-	 				$("#deleted").value("1");
-	 			} else {
-	 				alert("회원 탈퇴 동의 텍스트가 일치하지 않습니다");
-	 				break;
-	 			}
-	 			
-	 			pageContext.forward("deleteComplete");
-
-	 		});		
-		}
-
-</body>
+			});
+			$('#textCheck').on("change", function(event) {
+				$("#check").text("");
+			});
+		});
+		</script>
+	</body>
 </html>

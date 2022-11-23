@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import com.projectprac.dto.AddressDto;
+import com.projectprac.dto.OrderDto;
 import com.projectprac.dto.ProductDto;
 
 @Mapper
@@ -31,7 +32,25 @@ public interface OrderMapper {
 			"WHERE customer_id = #{ customerId }" )
 	AddressDto selectAddress(String customerId);
 	
-	@Insert("INSERT INTO modeling_cafe.order (store_id, customer_id, order_pay, order_type) " +
-			"VALUES (#{ storeId }, #{ customerId }, #{ orderPay }, #{ orderType })" )
-	void insertOrder(@Param("storeId")int storeId, @Param("customerId")String customerId, @Param("orderPay")String orderPay, @Param("orderType")String orderType);
+	@Insert("INSERT INTO modeling_cafe.order (store_id, customer_id, order_pay, order_type, address) " +
+			"VALUES (#{ storeId }, #{ customerId }, #{ orderPay }, #{ orderType }, #{ address })" )
+	void insertOrder(@Param("storeId")int storeId, @Param("customerId")String customerId, @Param("orderPay")String orderPay, @Param("orderType")String orderType, @Param("address")String address);
+
+	@Select("SELECT MAX(order_id) " +
+			"FROM modeling_cafe.order" )
+	int selectMaxOrderId();
+
+	@Insert("INSERT INTO modeling_cafe.order_detail (order_id, prod_id, amount) " +
+			"VALUES (#{ orderId }, #{ prodId }, #{ amount })" )
+	void insertDetailOrder(@Param("orderId")int orderId, @Param("prodId")int prodId, @Param("amount")int amount);
+
+	@Select("SELECT DISTINCT prod_id prodId, prod_category prodCategory, prod_name prodName, prod_price prodPrice, prod_des prodDes, prod_img prodImg " +
+			"FROM product " +
+			"WHERE prod_category = 'ICE'" )
+	List<ProductDto> findIce();
+
+	@Select("SELECT DISTINCT prod_id prodId, prod_category prodCategory, prod_name prodName, prod_price prodPrice, prod_des prodDes, prod_img prodImg " +
+			"FROM product " +
+			"WHERE prod_category = 'HOT'" )
+	List<ProductDto> findHot();
 }

@@ -62,7 +62,8 @@
 									</div>
 									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
 										<div class="form-group">
-											<label for="Password">비밀번호<span style="color: lightgray">(8~20자의 영문 대 소문자, 숫자, 특수문자를 사용 하세요)</span></label>
+											<div style="display: inline-block;"><label for="Password">비밀번호</label></div>
+											<div style="color: lightgray; display: inline-block;">(8~20자의 영문 대소문자, 숫자, 특수문자를 사용하세요)</div>
 											<input class="form-control" type="password" name="passwd"
 												   placeholder="비밀번호를 입력하세요" id="Password" required
 												   minlength="8" maxlength="20" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$">
@@ -120,10 +121,10 @@
 											<label>성별</label><br>
 											<div>&nbsp;
 												&nbsp;&nbsp;남&nbsp;&nbsp;
-												<input type="radio" name="sex" placeholder="" id="Sex" required>
+												<input type="radio" name="regi_sex" placeholder="" id="Sex" value="A" required>
 												&nbsp;&nbsp;&nbsp;&nbsp;
 												&nbsp;&nbsp;여&nbsp;&nbsp;
-												<input type="radio" name="sex" placeholder="" id="Sex">
+												<input type="radio" name="regi_sex" placeholder="" id="Sex" value="B">
 											</div>
 										</div>
 									</div>

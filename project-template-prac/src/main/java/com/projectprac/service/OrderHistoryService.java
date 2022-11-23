@@ -2,15 +2,18 @@ package com.projectprac.service;
 
 import java.util.List;
 
-import com.projectprac.dto.OrderHistoryDto;
+import com.projectprac.dto.OrderDetailDto;
+import com.projectprac.dto.OrderDto;
+import com.projectprac.dto.ProductDto;
 
 public interface OrderHistoryService {
 
-	List<OrderHistoryDto> findOrderHistoryByPage(int pageNo, int page_size);
+	List<OrderDto> selectOrderHistoryByCustomerId(String customerId);
 
-	int findOrderHistoryCount();
+	List<OrderDetailDto> selectOrderDetailHistoryByOrderId(int orderId);
 
-	OrderHistoryDto findOrderHistoryByOrderHistoryNo(int orderHistoryNo);
+	ProductDto selectProductByProductId(int prodId);
 
+	String selectStoreNameByStoreId(int storeId);
 
 }

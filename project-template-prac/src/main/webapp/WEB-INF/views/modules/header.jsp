@@ -30,7 +30,7 @@
 					<li><a href="#">${ loginuser.customerId }님</a></li>	
 					
 					<c:if test="${ loginuser.userType eq 'true' }">
-					<li><a href="admin">관리자페이지</a></li>
+					<li><a href="admin1">관리자페이지</a></li>
 					</c:if>
 					<c:if test="${ loginuser.userType eq 'false'}">		
 					<li><a href="mypage">마이페이지</a></li>
@@ -128,7 +128,7 @@
 				
 				<div id="header-cart" class="block block-cart">
 					<c:forEach var="product" items="${ products }" varStatus="status">
-						<ul class="mini-products-list">
+						<ul class="mini-products-list insert-order">
 							<li class="item"><a class="product-image" href="#"> <img
 									src=${ product.prodImg } title="" />
 							</a>
@@ -137,29 +137,11 @@
 										aria-hidden="true"></i></a> <a href="shop" class="edit-i remove"><i
 										class="anm anm-edit" aria-hidden="true"></i></a> <a class="pName"
 										href="shop">${ product.prodName }</a>
-									<!-- <div class="variant-cart">Black / XL</div> -->
-									<%-- <div class="wrapQtyBtn">
-										<div class="qtyField">
-											<span class="label">Qty:</span>
-											<a class="qtyBtn minus" href="javascript:void(0);" data-productId="${ product.prodId }"><i class="icon icon-minus"></i></a>
-											<input class="cart__qty-input qty" type="text" name="updates[]" id="qty" value="1" pattern="[0-9]*" disabled>
-											<a class="qtyBtn plus"  href="javascript:void(0);" data-productId="${ product.prodId }"><i class="icon icon-plus"></i></a>
-										</div>
-									</div>
-									<div class="priceRow">
-										<div class="product-price">
-											<span class="money"><span id="price-${ product.prodId }">${ product.prodPrice }</span></span>
-										</div>
-									</div> --%>
+									
 								</div>
 							</li>
 						</ul>
 					</c:forEach>
-						<!-- <div class="total">
-							<div class="total-in">
-								<span class="label">Cart Subtotal:</span><span
-									class="product-price"><span class="money">$748.00</span></span>
-							</div> -->
 						<br>
 							<div class="buttonSet text-center">
 								<a href="order" class="btn btn-secondary btn--small">View

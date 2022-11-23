@@ -9,5 +9,7 @@ public class OrderDetailDto {
 	private int orderId;
 	private int prodId;
 	private int amount;
+	
+	private ProductDto productDto;
 
 }

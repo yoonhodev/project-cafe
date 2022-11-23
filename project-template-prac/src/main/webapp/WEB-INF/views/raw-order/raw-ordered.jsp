@@ -13,6 +13,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- Common-css -->
 <jsp:include page="/WEB-INF/views/admin-modules/admin-common-css.jsp"></jsp:include>
+
 </head>
 <body>
 	<!-- Container-Scroller -->
@@ -57,14 +58,14 @@
 													</div>
 													<div style="width: 230px; display: inline-block;">
 														<select id="year" style="text-align-last: center; vertical-align: middle">
-													    	<option selected disabled hidden="">----</option>
+													    	<option selected value="">----</option>
 													        <c:forEach var="i" begin="2015" end="2023">
 													        	<option>${i}</option>
 															</c:forEach>
 														</select>&nbsp;&nbsp;
 														년&nbsp;&nbsp;&nbsp;&nbsp;
 														<select id="month" style="text-align-last: center; vertical-align: middle">
-													    	<option selected disabled hidden="">----</option>
+													    	<option selected value="">----</option>
 													        <c:forEach var="i" begin="1" end="12">
 													        	<option>${i}</option>
 															</c:forEach>
@@ -105,6 +106,11 @@
 			$(".tab-pane").fadeIn();
 			$("#rawOrderedList").load('rawOrderedList');
 			
+			$(".StoreName").on("click", function(event) {
+				$("#StoreName").val("");
+				$("#StoreId").val("");
+			});
+			
 			$(".StoreName").on("change", function(event) {
 				var storeId = $(this).val();
 				storeId = storeId.split("/");
@@ -114,9 +120,10 @@
 			$("#lookup").on("click", function(event) {
 				var storeId = $("#StoreId").val();
 				var year = $("#year").val();
+				
 				var month = $("#month").val();
 				var formData = 'storeId=' + storeId + '&year=' + year + '&month=' + month;
-				if (storeId == [] && year == null && month == null) {
+				if (storeId == [] && year == "" && month == "") {
 					alert("검색조건을 입력해 주세요");
 				} else {
 					$.ajax({
@@ -124,9 +131,7 @@
 						"method": "post",
 						"data": formData,
 						"success": function(data, status, xhr) {
-							if(data == "0") {
-								$("#rawOrderedList").load('rawOrderedList');
-							}
+							$("#rawOrderedList").load('rawOrderedList');
 						 },
 						"error": function(xhr, status, err) {
 							alert('fail : ' + status);

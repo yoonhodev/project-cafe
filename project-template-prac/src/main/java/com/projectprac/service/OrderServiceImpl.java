@@ -56,8 +56,32 @@ public class OrderServiceImpl implements OrderService  {
 	}
 
 	@Override
-	public void insertOrder(int storeId, String customerId, String orderPay, String orderType) {
-		orderMapper.insertOrder(storeId, customerId, orderPay, orderType);
+	public void insertOrder(int storeId, String customerId, String orderPay, String orderType, String address) {
+		orderMapper.insertOrder(storeId, customerId, orderPay, orderType, address);
+	}
+
+	@Override
+	public int selectMaxOrderId() {
+		int orderId = orderMapper.selectMaxOrderId();
+		return orderId;
+	}
+
+	@Override
+	public void insertDetailOrder(int orderId, int prodId, int amount) {
+		orderMapper.insertDetailOrder(orderId, prodId, amount);
+		
+	}
+
+	@Override
+	public List<ProductDto> showIceMenu(String prodCategory) {
+		List<ProductDto> iceProducts = orderMapper.findIce();
+		return iceProducts;
+	}
+
+	@Override
+	public List<ProductDto> showHotMenu(String prodCategory) {
+		List<ProductDto> hotProducts = orderMapper.findHot();
+		return hotProducts;
 	}
 	
 }

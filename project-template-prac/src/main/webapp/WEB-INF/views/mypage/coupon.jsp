@@ -13,6 +13,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Common-css -->
 	<jsp:include page="/WEB-INF/views/modules/common-css.jsp"></jsp:include>
+	<style type="text/css">
+		@media screen and (max-width: 580px) {
+			#deleteCouponForm {
+				font-size: 8pt;
+			}
+		}
+		@media screen and (max-width: 700px) {
+			#event_pic {
+				width: 90%;
+			}
+		}
+		@media screen and (min-width: 700px) {
+			#event_pic {
+				width: 600px;
+			}
+		}
+	</style>
 </head>
 <body class="page-template belle">
 	<div class="pageWrapper">
@@ -38,7 +55,7 @@
 	            </div>
 	        </div>
 	        <div class="container">
-	        	<div style="margin: 0 auto; width: 600px">
+	        	<div id="event_pic" style="margin: 0 auto;">
 					<img alt="할로윈 이벤트 배너"
 						 src="/project-template-prac/resources/assets/images/event/halloween.jpg">
 				</div>
@@ -61,10 +78,9 @@
 	        		</form>
 	        		<br> <br> <br>
 					<div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
-						<form action="deletecoupon" method="post" id="deleteCouponForm"
-							  class="cart style2">
-							<table>
-								<thead class="cart__row cart__header">
+						<form action="deletecoupon" method="post" id="deleteCouponForm">
+							<table class="table">
+								<thead>
 									<tr>
 										<th class="text-center">번호</th>
 										<th class="text-center">쿠폰이름</th>
@@ -81,11 +97,11 @@
 													   varStatus="status">
 												<c:choose>
 													<c:when test="${ couponMake.couponEnd < today }">
-														<tr class="cart__row border-bottom line1 cart-flex border-top"
+														<tr 
 								                           	align="center" style="color: lightgray">
 													</c:when>
 													<c:otherwise>
-														<tr class="cart__row border-bottom line1 cart-flex border-top"
+														<tr 
 															align="center">
 													</c:otherwise>
 					                            </c:choose>

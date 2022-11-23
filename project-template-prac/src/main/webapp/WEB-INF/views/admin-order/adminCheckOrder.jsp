@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -37,7 +37,7 @@
           
                    <div class="d-sm-flex justify-content-between align-items-center transaparent-tab-border {">
                   <ul class="nav nav-tabs tab-transparent">
-                    <li class="nav-item">
+                    <li class="nav-item active">
                       <a class="nav-link active">지점별 주문 내역</a>
                     </li>
                   </ul>
@@ -46,7 +46,7 @@
           
           
            <div class="tab-content tab-transparent-content">
- 				<div class="tab-pane" id="store-worker">
+ 				<div class="tab-pane active" id="store-worker">
                     <div class="row">
                     	<div class="col-lg-12 grid-margin stretch-card">
                     	<div class="card">
@@ -64,21 +64,12 @@
 												        </c:forEach>
 													</select>
                           				</th>     
-                          				                    				
-                          				<th>
-												<span class="col-sm-6 col-md-4 col-lg-3"><b>기간 조회</b></span>
-												시작 날짜 : <input type="date" name="startDate" data-startDate="" class="datepicker" id="strtDate"/> &nbsp;~ &nbsp;종료 날짜 : <input name="endDate" class="datepicker" id="endDate" type="date"/>
-                          				
-                          				</th>
-
                           			</tr>                          		
                           		</thead>
                           		<tbody>
                           		<tr>
                           		<td colspan="6" align="center">
 									<input type="hidden" id="StoreId11" name="storeId">
-<!-- 										<input type="hidden" id="WorkYear11" name="workYear">	 -->
-<!-- 										<input type="hidden" id="WorkMonth11" name="workMonth"> -->
 										<input type="submit"
 											   class="btn btn-outline-secondary btn-fw btn-rounded"
 											   id="SelectStore"
@@ -99,52 +90,110 @@
                   <div class="card-body">
                   	<h4 class="card-title"><span id="boardTitle1" >${ storeName11 }</span>
                   	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<!--                   	<a id="worker-infoDatil"  class="btn btn-light btn-fw btn-rounded">급여 상세</a>	 -->
                   	</h4>
                   	
                     
-                    <table class="table table-striped">
+                    <table class="table table-hover">
                       <thead>
                         <tr>
 							<th class="text-center">사용자 ID</th>
+							<th class="text-center">주문 번호</th>
 							<th class="text-center">지점명</th>
 							<th class="text-center">주문 금액</th>
 							<th class="text-center">주문 종류</th>
-							<th class="text-center">주문 상태 (버튼으로 바꿀수 있게 설정)</th>
+							<th class="text-center">주문 상태</th>
+							<th class="text-center">주문 상태 변경</th>
 							<th class="text-center">주문 날짜</th>
-							<th class="text-center">제품</th>
-							<th class="text-center">수량</th>
-<!-- 							<th class="text-center">수도세</th> -->
-<!-- 							<th class="text-center">광고비</th> -->
-<!-- 							<th class="text-center">배달비</th> -->
+							<th class="text-center">제품 / 수량</th>
+							<th class="text-center">주소</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <c:forEach var="worker" items="${ workers }" varStatus="status">
-						<tr class="cart__row border-bottom line1 cart-flex border-top"
+                        <c:forEach var="order" items="${ orders }" varStatus="status">
+						<tr class="cart__row border-bottom line1 cart-flex border-top "
 							align="center">
-							<td><a href="worker-infoDtail?workerId=${ worker.workerId }"><span>${ worker.workerName }</span></a></td>
+							
+							<td><span>${ order.customerId }</span></td>
+							<td><span>${ order.orderId }</span></td>
 							<td><span>${ storeName11 }</span></td>
-							<td><span>${ storeName11 }</span></td>
-							<td><span>${ worker.workYear }</span></td>
-							<td><span>${ worker.workMonth }</span></td>
-							<td><span>${ worker.salary }</span></td>
-							<td><span>${ worker.workerPhone }</span></td>
-							<td><span>${ worker.workerPhone }</span></td>
-							<td><span>${ worker.workerPhone }</span></td>
-										
-						</tr>																										
-						</c:forEach>								
+							<c:set var="total_amount" value="0" />
+							<c:forEach var="orderDetail" items="${ order.orderDetailDtos }">
+								<c:set var="total_amount" value="${ total_amount + (orderDetail.productDto.prodPrice * orderDetail.amount) }" />
+							</c:forEach>
+							<td><span>${ total_amount }원</span></td>
+							<c:if test="${ order.orderType eq 'A' }">
+							<td><span>배달</span></td>
+							</c:if>
+							<c:if test="${ order.orderType eq 'B' }">
+							<td><span>포장</span></td>
+							</c:if>
+							
+							<c:if test="${ order.orderStat eq '0' }">
+							<td><span>만드는중</span></td>
+							</c:if>		
+							
+							<c:if test="${ order.orderStat eq '1' }">
+							<td><span>수령완료</span></td>
+							</c:if>	
+							
+							<c:if test="${ order.orderStat eq '2' }">
+							<td><span>배달중</span></td>
+							</c:if>	
+							
+							<c:if test="${ order.orderStat eq '3' }">
+							<td><span>배달완료</span></td>
+							</c:if>	
+							<!-- 포장일때 버튼 -->		
+							<c:if test="${ order.orderType eq 'B' and order.orderStat eq '0' }">										
+							<td>							
+							<input type="button" id="change-to-get-prod-${ order.orderId }" data-storeId="${ order.storeId }" data-order="${ order.orderId }" class="change-to-get-prod btn btn-outline-primary" value="수령완료">							
+							</td>	
+							</c:if>						
+							<!-- 포장일때 버튼 -->		
+<!-- 							공백일떄 -->
+							<c:if test="${  order.orderStat eq '3' or  order.orderStat eq '1' }">
+								<td>주문 완료</td>
+							</c:if>	
+<!-- 							//////////////////////////// -->
+							<!-- 배달일때 버튼 -->
+							<c:if test="${ order.orderType eq 'A' and order.orderStat eq '0' }">			
+							<td>
+								<input type="button" id="change-to-delivering-${ order.orderId }" data-storeId="${ order.storeId }" data-order="${ order.orderId }" class="change-to-delivering btn btn-outline-primary" value="배달중" >
+							</td>
+							</c:if>
+							<c:if test="${ order.orderType eq 'A' and order.orderStat eq '2' }">
+							<td>
+							<input type="button" id="change-to-delivery-${ order.orderId }" data-storeId="${ order.storeId }" data-order="${ order.orderId }"  class="change-to-delivering btn btn-outline-primary" value="배달완료" >
+							</td>
+							</c:if>
+							<!-- 배달일때 버튼 -->
+							
+							<fmt:formatDate var="resultRegDt" value="${order.orderDate}" pattern="yyyy-MM-dd"/>
+							<td><span>${ resultRegDt }</span></td>	
+							<td>
+								<table class="table">
+								<tbody>
+								<c:forEach var="orderDetail" items="${ order.orderDetailDtos }">
+									<tr>
+									<td><span><c:out value=" ${ orderDetail.productDto.prodName }"></c:out></span></td>
+									<td><span>${ orderDetail.amount }</span></td>
+									</tr>
+								</c:forEach>
+								</tbody>
+								</table>
+							</td>
+							<td><span>${ order.address }</span></td>
+							</tr>																										
+						</c:forEach>										
                       </tbody>
-                    </table>
+                    </table>             	
                   </div>
                 </div>
               </div>          			
-          			</div>
-          	</div>
-
-				</div>
+            </div>
           </div>
+         </div>
+        </div>
           
           
           </div>
@@ -153,12 +202,6 @@
           <!-- content-wrapper ends -->
           <!-- partial:../../partials/_footer.html -->
          <jsp:include page="/WEB-INF/views/admin-modules/admin-footer.jsp"></jsp:include>
-          <!-- partial -->
-        </div>
-        <!-- main-panel ends -->
-      </div>
-      <!-- page-body-wrapper ends -->
-    </div>
     <!-- container-scroller -->
 	<!-- Common-js -->
 	<jsp:include page="/WEB-INF/views/admin-modules/admin-common-js.jsp"></jsp:include>
@@ -166,36 +209,23 @@
     
     	<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 	<script type="text/javascript">
-		$(".tab-pane").hide();
-		$(".tab-pane:first").show();
-		/* if in tab mode */
-		$(".nav-tabs li").on('click', function () {
-			$(".tab-pane").hide();
-			var activeTab = $(this).attr("data-name"); 
-			$("#"+activeTab).fadeIn();
-		});
-		
 		$(".StoreName1").on("change", function() {
 			var storeId = $(this).val();
-			
+			var storeName = $(this).attr("data-storeName");
 			
 			$("#StoreId11").val(storeId);	
+			$(".STORENAME").attr("data-storeName", storeName);
+			
 			
 			
 			
 		});		
 
-		$(".WorkYear1").on("change", function() {
-			var workYear = $(this).val();
+		$(".btnForShowAndHide").on('click', function() {
 			
-			$('#WorkYear11').val(workYear);
 			
-		});
-		
-		$(".WorkMonth1").on("change", function() {
-			var workMonth = $(this).val();
+			$(".showAndHideOrderDetails").show();
 			
-			$('#WorkMonth11').val(workMonth);
 			
 		});
 		
@@ -208,29 +238,40 @@
 					return false;
 				};
 				
-// 				if($('#WorkYear11').val()=="") {
-// 					alert("년도를 선택해 주세요");
-// 					return false;
-// 				};
 				
-// 				if($('#WorkMonth11').val()=="") {
-// 					alert("월을 선택해 주세요");
-// 					return false;
-// 				};
+			});
+			
+			$('.change-to-delivering').on('click', function(event) {
+				
+				var orderId = $(this).attr('data-order');
+				var storeId = $(this).attr('data-storeId');
+				
+				alert(orderId)
+				alert(storeId)
+				location.href = orderId + '/changeToDeilvering?storeName1=' + storeId  + '&storeId=' + storeId;
+				
+			});
+			
+			$('.change-to-delivering').on('click', function(event) {
+				
+				var orderId = $(this).attr('data-order');
+				var storeId = $(this).attr('data-storeId');
+
+				location.href = orderId + '/changeToDeilvery?storeName1=' + storeId  + '&storeId=' + storeId;
+				
+			});
+			
+			$('.change-to-get-prod').on('click', function(event) {
+				
+				var orderId = $(this).attr('data-order');
+				var storeId = $(this).attr('data-storeId');
+
+				location.href = orderId + '/changeToGetProd?storeName1=' + storeId  + '&storeId=' + storeId;
 				
 			});
 		});
-		
-		$(function() {
-			$('.datepicker').datepicker({dateFormat: 'tt-mm-dd'});
-			
-			alert('.datepicker')
-		})
-		
 
-			
 		
-				
 		
 		
 		

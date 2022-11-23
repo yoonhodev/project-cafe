@@ -22,6 +22,7 @@ import com.projectprac.dto.CouponMakeDto;
 import com.projectprac.dto.CustomerDto;
 import com.projectprac.dto.OrderDto;
 import com.projectprac.dto.ProductDto;
+import com.projectprac.dto.RawOrderCountDto;
 import com.projectprac.dto.StoreDto;
 import com.projectprac.service.CouponService;
 import com.projectprac.service.FixedSpendService;
@@ -141,6 +142,7 @@ public class OrderController {
 		return "mypage/coupon";
 
 	}
+	
 	@GetMapping(path = { "order-list" })
 	public String orderList(HttpSession session) {
 		
@@ -172,11 +174,24 @@ public class OrderController {
 	}
 	
 	@PostMapping(path = { "insert-order" })
-	public String payment(HttpSession session, int storeId, String orderPay, String orderType) {
+	@ResponseBody
+	public String payment(HttpSession session, int storeId, String orderPay, String orderType, String address,
+						  @RequestParam(value=("prodIdList[]"))List<Integer> prodIdList,
+			              @RequestParam(value=("amountList[]"))List<Integer> amountList) {
 		CustomerDto customer = (CustomerDto) session.getAttribute("loginuser");
-		System.out.println(storeId);
-		orderService.insertOrder(storeId, customer.getCustomerId(), orderPay, orderType);
-		return "mypage/mypage";
+		orderService.insertOrder(storeId, customer.getCustomerId(), orderPay, orderType, address);
+		int orderId = orderService.selectMaxOrderId();
+		
+		for(int i = 0; i < prodIdList.size(); i++) {
+			int prodId = prodIdList.get(i);
+			int amount = amountList.get(i);
+			orderService.insertDetailOrder(orderId, prodId, amount);
+			
+		}
+		session.removeAttribute("productIds");
+		session.removeAttribute("products");
+		
+		return "mypage/orderHistory";
 	}
 		
 }

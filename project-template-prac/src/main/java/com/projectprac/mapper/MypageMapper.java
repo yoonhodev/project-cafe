@@ -15,7 +15,7 @@ import com.projectprac.dto.MypageDto;
 @Mapper
 public interface MypageMapper {
 
-				@Select("SELECT customer_id customerId, stamp " +
+	@Select("SELECT customer_id customerId, stamp " +
 			"FROM customer " +
 			"WHERE customer_id = #{ customerId } AND passwd = #{ passwd } ")
 	MypageDto selectCustomerByIdAndPasswd(@Param("customerId") String customerId, @Param("passwd") String passwd);

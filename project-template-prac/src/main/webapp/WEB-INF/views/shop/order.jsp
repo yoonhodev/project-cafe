@@ -58,41 +58,41 @@
 								</form>
 									<h5>지점</h5>
 								<form action="selectstore" method="get" id="orderselectstore">
-									<select id="selectStore" name="selectStore" class="form-group selectStore">
-										<option selected value="0">지점 선택</option>
+									<select id="selectStore" class="form-group selectStore">
+										<option selected value="0" disabled>지점 선택</option>
 										<c:forEach var="stores" items="${ stores }" varStatus="status">
 											<option id="order-select-store" value="${ stores.storeId }">${ stores.storeName }</option>
 										</c:forEach>
 									</select>
 								</form>
 									<h5>결제수단</h5>
-								<select id="orderPay" class="form-group couponName">
-										<option id="orderPay" selected value="none" disabled>결제 수단을 선택해주세요.</option>	
+								<select id="orderPay" class="form-group">
+										<option selected value="0" disabled>결제 수단을 선택해주세요.</option>	
 												<option value="cardPay">신용/체크카드</option>
 												<option value="phonePay">휴대폰결제</option>
 												<option value="naverPay">네이버페이</option>
 												<option value="kakaoPay">카카오페이</option>
 												<option value="tossPay">토스페이</option>
-												<option value="meetcardPay">만나서 카드결제</option>
-												<option value="meetcashPay">만나서 현금결제</option>
+												<option value="meetCardPay">만나서 카드결제</option>
+												<option value="meetCashPay">만나서 현금결제</option>
 								</select>
 							</div>
 							<div class="col-12 col-sm-12 col-md-4 col-lg-4 mb-4">
 								<div style="padding: 0 0 12px 0;" id="addr-radio">
-										&nbsp;&nbsp;&nbsp;&nbsp;${ loginuser.customerId }님 배송지&nbsp;&nbsp;<input type="radio" name="addressType" value="addrA" checked>
+										&nbsp;&nbsp;&nbsp;&nbsp;${ loginuser.customerId }님 배송지&nbsp;&nbsp;<input type="radio" name="addressType" id="addr" value="addrA" checked>
  										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										신규 배송지&nbsp;&nbsp;<input type="radio" name="addressType" value="addrB">
 									</div>
 								<form>
 									<div class="form-group" id="new-addr-form"> <!-- new-addr-form = 기존 배송지, basic-addr-form = 신규 배송지 -->
 										<div class="input-group">
-											<input class="form-control" type="text" name="customerId" value="${ address }" disabled="disabled">
+											<input class="form-control" id="addrAform" type="text" name="customerId" value="${ address }" disabled="disabled">
 										</div>
 										<span id="idcheck"></span>
 										<input type="hidden" id="idchk" name="idchk">
 									</div>
 									<div id= "basic-addr-form" style="display:none">
-									<div  style="line-height: 80%">
+									<div style="line-height: 80%">
 												<div class="input-group">
 													<input style="width: 80px" class="form-control" name="postId" type="text" id="sample2_postcode" placeholder="우편번호" required>
 													<div style="width: 20px"></div>
@@ -100,7 +100,7 @@
 													<div style="width: 100px"></div><div style="width: 100px"></div>
 													<div style="width: 100px"></div><div style="width: 100px"></div>
 												</div><br>
-												<input class="form-control" name="address" type="text" id="sample2_address" placeholder="주소" required><br>
+												<input class="form-control addrform" name="address" type="text" id="sample2_address" placeholder="주소" required><br>
 												<div class="input-group">
 													<input class="form-control" name="detailAddress" type="text" id="sample2_detailAddress" placeholder="상세주소">
 													&nbsp;&nbsp;&nbsp;&nbsp;
@@ -148,7 +148,7 @@
 										<strong>포장</strong>&nbsp;&nbsp;<input type="radio" name="orderType" value="B">
 									</p> 
 									<button type="button" name="checkout" id="orderCheckout"
-										class="btn btn--small-wide checkout">결제</button>
+										class="btn btn--small-wide checkout insert-order">결제</button>
 								</div>
 							</div>
 						</div>
@@ -246,16 +246,9 @@
 			});
 		 	
 		 	function orderListLoadCompletionHandler() {
+		 		
 			 	var drinktotal = 0;
-				/* for (var i=0; i<50; i++) {
-					console.log($("#price-" + i).text());
-					if ($("#price-" + i).text() != "") {
-						var drinkPrice = $("#price-" + i).text();
-						drinktotal = parseInt(drinktotal) + parseInt(drinkPrice);
-						$("#drink-total").text(drinktotal);
-						console.log(drinktotal);
-					}
-				} */
+			 	
 				$('#order-list span.product-price-sum').each(function(idx, span) {
 					const priceSum = parseInt($(span).text());
 					
@@ -263,12 +256,25 @@
 				});
 				
 				var finaltotal = drinktotal + parseInt($('#total-coupon').text().replace(' ', '')) + parseInt($('#shipping').text().replace(' ', '')) ;
-				finaltotal = finaltotal.toLocaleString('ko-KR');
 				
-				$('#drink-total').text(drinktotal + " 원");
-				
-				$('.final-total').text(finaltotal + " 원")
-				
+				if(finaltotal < 0) {
+					
+					finaltotal = 0;
+					
+					$('#drink-total').text(drinktotal + " 원");
+					
+					finaltotal = finaltotal.toLocaleString('ko-KR');
+					
+					$('.final-total').text(finaltotal + " 원");
+					
+				} else {
+					
+					$('#drink-total').text(drinktotal + " 원");
+					
+					finaltotal = finaltotal.toLocaleString('ko-KR');
+					
+					$('.final-total').text(finaltotal + " 원");
+				}
 		 	}
 		 	
 		 	$("#couponName").on("change", function(event) {
@@ -298,31 +304,73 @@
 		 		var orderPay = $("#orderPay option:selected").val();
 		 		var orderType = $("input[name=orderType]:checked").val();
 		 		var storeId = $("#selectStore option:selected").val();
-		 		var formData = { storeId : storeId, orderPay : orderPay, orderType : orderType };
+		 		const addrCheckedVal = $("input[name=addressType]:checked").val();
+		 		var addr;
+				if (addrCheckedVal == "addrA") {
+		 			addr = $("#addrAform").val();
+		 		} else {
+		 			addr = $("input[name=address]").val() + " " + $("input[name=detailAddress]").val();
+		 		}
+		 		var prodIdArray = [];
+		 		var amountArray = [];
+		 		$('.qtyField').each(function() {
+		 			var prodId = $(this).find(".qtyBtn").attr("data-productId");
+		 			var amount = $('#amount-' + prodId).val();
+		 			prodIdArray.push(prodId);
+		 			amountArray.push(amount);
+		 		});
+		 		var formData = { prodIdList : prodIdArray, amountList : amountArray, storeId : storeId, orderPay : orderPay, orderType : orderType, address : addr };
 		 		
 				if (orderType == "A") {
 					orderType = '배달'
 				} else {
 					orderType = '포장'
 				}
-				if(confirm("주문 하시겠습니까?") == true) {
-					$.ajax({
-						"url": "insert-order",
-						"method": "post",
-						"data": formData,
-						"success": function(data) {
-							alert('success');
-						 },
-						"error": function(xhr, status, err) {
-							alert('fail');
+				if($("#orderPay option:selected").val() == "0" || $("#selectStore option:selected").val() == "0") {
+					alert('결제 수단 및 지점 선택 부탁드립니다.')
+					return;
+				} else {
+					if (addrCheckedVal == "addrB") {
+						if ($("input[name=address]").val() == 0) {
+							alert('주소 입력란 확인해주세요.');
+						} else {
+						if (confirm("주문 하시겠습니까?") == true) {
+							$.ajax({
+								"url" : "insert-order",
+								"method" : "post",
+								"data" : formData,
+								"success" : function(data) {
+									alert('주문 완료되었습니다.');
+								},
+								"error" : function(xhr,
+										status, err) {
+									alert('fail');
+								}
+							});
 						}
-					});
+					}
+				} else {
+					if (confirm("주문 하시겠습니까?") == true) {
+						$.ajax({
+							"url" : "insert-order",
+							"method" : "post",
+							"data" : formData,
+							"success" : function(data) {
+								alert('주문 완료되었습니다.');
+							},
+							"error" : function(xhr, status,
+									err) {
+								alert('fail');
+							}
+						});
+					}
 				}
-		 	});
-		 	
+
+			}
+
+		});
 		 	
 		});
-		
 	</script>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>

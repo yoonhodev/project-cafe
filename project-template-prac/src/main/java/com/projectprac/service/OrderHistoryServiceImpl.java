@@ -2,41 +2,41 @@ package com.projectprac.service;
 
 import java.util.List;
 
-import com.projectprac.dto.OrderHistoryDto;
+import com.projectprac.dto.OrderDetailDto;
+import com.projectprac.dto.OrderDto;
+import com.projectprac.dto.ProductDto;
 import com.projectprac.mapper.OrderHistoryMapper;
 
 import lombok.Setter;
 
 public class OrderHistoryServiceImpl implements OrderHistoryService {
 	
-		
 	@Setter
 	private OrderHistoryMapper OrderHistoryMapper;
-	
-	
+
 	@Override
-	public List<OrderHistoryDto> findOrderHistoryByPage(int pageNo, int pageSize) {
-		
-		int from = (pageNo - 1) * pageSize;
-		int count = pageSize;
-		
-		List<OrderHistoryDto> orderHistory = OrderHistoryMapper.selectOrderHistoryByPage(from, count);
-		return orderHistory;
+	public List<OrderDto> selectOrderHistoryByCustomerId(String customerId) {
+
+		List<OrderDto> orders = OrderHistoryMapper.selectOrderHistoryByCustomerId(customerId);
+		return orders;
 	}
-	
-	
+
 	@Override
-	public int findOrderHistoryCount() {
-	
-		int orderHistoryCount = OrderHistoryMapper.selectBoardCount();
-		return orderHistoryCount;
+	public List<OrderDetailDto> selectOrderDetailHistoryByOrderId(int orderId) { 
+		List<OrderDetailDto> details = OrderHistoryMapper.selectOrderDetailByOrderId(orderId);
+		return details;
 	}
-	
-	
+
 	@Override
-	public OrderHistoryDto findOrderHistoryByOrderHistoryNo(int orderHistoryNo) {
-		
-		return null;
+	public ProductDto selectProductByProductId(int prodId) {
+		ProductDto product = OrderHistoryMapper.selectProductByProductId(prodId);
+		return product;
+	}
+
+	@Override
+	public String selectStoreNameByStoreId(int storeId) {
+		String storeName = OrderHistoryMapper.selectStoreNameByStoreId(storeId);
+		return storeName;
 	}
 
 }

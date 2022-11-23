@@ -83,24 +83,24 @@ public class RawOrderServiceImpl implements RawOrderService {
 		
 		List<RawOrderHistoryDto> history;
 		String orderDate;
-		if (!storeId.equals("-1") && !year.equals("null") && !month.equals("null")) { // 지점번호와 연도, 월이 있을 때
+		if (!storeId.equals("-1") && !year.equals("-1") && !month.equals("-1")) { // 지점번호와 연도, 월이 있을 때
 			orderDate = year + "-" + month;
 			history = rawOrderMapper.selectOrderRawByStoreIdAndOrderDate(storeId, orderDate);
-		} else if (!storeId.equals("-1") && !year.equals("null")) { // 지점번호와 연도만 있을 때
+		} else if (!storeId.equals("-1") && !year.equals("-1")) { // 지점번호와 연도만 있을 때
 			orderDate = year; 
 			history = rawOrderMapper.selectOrderRawByStoreIdAndOrderDate(storeId, orderDate);
-		} else if (!year.equals("null") && !month.equals("null")) { // 연도와 월만 있을 때
+		} else if (!year.equals("-1") && !month.equals("-1")) { // 연도와 월만 있을 때
 			orderDate = year + "-" + month;
 			history = rawOrderMapper.selectOrderRawByOrderDate(orderDate);
-		} else if (!storeId.equals("-1") && !month.equals("null")) { // 지점번호와 월만 있을 때
+		} else if (!storeId.equals("-1") && !month.equals("-1")) { // 지점번호와 월만 있을 때
 			orderDate = "-" + month + "-";
 			history = rawOrderMapper.selectOrderRawByStoreIdAndOrderDate(storeId, orderDate);
 		} else if (!storeId.equals("-1")) { // 지점번호만 있을 때
 			history = rawOrderMapper.selectOrderRawByStoreId(storeId);
-		} else if (!year.equals("null")) { // 연도만 있을 때
+		} else if (!year.equals("-1")) { // 연도만 있을 때
 			orderDate = year;
 			history = rawOrderMapper.selectOrderRawByOrderDate(orderDate);
-		} else if (!month.equals("null")) { // 월만 있을 때
+		} else if (!month.equals("-1")) { // 월만 있을 때
 			orderDate = "-" + month + "-";
 			history = rawOrderMapper.selectOrderRawByOrderDate(orderDate);
 		} else {

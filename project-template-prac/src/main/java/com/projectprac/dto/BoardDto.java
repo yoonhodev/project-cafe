@@ -16,6 +16,7 @@ public class BoardDto {
 	private boolean deleted;
 	private int readCount;
 	private boolean boardType;
+	private String keyword;
 	
 	private List<BoardAttachDto> attachments;
 
