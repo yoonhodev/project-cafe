@@ -14,7 +14,15 @@
 
 <!-- stylesheet -->
 <jsp:include page="/WEB-INF/views/modules/common-css.jsp"></jsp:include>
-
+<style>
+@font-face {
+    font-family: 'neon';
+    src: url('../fonts/TmonMonsori.ttf') format('truetype');
+}
+body {
+	font-family: 'neon';
+}
+</style>
 </head>
 <body class="template-collection belle">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
@@ -83,32 +91,32 @@
 	                                        	<c:when test="${ empty loginuser }">
 	                                        		<form class="variants add addform" id="addform" action="login" method="post">
 			                                        	<input type="hidden" name="prodId" value="${ product.prodId }">			                                        	
-			                                            <a href="login" class="btn btn-addto-cart update-order" style="color:white" type="button">ADD TO CART</a>
+			                                            <a href="login" class="btn btn-addto-cart update-order" style="background-color:black; color:white;" type="button">ADD TO CART</a>
 			                                        </form>
 	                                       		</c:when>
 	                                       		<c:otherwise>
 			                                        <form class="variants add addform order-popup" id="addform" action="update-order" method="post">
 			                                        	<input type="hidden" name="prodId" value="${ product.prodId }">
-			                                            <a class="btn btn-addto-cart update-order" style="color:white" type="button">ADD TO CART</a>
+			                                            <a class="btn btn-addto-cart update-order" style="background-color:black; color:white;" type="button">ADD TO CART</a>
 			                                        </form>
 	                                       	 	</c:otherwise>
                                        	 	</c:choose>
 	                                        
-	                                        <div class="button-set">
-	                                            <a href="javascript:void(0)" title="Quick View" class="quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
-	                                                <i class="icon anm anm-search-plus-r"></i>
-	                                            </a>
-	                                            <div class="wishlist-btn">
-	                                                <a class="wishlist add-to-wishlist" href="#" title="Add to Wishlist">
-	                                                    <i class="icon anm anm-heart-l"></i>
-	                                                </a>
-	                                            </div>
-	                                            <div class="compare-btn">
-	                                                <a class="compare add-to-compare" href="compare.html" title="Add to Compare">
-	                                                    <i class="icon anm anm-random-r"></i>
-	                                                </a>
-	                                            </div>
-	                                        </div>
+<!-- 	                                        <div class="button-set"> -->
+<!-- 	                                            <a href="javascript:void(0)" title="Quick View" class="quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview"> -->
+<!-- 	                                                <i class="icon anm anm-search-plus-r"></i> -->
+<!-- 	                                            </a> -->
+<!-- 	                                            <div class="wishlist-btn"> -->
+<!-- 	                                                <a class="wishlist add-to-wishlist" href="#" title="Add to Wishlist"> -->
+<!-- 	                                                    <i class="icon anm anm-heart-l"></i> -->
+<!-- 	                                                </a> -->
+<!-- 	                                            </div> -->
+<!-- 	                                            <div class="compare-btn"> -->
+<!-- 	                                                <a class="compare add-to-compare" href="compare.html" title="Add to Compare"> -->
+<!-- 	                                                    <i class="icon anm anm-random-r"></i> -->
+<!-- 	                                                </a> -->
+<!-- 	                                            </div> -->
+<!-- 	                                        </div> -->
 	                                        <!-- end product button -->
 	                                    </div>
 	                                    <!-- end product image -->

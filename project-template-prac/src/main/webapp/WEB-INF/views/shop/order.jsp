@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>
@@ -13,6 +12,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Common-css -->
 <jsp:include page="/WEB-INF/views/modules/common-css.jsp"></jsp:include>
+<style>
+@font-face {
+    font-family: 'neon';
+    src: url('../fonts/TmonMonsori.ttf') format('truetype');
+}
+body {
+	font-family: 'neon';
+}
+@media media and (max-width : 768px) {
+  
+}
+</style>
 </head>
 <body class="page-template belle cart-variant1">
 	<div class="pageWrapper">
