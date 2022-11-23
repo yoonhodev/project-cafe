@@ -51,10 +51,11 @@
 		<div class="row align-items-center">
 			<!-- Desktop Logo -->
 			<div class="logo col-md-2 col-lg-2 d-none d-lg-block">
-				<a href="home"> <img
-					src="/project-template-prac/resources/assets/images/logo.svg"
-					alt="Belle Multipurpose Html Template"
-					title="Belle Multipurpose Html Template" />
+				<a href="home">
+				<img src="/project-template-prac/resources/assets/images/logo_gcafe.png"
+					 alt="Belle Multipurpose Html Template"
+					 title="Belle Multipurpose Html Template"
+					 width="200" />
 				</a>
 			</div>
 			<!-- ./Desktop Logo -->
@@ -92,17 +93,6 @@
 								<li><a href="store" class="site-nav">지점 소개</a></li>
 							</ul></li>
 						<li class="lvl1"><a href="order" style="font-size: 15pt"><b>CART</b> <i class="anm anm-angle-down-l"></i></a></li>
-						<c:if test="${ loginuser.userType }">			
-<!-- 						<li class="lvl1 parent dropdown"><a href="admin" -->
-<!-- 							style="font-size: 15pt"><b>ADMIN PAGE</b> <i -->
-<!-- 								class="anm anm-angle-down-l"></i></a> -->
-<!-- 							<ul class="dropdown"> -->
-<!-- 							<li><a href="fixedSpend" class="site-nav">고정 지출</a></li> -->
-								
-<!-- 							<li><a href="#" class="site-nav">필요하면 추가하세요</a></li> -->
-							
-<!-- 							</ul></li> -->
-						</c:if>					
 					</ul>
 				</nav>
 				<!--End Desktop Menu-->
@@ -111,10 +101,11 @@
 			<div
 				class="col-6 col-sm-6 col-md-6 col-lg-2 d-block d-lg-none mobile-logo">
 				<div class="logo">
-					<a href="home"> <img
-						src="/project-template-prac/resources/assets/images/logo.svg"
-						alt="Belle Multipurpose Html Template"
-						title="Belle Multipurpose Html Template" />
+					<a href="home">
+					<img src="/project-template-prac/resources/assets/images/logo_gcafe.png"
+						 alt="Belle Multipurpose Html Template"
+						 title="Belle Multipurpose Html Template"
+						 width="160" />
 					</a>
 				</div>
 			</div>
@@ -160,7 +151,6 @@
 			</div>
 		</div>
 	</div>
-</div>
 <!-- ./Header -->
 
 <!-- Mobile Menu -->

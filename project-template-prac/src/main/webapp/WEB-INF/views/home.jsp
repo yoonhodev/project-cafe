@@ -11,6 +11,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Common-css -->
 <jsp:include page="/WEB-INF/views/modules/common-css.jsp"></jsp:include>
+<style type="text/css">
+	@media screen and (max-width: 575px) {
+		#order_now {
+			font-size: 10pt;
+		}
+	}
+	@media screen and (min-width: 575px) {
+		#order_now {
+			font-size: 14pt;
+		}
+	}
+</style>
+
 </head>
 <body class="template-index belle home9-parallax">
 	<div id="pre-loader">
@@ -38,7 +51,7 @@
 									<div class="container">
 										<div class="wrap-caption left">
 											<h2 class="h1 mega-title slideshow__title">CHECK OUR MENU</h2>
-											<div class="mega-subtitle" style="color: white; font-size: 14pt; margin-bottom: 20px">
+											<div class="mega-subtitle" id="order_now" style="color: white; margin-bottom: 20px">
 												Order now!</div>
 											<a href="shop" style="color: white; background-color: black; padding: 8px 15px">MENU</a>
 										</div>
