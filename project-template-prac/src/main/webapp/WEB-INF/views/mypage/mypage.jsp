@@ -51,39 +51,41 @@ body, h1 {
 			<div class="mypage-wrapper" style="text-align: center;">
 
 			<div class="mypage_logobox" style="display: inline-block;">
-				<img src="/project-template-prac/resources/assets/images/mypage-temp-image/coffee_logo_temp.png" width="400px" height="400px" />
+				<img src="/project-template-prac/resources/assets/images/logo_icon.png" width="400px" height="400px" />
 			</div>
 			<br><br><br>
-			<div class="mypage_username" style="display: inline-block;">	
-				<span>${ loginuser.customerId }</span>님!
+			<div class="mypage_username" style="display: inline-block; font-weight: bold">	
+				<span>${ loginuser.customerId }</span>님 환영합니다.
 			</div>
-			<br><br><br>
+			<br><br><br><br><br><br>
 			<div class="mypage_menubox" style="display: inline-block;">
-				<table style="border:1px; width:400px;">
+				<table style="border:1px; width:400px; font-weight: bold">
 					<tr>
 						<td style="width:170px; text-align: right;">
-							스탬프 <span>${ loginuser.stamp }</span>개
+							<a href="orderHistory">
+								주문내역
+							</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						</td>
 						<td style="width:60px;"></td>
 						<td style="width:170px; text-align: left;">
-							<a href="orderHistory">
-							주문내역
+							<a href="coupon">
+								쿠폰함 (보유 쿠폰 : <span>${ couponcount }</span>)
 							</a>
 						</td>
 					</tr>
-					<tr style="height:10px;"></tr>
+					<tr style="height:40px;"></tr>
 					<tr>
 						<td style="width:170px; text-align: right;">
-							<a href="coupon">
-							쿠폰함 <span>${ couponcount }</span>개
-							</a>
-						</td>
-						<td style="width:60px;"></td>
-						<td style="width:170px; text-align: left;">
 							<a href="editAccount?customerId=${loginuser.customerId}">
 							개인정보 변경
 							</a>
 						</td>
+						<td style="width:60px;"></td>
+						<td style="width:170px; text-align: left;">
+							<a href="deleteAccount" style="color: #cc0000 ;">
+							회원 탈퇴
+							</a>
+						</td>
 					</tr>
 					<tr style="height:10px;"></tr>
 					<tr>
@@ -91,9 +93,7 @@ body, h1 {
 						</td>
 						<td style="width:60px;"></td>
 						<td style="width:170px; text-align: left;">
-							<a href="deleteAccount" style="color:silver;">
-							회원 탈퇴
-							</a>
+							
 						</td>
 					</tr>
 				</table>
