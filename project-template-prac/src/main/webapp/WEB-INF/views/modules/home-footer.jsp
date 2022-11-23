@@ -18,8 +18,8 @@
 					<div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
 						<h4 class="h4">Quick Menu</h4>
 						<ul>
-							<li><a href="#">Hot</a></li>
-							<li><a href="#">Ice</a></li>
+							<li><a href="hot-shop">Hot</a></li>
+							<li><a href="ice-shop">Ice</a></li>
 <!-- 							추가 카테고리 -->
 <!-- 							<li><a href="#">Kids</a></li> -->
 <!-- 							<li><a href="#">Sportswear</a></li> -->

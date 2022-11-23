@@ -17,7 +17,11 @@
 
 <!-- Common-css -->
 <jsp:include page="/WEB-INF/views/modules/common-css.jsp"></jsp:include>
+<style type="text/css">
 
+
+
+</style>
 </head>
 <body class="template-product belle">
 	<div class="pageWrapper">
@@ -76,7 +80,8 @@
                                                       <div class="spr-form-contact-name">
                                                         <label class="spr-form-label" for="review_title_10508262282" >지점 외관(사진)</label>
                                                         <br>
-                                                        <input style="border: none; color: white;" class="btn" id="review_title_10508262282" type="file" name="attach" accept="image/png, image/gif, image/jpeg, image/jpg" value="" >
+                                                        <input style="display: none;" class="btn btn-primary" id="input-file" type="file" name="attach" accept="image/png, image/gif, image/jpeg, image/jpg" value="파일 선택" >
+                                                      	<label class="btn btn-primary" for="input-file">파일 선택</label>
                                                       </div>
                                                 
                                            			 <div class="spr-form-contact-name">
