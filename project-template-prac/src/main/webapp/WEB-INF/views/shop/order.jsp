@@ -164,7 +164,7 @@ h5 {
  										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										<strong>포장</strong>&nbsp;&nbsp;<input type="radio" name="orderType" value="B">
 									</p> 
-									<button type="button" name="checkout" id="orderCheckout" style="width: 10%" class="btn btn--small-wide checkout insert-order">결제</button>
+									<button type="button" name="checkout" id="orderCheckout" style="width: 100%" class="btn btn--small-wide checkout insert-order">결제</button>
 								</div>
 							</div>
 						</div>
