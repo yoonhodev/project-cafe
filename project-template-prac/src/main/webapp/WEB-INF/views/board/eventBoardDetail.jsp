@@ -108,14 +108,14 @@ body, h1, h2 {
 				<input type="hidden" name="pageNo" value="${ pageNo }" />				
 				<input type="hidden" name="customerId" value="${ loginuser.customerId }" />
                 <div class="card mb-2">
-					<div class="card-header bg-light">
+					<div class="card-footer bg-light" style="height:40px;">
 					        <i class="fa fa-comment fa"></i> REPLY
 					</div>
 					<div class="card-body">
 						<ul class="list-group list-group-flush">
 						    <li class="list-group-item">
 							<textarea class="form-control" id="comment_content" name="content" rows="3"></textarea>
-							<input type="submit" value="댓글 쓰기" id="writecomment" class="btn btn-dark mt-3" style="float: right;"></button>
+							<input type="submit" value="댓글 쓰기" id="writecomment" class="btn btn-dark mt-3" style="float: right;">
 						    </li>
 						</ul>
 					</div>

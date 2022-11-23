@@ -84,12 +84,13 @@ public class EventBoardController {
 		
 		int boardCount = boardService.findEventBoardCount();
 		ThePager pager = new ThePager(boardCount, pageNo, PAGE_SIZE, PAGER_SIZE, LINK_URL);
-
+		
 		// 3. View에서 읽을 수 있도록 데이터 저장
+		model.addAttribute("boardCount", boardCount);
 		model.addAttribute("boards", boards);
 		model.addAttribute("pager", pager);
 		model.addAttribute("pageNo", pageNo);
-
+		
 		// 4. View or Controller로 이동
 		return "board/eventBoard"; 	// /WEB-INF/views/ + board/list + .jsp
 	}

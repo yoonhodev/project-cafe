@@ -8,10 +8,6 @@
 
 <!-- belle/short-description.html   11 Nov 2019 12:43:10 GMT -->
 <head>
-
-
-
-
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <title>Event Board</title>
@@ -147,6 +143,14 @@ body, h1, table tr th {
                                         </tr>
                                     </thead>
                                     <tbody>
+                                 		   <c:if test="${boardCount == 0}">
+                              				<tr>
+                              					<td colspan="5">
+                              					검색된 값이 없습니다.
+                              					</td>
+                              					</tr> 
+                             				</c:if>
+                             				
                                         <!--리스트 출력 시작 --> 
                                     	<c:forEach var="boards" items="${ boards }">
                                     	<c:choose>
@@ -161,6 +165,7 @@ body, h1, table tr th {
                                         </c:when>
                                         <c:otherwise>
                               			<tr>
+                              				
                                             <td style="height: 70px; vertical-align: middle; width:80px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.boardId }</a></td>
                                             <td style="height: 70px; vertical-align: middle; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.title }</a></td>
                                             <td style="height: 25px; vertical-align: middle; width:100px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">ADMIN</a></td>
@@ -174,29 +179,7 @@ body, h1, table tr th {
 										
 										 <!--검색된 리스트 출력 시작 --> 
 										
-                                    	<c:forEach var="searchedBoard" items="${ searchedBoard }">
-                                    	<c:choose>
-                                        <c:when test="${ searchedBoard.deleted }">
-                                     
-                                        </c:when>
-                                        
-                                        <c:otherwise>
-                                      	<tr>
-                                      		<td>
-                                      			dddddddddddddd
-                                      		</td>
-                                      	</tr>
-                              			<tr>
-                              			
-                                            <td style="height: 25px; vertical-align: middle; width:80px; font-size: 17px"><a href="eventBoardDetail?boardId=${ searchedBoard.boardId }&pageNo=${ pageNo }">${ searchedBoard.boardId }</a></td>
-                                            <td style="height: 25px; vertical-align: middle; font-size: 17px"><a href="eventBoardDetail?boardId=${ searchedBoard.boardId }&pageNo=${ pageNo }">${ searchedBoard.title }</a></td>
-                                            <td style="height: 25px; vertical-align: middle; width:100px; font-size: 17px"><a href="eventBoardDetail?boardId=${ searchedBoard.boardId }&pageNo=${ pageNo }">ADMIN</a></td>
-                                            <td style="height: 25px; vertical-align: middle; width:80px; font-size: 17px"><a href="eventBoardDetail?boardId=${ searchedBoard.boardId }&pageNo=${ pageNo }">${ searchedBoard.readCount }</a></td>
-                                            <td style="height: 25px; vertical-align: middle; width:150px; font-size: 17px"><a href="eventBoardDetail?boardId=${ searchedBoard.boardId }&pageNo=${ pageNo }"><fmt:formatDate value="${ searchedBoard.regdate }" pattern="yyyy-MM-dd"/></a></td>
-                                        </tr>  
-                                         </c:otherwise>
-                                         </c:choose>
-										</c:forEach>
+                                    	
 										<!--검색된 리스트 출력 시작 --> 
                                     </tbody>
                                 </table>

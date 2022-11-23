@@ -67,7 +67,7 @@ body, h1, h2 {
                         <div class="article" style="font-size: 17px"> 
                             <!-- Article Image --> 
                              <a class="article_featured-image" href="#"><img class="blur-up lazyload" data-src="resources/assets/images/blog/blog-post-3.jpg" src="resources/assets/images/blog/blog-post-3.jpg" alt="How to Wear The Folds Trend Four Ways"></a> 
-                            <h2 class="h3" style="font-size: 17px">${ boardDetail.title }</h2>
+                            <h2 class="h3" style="font-size: 17px"><Strong>${ boardDetail.title }</Strong></h2>
                             <ul class="publish-detail">                  
                           &nbsp;<li><i class="anm anm-user-al" aria-hidden="true" style="color: hotpink"></i> ADMIN</li>
                           &nbsp;<li><i class="icon anm anm-clock-r" style="color: hotpink"></i> <time datetime="2017-05-02"><fmt:formatDate value="${ boardDetail.regdate }" pattern="yyyy-MM-dd"/></time></li>
