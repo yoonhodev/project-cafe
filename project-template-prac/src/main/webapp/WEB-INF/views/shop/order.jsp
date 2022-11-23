@@ -26,8 +26,11 @@ h1 {
 h5 {
 	font-family: 'neon';
 }
-@media media and (max-width : 768px) {
-  
+table tr th {
+	padding: 10px 20px;
+}
+table tr td {
+	padding: 5px 0;
 }
 </style>
 </head>
