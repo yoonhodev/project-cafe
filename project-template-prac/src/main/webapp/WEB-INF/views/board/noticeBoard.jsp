@@ -21,7 +21,7 @@
 
 	<div class="pageWrapper">
     	<jsp:include page="/WEB-INF/views/modules/header.jsp"></jsp:include>
-        <br><br><br>
+        <br><br><br><br>
     	<div class="page section-header text-center mb-0">
 			<div class="page-title">
         		<div class="wrapper"><h1 class="page-width">Notice Board</h1></div>
@@ -90,14 +90,14 @@
                                             <div>
                                            
                             <div style="font-size: 15pt">
-                                <table class="table table-striped">
+                               <table class="table table-striped" style="height:55px">
                                     <thead>
-                                        <tr>
-                                            <th style="width:80px; font-size: 17px">No.</th>
-                                            <th style="font-size: 17px">제목</th>
-                                            <th style="width:100px; font-size: 17px">작성자</th>
-                                            <th style="width:80px; font-size: 17px">조회수</th>
-                                            <th style="width:150px; font-size: 17px">작성일</th>
+                                         <tr>
+                                            <th style="height: 70px; vertical-align: middle; background-color: gray; font-size: 17px">No.</th>
+                                            <th style="height: 70px; vertical-align: middle; background-color: gray; font-size: 17px">제목</th>
+                                            <th style="height: 25px; vertical-align: middle; background-color: gray; font-size: 17px">작성자</th>
+                                            <th style="height: 25px; vertical-align: middle; background-color: gray; font-size: 17px">조회수</th>
+                                            <th style="height: 25px; vertical-align: middle; background-color: gray; font-size: 17px">작성일</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -105,32 +105,20 @@
                                     	<c:choose>
                                         <c:when test="${ boards.deleted }">
                                         <tr>
-                                            <td style="font-size: 17px">${ boards.boardId }</td>
-                                            <td style="width: 800px; font-size: 17px">[삭제된 글입니다.]</td>
-                                            <td style="font-size: 17px">ADMIN</td>
-                                            <td style="font-size: 17px">${ boards.readCount }</td>
-                                            <td style="font-size: 17px"><fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/></td>
+                                            <td style="height: 70px; vertical-align: middle; width:80px; font-size: 17px">${ boards.boardId }</td>
+                                            <td style="height: 70px; vertical-align: middle; font-size: 17px">[삭제된 글입니다.]</td>
+                                            <td style="height: 25px; vertical-align: middle; width:100px; font-size: 17px">ADMIN</td>
+                                            <td style="height: 25px; vertical-align: middle; width:80px; font-size: 17px">${ boards.readCount }</td>
+                                            <td style="height: 25px; vertical-align: middle; width:150px;font-size: 17px"><fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/></td>
                                         </tr>
                                         </c:when>
                                         <c:otherwise>
                               			<tr>
-                              				<c:set var="result" value="${ boards.boardId % 2}"/>
-                              				<c:choose>
-                                       		<c:when test="${ result == 1 }">
-                                            <td style="font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.boardId }</a></td>
-                                            <td style="font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.title }</a></td>
-                                            <td style="font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">ADMIN</a></td>
-                                            <td style="font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.readCount }</a></td>
-                                            <td style="font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }"><fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/></a></td>
-                                             </c:when>
-                                      	    <c:otherwise>
-                                      	    <td style="font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.boardId }</a></td>
-                                            <td style="font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.title }</a></td>
-                                            <td style="font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">ADMIN</a></td>
-                                            <td style="font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.readCount }</a></td>
-                                            <td style="font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }"><fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/></a></td>
-                                             </c:otherwise>
-                                             </c:choose>
+                                            <td style="height: 70px; vertical-align: middle; width:80px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.boardId }</a></td>
+                                            <td style="height: 70px; vertical-align: middle; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.title }</a></td>
+                                            <td style="height: 25px; vertical-align: middle; width:100px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">ADMIN</a></td>
+                                            <td style="height: 25px; vertical-align: middle; width:80px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.readCount }</a></td>
+                                            <td style="height: 25px; vertical-align: middle;  width:150px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }"><fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/></a></td>
                                         </tr>  
                                          </c:otherwise>
                                          </c:choose>

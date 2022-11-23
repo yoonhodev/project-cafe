@@ -26,6 +26,7 @@ import com.projectprac.dto.BoardCommentDto;
 import com.projectprac.dto.BoardDto;
 import com.projectprac.service.BoardService;
 import com.projectprac.ui.ThePager;
+import com.projectprac.ui.ThePager2;
 import com.projectprac.view.DownloadView;
 
 
@@ -33,9 +34,9 @@ import com.projectprac.view.DownloadView;
 @Controller
 public class EventBoardController {
 
-	private final int PAGE_SIZE = 10; 	// 한 페이지에 표시되는 데이터 개수
-	private final int PAGER_SIZE = 5;	// 한 번에 표시할 페이지 번호 개수
-	private final String LINK_URL = "eventBoard"; // 페이지 번호를 클릭했을 때 이동할 페이지 경로
+	private int PAGE_SIZE = 10; 	// 한 페이지에 표시되는 데이터 개수
+	private int PAGER_SIZE = 5;	// 한 번에 표시할 페이지 번호 개수
+	private String LINK_URL = "eventBoard"; // 페이지 번호를 클릭했을 때 이동할 페이지 경로
 	
 	@Autowired
 	@Qualifier("boardService")
@@ -78,9 +79,10 @@ public class EventBoardController {
 		// 1. 요청 데이터 읽기 ( 전달인자로 대체 )
 		// 2. 데이터 처리 ( 데이터 조회 )		
 
-		List<BoardDto> boards = boardService.findEventBoardByPage(pageNo, PAGE_SIZE);
-		int boardCount = boardService.findEventBoardCount();
 		
+		List<BoardDto> boards = boardService.findEventBoardByPage(pageNo, PAGE_SIZE);
+		
+		int boardCount = boardService.findEventBoardCount();
 		ThePager pager = new ThePager(boardCount, pageNo, PAGE_SIZE, PAGER_SIZE, LINK_URL);
 
 		// 3. View에서 읽을 수 있도록 데이터 저장
@@ -94,15 +96,16 @@ public class EventBoardController {
 	
 	@GetMapping(path = { "searchedEventBoard" })
 	public String searchedShowEventBoardList(@RequestParam(defaultValue = "1")int pageNo,
-			@RequestParam(value = "keyword")String keyword,
+											 @RequestParam(value = "keyword")String keyword,
 										     Model model) {
 		// 1. 요청 데이터 읽기 ( 전달인자로 대체 )
 		// 2. 데이터 처리 ( 데이터 조회 )		
+		String LINK_URL = "searchedEventBoard";
 		
 		List<BoardDto> searchedBoard = boardService.findSearchedEventBoardByPage(keyword, pageNo, PAGE_SIZE);
-		System.out.println(searchedBoard);
-		int boardCount = boardService.findEventBoardCount();
-		ThePager pager = new ThePager(boardCount, pageNo, PAGE_SIZE, PAGER_SIZE, LINK_URL);
+		
+		int searchedBoardCount = boardService.findSearchedEventBoardCount(keyword);
+		ThePager2 pager = new ThePager2(searchedBoardCount, pageNo, PAGE_SIZE, PAGER_SIZE, LINK_URL, keyword);
 		// 3. View에서 읽을 수 있도록 데이터 저장
 		model.addAttribute("boards", searchedBoard);
 		model.addAttribute("pager", pager);
