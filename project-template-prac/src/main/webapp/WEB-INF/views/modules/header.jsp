@@ -51,10 +51,11 @@
 		<div class="row align-items-center">
 			<!-- Desktop Logo -->
 			<div class="logo col-md-2 col-lg-2 d-none d-lg-block">
-				<a href="home"> <img
-					src="/project-template-prac/resources/assets/images/logo.svg"
-					alt="Belle Multipurpose Html Template"
-					title="Belle Multipurpose Html Template" />
+				<a href="home">
+				<img src="/project-template-prac/resources/assets/images/logo_gcafe.png"
+					 alt="Belle Multipurpose Html Template"
+					 title="Belle Multipurpose Html Template"
+					 width="200" />
 				</a>
 			</div>
 			<!-- ./Desktop Logo -->
@@ -92,17 +93,6 @@
 								<li><a href="store" class="site-nav">지점 소개</a></li>
 							</ul></li>
 						<li class="lvl1"><a href="order" style="font-size: 15pt"><b>CART</b> <i class="anm anm-angle-down-l"></i></a></li>
-						<c:if test="${ loginuser.userType }">			
-<!-- 						<li class="lvl1 parent dropdown"><a href="admin" -->
-<!-- 							style="font-size: 15pt"><b>ADMIN PAGE</b> <i -->
-<!-- 								class="anm anm-angle-down-l"></i></a> -->
-<!-- 							<ul class="dropdown"> -->
-<!-- 							<li><a href="fixedSpend" class="site-nav">고정 지출</a></li> -->
-								
-<!-- 							<li><a href="#" class="site-nav">필요하면 추가하세요</a></li> -->
-							
-<!-- 							</ul></li> -->
-						</c:if>					
 					</ul>
 				</nav>
 				<!--End Desktop Menu-->
@@ -111,10 +101,11 @@
 			<div
 				class="col-6 col-sm-6 col-md-6 col-lg-2 d-block d-lg-none mobile-logo">
 				<div class="logo">
-					<a href="home"> <img
-						src="/project-template-prac/resources/assets/images/logo.svg"
-						alt="Belle Multipurpose Html Template"
-						title="Belle Multipurpose Html Template" />
+					<a href="home">
+					<img src="/project-template-prac/resources/assets/images/logo_gcafe.png"
+						 alt="Belle Multipurpose Html Template"
+						 title="Belle Multipurpose Html Template"
+						 width="160" />
 					</a>
 				</div>
 			</div>
@@ -127,27 +118,32 @@
 					<!--Minicart Popup-->
 				
 				<div id="header-cart" class="block block-cart">
+					<c:if test='${ products eq "[]" or products eq null }'>
+						<br>
+						<div style="text-align: center; vertical-align: middle; font-weight: bold;">장바구니에 담긴 상품이 없습니다.</div>
+					</c:if>
 					<c:forEach var="product" items="${ products }" varStatus="status">
 						<ul class="mini-products-list insert-order">
-							<li class="item"><a class="product-image" href="#"> <img
-									src=${ product.prodImg } title="" />
-							</a>
+							<li class="item">
+								<a class="product-image" href="#">
+									<img src=${ product.prodImg } title="" />
+								</a>
 								<div class="product-details">
-									<a href="delete-order?prodId=${ product.prodId }" class="remove"><i class="anm anm-times-l"
-										aria-hidden="true"></i></a> <a href="shop" class="edit-i remove"><i
-										class="anm anm-edit" aria-hidden="true"></i></a> <a class="pName"
-										href="shop">${ product.prodName }</a>
-									
+									<a href="shop" class="edit-i remove">
+										<i class="anm anm-edit" aria-hidden="true"></i>
+									</a>
+									<a class="pName" href="shop">${ product.prodName }</a>
 								</div>
 							</li>
 						</ul>
 					</c:forEach>
 						<br>
 							<div class="buttonSet text-center">
-								<a href="order" class="btn btn-secondary btn--small">View
-									Cart</a> <a href="#"
-									class="btn btn-secondary btn--small">Checkout</a>
+								<a href="order" class="btn btn-secondary btn--small">
+									ViewCart
+								</a>
 							</div>
+							<br>
 						</div>
 					</div>
 				</div>
@@ -155,7 +151,6 @@
 			</div>
 		</div>
 	</div>
-</div>
 <!-- ./Header -->
 
 <!-- Mobile Menu -->
