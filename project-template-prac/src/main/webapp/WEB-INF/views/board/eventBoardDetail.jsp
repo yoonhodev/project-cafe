@@ -56,7 +56,6 @@
                              </c:forEach>
                             <h2 class="rte" style="font-size: 20px;"><a href="#"><strong>${ boardDetail.title }</strong></a></h2>
                             <ul class="publish-detail">   
-                       	         <li><i class="icon anm anm-map-marker-al" aria-hidden="true" style="color: hotpink"></i> ${ boardDetail.boardId }</li>                   
                           &nbsp; <li><i class="anm anm-user-al" aria-hidden="true" style="color: hotpink"></i> ADMIN</li>
                           &nbsp; <li><i class="icon anm anm-clock-r" style="color: hotpink"></i> <fmt:formatDate value="${ boardDetail.regdate }" pattern="yyyy-MM-dd"/></li>
                           &nbsp; <li><i class="icon anm anm-search-l" style="color: hotpink"></i> ${ boardDetail.readCount }</li>

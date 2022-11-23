@@ -23,6 +23,9 @@ body {
 	font-family: 'neon';
 }
 	
+	.neon-font {
+	font-family: 'neon';
+}
 </style>
 
 </head>
@@ -37,7 +40,7 @@ body {
     	<br> <br> <br> <br>
     	<div class="page section-header text-center mb-0">
 			<div class="page-title">
-        		<div class="wrapper"><h1 class="page-width Korean-font-style">지점 소개</h1></div>
+        		<div class="wrapper"><h1 class="page-width neon-font"><b>지점 소개</b></h1></div>
       		</div>
 		</div> 
         <!--End Page Title-->               
@@ -63,21 +66,22 @@ body {
                             
                             <a class="article_featured-image" ><img class="blur-up lazyload article_featured-image" src="/project-template-prac/resources/assets/images/cafe-out-image-folder/${ store.storeUniqueimage }" alt="이미지 로드 실패"></a>                          
                             
-                            <h2 class="h3"  >${ store.storeName }</h2>
+                            <h2 class="h3 neon-font" ><b>${ store.storeName }</b></h2>
                             <ul class="publish-detail">                      
                                 <li style=""><i class="anm anm-user-al" aria-hidden="true"></i>${store.storePhone}</li>                            
                                 <li style="display: inline;"><i class="icon anm anm-clock-r"></i>${ store.storeSchedule }</li>
                                 <li>
                                 <c:choose>
                                 <c:when test="${ store.storeOpen }">                               		                                           
-                                        <li style="display: inline;"><a style="color: green;">OPEN</a></li>
+                                        <li style="display: inline;"><a style="color: green;"><b>OPEN</b></a></li>
                                         <br>
                                         <c:if test="${ loginuser.userType }">
                                         <input type="button" class="change_to_close btn" id="close-${ store.storeId }"   value="close" data-storeId="${ store.storeId }" />
                                         </c:if>                                                                           
                                 </c:when>
                                 <c:otherwise>  
-                                        <li style="display: inline;"><a style="color: red;">CLOSE</a></li>
+                                        <li style="display: inline;"><a style="color: red;"><b>CLOSE</b></a></li>
+                                        <br>
                                         <c:if test="${ loginuser.userType }">
                                         <input type="button" class="change_to_open btn" id="open-${ store.storeId }"   value="open" data-storeId="${ store.storeId }" />
                                         </c:if>
@@ -86,7 +90,7 @@ body {
                                 </li>
                             </ul>
                             <div class="rte"> 
-                                <p class="korean-text">${ store.storeIntroduce }</p>
+                                <p class="korean-text"><b>${ store.storeIntroduce }</b></p>
                                  </div>
                      					 <c:if test="${ loginuser.userType }">
                                         <input type="button" class="deleted_store_intro btn" id="deleted-${ store.storeId }"   value="삭제" data-storeId="${ store.storeId }" />
