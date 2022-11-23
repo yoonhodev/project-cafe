@@ -8,7 +8,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Green Coffee</title>
+    <title>GREEN CAFE</title>
     <!-- Common-css -->
 	<jsp:include page="/WEB-INF/views/admin-modules/admin-common-css.jsp"></jsp:include>
   </head>
