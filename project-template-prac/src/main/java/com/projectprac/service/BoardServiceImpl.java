@@ -115,6 +115,15 @@ public class BoardServiceImpl implements BoardService {
 		
 	}
 	
+	@Override
+	public int findSearchedEventBoardCount(String keyword) {
+		int searchedBoardCount = boardMapper.selectSerchedEventBoardCount(keyword);
+		System.out.println(searchedBoardCount);
+		return searchedBoardCount;
+	}
+
+
+	
 	public void deleteBoard(int boardId) {
 		
 		boardMapper.deleteBoard(boardId);
@@ -227,6 +236,7 @@ public class BoardServiceImpl implements BoardService {
 		return commentEventCount;
 		
 	}
+
 
 
 	

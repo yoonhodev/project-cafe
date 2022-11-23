@@ -9,6 +9,42 @@
 <!-- belle/short-description.html   11 Nov 2019 12:43:10 GMT -->
 <head>
 
+<style type="text/css">
+.filebox .upload-name {
+    display: inline-block;
+    height: 40px;
+    padding: 0 10px;
+    vertical-align: middle;
+    border: 1px solid #dddddd;
+    width: 78%;
+    color: #999999;
+}
+
+.filebox label {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    vertical-align: middle;
+    background-color: black;
+    cursor: pointer;
+    height: 40px;
+    margin-left: 10px;
+    margin-top: 8px;
+}
+
+.filebox input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+
+</style>
+
+
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <title>Event Board</title>
@@ -21,7 +57,7 @@
 
 	<div class="pageWrapper">
     	<jsp:include page="/WEB-INF/views/modules/header.jsp"></jsp:include>
-        <br><br><br>
+        <br><br><br><br>
     	<div class="page section-header text-center mb-0">
 			<div class="page-title">
         		<div class="wrapper"><h1 class="page-width">Event Board</h1></div>
@@ -32,23 +68,17 @@
             <!--MainContent-->
             <div id="MainContent" class="main-content" role="main">
                 <!--Breadcrumb-->
-               
-                
                 <div id="ProductSection-product-template" class="product-template__container prstyle1 container">
-               
                     <!--Product Tabs-->
                     <div class="tabs-listing">
                         <div class="tab-container">
                             <div id="tab-notice-board" class="tab-content">
-                                
                                     <div id="shopify-product-reviews">
                                     <div class="spr-container">
                                         <div class="spr-header clearfix">
-                                        
                                         	<c:if test="${ loginuser.userType }">
                                                     <a href="#" id="toggle-form-btn" class="spr-summary-actions-newreview btn">글 쓰기</a>
                                             </c:if>
-                                            
                                         </div>
                                         <h3 class="spr-form-title"></h3>
                                                     <fieldset class="spr-form-contact">
@@ -71,14 +101,13 @@
                                                         <label class="spr-form-label" for="review_title_10508262282">제목</label>
                                                         <input class="spr-form-input spr-form-input-text " id="review_title_10508262282" type="text" name="title" value="" placeholder="제목을 입력하세요.">
                                                       </div>
-                                                
-                                                      <div class="spr-form-review-body">
-                                                        <label class="spr-form-label" for="review_body_10508262282">첨부파일<span class="spr-form-review-body-charactersremaining"></span></label>
-                                                        <div class="spr-form-input">
-                                                          <input type="file" name="attachBoard" accept="image/gif, image/jpeg, image/png, image/jpg" id="review_body_10508262282" multiple>
-                                                        </div>
-                                                      </div>
-                                                      
+                                                		첨부파일
+                                                      <div class="filebox">
+													    <input class="upload-name" style="width:300px;" placeholder="File Name">
+													    <label for="file">파일찾기</label> 
+													    <input type="file" id="file" name="attachBoard" accept="image/gif, image/jpeg, image/png, image/jpg" multiple>
+													  </div>
+                                                      <br>
                                                       <div class="spr-form-review-body">
                                                         <label class="spr-form-label" for="review_body_10508262282">내용<span class="spr-form-review-body-charactersremaining">(1500)</span></label>
                                                         <div class="spr-form-input">
@@ -96,14 +125,17 @@
                                            	</div>
                                             <div>
                             <div style="font-size: 15pt">
+<%--                            // <c:if test="${ keyword eq }"> --%>
+<%--                            	<span>dd ${ searchedBoardkeyword }</span> --%>
+<%--                             </c:if> --%>
                                 <table class="table table-striped" style="height:55px">
                                     <thead>
                                         <tr>
-                                            <th style="height: 25px; background-color:hotpink; font-size: 17px">No.</th>
-                                            <th style="height: 25px; background-color:hotpink; font-size: 17px">제목</th>
-                                            <th style="height: 25px; background-color:hotpink; font-size: 17px">작성자</th>
-                                            <th style="height: 25px; background-color:hotpink; font-size: 17px">조회수</th>
-                                            <th style="height: 25px; background-color:hotpink; font-size: 17px">작성일</th>
+                                            <th style="height: 70px; vertical-align: middle; background-color: skyblue; font-size: 17px">No.</th>
+                                            <th style="height: 70px; vertical-align: middle; background-color: skyblue; font-size: 17px">제목</th>
+                                            <th style="height: 25px; vertical-align: middle; background-color: skyblue; font-size: 17px">작성자</th>
+                                            <th style="height: 25px; vertical-align: middle; background-color: skyblue; font-size: 17px">조회수</th>
+                                            <th style="height: 25px; vertical-align: middle; background-color: skyblue; font-size: 17px">작성일</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -112,20 +144,20 @@
                                     	<c:choose>
                                         <c:when test="${ boards.deleted }">
                                         <tr>
-                                            <td style="height: 25px; width:80px; font-size: 17px">${ boards.boardId }</td>
-                                            <td style="height: 25px; font-size: 17px">[삭제된 글입니다.]</td>
-                                            <td style="height: 25px; width:100px; font-size: 17px">ADMIN</td>
-                                            <td style="height: 25px; width:80px; font-size: 17px">${ boards.readCount }</td>
-                                            <td style="height: 25px; width:150px;font-size: 17px"><fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/></td>
+                                            <td style="height: 70px; vertical-align: middle; width:80px; font-size: 17px">${ boards.boardId }</td>
+                                            <td style="height: 70px; vertical-align: middle; font-size: 17px">[삭제된 글입니다.]</td>
+                                            <td style="height: 25px; vertical-align: middle; width:100px; font-size: 17px">ADMIN</td>
+                                            <td style="height: 25px; vertical-align: middle; width:80px; font-size: 17px">${ boards.readCount }</td>
+                                            <td style="height: 25px; vertical-align: middle; width:150px;font-size: 17px"><fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/></td>
                                         </tr>
                                         </c:when>
                                         <c:otherwise>
                               			<tr>
-                                            <td style="height: 25px; width:80px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.boardId }</a></td>
-                                            <td style="height: 25px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.title }</a></td>
-                                            <td style="height: 25px; width:100px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">ADMIN</a></td>
-                                            <td style="height: 25px; width:80px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.readCount }</a></td>
-                                            <td style="height: 25px; width:150px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }"><fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/></a></td>
+                                            <td style="height: 70px; vertical-align: middle; width:80px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.boardId }</a></td>
+                                            <td style="height: 70px; vertical-align: middle; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.title }</a></td>
+                                            <td style="height: 25px; vertical-align: middle; width:100px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">ADMIN</a></td>
+                                            <td style="height: 25px; vertical-align: middle; width:80px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.readCount }</a></td>
+                                            <td style="height: 25px; vertical-align: middle;  width:150px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }"><fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/></a></td>
                                         </tr>  
                                          </c:otherwise>
                                          </c:choose>
@@ -133,24 +165,26 @@
 										<!--리스트 출력 시작 --> 
 										
 										 <!--검색된 리스트 출력 시작 --> 
+										
                                     	<c:forEach var="searchedBoard" items="${ searchedBoard }">
                                     	<c:choose>
                                         <c:when test="${ searchedBoard.deleted }">
-                                        <tr>
-                                            <td style="height: 25px; width:80px; font-size: 17px">${ searchedBoard.boardId }</td>
-                                            <td style="height: 25px; font-size: 17px">[삭제된 글입니다.]</td>
-                                            <td style="height: 25px; width:100px; font-size: 17px">ADMIN</td>
-                                            <td style="height: 25px; width:80px; font-size: 17px">${ searchedBoard.readCount }</td>
-                                            <td style="height: 25px; width:150px;font-size: 17px"><fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/></td>
-                                        </tr>
+                                     
                                         </c:when>
+                                        
                                         <c:otherwise>
+                                      	<tr>
+                                      		<td>
+                                      			dddddddddddddd
+                                      		</td>
+                                      	</tr>
                               			<tr>
-                                            <td style="height: 25px; width:80px; font-size: 17px"><a href="eventBoardDetail?boardId=${ searchedBoard.boardId }&pageNo=${ pageNo }">${ searchedBoard.boardId }</a></td>
-                                            <td style="height: 25px; font-size: 17px"><a href="eventBoardDetail?boardId=${ searchedBoard.boardId }&pageNo=${ pageNo }">${ searchedBoard.title }</a></td>
-                                            <td style="height: 25px; width:100px; font-size: 17px"><a href="eventBoardDetail?boardId=${ searchedBoard.boardId }&pageNo=${ pageNo }">ADMIN</a></td>
-                                            <td style="height: 25px; width:80px; font-size: 17px"><a href="eventBoardDetail?boardId=${ searchedBoard.boardId }&pageNo=${ pageNo }">${ searchedBoard.readCount }</a></td>
-                                            <td style="height: 25px; width:150px; font-size: 17px"><a href="eventBoardDetail?boardId=${ searchedBoard.boardId }&pageNo=${ pageNo }"><fmt:formatDate value="${ searchedBoard.regdate }" pattern="yyyy-MM-dd"/></a></td>
+                              			
+                                            <td style="height: 25px; vertical-align: middle; width:80px; font-size: 17px"><a href="eventBoardDetail?boardId=${ searchedBoard.boardId }&pageNo=${ pageNo }">${ searchedBoard.boardId }</a></td>
+                                            <td style="height: 25px; vertical-align: middle; font-size: 17px"><a href="eventBoardDetail?boardId=${ searchedBoard.boardId }&pageNo=${ pageNo }">${ searchedBoard.title }</a></td>
+                                            <td style="height: 25px; vertical-align: middle; width:100px; font-size: 17px"><a href="eventBoardDetail?boardId=${ searchedBoard.boardId }&pageNo=${ pageNo }">ADMIN</a></td>
+                                            <td style="height: 25px; vertical-align: middle; width:80px; font-size: 17px"><a href="eventBoardDetail?boardId=${ searchedBoard.boardId }&pageNo=${ pageNo }">${ searchedBoard.readCount }</a></td>
+                                            <td style="height: 25px; vertical-align: middle; width:150px; font-size: 17px"><a href="eventBoardDetail?boardId=${ searchedBoard.boardId }&pageNo=${ pageNo }"><fmt:formatDate value="${ searchedBoard.regdate }" pattern="yyyy-MM-dd"/></a></td>
                                         </tr>  
                                          </c:otherwise>
                                          </c:choose>
@@ -158,80 +192,31 @@
 										<!--검색된 리스트 출력 시작 --> 
                                     </tbody>
                                 </table>
-                                <br>
                                 <div>
-                                	<input name="keyword" id="keyword" type="text" placeholder="검색어를 입력해 주세요.">
-	                                </div>
-	                               	 <button id="search-btn">검색하기</button>
-	                                <div style="text-align: center; background-color: white">
-	                                            <span style="background-color: white">${ pager }</span>
+                                	<input name="keyword" id="keyword" type="text" placeholder="제목을 입력해 주세요." class="form-control" style="width:200px; display:inline;">
+                                	<button style="width:60px; margin-top:16px; display:inline" id="search-btn" class="btn mb-3" >검색</button>
+	                            </div>
+	                            <div style="text-align: center; background-color: white">
+	                                <span style="background-color: white">${ pager }</span>
 								</div>
-								
-                                   
-<!--                                    <form action="freeList" method="post"> -->
-<!-- 	                                   	<div class="search-wrap"> -->
-<!-- 	                                   		<button type="submit" class="btn btn-info search-btn">검색</button> -->
-<!-- 	                                   		<input type="text" class="form-control search-input" name="searchName"> -->
-<!-- 	                                   		<select class="form-control search-select" name="searchType"> -->
-<!-- 	                                   			<option value="title">제목</option> -->
-<!-- 	                                   			<option value="content">내용</option> -->
-<!-- 	                                   			<option value="titcon">제목+내용</option> -->
-<!-- 	                                   		</select> -->
-	                                   	
-	                                   	
-<!-- 	                                   	</div>  -->
-                                   	                                      
-<!--                                    </form> -->
-                          
                             </div>
-                            
                         </div>
-                        
                     </div>
-                    
                   </div>
-                 
               </div>
-              
           </div>
-          
-                    <!--Related Product Slider-->
-                    
-                    <!--End Related Product Slider-->
-                    
-                    <!--Recently Product Slider-->
-                  
-                    <!--End Recently Product Slider-->
-                    </div>
-                <!--#ProductSection-product-template-->
+         </div>
             </div>
             <!--MainContent-->
         </div>
     	<!--End Body Content-->
-							
     <!--Footer-->
    <jsp:include page="/WEB-INF/views/modules/footer.jsp"></jsp:include>
     <!--End Footer-->
     <!--Scoll Top-->
     <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
     <!--End Scoll Top-->
-        
-     <!-- Including Jquery -->
-     <script src="resources/assets/js/vendor/jquery-3.3.1.min.js"></script>
-     <script src="resources/assets/js/vendor/jquery.cookie.js"></script>
-     <script src="resources/assets/js/vendor/modernizr-3.6.0.min.js"></script>
-     <script src="resources/assets/js/vendor/wow.min.js"></script>
-     <!-- Including Javascript -->
-     <script src="resources/assets/js/bootstrap.min.js"></script>
-     <script src="resources/assets/js/plugins.js"></script>
-     <script src="resources/assets/js/popper.min.js"></script>
-     <script src="resources/assets/js/lazysizes.js"></script>
-     <script src="resources/assets/js/main.js"></script>
-     <!-- Photoswipe Gallery -->
-     <script src="resources/assets/js/vendor/photoswipe.min.js"></script>
-     <script src="resources/assets/js/vendor/photoswipe-ui-default.min.js"></script>
-   
-
+    <jsp:include page="/WEB-INF/views/modules/common-js.jsp"></jsp:include>
      <script>
         $(function(){
         	
@@ -248,10 +233,6 @@
 				}
 			});
         	
-        	
-        	$('#btn-cancel').on('click', function(event) {
-    			location.href = 'eventBoard?boardId=${board.boardId}' +
-    							'&pageNo=${pageNo}';
     		});
         	
             var $pswp = $('.pswp')[0],
@@ -296,21 +277,21 @@
             	var text = $("#keyword").val();
             	
             	if($("#keyword").val()==""){
-					alert("검색어를 입력해 주세요.");
+					alert("검색할 제목을 입력해주세요.");
 					$("#keyword").focus();
 					return false;
 				}
     			location.href = 'searchedEventBoard?keyword=' + text;
     		});
-        });
+            
+            $("#file").on('change',function(){
+            	  var fileName = $("#file").val();
+            	  $(".upload-name").val(fileName);
+            	});
+    
         </script>
-    </div>
+ 
 
-	<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-        	<div class="pswp__bg"></div>
-            <div class="pswp__scroll-wrap"><div class="pswp__container"><div class="pswp__item"></div><div class="pswp__item"></div><div class="pswp__item"></div></div><div class="pswp__ui pswp__ui--hidden"><div class="pswp__top-bar"><div class="pswp__counter"></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button><button class="pswp__button pswp__button--share" title="Share"></button><button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button><button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class="pswp__preloader"><div class="pswp__preloader__icn"><div class="pswp__preloader__cut"><div class="pswp__preloader__donut"></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class="pswp__share-tooltip"></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button><button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class="pswp__caption"><div class="pswp__caption__center"></div></div></div></div></div>
-
-</body>
 
 <!-- belle/short-description.html   11 Nov 2019 12:43:10 GMT -->
 </html>

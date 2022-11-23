@@ -62,6 +62,8 @@ public interface BoardService {
 
 	List<BoardDto> findSearchedEventBoardByPage(String keyword, int pageNo, int pAGE_SIZE);
 
+	int findSearchedEventBoardCount(String keyword);
+
 
 	
 	
