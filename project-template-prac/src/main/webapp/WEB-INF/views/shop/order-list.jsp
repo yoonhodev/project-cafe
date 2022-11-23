@@ -2,9 +2,9 @@
 	pageEncoding="UTF-8"%>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-		<form action="order" method="post" class="cart style2">
+		<form action="order" method="post">
 							<table>
-								<thead class="cart__row cart__header">
+								<thead style="background-color:#efefef; ">
 									<tr>
 										<th class="text-center">No</th>
 										<th class="text-center">Product</th>
@@ -17,7 +17,7 @@
 								<tbody>
 								<c:forEach var="product" items="${ products }" varStatus="status">
 								<c:set var="quantity" value="1" />
-								<tr class="cart__row border-bottom line1 cart-flex border-top">
+								<tr class="cart__row border-bottom border-top">
                                     <td class="cart__image-wrapper cart-flex-item text-center">
                                         ${ status.count }
                                     </td>
@@ -27,7 +27,7 @@
                                         </div>
                                     </td>
                                     <td class="cart__price-wrapper cart-flex-item">
-                                        <span class="money" id="prodPrice-${ product.prodId }">${ product.prodPrice }</span>
+                                        <span class="money" style="text-align: center;" id="prodPrice-${ product.prodId }">${ product.prodPrice }</span>
                                     </td>
                                     <td class="cart__update-wrapper cart-flex-item text-right">
                                         <div class="cart__qty text-center">
@@ -39,7 +39,7 @@
                                         </div>
                                     </td>
                                     <td class="text-right small--hide cart-price">
-                                        <div><span class="product-price-sum" id="price-${ product.prodId }">${ product.prodPrice }</span></div>
+                                        <div><span class="product-price-sum" style="text-align: center;" id="price-${ product.prodId }">${ product.prodPrice }</span></div>
                                     </td>
                                     <td class="text-center small--hide"><button type="button" data-prodId="${ product.prodId }" class="btn btn--secondary cart__remove delete-order" title="Remove tem"><i class="icon icon anm anm-times-l"></i></button></td>
                                 </tr>
