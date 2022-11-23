@@ -127,27 +127,32 @@
 					<!--Minicart Popup-->
 				
 				<div id="header-cart" class="block block-cart">
+					<c:if test='${ products eq "[]" or products eq null }'>
+						<br>
+						<div style="text-align: center; vertical-align: middle; font-weight: bold;">장바구니에 담긴 상품이 없습니다.</div>
+					</c:if>
 					<c:forEach var="product" items="${ products }" varStatus="status">
 						<ul class="mini-products-list insert-order">
-							<li class="item"><a class="product-image" href="#"> <img
-									src=${ product.prodImg } title="" />
-							</a>
+							<li class="item">
+								<a class="product-image" href="#">
+									<img src=${ product.prodImg } title="" />
+								</a>
 								<div class="product-details">
-									<a href="delete-order?prodId=${ product.prodId }" class="remove"><i class="anm anm-times-l"
-										aria-hidden="true"></i></a> <a href="shop" class="edit-i remove"><i
-										class="anm anm-edit" aria-hidden="true"></i></a> <a class="pName"
-										href="shop">${ product.prodName }</a>
-									
+									<a href="shop" class="edit-i remove">
+										<i class="anm anm-edit" aria-hidden="true"></i>
+									</a>
+									<a class="pName" href="shop">${ product.prodName }</a>
 								</div>
 							</li>
 						</ul>
 					</c:forEach>
 						<br>
 							<div class="buttonSet text-center">
-								<a href="order" class="btn btn-secondary btn--small">View
-									Cart</a> <a href="#"
-									class="btn btn-secondary btn--small">Checkout</a>
+								<a href="order" class="btn btn-secondary btn--small">
+									ViewCart
+								</a>
 							</div>
+							<br>
 						</div>
 					</div>
 				</div>
