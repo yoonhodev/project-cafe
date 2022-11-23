@@ -22,6 +22,13 @@
 			font-size: 14pt;
 		}
 	}
+	@font-face {
+    font-family: 'neon';
+    src: url('../fonts/TmonMonsori.ttf') format('truetype');
+}
+body {
+	font-family: 'neon';
+	}
 </style>
 
 </head>
