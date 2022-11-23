@@ -20,7 +20,10 @@
 body {
 	font-family: 'neon';
 }
-	
+h1 {
+	font-family: 'neon';
+}
+
 </style>
 </head>
 <body class="page-template belle">

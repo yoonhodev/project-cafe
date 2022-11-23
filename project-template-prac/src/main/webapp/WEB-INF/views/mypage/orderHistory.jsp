@@ -20,10 +20,46 @@
     font-family: 'neon';
     src: url('../fonts/TmonMonsori.ttf') format('truetype');
 }
-body {
+body, h1, table tr th {
 	font-family: 'neon';
 }
-	
+	@media screen and (max-width: 990px) {
+    .res_tbl_wrap table col {
+        width: 100% !important;
+    }
+    .res_tbl_wrap table thead {
+        display: none;
+    }
+    .res_tbl_wrap table tbody tr {
+        border-bottom: 1px solid #efefef;
+    }
+    .res_tbl_wrap table tbody tr td {
+        width: 100%;
+        display: flex;
+        margin-bottom: 2px;
+        padding: 5px;
+        border-bottom: none;
+        font-size: 14px;
+        line-height: 18px;
+    }
+    .res_tbl_wrap table tbody tr td:first-child, 
+    .res_tbl_wrap table tbody tr th:first-child {
+        padding-top: 16px;
+    }
+    .res_tbl_wrap table tbody tr td:last-child, 
+    .res_tbl_wrap table tbody tr th:last-child {
+        padding-bottom: 15px;
+    }
+    .res_tbl_wrap table tbody tr td:before {
+        display: inline-block;
+        margin-right: 12px;
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 100px;
+        flex: 0 0 100px;
+        font-weight: 700;
+        content: attr(data-label);
+    }
+}
 </style>
 </head>
 <body class="page-template belle">
@@ -51,9 +87,10 @@ body {
 	            </div>
         	</div>
         	
-        	<div>
-        		
-     			<table>
+        	<div class="container">
+        		<div class="row">
+        		<div class="res_tbl_wrap">
+     			<table class="table">
 					<thead class="cart__row cart__header">
 						<tr>
 							<th class="text-center">주문번호</th>
@@ -68,14 +105,14 @@ body {
 					</thead>
 						<tbody>
 							<c:forEach var="order" items="${ orders }" >
-                              	<tr class="cart__row border-bottom line1 cart-flex border-top" align="center">
-                                  <td height="200px">
+                              	<tr class="cart__row border-bottom border-top" align="center">
+                                  <td>
                                       <span>${ order.orderId }</span>
                                   </td>
                                   <td>
                                       <span>${ order.storeName }</span>
                                   </td>
-                                  <td>
+                                  <td style="padding: 10px 0">
 									<c:forEach var="detail" items="${ order.orderDetailDtos }">
 										<div>
 										<span>${ detail.productDto.prodName } </span>
@@ -137,6 +174,7 @@ body {
                       		</tbody>
 					<tfoot></tfoot>
 				</table>
+				</div>
 				
 				                              	
 				<br><br>
@@ -156,7 +194,7 @@ body {
 		</div>
 		
 		
-		
+		</div>
 		
 		
 		
