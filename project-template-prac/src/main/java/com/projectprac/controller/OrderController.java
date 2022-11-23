@@ -191,7 +191,7 @@ public class OrderController {
 		session.removeAttribute("productIds");
 		session.removeAttribute("products");
 		
-		return "mypage/orderHistory";
+		return "redirect:orderHistory";
 	}
 		
 }

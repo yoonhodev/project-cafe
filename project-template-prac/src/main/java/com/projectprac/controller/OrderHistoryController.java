@@ -50,8 +50,6 @@ public class OrderHistoryController {
 			order.setOrderDetailDtos(details);
 		}
 		
-		orders.forEach(System.out::println);
-		
 		model.addAttribute("orders", orders);
 		//model.addAttribute("orderDetails", orderDetails);
 		

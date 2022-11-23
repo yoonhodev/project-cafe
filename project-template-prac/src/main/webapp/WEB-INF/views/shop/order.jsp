@@ -341,6 +341,7 @@
 								"data" : formData,
 								"success" : function(data) {
 									alert('주문 완료되었습니다.');
+									location.href = "mypage";
 								},
 								"error" : function(xhr,
 										status, err) {
@@ -357,9 +358,9 @@
 							"data" : formData,
 							"success" : function(data) {
 								alert('주문 완료되었습니다.');
+								location.href = "mypage";
 							},
-							"error" : function(xhr, status,
-									err) {
+							"error" : function(xhr, status,	err) {
 								alert('fail');
 							}
 						});
