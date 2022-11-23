@@ -36,7 +36,7 @@
 	        <!--End Page Title-->
 		    <div class="bredcrumbWrap" style="text-align: left;">
 	            <div class="container breadcrumbs">
-	                <a href="index.html" title="Back to the home page">홈</a><span aria-hidden="true">›</span><a href="mypage" title="Back to the Mypage">마이 페이지</a><span aria-hidden="true">›</span><span>회원 정보 수정</span>
+	                <a href="home" title="Back to the home page">홈</a><span aria-hidden="true">›</span><a href="mypage" title="Back to the Mypage">마이 페이지</a><span aria-hidden="true">›</span><span>회원 정보 수정</span>
 	            </div>
         	</div>
 		

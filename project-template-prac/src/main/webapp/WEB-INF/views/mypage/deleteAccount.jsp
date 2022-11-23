@@ -35,7 +35,7 @@
 	        <!--End Page Title-->
 		    <div class="bredcrumbWrap" style="text-align: left;">
 	            <div class="container breadcrumbs">
-	                <a href="index.html" title="Back to the home page">홈</a><span aria-hidden="true">›</span><a href="mypage" title="Back to the Mypage">마이 페이지</a><span aria-hidden="true">›</span><span>회원 탈퇴</span>
+	                <a href="home" title="Back to the home page">홈</a><span aria-hidden="true">›</span><a href="mypage" title="Back to the Mypage">마이 페이지</a><span aria-hidden="true">›</span><span>회원 탈퇴</span>
 	            </div>
         	</div>
 		
@@ -79,15 +79,14 @@
 									<div class="col-12 col-sm-12 col-md-12 col-lg-12">
 										<div class="form-group">
 											<input type="text" name="textchk"
-												   placeholder="회원 탈퇴에 동의합니다" id="textCheck" required >
-											<span id="check"></span>										
+												   placeholder="회원 탈퇴에 동의합니다" id="textCheck" required>
+											<span id="txcheck"></span>										
 										</div>
 									</div>
 									</div>
 									<br><br>
 									<input class="form-group" type="text" name="customerId" value="${ loginuser.customerId }"
 													   id="CustomerId" style="display:none;">
-									<input type="text" name="deleted" value="0" id="deleted" style="display:none;">
 									<div class="row">
 									<div class="text-center col-12 col-sm-12 col-md-12 col-lg-12">
 										<input type="submit" class="btn mb-3" value="회원 탈퇴">
@@ -114,37 +113,22 @@
 		<!-- Common-js -->
 		<jsp:include page="/WEB-INF/views/modules/common-js.jsp"></jsp:include>
 	</div>
-		<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
-		<script type="text/javascript">	
+	<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+	<script type="text/javascript">	
 		$(function() {
 			$("#textCheck").on("change", function(event) {
-				if ($("#textCheck").val("회원 탈퇴에 동의합니다")) {
-					$("#check").text("회원 탈퇴 동의 텍스트가 일치합니다");
-					$("#check").css("color", "blue");
-					$("#deleted").val("1");
+				if ($("#textCheck").val() == "회원 탈퇴에 동의합니다") {
+					$("#txcheck").text("인증 텍스트가 일치합니다");
+					$("#txcheck").css("color", "blue");
 				} else {
-					$("#check").text("회원 탈퇴 동의 텍스트가 일치하지 않습니다");
-					$("#check").css("color", "red");
-					$("#deleted").val("0");
+					$("#txcheck").text("인증 텍스트가 일치하지 않습니다");
+					$("#txcheck").css("color", "red");
 				}
 			});
 			$('#textCheck').on("change", function(event) {
 				$("#check").text("");
 			});
-			
-			
-			
-			$("#btn mb-3").on("click", function() {
-	 			
-				if ($("#Password").val() != passwd ) {
-					alert("비밀번호가 일치하지 않습니다");
-					break;
-				}
-				
-	 			pageContext.forward("deleteComplete");
-
-	 		});
-		}
+		});
 		</script>
-</body>
+	</body>
 </html>

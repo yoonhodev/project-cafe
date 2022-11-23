@@ -13,6 +13,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- Common-css -->
 <jsp:include page="/WEB-INF/views/admin-modules/admin-common-css.jsp"></jsp:include>
+	<style type="text/css">
+		@media screen and (max-width: 800px) {
+			.table tr td {
+				font-size: 3pt;
+			}
+			.table tr th {
+				font-size: 3pt;
+			}
+			.table tr  {
+				font-size: 3pt;
+			}
+		}
+	</style>
 </head>
 <body>
 	<!-- Container-Scroller -->
