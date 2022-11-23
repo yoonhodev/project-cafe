@@ -15,12 +15,13 @@
 <!-- Common-css -->
 <jsp:include page="/WEB-INF/views/modules/common-css.jsp"></jsp:include>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@500&display=swap');
-
-	.Korean-font-style {
-		font-family: 'Hahmlet';
-	}
-
+@font-face {
+    font-family: 'neon';
+    src: url('../fonts/TmonMonsori.ttf') format('truetype');
+}
+body {
+	font-family: 'neon';
+}
 	
 </style>
 
@@ -85,7 +86,7 @@
                                 </li>
                             </ul>
                             <div class="rte"> 
-                                <p class="Korean-font-style">${ store.storeIntroduce }</p>
+                                <p class="korean-text">${ store.storeIntroduce }</p>
                                  </div>
                      					 <c:if test="${ loginuser.userType }">
                                         <input type="button" class="deleted_store_intro btn" id="deleted-${ store.storeId }"   value="삭제" data-storeId="${ store.storeId }" />
@@ -100,7 +101,7 @@
             </div>
         </div>
         
-    </div>
+    
     <!--End Body Content-->
     
 		<!-- Footer -->
@@ -145,7 +146,6 @@
 						 });
         </script>
 		
-</div>
 </body>
 
 
