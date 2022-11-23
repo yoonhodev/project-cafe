@@ -29,6 +29,14 @@
 				width: 600px;
 			}
 		}
+		
+		@font-face {
+    font-family: 'neon';
+    src: url('../fonts/TmonMonsori.ttf') format('truetype');
+		}
+		body {
+			font-family: 'neon';
+		}
 	</style>
 </head>
 <body class="page-template belle">
