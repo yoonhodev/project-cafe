@@ -73,16 +73,10 @@
                                                         </div>
                                                     </fieldset>
                                                     <fieldset class="spr-form-review">
-<!--                                                       <div class="spr-form-review-rating"> -->
-<!--                                                         <label class="spr-form-label">Rating</label> -->
-<!--                                                         <div class="spr-form-input spr-starrating"> -->
-<!--                                                           <div class="product-review"><a class="reviewLink" href="#"><i class="fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i></a></div> -->
-<!--                                                         </div> -->
-<!--                                                       </div> -->
-                                                
-                                                      <div class="spr-form-review-title">
+                                                      <div class="spr-form-contact-name">
                                                         <label class="spr-form-label" for="review_title_10508262282" >지점 외관(사진)</label>
-                                                        <input style="border: none" class="spr-form-input spr-form-input-text" id="review_title_10508262282" type="file" name="attach" accept="image/png, image/gif, image/jpeg, image/jpg" value="" >
+                                                        <br>
+                                                        <input style="border: none; color: white;" class="btn" id="review_title_10508262282" type="file" name="attach" accept="image/png, image/gif, image/jpeg, image/jpg" value="" >
                                                       </div>
                                                 
                                            			 <div class="spr-form-contact-name">
