@@ -166,6 +166,7 @@ body, h1, table tr th {
 												</c:otherwise>
 											</c:choose>
 										</td>
+										<td><span>${ order.address }</span></td>
 									</tr>
 								</c:forEach>
 							</tbody>
