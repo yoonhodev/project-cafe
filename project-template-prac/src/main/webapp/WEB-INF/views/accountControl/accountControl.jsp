@@ -85,7 +85,7 @@
                           <td>FEMALE</td>
                           </c:otherwise>                      
                           </c:choose>
-<!--                           -- -->
+<!--                          /////////// -- -->
                           <td><span>${ customer.regDate }</span></td>
 <!--                           관리자 변경 버튼 -->
 						  <c:if test="${ customer.userType eq 'false'}">
@@ -95,7 +95,7 @@
                           <td><input type="button" value="일반 유저로 변경" id="change-${ customer.customerId }" class="change_to_user btn btn-outline-dark btn-fw" data-customerId="${ customer.customerId }"/></td>
                           </c:if>
                           
-<!--                           -- -->
+<!--                         //////////////////////////  -- -->
                           
 <!--                           관리자 표시 -->
                           <c:choose>
@@ -132,7 +132,7 @@
                           <td>FEMALE</td>
                           </c:otherwise>                      
                           </c:choose>
-<!--                           -- -->
+<!--                      //////////     -- -->
                           <td><span>${ customer.regDate }</span></td>
 <!--                           관리자 변경 버튼 -->
 						  <c:if test="${ customer.userType eq 'false'}">
@@ -142,7 +142,7 @@
                           <td><input type="button" value="일반 유저로 변경" id="change-${ customer.customerId }" class="change_to_user btn btn-outline-dark btn-fw" data-customerId="${ customer.customerId }"/></td>
                           </c:if>
                           
-<!--                           -- -->
+<!--                        /////////////////   -- -->
                           
 <!--                           관리자 표시 -->
                           <c:choose>
@@ -234,7 +234,7 @@
 		
 	});
 	
-
+// 정렬
 	
 function sortTable(n) {
   var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
@@ -282,6 +282,7 @@ function sortTable(n) {
     }
   }
 }
+///////////////////////////////////////
 	</script>
 	
   </body>
