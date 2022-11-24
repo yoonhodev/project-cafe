@@ -39,20 +39,16 @@ public class BoardController {
 	
 	@GetMapping(path = { "noticeBoard" })
 	public String showBoardList(@RequestParam(defaultValue = "1")int pageNo, Model model) {
-		// 1. 요청 데이터 읽기 ( 전달인자로 대체 )
-		// 2. 데이터 처리 ( 데이터 조회 )		
 
 		List<BoardDto> boards = boardService.findBoardByPage(pageNo, PAGE_SIZE);
 		int boardCount = boardService.findBoardCount();
 		
 		ThePager pager = new ThePager(boardCount, pageNo, PAGE_SIZE, PAGER_SIZE, LINK_URL);
 
-		// 3. View에서 읽을 수 있도록 데이터 저장
 		model.addAttribute("boards", boards);
 		model.addAttribute("pager", pager);
 		model.addAttribute("pageNo", pageNo);
 		
-		// 4. View or Controller로 이동
 		return "board/noticeBoard"; 	// /WEB-INF/views/ + board/list + .jsp
 	}
 	
@@ -81,16 +77,10 @@ public class BoardController {
 		
 		int commentCount = boardService.findCommentCount(boardId);
 		
-//		if (boardDetail == null) { // 조회되지 않은 경우 (글 번호가 잘못되었거나 또는 삭제된 글인 경우)
-//			return "redirect:aaa.action";
-//		}
-		
-		// 3. View에서 읽을 수 있도록 데이터 전달
 		model.addAttribute("commentCount", commentCount);
 		model.addAttribute("boardDetail", boardDetail);
 		model.addAttribute("pageNo", pageNo);
 		
-		// 4. View 또는 Controller로 이동
 		return "board/noticeBoardDetail";
 	}
 	
@@ -108,10 +98,6 @@ public class BoardController {
 		}
 		
 		boardService.deleteBoard(boardId);
-		
-		// 3. View에서 사용할 수 있도록 데이터 저장
-		
-		// 4. View 또는 다른 Controller로 이동
 		
 		return "redirect:/noticeBoard?pageNo=" + pageNo;
 	}
@@ -149,9 +135,6 @@ public class BoardController {
 			return "board/error";	
 		}
 		boardService.modifyBoard(board);
-		
-		//return "redirect:noticeBoardDetail?boardId=" + board.getBoardId() + "&pageNo=" + pageNo;
-		//return "redirect:/noticeBoard?pageNo=" + pageNo;
 
 		return "redirect:/noticeBoardDetail?boardId=" + boardId + "&pageNo=" + pageNo;
 

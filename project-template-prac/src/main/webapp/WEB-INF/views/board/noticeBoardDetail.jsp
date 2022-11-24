@@ -5,24 +5,21 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<c:set var="enter" value="
-" />  <!-- 엔터쳤을때 화면에서 실제 적용하게 해주는 코드  -->
-
-
-
-
 <!DOCTYPE html>
 <html class="no-js" lang="ko">
 
 <!-- belle/blog-fullwidth.html   11 Nov 2019 12:46:09 GMT -->
 <head>
 
-
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Notice Board</title>
+<title>GREEN CAFE - NOTICE BOARD</title>
 <meta name="description" content="description">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<c:set var="enter" value="
+" />  <!-- 엔터쳤을때 화면에서 실제 적용하게 해주는 코드  -->
+
 <jsp:include page="/WEB-INF/views/modules/common-css.jsp"></jsp:include>
 
 <style>
@@ -43,9 +40,7 @@ body, h1, h2 {
 <div class="pageWrapper neon-font">
 	<jsp:include page="/WEB-INF/views/modules/header.jsp"></jsp:include>
 	<br><br><br><br>
-    
 	<!--End Mobile Menu-->
-    
     <!--Body Content-->
     <div id="page-content">
     	<!--Page Title-->
@@ -55,18 +50,15 @@ body, h1, h2 {
       		</div>
 		</div>
         <!--End Page Title-->
-	    
         <div class="container">
         	<div class="row">
                 <!--Main Content-->
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
                 	<div class="custom-search">
-                        
                     </div>
                     <div class="blog--list-view blog--grid-load-more">
                         <div class="article" style="font-size: 17px"> 
                             <!-- Article Image --> 
-                             <a class="article_featured-image" href="#"><img class="blur-up lazyload" data-src="resources/assets/images/blog/blog-post-3.jpg" src="resources/assets/images/blog/blog-post-3.jpg" alt="How to Wear The Folds Trend Four Ways"></a> 
                             <h2 class="h3" style="font-size: 17px"><Strong>${ boardDetail.title }</Strong></h2>
                             <ul class="publish-detail">                  
                           &nbsp;<li><i class="anm anm-user-al" aria-hidden="true" style="color: hotpink"></i> ADMIN</li>
@@ -75,12 +67,10 @@ body, h1, h2 {
                             </ul>
                             <br>
                             <div class="rte"> 
-
                                 <p><c:set var="enter" value="
 " />
 								   ${ fn:replace(boardDetail.content, enter, "<br>") }</p>
                             </div>
-                            
                       	    </div>
                         <div class="loadmore-post">	
                             <a></a>
@@ -90,38 +80,23 @@ body, h1, h2 {
                             </c:if>
                             <a href="noticeBoard?pageNo=${ pageNo }" class="btn" style="color: white">목록보기</a>
                         </div>
-                     
                     </div>
                 </div>
                 <!--End Main Content-->
-               
             </div>
-             
-        
-    </div>
-    <!--End Body Content-->
- 
-
-    <!--Footer-->
-    <jsp:include page="/WEB-INF/views/modules/footer.jsp"></jsp:include>
-    <!--End Footer-->
-    <!--Scoll Top-->
-    <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
-    <!--End Scoll Top-->
-    
-     <!-- Including Jquery -->
-     <script src="resources/assets/js/vendor/jquery-3.3.1.min.js"></script>
-     <script src="resources/assets/js/vendor/jquery.cookie.js"></script>
-     <script src="resources/assets/js/vendor/modernizr-3.6.0.min.js"></script>
-     <script src="resources/assets/js/vendor/wow.min.js"></script>
-     <!-- Including Javascript -->
-     <script src="resources/assets/js/bootstrap.min.js"></script>
-     <script src="resources/assets/js/plugins.js"></script>
-     <script src="resources/assets/js/popper.min.js"></script>
-     <script src="resources/assets/js/lazysizes.js"></script>
-     <script src="resources/assets/js/main.js"></script>
-</div>
-</div>
+	    </div>
+	    <!--End Body Content-->
+	    <!--Footer-->
+	    <jsp:include page="/WEB-INF/views/modules/footer.jsp"></jsp:include>
+	    <!--End Footer-->
+	    <!--Scoll Top-->
+	    <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
+	    <!--End Scoll Top-->
+	    
+	     <!-- Including Jquery -->
+	    <jsp:include page="/WEB-INF/views/modules/common-js.jsp"></jsp:include>
+	</div>
+	</div>
 <script type="text/javascript">
 	$(function() {
 		
@@ -140,12 +115,6 @@ body, h1, h2 {
 			
 			location.href = 'edit?boardId=${boardDetail.boardId}&pageNo=${pageNo}';
 		});
-		
-		
-		
-		
-		
-		
 		
 	})
 

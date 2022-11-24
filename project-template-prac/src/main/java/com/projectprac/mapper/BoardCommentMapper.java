@@ -36,15 +36,4 @@ public interface BoardCommentMapper {
 			"WHERE comment_id = #{ commentId }")
 	void updateComment(BoardCommentDto comment);
 
-
-	
-	
-
-
-
-	
-	
-	
-	
-	
 }

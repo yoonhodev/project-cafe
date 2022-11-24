@@ -20,7 +20,7 @@
 	
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Event Board</title>
+<title>GREEN CAFE - EVENT BOARD</title>
 <meta name="description" content="description">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jsp:include page="/WEB-INF/views/modules/common-css.jsp"></jsp:include>
@@ -139,20 +139,8 @@ body, h1, h2 {
     <!--Scoll Top-->
     <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
     <!--End Scoll Top-->
-    
-     <!-- Including Jquery -->
-     <script src="resources/assets/js/vendor/jquery-3.3.1.min.js"></script>
-     <script src="resources/assets/js/vendor/jquery.cookie.js"></script>
-     <script src="resources/assets/js/vendor/modernizr-3.6.0.min.js"></script>
-     <script src="resources/assets/js/vendor/wow.min.js"></script>
-     <!-- Including Javascript -->
-     <script src="resources/assets/js/bootstrap.min.js"></script>
-     <script src="resources/assets/js/plugins.js"></script>
-     <script src="resources/assets/js/popper.min.js"></script>
-     <script src="resources/assets/js/lazysizes.js"></script>
-     <script src="resources/assets/js/main.js"></script>
-     <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
-	 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Including Jquery -->
+    <jsp:include page="/WEB-INF/views/modules/common-js.jsp"></jsp:include>
 
 <script type="text/javascript">
 	$(function() {
@@ -240,25 +228,6 @@ body, h1, h2 {
 	$('#comment-list').on('click', '.update-comment', function(event) {
 		const commentId = $(this).data('comment-no'); // $(this) : 이벤트 발생한 객체, .data('abc') : data-abc값 읽기
 
-		/*
-		const editForm = $('#comment-edit-area-' + commentId + ' form')
-		//alert(editForm.serialize());
-		alert('댓글 수정 완료');
-		$.ajax({
-			"url": "update-comment.action",
-			"method": "post", 
-			"data": editForm.serialize(),
-			"success": function(data) {
-				if (data == "success") {
-					$('#comment-list').load("comment-list.action?boardId=${ boardDetail.boardId}"); // 작업 다 끝난 후 화면 갱신
-				}
-			},
-			"error": function(xhr, status, err) {
-				alert('fail : ' + status);
-			}
-		
-		});
-		*/
 		const editLi = $('#comment-edit-area-' + commentId + ' li')
 		//alert(editForm.serialize());
 		const formData = 'commentId=' + editLi.find('input[name=commentId]').val() + '&content=' + editLi.find('textarea[name=content]').val();
@@ -278,7 +247,8 @@ body, h1, h2 {
 		
 		});
 		
-	});
+	  });
+	
 	});
 	
 </script>

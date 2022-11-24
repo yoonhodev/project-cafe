@@ -10,7 +10,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Event Board</title>
+<title>GREEN CAFE - EVENT BOARD</title>
 <meta name="description" content="description">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jsp:include page="/WEB-INF/views/modules/common-css.jsp"></jsp:include>
@@ -126,12 +126,9 @@ body, h1, table tr th {
                                                    	<br>
                                                 </form>
                                             </div>
-                                           	</div>
-                                            <div>
+                                         </div>
+                                      <div>
                             <div style="font-size: 15pt">
-<%--                            // <c:if test="${ keyword eq }"> --%>
-<%--                            	<span>dd ${ searchedBoardkeyword }</span> --%>
-<%--                             </c:if> --%>
                                 <table class="table table-striped" style="height:55px">
                                     <thead>
                                         <tr>
@@ -142,15 +139,14 @@ body, h1, table tr th {
                                             <th style="height: 25px; vertical-align: middle; background-color: skyblue; font-size: 17px">작성일</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                 		   <c:if test="${boardCount == 0}">
+                                      <c:if test="${boardCount == 0}">
                               				<tr>
-                              					<td colspan="5">
-                              					검색된 값이 없습니다.
+                              					<td style="height:50px; font-size:20px;" colspan="5">
+                              						검색어와 일치하는 값이 없습니다.
                               					</td>
-                              					</tr> 
-                             				</c:if>
-                             				
+                              				</tr> 
+                             		 </c:if>
+                                    <tbody>
                                         <!--리스트 출력 시작 --> 
                                     	<c:forEach var="boards" items="${ boards }">
                                     	<c:choose>
@@ -164,8 +160,7 @@ body, h1, table tr th {
                                         </tr>
                                         </c:when>
                                         <c:otherwise>
-                              			<tr>
-                              				
+                              				<tr>
                                             <td style="height: 70px; vertical-align: middle; width:80px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.boardId }</a></td>
                                             <td style="height: 70px; vertical-align: middle; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.title }</a></td>
                                             <td style="height: 25px; vertical-align: middle; width:100px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">ADMIN</a></td>
@@ -175,16 +170,11 @@ body, h1, table tr th {
                                          </c:otherwise>
                                          </c:choose>
 										</c:forEach>
-										<!--리스트 출력 시작 --> 
-										
-										 <!--검색된 리스트 출력 시작 --> 
-										
-                                    	
-										<!--검색된 리스트 출력 시작 --> 
                                     </tbody>
                                 </table>
                                 <div>
                                 	<input name="keyword" id="keyword" type="text" placeholder="제목을 입력해 주세요." class="form-control" style="width:200px; display:inline;">
+                                	<input type="hidden" value="${boardCount}">
                                 	<button style="width:60px; margin-top:16px; display:inline" id="search-btn" class="btn mb-3" >검색</button>
 	                            </div>
 	                            <div style="text-align: center; background-color: white">
@@ -197,10 +187,9 @@ body, h1, table tr th {
               </div>
           </div>
          </div>
-            </div>
-            <!--MainContent-->
-        </div>
-    	<!--End Body Content-->
+       </div>
+     </div>
+  </div>
     <!--Footer-->
    <jsp:include page="/WEB-INF/views/modules/footer.jsp"></jsp:include>
     <!--End Footer-->
@@ -223,7 +212,6 @@ body, h1, table tr th {
 					return false;
 				}
 			});
-        	
     		});
         	
             var $pswp = $('.pswp')[0],
@@ -281,8 +269,5 @@ body, h1, table tr th {
             	});
     
         </script>
- 
-
-
 <!-- belle/short-description.html   11 Nov 2019 12:43:10 GMT -->
 </html>
