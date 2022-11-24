@@ -5,13 +5,10 @@ public class ThePager2 {
 	private int pageSize;//한 페이지당 데이터 개수
 	private int pagerSize;//번호로 보여주는 페이지 Link 개수
 	private int dataCount;//총 데이터 수
-	
 	private int pageNo;//현재 페이지 번호
 	private int pageCount;//총 페이지 수
-	
 	private String linkUrl;//페이저가 포함되는 페이지의 주소
 	private String keyword;
-	
 	
 	public ThePager2(int dataCount, int pageNo, int pageSize, int pagerSize, String linkUrl, String keyword) {
 		
@@ -24,7 +21,6 @@ public class ThePager2 {
 		this.pageNo = pageNo;		
 		pageCount = 
 			(dataCount / pageSize) + ((dataCount % pageSize) > 0 ? 1 : 0); 
-		
 		
 	}		
 	

@@ -55,7 +55,6 @@ public interface BoardMapper {
 			"LIMIT #{ from }, #{ count } ")
 	List<BoardDto> selectSerchedEventBoardByPage(@Param("from") int from, @Param("count") int count, @Param("keyword") String keyword);
 	
-
 	@Select("select count(*) from board where board_type = true")
 	public int selectBoardCount();
 	
@@ -64,7 +63,6 @@ public interface BoardMapper {
 
 	@Select("select count(*) from board where board_type = false and deleted = false and title Like CONCAT ('%',#{ keyword },'%') ")
 	int selectSerchedEventBoardCount(String keyword);
-	
 	
 	@Update("UPDATE board " +
 			"SET deleted = TRUE " +
@@ -125,24 +123,4 @@ public interface BoardMapper {
 			"WHERE board_id = #{ boardId }")
 	int selectCommentEventCount(int boardId);
 
-
-
-
-	
-	
-
-
-	
-	
-
-	
-	
-
-
-
-	
-	
-	
-	
-	
 }

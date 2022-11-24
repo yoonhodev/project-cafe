@@ -76,22 +76,16 @@ public class EventBoardController {
 	
 	@GetMapping(path = { "eventBoard" })
 	public String showEventBoardList(@RequestParam(defaultValue = "1")int pageNo, Model model) {
-		// 1. 요청 데이터 읽기 ( 전달인자로 대체 )
-		// 2. 데이터 처리 ( 데이터 조회 )		
-
-		
+	
 		List<BoardDto> boards = boardService.findEventBoardByPage(pageNo, PAGE_SIZE);
 		
 		int boardCount = boardService.findEventBoardCount();
 		ThePager pager = new ThePager(boardCount, pageNo, PAGE_SIZE, PAGER_SIZE, LINK_URL);
 		
-		// 3. View에서 읽을 수 있도록 데이터 저장
-		model.addAttribute("boardCount", boardCount);
 		model.addAttribute("boards", boards);
 		model.addAttribute("pager", pager);
 		model.addAttribute("pageNo", pageNo);
 		
-		// 4. View or Controller로 이동
 		return "board/eventBoard"; 	// /WEB-INF/views/ + board/list + .jsp
 	}
 	
@@ -99,20 +93,19 @@ public class EventBoardController {
 	public String searchedShowEventBoardList(@RequestParam(defaultValue = "1")int pageNo,
 											 @RequestParam(value = "keyword")String keyword,
 										     Model model) {
-		// 1. 요청 데이터 읽기 ( 전달인자로 대체 )
-		// 2. 데이터 처리 ( 데이터 조회 )		
+
 		String LINK_URL = "searchedEventBoard";
 		
 		List<BoardDto> searchedBoard = boardService.findSearchedEventBoardByPage(keyword, pageNo, PAGE_SIZE);
 		
 		int searchedBoardCount = boardService.findSearchedEventBoardCount(keyword);
 		ThePager2 pager = new ThePager2(searchedBoardCount, pageNo, PAGE_SIZE, PAGER_SIZE, LINK_URL, keyword);
-		// 3. View에서 읽을 수 있도록 데이터 저장
+
+		model.addAttribute("boardCount", searchedBoardCount);
 		model.addAttribute("boards", searchedBoard);
 		model.addAttribute("pager", pager);
 		model.addAttribute("pageNo", pageNo);
 
-		// 4. View or Controller로 이동
 		return "board/eventBoard"; 	// /WEB-INF/views/ + board/list + .jsp
 	}
 	
@@ -122,7 +115,6 @@ public class EventBoardController {
 									   HttpSession session, 
 									   Model model) {	
 		
-		// 1. 요청 데이터 읽기 ( 전달인자로 대체 )
 		if (boardId == -1 || pageNo == -1) { // 요청 데이터가 잘못된 경우
 			return "redirect:board/eventBoard";
 		}
@@ -137,25 +129,20 @@ public class EventBoardController {
 			boardService.increaseBoardReadCount(boardId);
 			readList.add(boardId);
 		}
-		//BoardDto boardDetail = boardService.showEventBoardDetail(boardId);
 	
-		
 		BoardDto board = boardService.findEventBoardByBoardNo(boardId);
 		
 		int commentEventCount = boardService.findEventCommentCount(boardId);
 	
-		
 		if (board == null) { // 조회되지 않은 경우 (글 번호가 잘못되었거나 또는 삭제된 글인 경우)
 			return "redirect:board/eventBoard";
 			
 		}
 		
-		// 3. View에서 읽을 수 있도록 데이터 전달
 		model.addAttribute("commentEventCount", commentEventCount);
 		model.addAttribute("boardDetail", board);
 		model.addAttribute("pageNo", pageNo);
 		
-		// 4. View 또는 Controller로 이동
 		return "board/eventBoardDetail";
 	}
 	
@@ -172,10 +159,6 @@ public class EventBoardController {
 		}
 		
 		boardService.deleteEventBoard(boardId);
-		
-		// 3. View에서 사용할 수 있도록 데이터 저장
-		
-		// 4. View 또는 다른 Controller로 이동
 		
 		return "redirect:/eventBoard?pageNo=" + pageNo;
 	}
@@ -213,9 +196,6 @@ public class EventBoardController {
 		}
 		boardService.modifyEventBoard(board);
 		
-		//return "redirect:noticeBoardDetail?boardId=" + board.getBoardId() + "&pageNo=" + pageNo;
-		//return "redirect:/noticeBoard?pageNo=" + pageNo;
-
 		return "redirect:/eventBoardDetail?boardId=" + boardId + "&pageNo=" + pageNo;
 
 	}
@@ -238,7 +218,6 @@ public class EventBoardController {
 		
 		List<BoardCommentDto> comments = boardService.findBoardCommentByBoard(boardId);
 		
-		// View에서 일긍ㄹ 수 있도록 데이터 저장
 		model.addAttribute("comments", comments);
 		return "board/comment-list";	
 		
@@ -254,8 +233,6 @@ public class EventBoardController {
 		}
 		
 		return "redirect:/eventBoardDetail?boardId=" + boardId + "&pageNo=" + pageNo;		
-		//return "redirect:/eventBoard?pageNo=" + pageNo;
-		//return "success"; // @ResponseBody 떼매 >> 안됨 (WEB-INF/views/ + success + .jsp)
 						  // @ResponseBody 떼매 "success" 문자열을 응답 
 	}
 	

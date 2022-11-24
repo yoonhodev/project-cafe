@@ -10,5 +10,4 @@ public class BoardAttachDto {
 	private String userFileName;	// 사용자가 업로드한 파일 이름
 	private String savedFileName;	// 시스템에 저장된 파일 이름
 	
-	
 }
