@@ -130,8 +130,7 @@ body {
 	                                        <!-- End product name -->
 	                                        <!-- product price -->
 	                                        <div class="product-price">
-	                                            <!-- <span class="old-price">₩ 2000</span> -->
-	                                            <span class="price">₩&nbsp;${ product.prodPrice }</span>
+	                                        	₩&nbsp;<fmt:formatNumber value="${ product.prodPrice }" pattern="#,###" />
 	                                        </div>
 	                                        <!-- End product price -->
 	                                    </div>

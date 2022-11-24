@@ -105,7 +105,7 @@
               </div>          			
           			</div>
           	</div>
-          
+          <!-- 고정 지출 입력 -->
           <div class="tab-pane" id="cost-input">
                     <div class="row">
                     	<div class="col-xl-3 col-lg-6 col-sm-6 grid-margin stretch-card">
@@ -168,14 +168,11 @@
                       </form>
                   </div>
                 </div>
-              </div>
-						
-						
-						
-						
-						
-					</div>
+             			 </div>						
 				</div>
+			</div>
+				
+<!-- 				///////////////////////////////////////// -->
           </div>
           
           
@@ -188,9 +185,7 @@
           <!-- partial -->
         </div>
         <!-- main-panel ends -->
-      </div>
       <!-- page-body-wrapper ends -->
-    </div>
     <!-- container-scroller -->
 	<!-- Common-js -->
 	<jsp:include page="/WEB-INF/views/admin-modules/admin-common-js.jsp"></jsp:include>
