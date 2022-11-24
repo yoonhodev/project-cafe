@@ -19,7 +19,5 @@ public class BoardDto {
 	private String keyword;
 	
 	private List<BoardAttachDto> attachments;
-
-	
 	
 }

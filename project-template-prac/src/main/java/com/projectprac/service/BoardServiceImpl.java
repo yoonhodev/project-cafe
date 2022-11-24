@@ -25,7 +25,6 @@ public class BoardServiceImpl implements BoardService {
 	
 	}
 	
-	
 	@Override
 	public void writeEventBoard(BoardDto board) {
 
@@ -42,7 +41,6 @@ public class BoardServiceImpl implements BoardService {
 		}
 		
 	}
-
 	
 	public BoardDto showBoardDetail(int boardId) {
 		
@@ -58,7 +56,6 @@ public class BoardServiceImpl implements BoardService {
 		
 		return boardDetail;
 	}
-
 	
 	@Override
 	public List<BoardDto> findBoardByPage(int pageNo, int pageSize) {
@@ -93,8 +90,6 @@ public class BoardServiceImpl implements BoardService {
 		return searchedBoard;
 	}
 
-
-
 	@Override
 	public int findBoardCount() {
 		
@@ -116,11 +111,9 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int findSearchedEventBoardCount(String keyword) {
 		int searchedBoardCount = boardMapper.selectSerchedEventBoardCount(keyword);
-		System.out.println(searchedBoardCount);
+		
 		return searchedBoardCount;
 	}
-
-
 	
 	public void deleteBoard(int boardId) {
 		
@@ -142,8 +135,6 @@ public class BoardServiceImpl implements BoardService {
 		
 		return board;
 	}
-	
-	
 	
 	@Override
 	public BoardDto findEventBoardByBoardNo(int boardId) {  /// 게시글 수정과 관련된 메소드
@@ -235,29 +226,6 @@ public class BoardServiceImpl implements BoardService {
 		
 	}
 
-
-
-	
-
-
-
-
-
-
-
-
-	
-
-
-
-
-
-
-
-
-
-
-		
 }
 	
 

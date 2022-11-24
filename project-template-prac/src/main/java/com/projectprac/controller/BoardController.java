@@ -81,16 +81,10 @@ public class BoardController {
 		
 		int commentCount = boardService.findCommentCount(boardId);
 		
-//		if (boardDetail == null) { // 조회되지 않은 경우 (글 번호가 잘못되었거나 또는 삭제된 글인 경우)
-//			return "redirect:aaa.action";
-//		}
-		
-		// 3. View에서 읽을 수 있도록 데이터 전달
 		model.addAttribute("commentCount", commentCount);
 		model.addAttribute("boardDetail", boardDetail);
 		model.addAttribute("pageNo", pageNo);
 		
-		// 4. View 또는 Controller로 이동
 		return "board/noticeBoardDetail";
 	}
 	
@@ -109,10 +103,6 @@ public class BoardController {
 		
 		boardService.deleteBoard(boardId);
 		
-		// 3. View에서 사용할 수 있도록 데이터 저장
-		
-		// 4. View 또는 다른 Controller로 이동
-		
 		return "redirect:/noticeBoard?pageNo=" + pageNo;
 	}
 	
@@ -130,7 +120,7 @@ public class BoardController {
 			
 		BoardDto board = boardService.findBoardByBoardNo(boardId);
 
-		// View에게 전달할 데이터 저장
+		
 		model.addAttribute("board", board);
 		model.addAttribute("boardId", boardId);
 		model.addAttribute("pageNo", pageNo);		
@@ -149,9 +139,6 @@ public class BoardController {
 			return "board/error";	
 		}
 		boardService.modifyBoard(board);
-		
-		//return "redirect:noticeBoardDetail?boardId=" + board.getBoardId() + "&pageNo=" + pageNo;
-		//return "redirect:/noticeBoard?pageNo=" + pageNo;
 
 		return "redirect:/noticeBoardDetail?boardId=" + boardId + "&pageNo=" + pageNo;
 

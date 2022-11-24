@@ -6,12 +6,8 @@ import com.projectprac.dto.ProductDto;
 
 public interface KioskService {
 
-
-
 	List<ProductDto> showKioskMenuImg();
 
 	List<ProductDto> showKioskMenuImg2();
-
-	
 
 }

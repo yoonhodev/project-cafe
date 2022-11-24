@@ -13,17 +13,13 @@ public interface BoardService {
 	
 	void writeEventBoard(BoardDto board);
 	
-
-	
 	BoardDto showBoardDetail(int boardId);
 	
 	BoardDto showEventBoardDetail(int boardId);
-
 	
 	int findBoardCount();
 
 	int findEventBoardCount();
-	
 	
 	List<BoardDto> findBoardByPage(int pageNo, int pageSize);
 
@@ -42,7 +38,6 @@ public interface BoardService {
 	List<BoardDto> findEventBoardByPage(int pageNo, int pageSize);
 
 	BoardAttachDto findBoardAttachByAttachNo(int attachId);
-	
 	
 	//댓글 시작
 	public List<BoardCommentDto> findBoardCommentByBoard(int boardId);
@@ -64,16 +59,6 @@ public interface BoardService {
 
 	int findSearchedEventBoardCount(String keyword);
 
-
-	
-	
-
-	
-
-
-	
-	
-	
 }
 
 

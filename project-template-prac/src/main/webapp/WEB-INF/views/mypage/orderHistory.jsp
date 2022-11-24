@@ -10,7 +10,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>주문내역</title>
+<title>GREEN CAFE - 주문내역</title>
 <meta name="description" content="description">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Common-css -->
@@ -119,15 +119,15 @@ body, h1, table tr th {
 											<c:forEach var="detail" items="${ order.orderDetailDtos }">
 												<div>
 													<span>${ detail.productDto.prodName } </span>
-													<span>￦${ detail.productDto.prodPrice }</span>
-													<span> * ${ detail.amount }</span>
+													<span>￦<fmt:formatNumber value="${ detail.productDto.prodPrice }" pattern="#,###"/></span>
+													<span> * ${ detail.amount }개</span>
 												</div>
 											</c:forEach>
 											<c:if test="${ order.orderType eq 'A' }">
-												<span>배달비 ￦3000</span>
+												<span>배달비 ￦3,000</span>
 											</c:if>
 										</td>
-										<td><span>￦${ order.total }</span></td>
+										<td><span>￦<fmt:formatNumber value="${ order.total }" pattern="#,###"/></span></td>
 										<td>
 											<span><fmt:formatDate value="${order.orderDate}" pattern="yyyy-MM-dd" /></span>
 										</td>
@@ -158,14 +158,12 @@ body, h1, table tr th {
 												<c:when test="${ order.orderStat eq '1'}">
 													<span>수령완료</span>
 												</c:when>
-												<%--                                   	<c:when  test = "${ order.orderType eq 'B'}">
-			                                  		<span>포장</span>
-			                                  	</c:when> --%>
 												<c:otherwise>
 													<span></span>
 												</c:otherwise>
 											</c:choose>
 										</td>
+										<td><span>${ order.address }</span></td>
 									</tr>
 								</c:forEach>
 							</tbody>

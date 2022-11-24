@@ -11,23 +11,14 @@ public class KioskServiceImpl implements KioskService {
 
 	@Setter
 	private KioskMapper kioskMapper;
-	
-	
-	
-
 
 	@Override
 	public List<ProductDto> showKioskMenuImg() {
 
 		List<ProductDto> products = kioskMapper.showMenu();
 		return products;
-		
 	
 	}
-
-
-
-
 
 	@Override
 	public List<ProductDto> showKioskMenuImg2() {
@@ -35,29 +26,6 @@ public class KioskServiceImpl implements KioskService {
 		return products2;
 	}
 	
-	
-	
-
-
-
-
-
-
-
-
-
-	
-
-
-
-
-
-
-
-
-
-
-		
 }
 	
 
