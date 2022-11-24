@@ -97,7 +97,7 @@
               </div>          			
           			</div>
           	</div>
-          
+<!--           직원 세부 정보 추가 -->
           <div class="tab-pane" id="salary-input">
                     <div class="row">
 
@@ -127,11 +127,7 @@
                   </div>
                 </div>
               </div>
-						
-						
-						
-						
-						
+<!-- 			///////////////////////////	 -->						
 					</div>
 				</div>
           </div>
@@ -146,9 +142,7 @@
           <!-- partial -->
         </div>
         <!-- main-panel ends -->
-      </div>
       <!-- page-body-wrapper ends -->
-    </div>
     <!-- container-scroller -->
 	<!-- Common-js -->
 	<jsp:include page="/WEB-INF/views/admin-modules/admin-common-js.jsp"></jsp:include>
@@ -164,14 +158,7 @@
 			var activeTab = $(this).attr("data-name"); 
 			$("#"+activeTab).fadeIn();
 		});
-// 		$(function() {	
-// // 			$('#insertworkerDetail').on('click', function(event) {
-// // // 				event.preventDefault()
-			
-// // 				var workerId = $('workerId').val();
-// // 				alert(workerId);
-// // 			});
-// 		});
+
 	</script>
 </body>
 </html>

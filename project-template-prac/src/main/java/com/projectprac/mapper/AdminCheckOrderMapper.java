@@ -21,18 +21,7 @@ public interface AdminCheckOrderMapper {
 			"FROM store ")
 	List<StoreDto> selectAllStores();
 
-	
-	
-//	@Select("select o.order_id orderId, o.store_id storeId, o.customer_id customerId, o.order_type orderType, o.order_stat orderStat, o.order_date orderDate, od.order_detail_id orderDetailId, od.prod_id prodId, od.amount, p.prod_price prodPrice, p.prod_name prodName " +
-//			"from modeling_cafe.order o " +
-//			"left outer join order_detail od " +
-//			"on o.order_id=od.order_id " +
-//			"left outer join product p " + 
-//			"on p.prod_id=od.prod_id " +
-//			"where o.store_id = #{storeId} " +
-//			"order by o.order_id DESC " )
-//	List<OrderDto> selectOrderListByStoreId(@Param("storeId") int storeId);
-	
+	// 주문 내역 조회 RESULTS MAP
 	@Select("select o.order_id, o.store_id, o.customer_id, o.order_type, o.order_stat, o.order_date, o.address " +
 			"from modeling_cafe.order o " +
 			"where o.store_id = #{storeId} " +
@@ -68,7 +57,7 @@ public interface AdminCheckOrderMapper {
 		}
 	)
 	List<OrderDetailDto> selectOrderDetailListByOrderId(@Param("orderId") int orderId);
-
+//////////////////////////////////////////////////////////////////////////////////////////
 
 	@Update("update modeling_cafe.order " +
 			"set order_stat = 2 " + 
