@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Green Coffee</title>
+<title>GREEN CAFE - Coupon</title>
 <meta name="description" content="description">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Common-css -->
@@ -59,7 +59,7 @@
 	        <!--End Page Title-->
 		    <div class="bredcrumbWrap">
 	            <div class="container breadcrumbs">
-	                <a href="index.html" title="Back to the home page">마이페이지</a>
+	                <a href="mypage" title="Back to the home page">마이페이지</a>
 	                <span aria-hidden="true">›</span><span>쿠폰함</span>
 	            </div>
 	        </div>

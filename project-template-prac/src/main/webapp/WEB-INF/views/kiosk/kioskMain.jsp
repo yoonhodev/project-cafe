@@ -24,24 +24,19 @@
   </head>
   <body>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-  
     <div class="container-scroller">
       <!-- partial:partials/_navbar.html -->
-     
       <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_sidebar.html -->
 	  	<jsp:include page="/WEB-INF/views/admin-modules/sidebar.jsp"></jsp:include>
-
 		<!-- partial -->
         <div class="main-panel" style="width:1200px;">
           <div class="content-wrapper">
-          
             <div class="row" id="proBanner">
               <div class="col-12">
                   <img src="/project-template-prac/resources/assets/images/cafe-out-image-folder/kiosk-main-top.jpg" height="150px" width="1090px" alt="${attachment.savedFileName}">
               </div>
             </div>
-          	
             <div class="row">
               <div class="col-md-12">
                 <div class="d-sm-flex justify-content-between align-items-center transaparent-tab-border {">
@@ -52,18 +47,9 @@
                     <li class="nav-item" data-name="ice-tab" style="width:250px; font-size: 30px">
                       <a class="nav-link" data-toggle="tab" role="tab">ICE</a>
                     </li>
-<!--                     <li class="nav-item" style="width:250px; font-size: 30px"> -->
-<!--                       <a class="nav-link" id="juice/ade-tab" data-toggle="tab" href="#" role="tab" aria-selected="false">JUICE/ADE</a> -->
-<!--                     </li> -->
-<!--                     <li class="nav-item" style="width:250px; font-size: 30px"> -->
-<!--                       <a class="nav-link" id="tea-tab" data-toggle="tab" href="#" role="tab" aria-selected="false">TEA</a> -->
-<!--                     </li> -->
                   </ul>
-              
                 </div>
-                
                 <div class="tab-content tab-transparent-content">
-                
                   <div class="tab-pane" id="hot-tab">
                     <div class="row">
                      <c:forEach var="product" items="${ productViews }">
@@ -74,20 +60,16 @@
 	                        <img src="${ product.prodImg }" width="250px" alt="image" title="product" style="margin:auto">
 	                         </a>
                         </form>
-                         
                           <div class="text-center">
                             <h3 style="color:black">${ product.prodName }</h3>
                             <h3 style="color:black">₩ <fmt:formatNumber value="${ product.prodPrice }" pattern="#,###"/></h3>
                           </div>
                         </div>
-                      
                       </div>
                        </c:forEach> 
-                       
                      </div>
                      </div>
                     <div class="tab-pane fade show active" id="ice-tab" role="tabpanel" aria-labelledby="business-tab">
-                  	
                     <div class="row">
                      <c:forEach var="product2" items="${ productViews2 }">
                       <div class="col-xl-3 col-lg-6 col-sm-6 grid-margin stretch-card"  style="height:300px">
@@ -101,7 +83,6 @@
                         </div>
                       </div>
                        </c:forEach> 
-                      
                      </div>
                     </div>
                       <div class="row" >
@@ -135,18 +116,16 @@
                                   	</td>
                         		</tr>
                        	  </table>
-                       		 
-                                  </div>
-                              </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-         
+                         </div>
+                     </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+           </div>
+         </div>
+       </div>
+     </div>
  <!-- 팝업1 -->
 <div id="pop_info_1" class="pop_wrap" style="display:none;">
   <div class="pop_inner" style="width:500px; height:500px;">
@@ -154,16 +133,6 @@
     <button type="button" class="btn_close">닫기</button>
   </div>
 </div>
-                 <!-- Pop-up content END -->
-         
-         
-         
-          <!-- content-wrapper ends -->
-          <!-- partial:partials/_footer.html -->
-          
-          <!-- partial -->
-        
-        <!-- main-panel ends -->
 	<!-- Common-js -->
 	<jsp:include page="/WEB-INF/views/admin-modules/admin-common-js.jsp"></jsp:include>
     <script type="text/javascript">
@@ -191,19 +160,6 @@
 					}
 			});
 		});
-		
-		
-		
-		
-    							
-//     			location.href = 'noticeBoard?boardId=${board.boardId}' +
-// 				'&pageNo=${pageNo}';
-    		
-	
-		
-// 		function numberWithCommas(x) {
-// 		    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-// 		}
 	
  var target = document.querySelectorAll('.btn_open');
  var btnPopClose = document.querySelectorAll('.pop_wrap .btn_close');

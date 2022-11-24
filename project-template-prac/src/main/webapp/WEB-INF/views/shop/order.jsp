@@ -27,7 +27,7 @@ h5 {
 	font-family: 'neon';
 }
 table tr th {
-	padding: 10px 20px;
+	padding: 10px 0;
 }
 table tr td {
 	padding: 5px 0;

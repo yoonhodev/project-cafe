@@ -9,129 +9,11 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Green Coffee</title>
+<title>GREEN CAFE - 직원 관리</title>
 <!-- Common-css -->
 <jsp:include page="/WEB-INF/views/admin-modules/admin-common-css.jsp"></jsp:include>
 <style type="text/css">
-/* 컨테이너 설정 */
 
-.container {display:flex;justify-content:center; flex-direction: row;}
-.inner-container {display:flex;flex-direction: column;width: 200px;text-align:center;margin-top:50px}
-
-/* 컨테이너 설정 */
-
-
-/* 툴팁 기본 스타일 설정 시작 */
-
-.tooltip {
-  position: relative;
-  display: block;
-}
-
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 120px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-
-  position: absolute;
-  z-index: 1;
-}
-
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-}
-
-/* 툴팁 기본 스타일 설정 끝 */
-
-/* -------------------------- */
-
-/* 툴팁 화살표 기본 스타일 설정 시작 */
-
-.tooltip .tooltiptext::after {
-  content: " ";
-  position: absolute;
-  border-style: solid;
-  border-width: 5px;
-}
-
-/* 툴팁 화살표 기본 스타일 설정 끝 */
-
-/* -------------------------- */
-
-/* 툴팁 방향 설정 시작 */
-
-/* 왼쪽 툴팁 시작 */
-
-.tooltip .tooltip-left {
-  top: -5px;
-  right: 105%;
-}
-
-.tooltip .tooltip-left::after {
-  top: 50%;
-  left: 100%;
-  margin-top: -5px;
-  border-color: transparent transparent transparent black;
-}
-
-/* 왼쪽 툴팁 끝 */
-
-/* 오른쪽 툴팁 시작 */
-
-.tooltip .tooltip-right {
-  top: -5px;
-  left: 105%;
-}
-
-.tooltip .tooltip-right::after {
-  top: 50%;
-  right: 100%;
-  margin-top: -5px;
-  border-color: transparent black transparent transparent;
-}
-
-/* 오른쪽 툴팁 끝 */
-
-/* 위쪽 툴팁 시작 */
-
-.tooltip .tooltip-top {
-  width: 120px;
-  bottom: 150%;
-  left: 50%;
-  margin-left: -60px;
-}
-
-.tooltip .tooltip-top::after {
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-color: black transparent transparent transparent;
-}
-
-/* 아래쪽 툴팁 시작 */
-
-.tooltip .tooltip-bottom {
-  width: 120px;
-  top: 150%;
-  left: 50%;
-  margin-left: -60px;
-}
-
-
-.tooltip .tooltip-bottom::after {
-  bottom: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-color: transparent transparent black transparent;
-}
-
-/* 아래쪽 툴팁 시작 */
-
-/* 툴팁 방향 설정 끝 */
 </style>
 </head>
 <body>
@@ -275,7 +157,7 @@
 								</div>
 							</div>
 						</div>
-
+<!-- 		직원 정보 추가 -->
 						<div class="tab-pane" id="cost-input">
 
 
@@ -331,12 +213,8 @@
 									</div>
 								</div>
 							</div>
-
-
-
-
-
 						</div>
+<!-- 						//////////////////////////// -->
 					</div>
 				</div>
 
@@ -348,11 +226,8 @@
 	<!-- partial:../../partials/_footer.html -->
 	<jsp:include page="/WEB-INF/views/admin-modules/admin-footer.jsp"></jsp:include>
 	<!-- partial -->
-	</div>
 	<!-- main-panel ends -->
-	</div>
 	<!-- page-body-wrapper ends -->
-	</div>
 	<!-- container-scroller -->
 	<!-- Common-js -->
 	<jsp:include page="/WEB-INF/views/admin-modules/admin-common-js.jsp"></jsp:include>

@@ -44,12 +44,12 @@
 							<input type="hidden" id="rawPrice-${ raw.rawId }" value="${ raw.rawPrice }">
 						</td>
 						<td class="amount">
-							<button type="button" class="btn btn-outline-secondary minus" style="padding: 5px">
+							<button type="button" class="btn btn-outline-secondary minus btn_sm" style="padding: 5px">
 								<i class="mdi mdi-minus"></i>
 							</button>&nbsp;&nbsp;
 							<span class="count" data-rawId="${ raw.rawId }">1</span>&nbsp;&nbsp;
 							<input type="hidden" id="count-${ raw.rawId }" value="1">
-							<button type="button" class="btn btn-outline-secondary plus" style="padding: 5px">
+							<button type="button" class="btn btn-outline-secondary plus btn_sm" style="padding: 5px">
 								<i class="mdi mdi-plus"></i>
 							</button>
 						</td>
@@ -80,7 +80,7 @@
 			$("#price-" + i).text(rawPrice);
 		}
 		
-		$(".btn-sm").on("click", function() {
+		$(".btn_sm").on("click", function() {
 			var amount = $(this).parent(".amount"),
 				oldValue = $(amount).find(".count").text(),
 				newVal = 1

@@ -9,7 +9,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Green Coffee</title>
+    <title>GREEN CAFE - 주문 내역 관리</title>
     <!-- Common-css -->
 	<jsp:include page="/WEB-INF/views/admin-modules/admin-common-css.jsp"></jsp:include>
   </head>
@@ -56,13 +56,13 @@
                           		<thead style="background-color: #d5dee8">
                           			<tr>
                           				<th>                        				 
-											    <span class="col-sm-6 col-md-4 col-lg-3"><b>지점명</b></span>
-												    <select id="StoreName1" name="storeName1" class="StoreName1">
-												    	<option selected disabled hidden="">지점 선택</option>
-												      	<c:forEach var="store" items="${ stores }" varStatus="status">
-												        	<option id="store-${ store.storeId }" value="${ store.storeId }" data-storeName="${ store.storeName }">${ store.storeName }</option>
-												        </c:forEach>
-													</select>
+										    <span class="col-sm-6 col-md-4 col-lg-3"><b>지점명</b></span>
+											    <select id="StoreName1" name="storeName1" class="StoreName1">
+											    	<option selected disabled hidden="">지점 선택</option>
+											      	<c:forEach var="store" items="${ stores }" varStatus="status">
+											        	<option id="store-${ store.storeId }" value="${ store.storeId }" data-storeName="${ store.storeName }">${ store.storeName }</option>
+											        </c:forEach>
+												</select>
                           				</th>     
                           			</tr>                          		
                           		</thead>
@@ -120,7 +120,7 @@
 							<c:forEach var="orderDetail" items="${ order.orderDetailDtos }">
 								<c:set var="total_amount" value="${ total_amount + (orderDetail.productDto.prodPrice * orderDetail.amount) }" />
 							</c:forEach>
-							<td><span>${ total_amount }원</span></td>
+							<td><span>₩<fmt:formatNumber value="${ total_amount }" pattern="###,###,###"/></span></td>
 							<c:if test="${ order.orderType eq 'A' }">
 							<td><span>배달</span></td>
 							</c:if>
@@ -163,7 +163,7 @@
 							</c:if>
 							<c:if test="${ order.orderType eq 'A' and order.orderStat eq '2' }">
 							<td>
-							<input type="button" id="change-to-delivery-${ order.orderId }" data-storeId="${ order.storeId }" data-order="${ order.orderId }"  class="change-to-delivering btn btn-outline-primary" value="배달완료" >
+							<input type="button" id="change-to-delivery-${ order.orderId }" data-storeId="${ order.storeId }" data-order="${ order.orderId }"  class="change-to-delivery btn btn-outline-primary" value="배달완료" >
 							</td>
 							</c:if>
 							<!-- 배달일때 버튼 -->
@@ -246,13 +246,11 @@
 				var orderId = $(this).attr('data-order');
 				var storeId = $(this).attr('data-storeId');
 				
-				alert(orderId)
-				alert(storeId)
 				location.href = orderId + '/changeToDeilvering?storeName1=' + storeId  + '&storeId=' + storeId;
 				
 			});
 			
-			$('.change-to-delivering').on('click', function(event) {
+			$('.change-to-delivery').on('click', function(event) {
 				
 				var orderId = $(this).attr('data-order');
 				var storeId = $(this).attr('data-storeId');

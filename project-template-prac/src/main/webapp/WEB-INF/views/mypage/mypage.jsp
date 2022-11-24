@@ -8,20 +8,38 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>마이 페이지</title>
+<title>GREEN CAFE - My Page</title>
 <meta name="description" content="description">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Common-css -->
 	<jsp:include page="/WEB-INF/views/modules/common-css.jsp"></jsp:include>
 	<style>
-@font-face {
-    font-family: 'neon';
-    src: url('../fonts/TmonMonsori.ttf') format('truetype');
-}
-body, h1 {
-	font-family: 'neon';
-}
-	
+		@font-face {
+			font-family: 'neon';
+			src: url('../fonts/TmonMonsori.ttf') format('truetype');
+		}
+		
+		body, h1 {
+			font-family: 'neon';
+		}
+		
+		@media screen and (max-width: 700px) {
+			#logo_pic {
+				width: 90%;
+				height: 100%;
+			}
+		}
+		
+		@media screen and (min-width: 420px) {
+			#logo_pic {
+				width: 320px;
+				height: 100%;
+			}
+		}
+		
+		table tr td {
+			padding: 0 20px;
+		}
 </style>
 </head>
 <body class="page-template belle">
@@ -51,7 +69,7 @@ body, h1 {
 			<div class="mypage-wrapper" style="text-align: center;">
 
 			<div class="mypage_logobox" style="display: inline-block;">
-				<img src="/project-template-prac/resources/assets/images/logo_icon.png" width="400px" height="400px" />
+				<img id="logo_pic" src="/project-template-prac/resources/assets/images/logo_icon.png" width="400px" height="400px" />
 			</div>
 			<br><br><br>
 			<div class="mypage_username" style="display: inline-block; font-weight: bold">	
@@ -59,15 +77,12 @@ body, h1 {
 			</div>
 			<br><br><br><br><br><br>
 			<div class="mypage_menubox" style="display: inline-block;">
-				<table style="border:1px; width:400px; font-weight: bold">
+				<table style="font-weight: bold; margin: 0 auto; margin-left: 20px">
 					<tr>
-						<td style="width:170px; text-align: right;">
-							<a href="orderHistory">
-								주문내역
-							</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<td style="text-align: left;">
+							<a href="orderHistory">주문내역</a>
 						</td>
-						<td style="width:60px;"></td>
-						<td style="width:170px; text-align: left;">
+						<td style="text-align: left;">
 							<a href="coupon">
 								쿠폰함 (보유 쿠폰 : <span>${ couponcount }</span>)
 							</a>
@@ -75,25 +90,13 @@ body, h1 {
 					</tr>
 					<tr style="height:40px;"></tr>
 					<tr>
-						<td style="width:170px; text-align: right;">
-							<a href="editAccount?customerId=${loginuser.customerId}">
-							개인정보 변경
-							</a>
+						<td style="text-align: left;">
+							<a href="editAccount?customerId=${loginuser.customerId}">개인정보 변경</a>
 						</td>
-						<td style="width:60px;"></td>
-						<td style="width:170px; text-align: left;">
+						<td style="text-align: left;">
 							<a href="deleteAccount" style="color: #cc0000 ;">
 							회원 탈퇴
 							</a>
-						</td>
-					</tr>
-					<tr style="height:10px;"></tr>
-					<tr>
-						<td style="width:170px; text-align: right;">
-						</td>
-						<td style="width:60px;"></td>
-						<td style="width:170px; text-align: left;">
-							
 						</td>
 					</tr>
 				</table>
