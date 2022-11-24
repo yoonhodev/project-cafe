@@ -163,7 +163,7 @@
 							</c:if>
 							<c:if test="${ order.orderType eq 'A' and order.orderStat eq '2' }">
 							<td>
-							<input type="button" id="change-to-delivery-${ order.orderId }" data-storeId="${ order.storeId }" data-order="${ order.orderId }"  class="change-to-delivering btn btn-outline-primary" value="배달완료" >
+							<input type="button" id="change-to-delivery-${ order.orderId }" data-storeId="${ order.storeId }" data-order="${ order.orderId }"  class="change-to-delivery btn btn-outline-primary" value="배달완료" >
 							</td>
 							</c:if>
 							<!-- 배달일때 버튼 -->
@@ -246,13 +246,11 @@
 				var orderId = $(this).attr('data-order');
 				var storeId = $(this).attr('data-storeId');
 				
-				alert(orderId)
-				alert(storeId)
 				location.href = orderId + '/changeToDeilvering?storeName1=' + storeId  + '&storeId=' + storeId;
 				
 			});
 			
-			$('.change-to-delivering').on('click', function(event) {
+			$('.change-to-delivery').on('click', function(event) {
 				
 				var orderId = $(this).attr('data-order');
 				var storeId = $(this).attr('data-storeId');

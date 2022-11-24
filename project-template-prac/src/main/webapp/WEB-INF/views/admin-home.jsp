@@ -8,7 +8,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Green Coffee</title>
+    <title>GREEN CAFE</title>
     <!-- Common-css -->
 	<jsp:include page="/WEB-INF/views/admin-modules/admin-common-css.jsp"></jsp:include>
   </head>
@@ -28,7 +28,7 @@
                 <div class="d-sm-flex justify-content-between align-items-center transaparent-tab-border {">
                   <ul class="nav nav-tabs tab-transparent" role="tablist">
                     <li class="nav-item">
-                      <a class="nav-link active" id="business-tab" data-toggle="tab" href="#business-1" role="tab" aria-selected="false">Green Coffee</a>
+                      <a class="nav-link active" id="business-tab" data-toggle="tab" href="#business-1" role="tab" aria-selected="false">Green Cafe</a>
                   </ul>                  
                 </div>
                 <div class="tab-content tab-transparent-content">
