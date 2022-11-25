@@ -76,12 +76,12 @@
                         <tr>
 							<th class="text-center">날짜</th>
 							<th class="text-center">지점명</th>
-							<th class="text-center">임대료</th>
-							<th class="text-center">관리비</th>
-							<th class="text-center">전기세</th>
-							<th class="text-center">수도세</th>
-							<th class="text-center">광고비</th>
-							<th class="text-center">배달비</th>
+							<th class="text-center">임대료(단위:만원)</th>
+							<th class="text-center">관리비(단위:만원)</th>
+							<th class="text-center">전기세(단위:만원)</th>
+							<th class="text-center">수도세(단위:만원)</th>
+							<th class="text-center">광고비(단위:만원)</th>
+							<th class="text-center">배달비(단위:만원)</th>
                         </tr>
                       </thead>
                       <tbody>

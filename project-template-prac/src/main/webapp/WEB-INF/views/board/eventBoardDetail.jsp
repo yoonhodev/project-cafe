@@ -1,10 +1,7 @@
 <%@page import="com.projectprac.dto.BoardAttachDto"%>
 <%@page import="com.projectprac.dto.BoardDto"%>
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -59,12 +56,12 @@ body, h1, h2 {
                 	<div class="custom-search">
                     </div>
                     <div class="blog--list-view blog--grid-load-more">
-                        <div class="article" style="font-size: 17px"> 
+                        <div class="article" style="font-size: 15px"> 
                             <!-- Article Image --> 
                             <c:forEach var="attachment" items="${ boardDetail.attachments }">			
                              <a class="article_featured-image" href="#"><img src="/project-template-prac/resources/assets/images/cafe-out-image-folder/${attachment.savedFileName}" alt="${attachment.savedFileName}"></a> 
                              </c:forEach>
-                            <h2 class="rte" style="font-size: 20px;"><strong>${ boardDetail.title }</strong></h2>
+                            <h2 class="rte" style="font-size: 17px;"><strong>${ boardDetail.title }</strong></h2>
                             <ul class="publish-detail">   
                           &nbsp; <li><i class="anm anm-user-al" aria-hidden="true" style="color: hotpink"></i> ADMIN</li>
                           &nbsp; <li><i class="icon anm anm-clock-r" style="color: hotpink"></i> <fmt:formatDate value="${ boardDetail.regdate }" pattern="yyyy-MM-dd"/></li>
@@ -125,7 +122,7 @@ body, h1, h2 {
         <!-- end of write comment area -->	
 		<!-- comment list area  -->
 		<br>
-	    <table id="comment-list" style="border:solid 1px;margin:0 auto">
+	    <table id="comment-list" style="border: 1px solid #D3D3D3; margin:0 auto">
 		</table>
 		<!-- end of comment list area	 -->
         </div>

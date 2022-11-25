@@ -6,7 +6,7 @@
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
-<html class="no-js" lang="ko">
+<html class="no-js" lang="en">
 
 <!-- belle/blog-fullwidth.html   11 Nov 2019 12:46:09 GMT -->
 <head>
@@ -57,7 +57,7 @@ body, h1, h2 {
                 	<div class="custom-search">
                     </div>
                     <div class="blog--list-view blog--grid-load-more">
-                        <div class="article" style="font-size: 17px"> 
+                        <div class="article" style="font-size: 15px"> 
                             <!-- Article Image --> 
                             <h2 class="h3" style="font-size: 17px"><Strong>${ boardDetail.title }</Strong></h2>
                             <ul class="publish-detail">                  
