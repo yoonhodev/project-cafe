@@ -132,11 +132,11 @@ body, h1, table tr th {
                                 <table class="table table-striped" style="height:55px">
                                     <thead>
                                         <tr>
-                                            <th style="height: 70px; vertical-align: middle; background-color: skyblue; font-size: 17px">No.</th>
-                                            <th style="height: 70px; vertical-align: middle; background-color: skyblue; font-size: 17px">제목</th>
-                                            <th style="height: 25px; vertical-align: middle; background-color: skyblue; font-size: 17px">작성자</th>
-                                            <th style="height: 25px; vertical-align: middle; background-color: skyblue; font-size: 17px">조회수</th>
-                                            <th style="height: 25px; vertical-align: middle; background-color: skyblue; font-size: 17px">작성일</th>
+                                            <th style="height: 70px; vertical-align: middle; background-color: skyblue; font-size: 15px">No.</th>
+                                            <th style="height: 70px; vertical-align: middle; background-color: skyblue; font-size: 15px">제목</th>
+                                            <th style="height: 25px; vertical-align: middle; background-color: skyblue; font-size: 15px">작성자</th>
+                                            <th style="height: 25px; vertical-align: middle; background-color: skyblue; font-size: 15px">조회수</th>
+                                            <th style="height: 25px; vertical-align: middle; background-color: skyblue; font-size: 15px">작성일</th>
                                         </tr>
                                     </thead>
                                       <c:if test="${boardCount == 0}">
@@ -152,20 +152,20 @@ body, h1, table tr th {
                                     	<c:choose>
                                         <c:when test="${ boards.deleted }">
                                         <tr>
-                                            <td style="height: 70px; vertical-align: middle; width:80px; font-size: 17px">${ boards.boardId }</td>
-                                            <td style="height: 70px; vertical-align: middle; font-size: 17px">[삭제된 글입니다.]</td>
-                                            <td style="height: 25px; vertical-align: middle; width:100px; font-size: 17px">ADMIN</td>
-                                            <td style="height: 25px; vertical-align: middle; width:80px; font-size: 17px">${ boards.readCount }</td>
-                                            <td style="height: 25px; vertical-align: middle; width:150px;font-size: 17px"><fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/></td>
+                                            <td style="height: 70px; vertical-align: middle; width:80px; font-size: 15px">${ boards.boardId }</td>
+                                            <td style="height: 70px; vertical-align: middle; font-size: 15px">[삭제된 글입니다.]</td>
+                                            <td style="height: 25px; vertical-align: middle; width:100px; font-size: 15px">ADMIN</td>
+                                            <td style="height: 25px; vertical-align: middle; width:80px; font-size: 15px">${ boards.readCount }</td>
+                                            <td style="height: 25px; vertical-align: middle; width:150px;font-size: 15px"><fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/></td>
                                         </tr>
                                         </c:when>
                                         <c:otherwise>
                               				<tr>
-                                            <td style="height: 70px; vertical-align: middle; width:80px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.boardId }</a></td>
-                                            <td style="height: 70px; vertical-align: middle; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.title }</a></td>
-                                            <td style="height: 25px; vertical-align: middle; width:100px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">ADMIN</a></td>
-                                            <td style="height: 25px; vertical-align: middle; width:80px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.readCount }</a></td>
-                                            <td style="height: 25px; vertical-align: middle;  width:150px; font-size: 17px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }"><fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/></a></td>
+                                            <td style="height: 70px; vertical-align: middle; width:80px; font-size: 15px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.boardId }</a></td>
+                                            <td style="height: 70px; vertical-align: middle; font-size: 15px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.title }</a></td>
+                                            <td style="height: 25px; vertical-align: middle; width:100px; font-size: 15px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">ADMIN</a></td>
+                                            <td style="height: 25px; vertical-align: middle; width:80px; font-size: 15px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.readCount }</a></td>
+                                            <td style="height: 25px; vertical-align: middle;  width:150px; font-size: 15px"><a href="eventBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }"><fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/></a></td>
                                         </tr>  
                                          </c:otherwise>
                                          </c:choose>
@@ -175,7 +175,7 @@ body, h1, table tr th {
                                 <div>
                                 	<input name="keyword" id="keyword" type="text" placeholder="제목을 입력해 주세요." class="form-control" style="width:200px; display:inline;">
                                 	<input type="hidden" value="${boardCount}">
-                                	<button style="width:60px; margin-top:16px; display:inline" id="search-btn" class="btn mb-3" >검색</button>
+                                	<button style="width:70px; margin-top:16px; display:inline" id="search-btn" class="btn mb-3" >검색</button>
 	                            </div>
 	                            <div style="text-align: center; background-color: white">
 	                                <span style="background-color: white">${ pager }</span>

@@ -9,6 +9,7 @@
 <!-- belle/short-description.html   11 Nov 2019 12:43:10 GMT -->
 <head>
 
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <title>GREEN CAFE - NOTICE BOARD</title>
@@ -72,7 +73,6 @@ body, h1, table tr th {
                                                         <label class="spr-form-label" for="review_title_10508262282">제목</label>
                                                         <input class="spr-form-input spr-form-input-text " id="review_title_10508262282" type="text" name="title" value="" placeholder="제목을 입력하세요.">
                                                       </div>
-                                                
                                                       <div class="spr-form-review-body">
                                                         <label class="spr-form-label" for="review_body_10508262282">내용<span class="spr-form-review-body-charactersremaining">(1500)</span></label>
                                                         <div class="spr-form-input">
@@ -93,11 +93,11 @@ body, h1, table tr th {
 		                               <table class="table table-striped" style="height:55px">
 		                                    <thead>
 		                                         <tr>
-		                                            <th style="height: 70px; vertical-align: middle; background-color: gray; font-size: 17px">No.</th>
-		                                            <th style="height: 70px; vertical-align: middle; background-color: gray; font-size: 17px">제목</th>
-		                                            <th style="height: 25px; vertical-align: middle; background-color: gray; font-size: 17px">작성자</th>
-		                                            <th style="height: 25px; vertical-align: middle; background-color: gray; font-size: 17px">조회수</th>
-		                                            <th style="height: 25px; vertical-align: middle; background-color: gray; font-size: 17px">작성일</th>
+		                                            <th style="height: 70px; vertical-align: middle; background-color: gray; font-size: 15px">No.</th>
+		                                            <th style="height: 70px; vertical-align: middle; background-color: gray; font-size: 15px">제목</th>
+		                                            <th style="height: 25px; vertical-align: middle; background-color: gray; font-size: 15px">작성자</th>
+		                                            <th style="height: 25px; vertical-align: middle; background-color: gray; font-size: 15px">조회수</th>
+		                                            <th style="height: 25px; vertical-align: middle; background-color: gray; font-size: 15px">작성일</th>
 		                                        </tr>
 		                                    </thead>
 		                                    <tbody>
@@ -105,20 +105,20 @@ body, h1, table tr th {
 		                                    	<c:choose>
 		                                        <c:when test="${ boards.deleted }">
 		                                        <tr>
-		                                            <td style="height: 70px; vertical-align: middle; width:80px; font-size: 17px">${ boards.boardId }</td>
-		                                            <td style="height: 70px; vertical-align: middle; font-size: 17px">[삭제된 글입니다.]</td>
-		                                            <td style="height: 25px; vertical-align: middle; width:100px; font-size: 17px">ADMIN</td>
-		                                            <td style="height: 25px; vertical-align: middle; width:80px; font-size: 17px">${ boards.readCount }</td>
-		                                            <td style="height: 25px; vertical-align: middle; width:150px;font-size: 17px"><fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/></td>
+		                                            <td style="height: 70px; vertical-align: middle; width:80px; font-size: 15px">${ boards.boardId }</td>
+		                                            <td style="height: 70px; vertical-align: middle; font-size: 15px">[삭제된 글입니다.]</td>
+		                                            <td style="height: 25px; vertical-align: middle; width:100px; font-size: 15px">ADMIN</td>
+		                                            <td style="height: 25px; vertical-align: middle; width:80px; font-size: 15px">${ boards.readCount }</td>
+		                                            <td style="height: 25px; vertical-align: middle; width:150px;font-size: 15px"><fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/></td>
 		                                        </tr>
 		                                        </c:when>
 		                                        <c:otherwise>
 		                              			<tr>
-		                                            <td style="height: 70px; vertical-align: middle; width:80px; font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.boardId }</a></td>
-		                                            <td style="height: 70px; vertical-align: middle; font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.title }</a></td>
-		                                            <td style="height: 25px; vertical-align: middle; width:100px; font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">ADMIN</a></td>
-		                                            <td style="height: 25px; vertical-align: middle; width:80px; font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.readCount }</a></td>
-		                                            <td style="height: 25px; vertical-align: middle;  width:150px; font-size: 17px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }"><fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/></a></td>
+		                                            <td style="height: 70px; vertical-align: middle; width:80px; font-size: 15px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.boardId }</a></td>
+		                                            <td style="height: 70px; vertical-align: middle; font-size: 15px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.title }</a></td>
+		                                            <td style="height: 25px; vertical-align: middle; width:100px; font-size: 15px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">ADMIN</a></td>
+		                                            <td style="height: 25px; vertical-align: middle; width:80px; font-size: 15px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }">${ boards.readCount }</a></td>
+		                                            <td style="height: 25px; vertical-align: middle;  width:150px; font-size: 15px"><a href="noticeBoardDetail?boardId=${ boards.boardId }&pageNo=${ pageNo }"><fmt:formatDate value="${ boards.regdate }" pattern="yyyy-MM-dd"/></a></td>
 		                                        </tr>  
 		                                          </c:otherwise>
 		                                          </c:choose>
