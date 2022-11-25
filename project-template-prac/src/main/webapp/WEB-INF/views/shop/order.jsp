@@ -228,7 +228,9 @@ table tr td {
 
 					price = newVal * price;
 					$(qtyField).find(".qty").val(newVal);
+					
 					$("#price-" + prodId).text(price);
+					
 					orderListLoadCompletionHandler();
 				});
 

@@ -14,7 +14,15 @@
 
 <!-- stylesheet -->
 <jsp:include page="/WEB-INF/views/modules/common-css.jsp"></jsp:include>
-
+<style>
+@font-face {
+    font-family: 'neon';
+    src: url('../fonts/TmonMonsori.ttf') format('truetype');
+}
+body {
+	font-family: 'neon';
+}
+</style>
 </head>
 <body class="template-collection belle">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
@@ -125,7 +133,7 @@
 	                                        <!-- product price -->
 	                                        <div class="product-price">
 	                                            <!-- <span class="old-price">₩ 2000</span> -->
-	                                            <span class="price">₩&nbsp;${ iceProduct.prodPrice }</span>
+	                                            ₩&nbsp;<fmt:formatNumber value="${ iceProduct.prodPrice }" pattern="#,###" />
 	                                        </div>
 	                                        <!-- End product price -->
 	                                    </div>
