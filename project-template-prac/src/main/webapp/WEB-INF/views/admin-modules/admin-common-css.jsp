@@ -16,4 +16,4 @@
     <!-- Layout styles -->
     <link rel="stylesheet" href="/project-template-prac/resources/admin-assets/css/style.css">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="/project-template-prac/resources/admin-assets/images/favicon.png" />
+    <link rel="shortcut icon" href="/project-template-prac/resources/admin-assets/images/logo_icon.png" />

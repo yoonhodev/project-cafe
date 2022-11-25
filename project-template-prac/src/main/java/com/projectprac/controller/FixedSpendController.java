@@ -26,7 +26,7 @@ public class FixedSpendController {
 		List<StoreDto> stores = fixedSpendService.showAllStore();
 		if(storeId != -1 ) {
 			List<FixedSpendDto> fixedSpends = fixedSpendService.selectCostByStoreId(storeId);
-			System.out.println(fixedSpends);
+			
 			model.addAttribute("fixedSpends", fixedSpends);
 			for (StoreDto store : stores) {
 				if (store.getStoreId() == storeId) {
@@ -46,13 +46,6 @@ public class FixedSpendController {
 		return "redirect:fixedSpend";
 	}
 	
-//	@PostMapping(path = {"fixedSpend2"})
-//	public String showCostByStoreId(int storeId, Model model) {
-//		List<FixedSpendDto> fixedSpends = fixedSpendService.selectCostByStoreId(storeId);
-//		System.out.println(fixedSpends);
-//		model.addAttribute("fixedSpends", fixedSpends);
-//		
-//		return "spend/fixedSpend";
-//	}
+
 	
 }

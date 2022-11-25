@@ -8,7 +8,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Green Coffee</title>
+    <title>GREEN CAFE - 고정 지출</title>
     <!-- Common-css -->
 	<jsp:include page="/WEB-INF/views/admin-modules/admin-common-css.jsp"></jsp:include>
   </head>
@@ -76,12 +76,12 @@
                         <tr>
 							<th class="text-center">날짜</th>
 							<th class="text-center">지점명</th>
-							<th class="text-center">임대료</th>
-							<th class="text-center">관리비</th>
-							<th class="text-center">전기세</th>
-							<th class="text-center">수도세</th>
-							<th class="text-center">광고비</th>
-							<th class="text-center">배달비</th>
+							<th class="text-center">임대료(단위:만원)</th>
+							<th class="text-center">관리비(단위:만원)</th>
+							<th class="text-center">전기세(단위:만원)</th>
+							<th class="text-center">수도세(단위:만원)</th>
+							<th class="text-center">광고비(단위:만원)</th>
+							<th class="text-center">배달비(단위:만원)</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -105,7 +105,7 @@
               </div>          			
           			</div>
           	</div>
-          
+          <!-- 고정 지출 입력 -->
           <div class="tab-pane" id="cost-input">
                     <div class="row">
                     	<div class="col-xl-3 col-lg-6 col-sm-6 grid-margin stretch-card">
@@ -168,14 +168,11 @@
                       </form>
                   </div>
                 </div>
-              </div>
-						
-						
-						
-						
-						
-					</div>
+             			 </div>						
 				</div>
+			</div>
+				
+<!-- 				///////////////////////////////////////// -->
           </div>
           
           
@@ -188,9 +185,7 @@
           <!-- partial -->
         </div>
         <!-- main-panel ends -->
-      </div>
       <!-- page-body-wrapper ends -->
-    </div>
     <!-- container-scroller -->
 	<!-- Common-js -->
 	<jsp:include page="/WEB-INF/views/admin-modules/admin-common-js.jsp"></jsp:include>
