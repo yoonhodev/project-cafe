@@ -7,7 +7,7 @@
 		<a class="navbar-brand brand-logo" href="admin1" style="width: 110px; padding: 0">
 			<img src="resources/admin-assets/images/logo_gcafe.png" alt="logo" />
 		</a>
-		<a class="navbar-brand brand-logo-mini" href="admin1">
+		<a class="navbar-brand brand-logo-mini" style="width: 40px;" href="admin1">
 			<img src="resources/admin-assets/images/logo_icon.png" alt="logo" />
 		</a>
 	</div>

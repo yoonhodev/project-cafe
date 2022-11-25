@@ -69,7 +69,7 @@ body {
                 <!--Main Content-->
                 <div class="col-12 col-sm-12 col-md-9 col-lg-9 main-col">
                 	<div class="category-description">
-                    	<h3>Drinks</h3>
+                    	<h3>Hot Drinks</h3>
                 
                     </div>
                     <hr>
