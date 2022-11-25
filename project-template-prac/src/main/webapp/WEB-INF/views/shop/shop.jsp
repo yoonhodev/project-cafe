@@ -19,7 +19,7 @@
     font-family: 'neon';
     src: url('../fonts/TmonMonsori.ttf') format('truetype');
 }
-body {
+body div {
 	font-family: 'neon';
 }
 </style>

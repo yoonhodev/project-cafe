@@ -228,7 +228,7 @@ table tr td {
 
 					price = newVal * price;
 					$(qtyField).find(".qty").val(newVal);
-					price = price.toLocaleString('ko-KR');
+					
 					$("#price-" + prodId).text(price);
 					
 					orderListLoadCompletionHandler();
