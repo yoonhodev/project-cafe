@@ -32,6 +32,13 @@ public class MypageServiceImpl implements MypageService {
 	}
 	
 	@Override
+	public MypageDto selectPwPhoneMailbyCustomerId(String customerId) {
+		MypageDto currentData = mypageMapper.selectPwPhoneMailbyCustomerId(customerId);
+		return currentData;
+	}
+	
+	
+	@Override
 	public void editAddress(AddressDto addressDto) {
 				
 		String addressId = addressDto.getAddressId();
@@ -95,7 +102,5 @@ public class MypageServiceImpl implements MypageService {
 		
 		mypageMapper.deleteAccount(mypageDto);
 	}
-
-
 
 }

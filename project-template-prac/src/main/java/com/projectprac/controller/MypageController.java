@@ -53,12 +53,14 @@ public class MypageController {
 	public String editAccount(String customerId, String postId, String address, String detailAddress, String extraAddress, HttpSession session, Model model) {
 		
 //		CustomerDto customer = (CustomerDto) session.getAttribute("loginuser");
+		MypageDto mypageDto = mypageService.selectPwPhoneMailbyCustomerId(customerId);
 		AddressDto addressDto = mypageService.selectAddressbyCustomerId(customerId);
 		
 //		System.out.println(customer.getCustomerId());
 		System.out.println("getMapping " + customerId);
 		System.out.println("getMapping " + addressDto);
 		
+		model.addAttribute("mypageDto", mypageDto);
 		model.addAttribute("addressDto",addressDto);
 		
 		return "mypage/editAccount";

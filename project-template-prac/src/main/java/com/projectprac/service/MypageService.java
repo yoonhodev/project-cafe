@@ -6,6 +6,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import com.projectprac.dto.AddressDto;
+import com.projectprac.dto.CustomerDto;
 import com.projectprac.dto.MypageDto;
 
 
@@ -20,6 +21,8 @@ public interface MypageService {
 	void deleteAccount(MypageDto mypageDto);
 
 	AddressDto selectAddressbyCustomerId(String customerId);
+
+	MypageDto selectPwPhoneMailbyCustomerId(String customerId);
 	
 
 

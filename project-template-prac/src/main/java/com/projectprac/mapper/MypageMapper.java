@@ -30,6 +30,11 @@ public interface MypageMapper {
 			"WHERE customer_id = #{ customerId } ")
 	AddressDto selectAddressByCustomerId(String customerId);
 	
+	@Select("SELECT passwd, phone, email " +
+			"FROM customer " +
+			"WHERE customer_id = #{ customerId }")
+	MypageDto selectPwPhoneMailbyCustomerId(String customerId);
+	
 	@Update("UPDATE customer " +
 			"SET passwd = #{ passwd }, phone = #{ phone }, email = #{ email } " +
 			"WHERE customer_id = #{ customerId } ")
@@ -42,16 +47,9 @@ public interface MypageMapper {
 			"WHERE customer_id = #{ customerId } ")
 	void editAddress(AddressDto addressDto);
 			
-	
 	@Update("UPDATE customer " +
 			"SET deleted = 1 " +
 			"WHERE customer_id = #{ customerId } ")
 	void deleteAccount(MypageDto mypageDto);
 
-	
-
-	
-
-	
-	
 }

@@ -98,7 +98,7 @@ body, h1 {
 											<div class="form-group">
 												<label for="Phone">전화번호</label>
 												<input class="form-control"  type="tel" name="phone"
-													   value="${ loginuser.phone }" id="Phone" required>
+													   value="${ mypageDto.phone }" id="Phone" required>
 											</div>
 										</div>
 										<div class="col-12 col-sm-12 col-md-12 col-lg-12">
@@ -132,7 +132,7 @@ body, h1 {
 											<div class="form-group">
 												<label for="Email">이메일</label>
 												<input class="form-control"  type="email" name="email"
-													   value="${ loginuser.email }" id="Email" required>
+													   value="${ mypageDto.email }" id="Email" required>
 											</div>
 										</div>
 									</div>
