@@ -59,7 +59,7 @@ body, h1, h2 {
                         <div class="article" style="font-size: 15px"> 
                             <!-- Article Image --> 
                             <c:forEach var="attachment" items="${ boardDetail.attachments }">			
-                             <a class="article_featured-image" href="#"><img src="/project-template-prac/resources/assets/images/cafe-out-image-folder/${attachment.savedFileName}" alt="${attachment.savedFileName}"></a> 
+                             <a class="article_featured-image" href="#"><img src="/project-template-prac/resources/assets/images/cafe-out-image-folder/${attachment.userFileName}" alt="${attachment.savedFileName}"></a> 
                              </c:forEach>
                             <h2 class="rte" style="font-size: 17px;"><strong>${ boardDetail.title }</strong></h2>
                             <ul class="publish-detail">   
