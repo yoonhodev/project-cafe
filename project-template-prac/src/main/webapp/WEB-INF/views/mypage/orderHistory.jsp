@@ -179,8 +179,8 @@ body, h1, table tr th {
 					<br><br>
 				</div>
 				<div class="orderhistory-wrapper" style="text-align: center;">
-
-					<!-- 로그인 여부 확인하고 로그인 안되어 있으면 로그인 페이지로 사출 -->
+				<br><br><br><br><br><br><br><br><br><br>
+				
 				</div>
 			</div>
 			<!-- ./Body Content -->

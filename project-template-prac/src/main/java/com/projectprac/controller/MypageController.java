@@ -52,14 +52,57 @@ public class MypageController {
 	@GetMapping(path = { "editAccount" })
 	public String editAccount(String customerId, String postId, String address, String detailAddress, String extraAddress, HttpSession session, Model model) {
 		
+//		CustomerDto customer = (CustomerDto) session.getAttribute("loginuser");
 		AddressDto addressDto = mypageService.selectAddressbyCustomerId(customerId);
 		
-		System.out.println(customerId);
-		System.out.println(addressDto);
+//		System.out.println(customer.getCustomerId());
+		System.out.println("getMapping " + customerId);
+		System.out.println("getMapping " + addressDto);
 		
 		model.addAttribute("addressDto",addressDto);
 		
 		return "mypage/editAccount";
+	}
+	
+	@PostMapping(path = { "editAccount" })
+	public String editAccount(MypageDto mypageDto, AddressDto addressDto, Model model) {
+		
+	
+//		addressDto = mypageService.selectAddressbyCustomerId(mypageDto.getCustomerId());
+
+		System.out.println("postMapping(mypageDto) " + mypageDto); // null?
+		System.out.println("postMapping(addressDto) " + addressDto);
+	
+		
+		System.out.println("postMapping(oldpasswd) " + mypageDto.getOldpasswd());
+		System.out.println("postMapping(passwd) " + mypageDto.getPasswd());
+		System.out.println("postMapping(passwdchk) " + mypageDto.getPasswdchk());
+		
+		
+		// 1. 요청 데이터 읽기 -> DTO에 저장 : 전달인자 사용으로 대체
+		if (!mypageDto.getPasswd().equals(mypageDto.getOldpasswd())) { // 비밀번호 확인 체크
+			model.addAttribute("msg", "비밀번호를 확인해 주세요");
+			model.addAttribute("url", "editAccount");
+
+			return "modules/alert";
+		}
+		
+		if (!mypageDto.getPasswd().equals(mypageDto.getPasswdchk())) { // 비밀번호 확인 체크
+			model.addAttribute("msg", "새 비밀번호가 일치하지 않습니다");
+			model.addAttribute("url", "editAccount");
+
+			return "modules/alert";
+		}
+		
+		// 2. 요청 처리		
+		mypageService.editAccount(mypageDto); // 회원 정보 변경
+		mypageService.editAddress(addressDto);
+		System.out.println(mypageDto);
+		System.out.println(addressDto);
+
+		// 3. View에서 사용할 수 있도록 데이터 전달 / 4. View 또는 다른 Controller로 이동
+		return "mypage/editComplete";
+	
 	}
 	
 	@GetMapping(path = { "editComplete" })
@@ -67,17 +110,13 @@ public class MypageController {
 		return "mypage/editComplete";
 	}
 	
+	
+	
+	
 	@GetMapping(path = { "deleteAccount" })
 	public String deleteAccount() {
 		return "mypage/deleteAccount";
 	}
-	
-	
-	@GetMapping(path = { "deleteComplete" })
-	public String deleteComplete() {
-		return "mypage/deleteComplete";
-	}
-	
 	
 	@PostMapping(path = { "deleteAccount" })
 	public String deleteAccount(String passwd, String textchk, MypageDto mypageDto, HttpSession session, Model model) {
@@ -102,55 +141,12 @@ public class MypageController {
 		session.removeAttribute("loginuser");
 		mypageService.deleteAccount(mypageDto);
 		return "mypage/deleteComplete";
-
-		
 	}
 
-	
-	
-	@PostMapping(path = { "editAccount" })
-	public String editAccount(@Valid MypageDto mypageDto, BindingResult br, String oldpasswd, String passwd, String passwdchk, Model model,
-						   AddressDto addressDto, @RequestParam(defaultValue = "-1") String customerId, HttpSession session) throws ParseException { // @Valid에 의해 검출된 오류 정보가 저장된 객체
-		
-		CustomerDto customer = (CustomerDto) session.getAttribute("loginuser");
-		oldpasswd = Util.getHashedString(oldpasswd, "SHA-256");
-		
-		if (br.hasErrors()) {
-			System.out.println("유효성 검사 오류 발생");
-			return "redirect:editAccount";
-		} else
-		
-		// 1. 요청 데이터 읽기 -> DTO에 저장 : 전달인자 사용으로 대체
-		if (!customer.getPasswd().equals(oldpasswd)) { // 비밀번호 확인 체크
-			model.addAttribute("msg", "비밀번호를 확인해 주세요");
-			model.addAttribute("url", "editAccount");
-
-			return "modules/alert";
-		}
-		
-		if (!passwd.equals(passwdchk)) { // 비밀번호 확인 체크
-			model.addAttribute("msg", "새 비밀번호가 일치하지 않습니다");
-			model.addAttribute("url", "editAccount");
-
-			return "modules/alert";
-		}
-		
-		// 2. 요청 처리
-		
-		mypageService.editAccount(mypageDto); // 회원 정보 변경
-		mypageService.editAddress(addressDto);
-		System.out.println(mypageDto);
-		System.out.println(addressDto);
-
-		// 3. View에서 사용할 수 있도록 데이터 전달 / 4. View 또는 다른 Controller로 이동
-		return "mypage/editComplete";
-	
+	@GetMapping(path = { "deleteComplete" })
+	public String deleteComplete() {
+		return "mypage/deleteComplete";
 	}
 	
 	
-	@GetMapping(path = { "mypage/alert" })
-	public String alert() {
-		
-		return "mypage/alert";
-	}
 }

@@ -13,7 +13,8 @@ public class MypageDto {
 	
 	private String customerId;
 	private String passwd;
-	private int stamp;
+	private String passwdchk;
+	private String oldpasswd;
 	private int order_id;
 	private int store_id;
 	private String order_pay;
@@ -21,12 +22,6 @@ public class MypageDto {
 	private Date order_date;
 	private int coupon_deleted;
 	private String phone;
-	private boolean sex;
 	@Email
 	private String email;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private String birth;
-	
-	
-
 }

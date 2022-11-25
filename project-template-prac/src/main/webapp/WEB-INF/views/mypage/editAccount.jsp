@@ -55,10 +55,10 @@ body, h1 {
 					<div class="row">
 						<div class="col-12 col-sm-12 col-md-6 col-lg-6 main-col offset-md-3">
 							<div class="mb-4">
-								<c:set var="customers" value="${ customers }" />
+<%-- 								<c:set var="customers" value="${ customers }" />
 								<c:forEach var="customer" items="${ customers }" varStatus="status">
 									<input type="hidden" value="${ customer.customerId }" id="customer-${ status.index }">
-								</c:forEach>
+								</c:forEach> --%>
 								<form method="post" action="editAccount" id="editAccountForm">
 									<div class="row">
 										<div class="col-12 col-sm-12 col-md-12 col-lg-12">
@@ -66,7 +66,8 @@ body, h1 {
 												<label for="CustomerId">아이디</label>
 												<br>
 												${ loginuser.customerId }
-												<input type="hidden" value="${ customer.customerId }" id="customerId">
+												<input class="form-group" type="text" name="customerId" value="${ loginuser.customerId }"
+													   id="CustomerId" style="display:none;">
 											</div>
 											<br>
 										</div>
@@ -138,7 +139,7 @@ body, h1 {
 									<br> <br>
 									<div class="row">
 										<div class="text-center col-12 col-sm-12 col-md-12 col-lg-12">
-											<input type="submit" class="btn mb-3" value="회원정보 수정 완료" onchange="check_oldpw()">
+											<input type="submit" class="btn mb-3" value="회원정보 수정 완료">
 										</div>
 									</div>
 								</form>

@@ -17,8 +17,6 @@ public interface MypageService {
 
 	void editAccount(MypageDto mypageDto);
 
-	void selectAddressByCustomerId(AddressDto addressDto);
-
 	void deleteAccount(MypageDto mypageDto);
 
 	AddressDto selectAddressbyCustomerId(String customerId);

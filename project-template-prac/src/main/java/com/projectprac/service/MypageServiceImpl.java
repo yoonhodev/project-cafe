@@ -26,11 +26,11 @@ public class MypageServiceImpl implements MypageService {
 	}
 	
 	@Override
-	public void selectAddressByCustomerId(AddressDto addressDto) {
-		String address = addressDto.getCustomerId();
-		System.out.println(address);
+	public AddressDto selectAddressbyCustomerId(String customerId) {
+		AddressDto address = mypageMapper.selectAddressByCustomerId(customerId);
+		return address;
 	}
-
+	
 	@Override
 	public void editAddress(AddressDto addressDto) {
 				
@@ -66,20 +66,20 @@ public class MypageServiceImpl implements MypageService {
 		String customerId = mypageDto.getCustomerId();
 		mypageDto.setCustomerId(customerId);
 		
-		String passwd = Util.getHashedString(mypageDto.getPasswd(), "SHA-256");
+		String passwd = Util.getHashedString(mypageDto.getPasswd(), "SHA-256");;
 		mypageDto.setPasswd(passwd); // 암호화된 패스워드를 멤버에 저장
+		
+		String oldpasswd = (mypageDto.getPasswd());
+		mypageDto.setPasswd(oldpasswd);
+		
+		String passwdchk = (mypageDto.getPasswd());
+		mypageDto.setPasswd(passwdchk);
 		
 		String phone = mypageDto.getPhone();
 		mypageDto.setPhone(phone);
 		
 		String email = mypageDto.getEmail();
 		mypageDto.setEmail(email);
-		
-		Boolean sex = mypageDto.isSex();
-		mypageDto.setSex(sex);
-		
-        String birth = mypageDto.getBirth();
-        mypageDto.setBirth(birth);
 		
 		mypageMapper.editAccount(mypageDto);
 		
@@ -96,12 +96,6 @@ public class MypageServiceImpl implements MypageService {
 		mypageMapper.deleteAccount(mypageDto);
 	}
 
-	@Override
-	public AddressDto selectAddressbyCustomerId(String customerId) {
-		
-	AddressDto address = mypageMapper.selectAddressByCustomerId22(customerId);
-		
-		return address;
-	}
+
 
 }

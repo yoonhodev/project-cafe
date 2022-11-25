@@ -100,7 +100,8 @@
 						</td>
 					</tr>
 				</table>
-				<input type="hidden" value="${ customer.customerId }" id="customerId">
+				<input class="form-group" type="text" name="customerId" value="${ loginuser.customerId }"
+													   id="CustomerId" style="display:none;">
 			</div>
 			<br><br>
 			<br><br>
